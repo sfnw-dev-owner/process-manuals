@@ -26,16 +26,23 @@
 
 *	Position two 12-foot ladders, one at each end of the building.
 *	Preset brown #10x3” screws in each of two structural triangles, as shown in the diagram a couple of pages on from here.  In the two center bays, there are four screws, angled enough that you could drive them in with an impact driver.  In the two outer bays, there are two screws angled in from one side of the triangle, starting about ¾” in from the edge of the bottom plate.  Then there are two screws driven in vertically about 1” toward the center from the seam between the bottom plate and the angled side of the triangle.
-*	Position a triangle on the front wall, and, with a helper inside the home, center it from side to side.
 
 ![Structural Triangles - overview](images/image_34.png)
 
+{{< pagebreak >}}
+
+*	Position a triangle on the front wall, and, with a helper inside the home, center it from side to side.
+
 ![Structural Triangles - ensure center alignment](images/image_36.png)
+
+{{< pagebreak >}}
 
 *	Verify that the bottom plate of the triangle is flush with the inside wall framing all the way across the front wall.
 *	Clamp the triangle to the wall top plate (or door opening) about 6" from each end.
 
 ![Structural Triangles - align flush with wall](images/image_35.png)
+
+{{< pagebreak >}}
 
 *	From the ladder, drive all the preset screws into the wall framing to secure the triangle.
 *	Repeat these last three steps on the rear wall.
@@ -47,8 +54,6 @@
 While these tasks are being completed, have two crew members position a half-roof assembly against each of the side walls, with the 1x8 white board at the bottom and facing away from the wall.  Check that there is a pencil line drawn at 6 ¼” from the front of the 1x6 board (the top of the half roof) all the way down and across what will be the bottom of the half roof when it is installed
 
 ![Half Roof - crew positioning for left hand side roof](images/image_38.png)
-
-![Half Roof - crew positioning for right hand side roof](images/image_43.png)
 
 {{< pagebreak >}}
 
@@ -81,6 +86,8 @@ While these tasks are being completed, have two crew members position a half-roo
 ![Half Roof - RHS raise step 2](images/image_45.png)
 
 ![Half Roof - RHS raise step 3](images/image_46.png)
+
+{{< pagebreak >}}
 
 *	The front ladder person leads the alignment of the two half roof assemblies, so that the ends of the 1x6 boards are flush.  Once this is done, both front and rear ladder crew clamp the 1x6 boards together both horizontally and vertically.  Placing the vertical clamp first allows the boards to slide past each other more easily before applying clamp pressure horizontally. Then drive 4 #8 x 1½ screws into the white boards, to secure the two halves together.
 
