@@ -9,6 +9,7 @@
   - [Generating the docx file](#generating-the-docx-file)
   - [Add the rendered docx to source control](#add-the-rendered-docx-to-source-control)
 - [Editing 3D model and images used in Tilt Up \& Post Tilt Up](#editing-3d-model-and-images-used-in-tilt-up--post-tilt-up)
+- [Notes on image alignment in markdown](#notes-on-image-alignment-in-markdown)
 
 ### Background
 
@@ -81,3 +82,33 @@ You will need:
  * [SketchUp](https://www.sketchup.com) to edit the model. There are [free web-based editions of SketchUp](https://www.sketchup.com/en/plans-and-pricing/sketchup-free), although the model was built on a desktop using SketchUp Pro.
  * [LayOut](https://www.sketchup.com/en/products/layout), part of the SketchUp Pro package, for taking scenes built in the model and laying them out on to pages with various insets and annotations.
  * Permissions to edit the model. At the moment, only a limited number of people have access. 
+
+
+## Notes on image alignment in markdown
+
+Images that aren't geared to letter sized paper might require adjusting. These are the current settings in post-tilt-up and tilt-up manuals, which were designed for A4 paper.
+
+Top of document 
+* Treat all images in the document as "figures" 
+* Align all figures in center for docx files
+  
+```
+format:
+  docx:
+    reference-doc: manual-template.docx
+    fig-align: center
+from: markdown-implicit_figures
+```
+For an individual image, you must leave an empty line before and after each image in the markdown, otherwise the center alignment won't work. It also must have an empty caption `&nbsp;`. (This still prints out a blank space, which might mess with your formatting, so check the output to see it's doing what you want.)
+
+```
+// won't work for center alignment
+![&nbsp;](images/image_39.png){width="90%" height="90%"}
+![&nbsp;](images/image_39.png){width="90%" height="90%"}
+
+// will work for center alignment
+![&nbsp;](images/image_39.png){width="90%" height="90%"}
+
+![&nbsp;](images/image_39.png){width="90%" height="90%"}
+
+```
