@@ -1,7 +1,7 @@
 ---
 format:
   docx:
-    reference-doc: manual-template.docx
+    reference-doc: ../manual-template.docx
     fig-align: center
 from: markdown-implicit_figures
 --- 
@@ -96,7 +96,7 @@ While these tasks are being completed, have two crew members position a half-roo
 *	Rotate ground crew members who were standing out, and position everyone on the other side of the home for the second half roof lifting.
 *	Once the ladder crew have repositioned their ladders, lift the second half roof into position.
 
-![&nbsp;](images/image_43.png){width="80%" height="80%"}
+![](images/image_43.png)
 
 ![&nbsp;](images/image_45.png){width="80%" height="80%"}
 
