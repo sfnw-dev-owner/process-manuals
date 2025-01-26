@@ -35,7 +35,7 @@ from: markdown-implicit_figures
 
 -   Tap it down with mallet.
 {{< pagebreak >}}
-![](images/half_roof_01.png)
+![&nbsp;](images/half_roof_01.png)
 
 
 ## Step 2
@@ -55,7 +55,7 @@ from: markdown-implicit_figures
     --- tilted down following the 2x4 rafter centerline\
     --- making sure top of rafter is flush with top of white board
 {{< pagebreak >}}
-![](images/half_roof_02.png)
+![&nbsp;](images/half_roof_02.png)
 
 
 ## Step 3
@@ -70,7 +70,7 @@ from: markdown-implicit_figures
     --- position screws so that they go into the block near its vertical centerline\
     --- insert screws about 2 fingers apart, one below the other
 {{< pagebreak >}}
-![](images/half_roof_03.png)
+![&nbsp;](images/half_roof_03.png)
 
 
 ## Step 4
@@ -96,7 +96,7 @@ from: markdown-implicit_figures
 
 -   Remove all stickers from the ends of the rafters
 {{< pagebreak >}}
-![](images/half_roof_04.png)
+![&nbsp;](images/half_roof_04.png)
 
 
 ## Step 5
@@ -110,7 +110,7 @@ from: markdown-implicit_figures
 
 -   If white board extends past the left edge of the outside rafter, use a router to trim it flush.
 {{< pagebreak >}}
-![](images/half_roof_05.png)
+![&nbsp;](images/half_roof_05.png)
 
 
 ## Step 6
@@ -118,7 +118,7 @@ from: markdown-implicit_figures
 -   Pre-drill and place a 2nd SHORT SCREW at each rafter\
     --- repeat all the way across the top of the 1x8 white board
 {{< pagebreak >}}
-![](images/half_roof_06.png)
+![&nbsp;](images/half_roof_06.png)
 
 
 ## Step 7
@@ -136,7 +136,7 @@ from: markdown-implicit_figures
 
 -   Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof when it is installed on the home.
 {{< pagebreak >}}
-![](images/half_roof_07.png)
+![&nbsp;](images/half_roof_07.png)
 
 ## Remove Half Roof
 
