@@ -22,22 +22,15 @@ insertion easier.
     1 every 8"-12" in the middle\
     2 at the other end
 
-Install trim in the following order
+### &emsp;&emsp;**Install trim in the following order**
 
 ## Baseboards
 
-1. Using long (8' x 4") white baseboards, start at the back of one side
-  wall, nail in place to the side wall. Be sure that the baseboard rests
-  on several spacers along its length, to assure an even gap above the
-  finished floor.
+1. Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. Be sure that the baseboard rests on several spacers along its length, to assure an even gap above the finished floor.
 
-2. When these baseboards are installed, measure from ends of each board
-    to the front wall. Cut and nail another piece of baseboard (matching
-    the top surface with long baseboard).
+2. Repeat on the other side wall.
 
-3 & 4 Repeat 1 & 2 on the other side wall.
-
-5. Measure between the side baseboards at the rear wall. Measure long
+3. Measure between the side baseboards at the rear wall. Measure long
 (about 1/16") so it will fit snugly. Cut a length of baseboard and nail.
 {{< pagebreak >}}
 ![](images/baseboards.png)
@@ -50,7 +43,7 @@ Check that MEDUSA (foam backer rod) is installed around the window unit.
 - Pre-drill three holes using countersink bit
 - Position shelf in window frame, and screw in 3 **LONG** screws next to bottom of the window
 - Cut 2x4 support block for under the shelf\
-    --- subtract 1 inch from shelf width -- ½" on each side
+    --- subtract 1 inch from shelf width ( ½" on each side )
 - Center block under the shelf with long side against the wall, **and 1/2" shelf overhang on each end.**
 - Mark on the wall where the ends of the 2x4 should be, and then mark on the 2x4 where the lines of paneling screws fall (stud markers).
 - Preset 2 **LONG** screws in a vertical line into the block at each of the stud markers
@@ -60,7 +53,7 @@ Check that MEDUSA (foam backer rod) is installed around the window unit.
 ## Rear Window Trim
 
 - Use precut pieces for window opening side lining
-- nail 1 piece to each side of the window opening, edge flush with wall. (2 nails at top, 1 every 8", 2 at the bottom)
+- Nail 1 piece to each side of the window opening, edge flush with wall. (2 nails at top, 1 every 8", 2 at the bottom)
 - Measure (very close to window) between the sides for the top of the window liner. Cut one piece that length and nail in place.
 - Measure the sides of the window from shelf to top of window opening.
     Cut and nail 2" trim to both sides of the window, keeping the
