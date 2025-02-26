@@ -33,6 +33,7 @@ from: markdown-implicit_figures
 - Put in 1 FRAMING nail (the longer ones)\
     --- in the upper middle of the stud to connect the corner\
     --- in each of the 4 corners
+- Measure the two long diagonals.  They should be equal; if not, adjust to within 1/8"
 - Put a second nail directly under each of the first nails.
 {{< pagebreak >}}
 ![&nbsp;](images/side_wall_01.png)
@@ -41,7 +42,7 @@ from: markdown-implicit_figures
 
 - Place a 2x4 flat at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig.
 - CLAMP the flat and perpendicular boards
-- TEAM LEADER - put 2 long SCREWS into each end of the flat board and 8 SCREWS along the short side at the bottom to connect perpendicular 2x4 with the flat one. While this goes on, crew place the remaining boards in the jig.
+- TEAM LEADER - Pre-drill for 2 long SCREWS into each end of the flat board.  Drive long screws into these holes, and 8 SCREWS along the short side at the bottom to connect perpendicular 2x4 with the flat one. While this goes on, crew place the remaining boards in the jig.
 {{< pagebreak >}}
 ![&nbsp;](images/side_wall_02.png)
 

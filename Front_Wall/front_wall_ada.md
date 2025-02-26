@@ -49,7 +49,7 @@ HAZARDS
 
   -----------------------------------------------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_01_ada.png)
+![](images/front_wall_01_ada.png)
 
 ## Step 2
 
@@ -75,7 +75,7 @@ HAZARDS
 
   -----------------------------------------------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_02_ada.png)
+![](images/front_wall_02_ada.png)
 
 ## Step 3
 
@@ -85,6 +85,7 @@ HAZARDS
     these two studs together in three places below the window opening
     from the side opposite the window.
 - Secure all 3 studs on both sides of the window\
+    --- Use a clamp to squeeze any gap between the double studs\
     --- 2 nails through the top plate into each stud\
     --- 2 nails through the bottom plate into those same studs
 
@@ -95,11 +96,10 @@ HAZARDS
   ----------------------------------- -----------------------------------
   Nail Injury                         Keep fingers 12" from joint
 
-  Ladder Fall                         Ascend/descend ladder without
-                                      carrying tools
+  Ladder Fall                         Ascend/descend ladder without carrying tools
   -----------------------------------------------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_03_ada.png)
+![](images/front_wall_03_ada.png)
 
 ## Step 4
 
@@ -117,7 +117,7 @@ HAZARDS
   Nail Injury                         Keep fingers 12" from joint
   ----------------------------------- -----------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_04_ada.png)
+![](images/front_wall_04_ada.png)
 
 ## Step 5
 
@@ -135,7 +135,7 @@ HAZARDS
   Nail Injury                         Keep fingers 12" from gun end
   ----------------------------------- -----------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_05_ada.png)
+![](images/front_wall_05_ada.png)
 
 ## Step 6
 
@@ -149,7 +149,7 @@ HAZARDS
   Nail Injury                         Keep fingers 12" from gun end
   ----------------------------------- -----------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_06_ada.png)
+![](images/front_wall_06_ada.png)
 
 ## Step 7
 
@@ -165,30 +165,28 @@ HAZARDS
  HAZARDS
 
   -----------------------------------------------------------------------
-  Staple Injury                       Keep fingers 12" from stapling
-                                      point
+  Staple Injury                       Keep fingers 12" from stapling point
   ----------------------------------- -----------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_07_ada.png)
+![](images/front_wall_07_ada.png)
 
 ## Step 8
 
 - Cut the Tyvek out along the inside edge of the window.
 - Install peel-and-stick flashing around the window opening\
-     --- Precut a 28" length and a 39" length of flashing, and then cut each
-     of these pieces in half lengthwise.\
-     --- Apply one of the short lengths of flashing to the bottom of the
- window opening, wrapping the ends around the corners. Make sure that
-the flashing does not get stuck on the jig brackets\
+     --- Using the pattern board, cut two "inner long" pieces and two "inner short" pieces\
+     --- Apply one of the short lengths of flashing to the bottom of the window opening
+     with about half of the flashing sticking up above the framing, wrapping the ends around
+     the corners. Make sure that the flashing does not get stuck on the jig brackets\
      --- Be sure to press the flashing into each of the corners completely
 - Use a knife to slit the flashing where it sticks up above the frame
     at each corner, and then fold the free section out over the frame and Tyvek.
-- Apply one of the longer pieces of flashing to each side of the window opening in the same way.
+- Apply a longer piece of flashing to each side of the window opening in the same way.
 
 - Finally, apply the remaining short piece of flashing to the top of the window opening
 
-- Cut 4 small pieces of the same flashing, and place one diagonally
- over each corner, as shown in the drawing.
+- Cut 4 small pieces of the same flashing, and place one diagonally over each corner,
+as shown in the drawing. Force the end down into the corner of the window opening.
 
 **--- IMPORTANT** --- Be sure to put the flashing [ABOVE]{.underline}, not on the brackets of the jig.
 
@@ -198,32 +196,32 @@ the flashing does not get stuck on the jig brackets\
 HAZARDS
 
   -----------------------------------------------------------------------
-  Knife cut                           Keep fingers clear of where the
-                                      knife might slip
+  Knife cut                           Keep fingers clear of where the knife might slip
   ----------------------------------- -----------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_08_ada.png)
+![](images/front_wall_08_ada.png)
 
 ## Step 9
 
 - Place Panel 1 with window cut out. Align with top edge of frame and side stops.
 
 - Nail (PANEL NAILS)\
-     ---   along top, sides and internal stud below the window.
+     ---   along top, sides and internal stud below the window.\
      ---   use chalk lines\
      ---   DO NOT nail around the window
 - Caulk along the tongue edge of Panel 1.
 - Place Panel 2, taking care that the joint between panels engages fully.
  Line panel up with top of frame.
 
-- Team Leader: Climb onto the siding, and, using your body weight to press the seam down,
- nail every 8" along the joint. Keep nail heads ½" away from the seam to avoid splitting.
+- Team Leader: Use a ladder to climb onto the siding, and, using your body weight to press the seam down,
+ nail every 8" along the joint. Keep nail heads ½" away from the seam to avoid splitting the siding.
  This probably means nailing at about a 30° angle, so that the nails anchor into the frame.
 
 -  Nail (PANEL NAILS)\
      --- along top and sides\
      --- use chalk lines\
      --- **DO NOT NAIL BELOW THE DOOR**
+- Install three #8 (yellow) screws through the siding into the bottom plate.  Be sure these do not stick up above the panel; they will interfere with the router.  These screws will be removed after the wall is tilted up.
 
 HAZARDS
 
@@ -235,7 +233,7 @@ HAZARDS
 
   -----------------------------------------------------------------------
 {{< pagebreak >}}
-![&nbsp;](images/front_wall_09_ada.png)
+![](images/front_wall_09_ada.png)
 
 ## Step 10
 
@@ -243,7 +241,8 @@ HAZARDS
 the door opening (do this now, to avoid fouling the router plate with caulk later.)
 - Prepare the window. Remove all the labeling, and fully open the window. Set it screen-side
 down on the paneling.
--   Apply caulk down the middle of the window flanges on the top and both sides, NOT at the bottom.
+-   Apply caulk down the middle of the window flanges on the top and both sides\
+    --- NOT at the bottom.\
     --- caulk on the opposite side from the screen (the surface that will lie on the panel)
 - Place the window in the opening\
     --- SCREEN at the BOTTOM facing up
@@ -253,9 +252,9 @@ down on the paneling.
 to show where the trim will go.
 - Put peel-and-stick around 3 sides of the window\
     ---   **NOT** on the bottom of the window\
-    ---   Cut slightly longer than the length of each side and then in half lengthwise\
-    ---   Make sure the peel-and-stick does not extend over the pencil outline\
-    ---   Place all peel-and-stick FLUSH against the edge of the window
+    ---   Using the pattern board, cut two pieces “outer long” and one piece “outer short”\
+    ---   Place all peel-and-stick FLUSH against the edge of the window\
+    ---   Make sure the peel-and-stick does not extend over the pencil outline
 {{< pagebreak >}}
 ![&nbsp;](images/front_wall_10_ada.png)
 

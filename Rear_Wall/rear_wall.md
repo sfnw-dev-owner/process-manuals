@@ -38,7 +38,7 @@ to connect the corners, about 1/3 of the way down
 - Check that the perimeter is square by measuring the diagonals; they should be the same
 - Put a second nail directly under each of the first nails, about 2/3 of the way down
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_01.png)
+![](images/rear_wall_01.png)
 
 ## Step 2
 
@@ -57,7 +57,7 @@ to connect the corners, about 1/3 of the way down
  the long board into the end of each of the short boards on both sides
 - Put 2 nails into both ends of the short 2x4 in the middle (at the bottom of the window).
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_02.png)
+![](images/rear_wall_02.png)
 
 ## Step 3
 
@@ -69,7 +69,7 @@ to connect the corners, about 1/3 of the way down
     --- ONLY in the lower half BELOW the window.
 - Put 2 FRAMING nails at each end of each stud, through the top and bottom plates, on the marked lines.
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_03.png)
+![](images/rear_wall_03.png)
 
 # Step 4
 
@@ -82,7 +82,7 @@ Clamp it to the double studs and nail it to these studs in two places.
 - Place a second 20-1/2" block horizontally below the vertical block as shown, and nail it to this block, and then through the newly installed stud, as shown in the diagram.
 - Finally, put two nails through the top and bottom plates into the new stud.
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_04.png)
+![](images/rear_wall_04.png)
 
 ## Step 4b
 - Position a 6½" block on each side below the air conditioner opening as shown in
@@ -90,7 +90,7 @@ the diagram, and nail each block to the adjacent stud with 2 nails.
 - Position a third 6½" block next to the one on the window side, and nail this block
  to its neighbor, again with two nails
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_04b.png)
+![](images/rear_wall_04b.png)
 
 ## Step 5
 
@@ -100,19 +100,22 @@ the diagram, and nail each block to the adjacent stud with 2 nails.
 - Staple around the perimeter pulling so that it is tight
 - Staple along ALL of the inner studs, across the top and bottom of the window .and across the bottom of the A/C blocking
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_05.png)
+![](images/rear_wall_05.png)
 
 ## Step 6
 
 - Cut out the Tyvek where the window goes on all 4 sides
-- Using the template, cut Peel-and-Stick flashing for the sides and top and bottom of the window opening.
-- Put peel and stick around the window opening.
+- Using the pattern board, cut Peel-and-Stick flashing for the sides and top and bottom of the window opening ("inner long" and "inner short").
+- Put peel and stick around the window opening.\
+    --- half of each strip sticks up above the framing\
+    --- flashing wraps around the corners\
+    --- use a knife to slit the flashing above the frame at each corner, and fold down over the Tyvek.
 
 **IMPORTANT** --- Be sure to put the peel and stick [ABOVE]{.underline}, not on the brackets on the jig.
 
 - Add 4 small pieces of Peel-and-Stick at the corners of the window, as shown in the figure
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_06.png)
+![](images/rear_wall_06.png)
 
 ## Step 7
 
@@ -124,12 +127,12 @@ the diagram, and nail each block to the adjacent stud with 2 nails.
 - Caulk along the center edge of Panel 1.
 - Place Panel 2
 - Nail (PANEL NAILS)\
-    --- Using body weight, seal the center seam and nail at an angle, starting about 3/4" away from the panel edge\
+    --- Using body weight, seal the center seam and nail at an angle, starting about ½" away from the panel edge\
     --- along top, outer edge, bottom, and internal studs.\
     --- use chalk lines
 - Position the A/C nailing template over the top center of the wall, against the jig stop marked, and make pencil marks at the spots indicated at the edges of the template. Nail (PANEL NAILS) at each    
 {{< pagebreak >}}
-![&nbsp;](images/rear_wall_07.png)
+![](images/rear_wall_07.png)
 
 ## Step 8
 
@@ -144,13 +147,13 @@ the diagram, and nail each block to the adjacent stud with 2 nails.
     --- 4 on each side and 3 on top and bottom
 - Team leader: Using a piece of 1x4 trim, draw a pencil line on all four sides of the window, to show Where the trim will go
 - Put peel and stick on 3 sides of the window.\
-    --- Cut the length of the sides plus 4 in and then in half lengthwise.\
-    --- Make sure it does not extend beyond the pencil lines\
+    --- Using the pattern board, cut two "outer long" pieces and one "outer short" piece.\
     --- Align each piece against the corners of the window, sides first, then the top\
+    --- Make sure it does not extend beyond the pencil lines\
     --- NOT on the bottom of the window
 - Gently pry the top and bottom plates to raise the wall out of the jig, and place blocks under these boards.
 - Staple Tyvek to underside of panel, both sides and bottom
 - Trim Tyvek on both sides and bottom. Save the bottom piece.
 - Caulk all nails after tilt-up.
 
-![&nbsp;](images/rear_wall_08.png)
+![](images/rear_wall_08.png)
