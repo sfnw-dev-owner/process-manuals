@@ -9,7 +9,6 @@ from: markdown-implicit_figures
 # HALF ROOF - SET UP LIST
 
 -   Screw gun with T25 bit and small socket
--   Galvanized bracket screws
 -   Long screws
 -   Short screws
 -   2 A35Z angle brackets
@@ -106,7 +105,7 @@ from: markdown-implicit_figures
     --- bit in the plastic container\
     --- drill perpendicular to the floor
 
--   Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof when it is installed on the home.
+-   Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof when it is installed on the home. There is a pattern block that will make this easy; that block fits over the end of the 1x6 white board.
 {{< pagebreak >}}
 ![&nbsp;](images/half_roof_07.png)
 

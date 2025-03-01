@@ -83,7 +83,7 @@ from: markdown-implicit_figures
 Put PANEL nails (shorter ones) in the nail gun
 
 - Place Panel 1, with the tongue (lower thin bit) toward the center of the wall
-- Put Funky Board #2 in the slot to line up the first panel. (Funky Board found at the end of jig)
+- Put Funky Board #2 in the slot to line up the first panel (Funky Board found near the good stud that will support one edge of the first panel.)
 - Line the panel up flush with top, and tight against the Funky Board.\
     --- put 1 panel nail in the top corner next to where the 2^nd^ panel goes as a pivot point, adjust.
 - Nail the panel to the studs\
