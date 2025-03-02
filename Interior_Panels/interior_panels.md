@@ -34,39 +34,32 @@ angle-iron guide.
 
 Get the panel cart with all of the cut and labeled interior panels
 
-## CEILING
+## CEILING Panels R1 & R2 (two each)
 
 **Use pencil only to mark on panels.  Ink markers cannot be painted over very easily.**
 
-Panels R1 & R2 (two each)
-
 - Step 1 - **Pre-drill** (this is important)\
-     --- drill \~1/2 to 3/4 inch from the edge\
-     --- slant drill slightly to the outside edge
+     --- drill ½" to ¾" from the edge, slant drill slightly to the outside edge
 - Step 2 - Pre-set **LONG** screws
-- Step 3 -- Install panels (Requires extra people, ladders, screw guns, Funky Boards)
-
-- Install R1\
-     --- at the back, factory edge on the interior stud line\
-     --- tight up against the vents; use crowbar
-- Install R2\
-     --- factory edge at interior stud line up against R1\
-     --- tight up against the vents; use crowbar
-- REPEAT on the other side
+- Step 3 -- Install panels (Requires extra people)\
+      --- Install R1\
+          --- at the back, factory edge on the interior stud line\
+          --- tight up against the vents; use crowbar\
+      --- Install R2\
+          --- factory edge at interior stud line up against R1\
+          --- tight up against the vents; use crowbar\
+      --- REPEAT on the other side
 
 - Step 4 -- (**BEFORE WALL PANELS)** Inner ceiling panel screws
 - Use Screw Pattern Board to mark WITH PENCIL (**[NOT]{.underline}** marker) where the screws go. Align with visible rafter end at the top, and with marks on wall top plate.
 - Pre-drill and screw in **LONG** screws
-{{< pagebreak >}}
-![&nbsp;](images/ceiling_panels.png)
 
-## SIDE WALL
+![](images/ceiling_panels.png)
 
-Panels A, B & C
+## SIDE WALL Panels A, B & C
 
 - Step 1 - **Pre-drill** (this is important)\
-     --- drill \~1/2 to 3/4 inch from the edge\
-     --- slant drill slightly to the outside edge
+     --- drill ½" to ¾" from the edge, slant drill slightly to the outside edge
 - Step 2 - Pre-set **SHORT** screws
 - Step 3 - Install B panel first\
      --- at the back of side wall, on the floor, with factory edge on the interior stud line\
@@ -85,15 +78,12 @@ REPEAT Steps 3, 4, and 5 on other side wall
      Panel C.\
      --- Pre-drill and screw in **SHORT** screws
 {{< pagebreak >}}
-![&nbsp;](images/wall_panels_01.png)
+![](images/wall_panels_01.png)
 
-## BACK WALL
-
-Panels G & H 
+## BACK WALL Panels G & H 
 
 - Step 1 - **Pre-drill** (this is important)\
-     --- drill \~1/2 to 3/4 inch from the edge\
-     --- slant drill slightly to the outside edge
+     --- drill ½" to ¾" from the edge, slant drill slightly to the outside edge
 - Step 2 - Pre-set **SHORT** screws
 - Step 3 - Install H panel\
      --- on the back wall, resting on the floor\
@@ -106,30 +96,24 @@ Panels G & H
     out to 7 screws on each side of the window framing on panel G.\
      --- Pre-drill and screw in **SHORT** screws
 {{< pagebreak >}}
-![&nbsp;](images/wall_panels_02.png)
+![](images/wall_panels_02.png)
 
-## FRONT WALL
-
-Panels D & E
+## FRONT WALL Panels D & E
 
 - Step 1 - **Pre-drill** (this is important)\
-     --- drill \~1/2 to 3/4 inch from the edge\
-     --- slant drill slightly to the outside edge on the sides that will form corners with the side walls. On Panel E, drill perpendicular to the panel on the door side.
-- Step 2 - Pre-set **SHORT** screws
-- Step 3 - Install E\
-     --- on the front wall, resting on the floor. Line up the edge of the panel with the door frame\
-     --- at each interior stud, pre-drill and install a short screw 3/4 inch below the panel edge, to mark the stud locations and secure the panel to the framing.
-- Step 4 - Install D, making sure the front window is OPEN\
+     --- drill ½" to ¾" from the edge, slant drill slightly to the outside edge on the sides that will form corners with the side walls. On Panel E, drill perpendicular to the panel on the door side\
+     --- Pre-set **SHORT** screws
+- Step 2 - Install E on the front wall, resting on the floor. Line up the edge of the panel with the door frame\
+     --- at each interior stud, pre-drill and install a short screw ¾" below the panel edge, to mark the stud locations and secure the panel to the framing.
+- Step 3 - Install D, making sure the front window is OPEN\
      --- over the window and the top half of the doorway, on top of E
-- Step 5 - Inner stud screws\
-     --- Use Screw Pattern Board labeled "2 Down, 3 Up" to mark WITH PENCIL    (**[NOT]{.underline}** marker) where the screws go. For Panel E, use the installed screw and a mark on the floor, for a total of 4 screws per stud. For panel D, use mark on top plate and installed screw on panel E as a guide, but mark screw positions every 8" on either side of the door frame, and either side of the window frame.\
+- Step 4 - Inner stud screws\
+     --- Use Screw Pattern Board labeled "2 Down, 3 Up" to mark WITH PENCIL (**[NOT]{.underline}** marker) where the screws go. For Panel E, use the installed screw and a mark on the floor, for a total of 4 screws per stud. For panel D, use mark on top plate and installed screw on panel E as a guide, but mark screw positions every 8" on either side of the door frame, and either side of the window frame.\
      --- Pre-drill and screw in **SHORT** screws
-- Step 6 - Rout out the door (first), the windows, and the A/C cutout\
-     --- Using a spade bit, drill from outside through the paneling, near the bottom left corner of each window. (This is why it was important to have opened the windows.) Use the A/C cutout jig to locate the drill spot, and drill a starter hole after the back window is routed out.
-- Step 7 - Find and install a 4" piece of ½" plywood that goes at the bottom on the narrow side next to the door.\
-     --- This piece is 38¼ inches long and 4 inches wide, and can be found in a square barrel where the
-trim pieces are kept.
-     --- Pre-drill along the long edges about 8" apart.
+- Step 5 - Rout out the door (first), the windows, and the A/C cutout\
+     --- Using a spade bit, drill from outside through the paneling, near the bottom left corner of each window. After the back window is routed out, use the A/C cutout jig to locate the drill spot, and drill a starter hole.
+- Step 6 - Install a 4" x 38¼" piece of ½" plywood that goes at the bottom on the narrow side next to the door.\
+     --- Pre-drill along both long edges about 8" apart\
      --- Install, making sure that the edge next to the door opening aligns with the routed doorway above it.
-     {{< pagebreak >}}
-![&nbsp;](images/wall_panels_03.png)
+
+![](images/wall_panels_03.png)
