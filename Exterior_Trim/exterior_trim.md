@@ -83,11 +83,9 @@ sidewall paneling.
 ## Step 1 \-- Top trim
 
 -   Using a small piece of 1x4 placed vertically beside the window side
-    furthest from the door, mark the outside edge.\
-     ---   Measure, add ½" and mark\
-     ---   Measure from the mark to the door trim\
-     ---   Cut a piece of top trim (with beveled edge) to this length.
--   Put EXTERIOR caulk as shown
+    furthest from the door, measure from the mark to the door trim\
+     --- Add ½", and cut a piece of top trim (with beveled edge) to this length\
+     --- Apply EXTERIOR caulk as shown
 -   Nail (PANEL NAILS)\
     ---   2 nails 1-½" in from each end\
     ---   2 nails in the middle of the board.
@@ -95,16 +93,14 @@ sidewall paneling.
 ## Step 2 \-- Side trim away from door
 
 -   Using a pre-cut side trim piece for side of window away from door
--   Put EXTERIOR caulk as shown
+-   Apply EXTERIOR caulk as shown
 -   2 nails 1-½" below top\
     ---   1 nail in the middle of the board every 8"\
     ---   2 nails 1-½" above the bottom.
 
 ## Step 3 \-- Side trim between window and door
 
--   Put EXTERIOR caulk down the middle
-
--   Center and nail as above.
+-   Apply EXTERIOR caulk down the middle. Center and nail as above.
 
 ## Step 4 \-- Bottom piece
 
@@ -112,8 +108,8 @@ sidewall paneling.
 
 -   DO NOT CAULK this piece. Nail (PANEL NAILS) it in place\
     ---   2 nails 1-½" in from each end\
-    ---   2 nails in the middle of the board.
-{{< pagebreak >}}
+    ---   2 nails in the middle of the board
+    
 ![](images/front_window.png)
 
 # EXTERIOR TRIANGLES - FRONT & BACK
@@ -122,29 +118,39 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 
 ## Step 1 - Tyvek
 
-- Staple pre-cut Tyvek triangles to the structural triangles at the front and back of the home
-- Staple along top and bottom edges and down the center studs; hammer in all staples flush
+- Staple pre-cut Tyvek triangles to the structural triangle.
+- Staple along top and bottom edges and down the center studs; hammer in all staples flush.
 
 ## Step 2 - Z-Flashing
 
 - Install pre-cut piece of metal flashing\
      --- short leg down so that flashing rests on top of the\ T1-11 siding at the top of the wall and the short leg extends down over the siding
 - Center the flashing between the rafter ends
-
 - Nail (PANEL NAILS) 3 places: near each end, and in middle
 
-## Step 3 - T1-11 Triangle
+## Step 3 - Seam Waterproofing
 
-- Install pre-cut triangular piece of T1-11 siding\
+- Cut a length of flexible flashing that will extend from below the ridge beam to 1" above the short leg of the Z-flashing
+- Place the flexible flashing centered on the structural triangle, with the bottom edge 1" above the bend in the Z-flashing
+{{< pagebreak >}}
+![](images/triangles_01.png)
+
+## Step 4 - T1-11 Triangles
+
+- Install first pre-cut triangular piece of T1-11 siding\
      --- cover long leg of Z- flashing\
-     --- bottom of siding a pencil-width above the Z-flashing fold.
-     --- if necessary, trim siding piece so that it fits against the structural triangle
+     --- bottom of siding a pencil-width above the Z-flashing fold\
+     --- if necessary, trim siding piece so that it fits against the structural triangle\
+     --- Nail (Panel Nails) every 8" along rafter and bottom of triangle
 
-- Nail (Panel Nails) every 8" along both rafters and bottom of triangle
+- Install second pre-cut triangular piece of T1-11 siding\
+    --- align grooves with the already-installed piece\
+    --- make the center seam tight\
+     --- Nail (Panel Nails) every 8" along rafter and bottom of triangle
 
-- Caulk (EXTERIOR caulk) all exposed nails
+- Caulk (EXTERIOR caulk) all exposed nails and center seam
 
-## Step 4 -- Soffits
+## Step 5 -- Soffits
 
 - Install precut soffit boards under rafters at each end of building.
 
@@ -155,4 +161,4 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 - Nail (Panel Nails) 3 places into outside rafter, and one nail into each cross block
 
 {{< pagebreak >}}
-![](images/triangles.png)
+![](images/triangles_02.png)
