@@ -36,6 +36,8 @@ Get the panel cart with all of the cut and labeled interior panels
 
 ## CEILING
 
+**Use pencil only to mark on panels.  Ink markers cannot be painted over very easily.**
+
 Panels R1 & R2 (two each)
 
 - Step 1 - **Pre-drill** (this is important)\
