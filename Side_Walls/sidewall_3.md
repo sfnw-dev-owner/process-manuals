@@ -27,10 +27,10 @@ from: markdown-implicit_figures
 ## Step 1
 
 - Place 2x4s in the designated spots on the perimeter.
-- When nailing corners\
+- Place a 2x4 flat at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig. Placing this board now insures that it will fit into the jig.  
+- Put in 1 FRAMING nail (the longer ones) in each corner of the frame.  Do not nail into the flat 2x4.\
     --- line up to be flush on top and sides\
-    --- one person holds and the other nails
-- Put in 1 FRAMING nail (the longer ones)\
+    --- one person holds and the other nails\
     --- in the upper middle of the stud to connect the corner\
     --- in each of the 4 corners
 - Measure the two long diagonals.  They should be equal; if not, adjust to within 1/8"
