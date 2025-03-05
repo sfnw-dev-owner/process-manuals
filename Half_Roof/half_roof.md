@@ -24,7 +24,7 @@ from: markdown-implicit_figures
 -   Put white 1x6 board into the top of the jig. Note that there are also 1x8 boards in the same rack. Do not use these wider boards for this step
 -   Tap it down with mallet.
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_01.png)
+![](images/half_roof_01.png)
 
 
 ## Step 2
@@ -42,7 +42,7 @@ from: markdown-implicit_figures
     --- tilted down following the 2x4 rafter centerline\
     --- making sure top of rafter is flush with top of white board
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_02.png)
+![](images/half_roof_02.png)
 
 ## Step 3
 
@@ -53,7 +53,7 @@ from: markdown-implicit_figures
     --- position screws so that they go into the block near its vertical centerline\
     --- insert screws about 2 fingers apart, one below the other
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_03.png)
+![](images/half_roof_03.png)
 
 ## Step 4
 
@@ -72,25 +72,26 @@ from: markdown-implicit_figures
     --- tilted down to follow the 2x4 rafter centerline
 -   Remove all stickers from the ends of the rafters
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_04.png)
+![](images/half_roof_04.png)
 
 ## Step 5
 
--   Place a 1x8 white board on the rafter ends at the bottom\
+-   Place a 1x8 white board on the rafter ends at the bottom.  Note that there are 1x6 white boards in the same rack.  Do not use the narrower board for this step.\
     --- line up and clamp the right end and then the left end\
     --- make sure white board is flush with the outside rafter on the right end
--   Working your way from the left end, align the bottom edge of the white board flush with the end of each rafter. Pre-drill and place 1 SHORT SCREW into each rafter\
+-   Working your way from the right end (top of the diagram), align the bottom edge of the white board flush with the end of each rafter. Pre-drill through the white board and place 1 SHORT SCREW into each rafter\
     --- use funky board \#9 to push the white board out to be flush with the end of each rafter, or push the white board toward the top of the assembly if it hangs over the rafter end
--   If white board extends past the left edge of the outside rafter, use a router to trim it flush.
+
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_05.png)
+![](images/half_roof_05.png)
 
 ## Step 6
 
 -   Pre-drill and place a 2nd SHORT SCREW at each rafter\
     --- repeat all the way across the top of the 1x8 white board
+-   If white board extends past the left edge of the outside rafter, use a router to trim it flush.
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_06.png)
+![](images/half_roof_06.png)
 
 ## Step 7
 
@@ -107,7 +108,7 @@ from: markdown-implicit_figures
 
 -   Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof when it is installed on the home. There is a pattern block that will make this easy; that block fits over the end of the 1x6 white board.
 {{< pagebreak >}}
-![&nbsp;](images/half_roof_07.png)
+![](images/half_roof_07.png)
 
 ## Remove Half Roof
 
