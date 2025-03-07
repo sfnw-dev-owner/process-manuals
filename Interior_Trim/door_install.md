@@ -23,14 +23,14 @@ from: markdown-implicit_figures
      --- Screw gun with T25 drive bit\
      --- Finish nailer and finish nails\
      --- Level\
-     --- Measuring Tape
+     --- Measuring Tape\
      --- Pencil
 
 - Install Vent Cap:\
      --- Drill with countersink bit\
      --- Screw gun with T25 drive bit\
      --- \#10 x 3" Screws (brown)\
-     --- Measuring Tape
+     --- Measuring Tape\
      --- Pencil
 {{< pagebreak >}}
 # DOOR INSTALLATION
@@ -50,7 +50,7 @@ from: markdown-implicit_figures
 
 ## Prepare the opening
 
-- Make certain that the flooring does not extend more than an inch into the door opening.
+- The flooring should extend through the doorway to the T1-11 siding.  If it does not, ask for help.
 -   Cut a 54" length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway, with about 8" running up each side of the opening, and half the width sticking outside the home.
 - Slit the corners, and fold the outer half of the flashing down and to the sides of the opening.
 {{< pagebreak >}}
@@ -65,16 +65,16 @@ from: markdown-implicit_figures
 - Insert SHIMS as necessary to center the door in the opening and tighten any spaces\
      --- hinge side, place shims just above each hinge\
      --- doorknob side, place shims at same height as top and bottom hinge
+     --- Adjust side shims so the gap at the top is the same across door width\
     shims and just above doorknob opening
 -  Adjust and secure door frame\
      --- Open & close door - should not hit door frame (\~1/8" gap)
-     --- Adjust hinge side shims so the gap at the top is the same across door width\
+     
 - Screw door frame to the opening on the hinge side\
      --- open the door\
      --- helper holds weatherstripping out of the way\
      --- make sure door molding is tight against the siding
-     --- install 3" (brown) screws just behind the weatherstripping at the
-    height of the center of each shim, starting at the top
+     --- install 3" (brown) screws just behind the weatherstripping at the height of the center of each shim, starting at the top
 - Screw door frame to the opening on doorknob side\
      --- top 1st\
      --- bottom 2^nd^\
@@ -87,9 +87,9 @@ from: markdown-implicit_figures
 
 - Strengthen door latch plate\
      --- Drill with countersink bit above and below the latch hole, as shown in the drawing\
-     --- Angle drill towards outside, to assure that screw will go into the framing\
-     --- Install 3" screws in both drilled holes, and through the shims
-- If space above the door is small use shims to make it even, if large
+     --- Angle drill towards outside of the home, to assure that screws will go into the framing\
+     --- Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are below the surface of the door frame.
+- If space above the door is narrow, use shims to make it even, if large
     then use a piece of scrap plywood like pieces used around the inside of the windows, and then shims
 - Insert shims 8-10" in from each side to fill space between top of
     door frame and doorway framing
@@ -101,12 +101,7 @@ from: markdown-implicit_figures
 
 -   Remove one of the Phillips-head screws from each hinge, replace with
     3" silver screw from kit. Discard the short screw.
--   Trim off the protruding ends of the shims, flush with the wall
-    plywood. Use a box knife to score the shim, and then snap it off.
--   Remove the weatherstripping from the top and sides of the door
-    frame, using the wide-jawed pliers to get each strip started. Save
-    these pieces of weatherstripping. There is a collection on top of
-    the shelving between Paint Bay C and the area where personal
-    belongings are stowed.
+-   Trim off the protruding ends of the shims, flush with the wall plywood. Use a box knife to score the shim, and then snap it off.
+-   Remove the weatherstripping from the top and sides of the door frame, using the wide-jawed pliers to get each strip started. Save these pieces of weatherstripping. There is a collection on top of the shelving between Paint Bay C and the area where personal belongings are stowed.
 {{< pagebreak >}}
 ![](images/door_install_3.png)

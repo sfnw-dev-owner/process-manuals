@@ -8,7 +8,7 @@ from: markdown-implicit_figures
 
 # INTERIOR TRIM
 
-- 1st **Install **[MEDUSA]{.underline}** (foam backer rod) around the
+- 1st Install **[MEDUSA]{.underline}** (foam backer rod) around the
 front and back windows. Use a piece of flooring or a putty knife to make
 insertion easier.
 - Place small pieces of flooring as spacers for baseboards\
@@ -49,6 +49,8 @@ Check that MEDUSA (foam backer rod) is installed around the window unit.
 - Preset 2 **LONG** screws in a vertical line into the block at each of the stud markers
 - Position the 2x4 up against the underside of the shelf, and lined up with the end marks on the wall and drive the screws into the wall to secure the support block
 - Pre-drill and insert a **LONG** screw next to the wall down through the shelf and into the 2x4 on each side of the window.
+{{< pagebreak >}}
+![](images/rear_window_1.png)
 
 ## Rear Window Trim
 
@@ -61,7 +63,7 @@ Check that MEDUSA (foam backer rod) is installed around the window unit.
 - Measure above the window from the outer edges of the vertical trim
     and add one inch. Cut 2" trim and nail above the window with 1/2" overhang on each side.
 {{< pagebreak >}}
-![](images/rear_window.png)
+![](images/rear_window_2.png)
 
 ## Top trim (2" trim boards)
 
@@ -91,7 +93,7 @@ bottom of upper trim in the corner. Cut and nail
 {{< pagebreak >}}
 ![](images/vertical_trim.png)
 
-# Horizontal & Triangle Trim
+# Horizontal Trim
 
 ## Back wall
 
@@ -110,16 +112,18 @@ bottom of upper trim in the corner. Cut and nail
 
 Do NOT install mid-level horizontal trim between vertical trim
 and front wall. This will be done after Front Wall trim.
-
-## Triangle trim
-
-- Use precut pieces of 2" X 42" trim from the rack: 2 left, 2 right, 6 straight
-- position two angled pieces on the back wall and nail.
-- **Position a straight piece (42") on the ceiling and tight against each of the angled piece just installed. Nail it in place.**
-- Cut a piece of 2ˮ trim 12ˮ long, and install this piece vertically to cover the seam between the triangles.
-- Save remaining trim pieces for the front wall triangle
 {{< pagebreak >}}
 ![](images/horizontal_trim.png)
+
+# Triangle trim
+
+- Collect precut pieces of 2" X 42" trim from the rack: 2 left, 2 right, 6 straight.  These will be used for rear and front triangle trim.  Cut (from scraps) 2 strips 12" long.
+- Position two angled pieces on the back wall and nail.
+- **Position a straight piece (42") on the ceiling and tight against each of the angled piece just installed. Nail it in place.**
+- Install a 12" piece of 2" trim vertically to cover the seam between the triangles.
+- Save remaining trim pieces for the front wall triangle
+{{< pagebreak >}}
+![](images/triangle_trim.png)
 
 # Front Wall -- Shelf and Window
 
@@ -142,12 +146,10 @@ Check that **MEDUSA** (foam backer rod) is installed around the window.
 
 - Nail precut pieces to line the side walls of the front window opening.  Be sure that the front edge of these pieces is flush with the interior of the wall panel
 -  Measure (very close to window) between the sides for the top of the window piece. Cut one piece that length and nail in place.
-{{< pagebreak >}}
+
 ![](images/front_window.png)
 
-# Front Wall Trim
-
-**Top diagram**
+# Front Wall Trim -- Part I
 
 1.  Measure horizontally from one upper corner to the other. Cut and nail 2" trim.
 2.  Behind the door, measure from baseboard corner to the center of the doorjamb. Cut and nail a piece of 4" baseboard. This piece will be nearly square; make sure the cut edges are vertical.
@@ -159,23 +161,25 @@ Check that **MEDUSA** (foam backer rod) is installed around the window.
 5.  Measure the height on the front wall behind the door from upper trim to the baseboard. Check that the narrow board from step 3 will span from the center of the door jamb to within 3/8" of the wall.\
      --- Cut this piece to length, and nail in place, halfway across the door jamb
 6.  Measure from the baseboard to the upper trim on the sidewall in the corner behind the door. Cut a length of 2" trim and nail. This should cover any gap at the corner.
+{{< pagebreak >}}    
+![](images/front_wall_trim_a.png)
 
-**Bottom Diagram**
+# Front Wall Trim -- Part II
 
 1. Measure above the door from the sidewall trim to the 5½" board. Cut 2" trim and nail in place.
 2. Install 2" trim on the top and wall-side of the front window flush with window opening liner\
      --- top trim has ½" overhang on the right side
 
-3. Measure, cut, and install 2" trim on the front wall in the corner next to the shelf end.
-4. Measure, cut, and install 2" trim on the side wall in the corner next to the window.
+3. Measure, cut, and install 2" trim on the side wall in the corner next to the shelf end.
+4. Measure, cut, and install 2" trim on the front wall in the corner next to the window.
 5. Triangle trim\
      --- Use remaining trim pieces saved after rear wall triangle trim\
      --- Position the angled pieces and nail to the front wall\
      --- Nail a straight piece (42") on the ceiling tight against each angled piece just installed.\
      --- Position a 12" piece of 2" trim vertically over the center seam in the front triangle and nail.
  
- {{< pagebreak >}}    
-![](images/front_wall_trim.png)
+{{< pagebreak >}}    
+![](images/front_wall_trim_b.png)
 
 # Final Trim
 

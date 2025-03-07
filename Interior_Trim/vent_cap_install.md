@@ -62,6 +62,10 @@ from: markdown-implicit_figures
 9.  Check that the front of the vent cap is centered; then drive both
     screws fully into the rear mounting block.
 
+(More on next page)
+{{< pagebreak >}}
+![](images/vent_cap.png)
+
 10. While one person continues to support the vent cap, the other person
     drives the two screws in the middle of the vent cap into their
     mounting block, and then finally drives the two screws at the front
@@ -79,5 +83,3 @@ from: markdown-implicit_figures
     two pieces form a straight line. Drive in the screws at the joint
     between the two pieces of the vent cap, and then drive in the screws
     near the front wall.
-{{< pagebreak >}}
-![](images/vent_cap.png)
