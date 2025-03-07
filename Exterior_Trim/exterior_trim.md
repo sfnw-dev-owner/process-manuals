@@ -25,6 +25,8 @@ sidewall paneling.
     ---   2 nails about 2ˮ from top\
     ---   1 nail every 8ˮ down the middle\
     ---   2 nails about 2ˮ from the bottom
+{{< pagebreak >}}
+![](images/back_corner_1.png)
 
 ## Step 2 -- Board \#2
 -   Use white or gray 1x4 boards, precut to 93¼ˮ.
@@ -35,9 +37,9 @@ sidewall paneling.
     ---   1 nail every 8ˮ down the middle\
     ---   2 nails about 2ˮ from the bottom.
 
-- Repeat for the other three corners of the home.
-
-![](images/back_corner.png)
+- Repeat for the other three corners of the home.  Note that on two of those corners, the caulking will be a mirror image of that shown.
+{{< pagebreak >}}
+![](images/back_corner_2.png)
 
 
 # REAR WINDOW
@@ -73,6 +75,7 @@ sidewall paneling.
 -   DO NOT caulk this piece.  Nail (PANEL NAILS) it in place\
     ---   2 nails 1-½" in from each end\
     ---   2 nails in the middle of the board.
+
 {{< pagebreak >}}
 ![](images/rear_window.png)
 
@@ -128,29 +131,25 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 - Center the flashing between the rafter ends
 - Nail (PANEL NAILS) 3 places: near each end, and in middle
 
-## Step 3 - Seam Waterproofing
-
-- Cut a length of flexible flashing that will extend from below the ridge beam to 1" above the short leg of the Z-flashing
-- Place the flexible flashing centered on the structural triangle, with the bottom edge 1" above the bend in the Z-flashing
 {{< pagebreak >}}
 ![](images/triangles_01.png)
 
-## Step 4 - T1-11 Triangles
+## Step 3 - T1-11 Triangles
 
-- Install first pre-cut triangular piece of T1-11 siding\
-     --- cover long leg of Z- flashing\
+- Install large pre-cut triangular piece of T1-11 siding\
+     --- cover long leg of Z-flashing\
      --- bottom of siding a pencil-width above the Z-flashing fold\
      --- if necessary, trim siding piece so that it fits against the structural triangle\
-     --- Nail (Panel Nails) every 8" along rafter and bottom of triangle
+     --- Nail (Panel Nails) every 8" along rafters, bottom of triangle, and along center blocking.
 
-- Install second pre-cut triangular piece of T1-11 siding\
-    --- align grooves with the already-installed piece\
-    --- make the center seam tight\
-     --- Nail (Panel Nails) every 8" along rafter and bottom of triangle
+- Install small pre-cut triangular piece of T1-11 siding\
+     --- line up the bottom edges\
+     --- make the seam tight\
+     --- Nail (Panel Nails) in two places
 
-- Caulk (EXTERIOR caulk) all exposed nails and center seam
+- Caulk (EXTERIOR caulk) all exposed nails and seam
 
-## Step 5 -- Soffits
+## Step 4 -- Soffits
 
 - Install precut soffit boards under rafters at each end of building.
 
