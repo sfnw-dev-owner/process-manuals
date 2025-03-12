@@ -13,17 +13,14 @@ from: markdown-implicit_figures
 ![](images/image_31.png)
 
 {{< pagebreak >}}
-
 ## Reinforce Corners
 * Have one person install 5 #10 x 3” screws in each wall corner
 
-![&nbsp;](images/image_32.png){width="72%" height="72%"} 
+![](images/image_32.png)
 
-![&nbsp;](images/image_33.png){width="72%" height="72%"}
+![](images/image_33.png)
 
-<!--- 
-This is an implied page break - avoids an empty page being generated
----> 
+{{< pagebreak >}}
 ## Nail Exterior to Platform
 *	Using panel nails and working from the outside of the home, nail through the wall paneling into the base of the platform frame about 1” above the bottom of the paneling, every 8” all the way around the home.
 *	Again, using panel nails and working from the outside of the home, nail the edges of the front and rear wall panels to the side-wall framing, about 1” in from the edges of the paneling, and 8” apart all the way from bottom to top of each corner.
@@ -89,14 +86,12 @@ While these tasks are being completed, have two crew members position a half-roo
 *	Explain to the rest of the crew how the half roof assemblies will be raised. Five or six people will lift the half roof up about 4 feet off the floor, and then two funky-board wielders will push it up so that the two ladder crew and the interior person can lift it the rest of the way up.  Warn these two to push up at a 45° angle, so that the half-roof slides onto the building instead of falling backwards onto the crew.  Remind the rest of the crew on the ground to take notes, because they will get to do the second half-roof.
 *	Lift the first half-roof.
 
-![&nbsp;](images/image_39.png){width="80%" height="80%"}
+![&nbsp;](images/image_39.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_40.png){width="80%" height="80%"}
+![&nbsp;](images/image_40.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_41.png){width="80%" height="80%"}
-
+![](images/image_41.png)
 {{< pagebreak >}}
-
 ## Align First Half-Roof
 
 *	The ladder crew guide the 1x6 white board into the central notches in the structural triangles.  If necessary, the ladder crew may ask for help from the people on the funky boards, to lift (temporarily) the rafter ends either at the front or rear so that the half roof is properly positioned.
@@ -105,7 +100,6 @@ While these tasks are being completed, have two crew members position a half-roo
 ![](images/image_42.png)
 
 {{< pagebreak >}}
-
 ## Raise Second Half-Roof
 
 *	Rotate ground crew members who were standing out, and position everyone on the other side of the home for the second half roof lifting.
@@ -113,10 +107,9 @@ While these tasks are being completed, have two crew members position a half-roo
 
 ![](images/image_43.png)
 
-![&nbsp;](images/image_45.png){width="80%" height="80%"}
+![&nbsp;](images/image_45.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_46.png){width="80%" height="80%"}
-
+![&nbsp;](images/image_46.png){width="78%" height="78%"}
 {{< pagebreak >}}
 ## Connect Half-Roof Assemblies
 

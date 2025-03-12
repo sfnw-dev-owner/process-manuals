@@ -115,7 +115,8 @@ REPEAT Steps 3, 4, and 5 on other side wall
 - Step 6 - Install a 4" x 38¼" piece of ½" plywood that goes at the bottom on the narrow side next to the door.\
      --- Pre-drill along both long edges about 8" apart\
      --- Install, making sure that the edge next to the door opening aligns with the routed doorway above it.
-{{< pagebreak >}}
+
+<!-- implied page break -->
 ![](images/wall_panels_03.png)
 
 - Step 7 - Find and install a 4" piece of ½" plywood that goes below the remaining edge of the D panel on the narrow side next to the doorway.\

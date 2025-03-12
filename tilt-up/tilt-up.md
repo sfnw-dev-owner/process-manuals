@@ -18,15 +18,16 @@ Before assembling a Tiny Home, all of the pieces must be complete.  Here are thi
 * Are lines drawn on the platform to show where the bottom plates of each wall should line up?
 * Have the alignment jigs been removed from the ends of the platform?
 * Is the first-wall brace attached to the front of the platform?  It should be anchored about 2 feet in from the right-hand edge (as you face the front of the platform.)
- 
+
 ### Walls
 
 * Has any overhanging T1-11 siding been trimmed off the sides of both side walls?
 * Has sawdust been swept off all four walls and the floor?
 * Are all four walls up on blocks, so that they will lift out easily?
 
-### Tools
+{{< pagebreak >}}
 
+### Tools
 * mallet
 * nail gun (with regular and galvanized framing nails)
 * 2-step ladder
@@ -62,7 +63,7 @@ Remind wall transport crew to lift straight up and not pull the wall towards the
 
 Remind those at the far end of the wall to be sure to keep their fingers away from the bottom plate, so that they are not crushed when the wall is set in place.
 
-Emphasize that when a leader taps someone on the shoulder and asks them to move away from the wall, they should do so briskly
+Emphasize that when a leader taps someone on the shoulder and asks them to move away from the wall, they should do so briskly.
 
 {{< pagebreak >}}
 
@@ -70,20 +71,19 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ### Prepare
 
-#### Assign crew
+**Assign crew**
 
 * Transport: 3 people on each side of the wall
 * Platform: 3 people on the platform
 
-#### Remind crews
+**Remind crews**
 
 * Assign a team leader to call “clear” when the bottom edge of the wall is clear of the jig.
 * Keep wall flat (horizontal) until the wall is completely clear of the jig.
 * Transport crew use shuffle step
 * Platform crew use leg muscles; keep your back straight.
 
-![](images/image_01.png)
-
+![&nbsp;](images/image_01.png){width="78%" height="78%"}
 {{< pagebreak >}}
 
 ### Lift & Shift
@@ -156,12 +156,10 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_09.png)
 
-![&nbsp;](images/image_10.png){width="80%" height="80%"} 
+![&nbsp;](images/image_10.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_11.png){width="80%" height="80%"} 
-
+![&nbsp;](images/image_11.png){width="78%" height="78%"}
 {{< pagebreak >}}
-
 ### Align
 *	As before, have a mallet person go along the outside of the rear wall, stroking every 8” to tighten the rear wall against the platform, and, if necessary, adjust the position of the wall side-to-side.
 *	From inside the home, position a clamp on the 2x4s forming the corner about 2 feet above the bottom of the wall, and tighten the corner joint.
@@ -215,10 +213,9 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_16.png)
 
-![&nbsp;](images/image_17.png){width="80%" height="80%"} 
+![&nbsp;](images/image_17.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_18.png){width="80%" height="80%"} 
-
+![&nbsp;](images/image_18.png){width="78%" height="78%"}
 {{< pagebreak >}}
 
 ### Align
@@ -268,15 +265,15 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 *	On the count of three, have the transport crew lift the wall off the jig, shuffle sideways until the wall is clear of the jig, and then walk slowly toward the platform with the wall.
 *	The transport crew pass the top of the front wall to the platform crew, who keep the two wings of the front wall outside the home, and lift the top of the wall up.  If the side walls need to be deflected to make space, platform crew can use elbows or shoulders. The two plastic-hook people bear much of the weight of the wall, and they guide the wall into the opening.  The leader’s job at this time is to make certain that everyone else has their fingers out of the way.
 
-![](images/image_23.png) 
+![](images/image_23.png)
 
-![&nbsp;](images/image_24.png){width="80%" height="80%"} 
+![&nbsp;](images/image_24.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_25.png){width="80%" height="80%"} 
+![&nbsp;](images/image_25.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_26.png){width="80%" height="80%"} 
+![&nbsp;](images/image_26.png){width="78%" height="78%"}
 
-![&nbsp;](images/image_27.png){width="80%" height="80%"} 
+![&nbsp;](images/image_27.png){width="78%" height="78%"}
 
 {{< pagebreak >}}
 
