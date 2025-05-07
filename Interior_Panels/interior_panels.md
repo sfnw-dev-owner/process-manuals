@@ -21,18 +21,16 @@ Tools and supplies
 -   Work light
 -   3" #10 screws (brown)
 -   2" #8 screws (yellow)
+-   Panel cart with all of the cut and labeled interior panels
 {{< pagebreak >}}
 
-# INTERIOR PANELS
+## Pre-Install Quality Checks
 
-Make sure all insulation is installed including small spaces next to the
-door.
-
-Make sure that the reference line is marked on the 2^nd^ stud and 2^nd^
+- Walk around the outside of the home and check if any screw ends are visible through the bird-blocks.  If any are found, remove and re-install correctly.
+- Make sure all insulation is installed including small spaces next to the door.
+- Make sure that the reference line is marked on the 2^nd^ stud and 2^nd^
 rafter back from the door. If not, mark these with felt-tip pen, using
 angle-iron guide.
-
-Get the panel cart with all of the cut and labeled interior panels
 
 ## CEILING Panels R1 & R2 (two each)
 
@@ -42,17 +40,16 @@ Get the panel cart with all of the cut and labeled interior panels
      --- drill ½" to ¾" from the edge, slant drill slightly to the outside edge
 - Step 2 - Pre-set **LONG** screws
 - Step 3 -- Install panels (Requires extra people)\
-      --- Install R1\
+      --- Install R1s\
           --- at the back, factory edge on the interior stud line\
           --- tight up against the vents; use crowbar\
-      --- Install R2\
+      --- Install R2s\
           --- factory edge at interior stud line up against R1\
           --- tight up against the vents; use crowbar\
-      --- REPEAT on the other side
 
-- Step 4 -- (**BEFORE WALL PANELS)** Inner ceiling panel screws
-- Use Screw Pattern Board to mark WITH PENCIL (**[NOT]{.underline}** marker) where the screws go. Align with visible rafter end at the top, and with marks on wall top plate.
-- Pre-drill and screw in **LONG** screws
+- Step 4 -- (**BEFORE WALL PANELS)** Inner ceiling panel screws\
+     --- Use Screw Pattern Board to mark WITH PENCIL (**[NOT]{.underline}** marker) where the screws go. Align with visible rafter end at the top, and with marks on wall top plate.\
+     --- Pre-drill and screw in **LONG** screws
 
 ![](images/ceiling_panels.png)
 
