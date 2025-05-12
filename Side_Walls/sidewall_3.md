@@ -22,6 +22,7 @@ from: markdown-implicit_figures
 - Staples
 - Mallet
 - Hammer
+- Clamps
 {{< pagebreak >}}
 
 ## Step 1
