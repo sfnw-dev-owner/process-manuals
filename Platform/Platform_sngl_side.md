@@ -40,8 +40,7 @@ from: markdown-implicit_figures
 straightness. If not straight, be sure to place them so that the curve
 is inward at the center of each board. Put 1 FRAMING nail in each of the
 corners\
-     --- one person holds flush on top and sides, other person nails\
-     --- put jenga board placeholder where 2^nd^ board will go
+     --- one person holds flush on top and sides, other person nails
 
 - Check the frame for square: measure the diagonals; they should be
     the same. Adjust as necessary.
