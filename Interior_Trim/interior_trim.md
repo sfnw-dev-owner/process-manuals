@@ -11,9 +11,6 @@ from: markdown-implicit_figures
 - 1st Install **[MEDUSA]{.underline}** (foam backer rod) around the
 front and back windows. Use a piece of flooring or a putty knife to make
 insertion easier.
-- Place small pieces of flooring as spacers for baseboards\
-     --- located at station 4\
-     --- around the perimeter to lift the baseboards up off the floor
 
 - Use **TRIM** nail gun and **TRIM** nails
 
@@ -26,11 +23,11 @@ insertion easier.
 
 ## Baseboards
 
-1. Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. Be sure that the baseboard rests on several spacers along its length, to assure an even gap above the finished floor.
+- Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. Use a putty knife under the baseboard to provide a small space between the baseboard and the floor, so that the flooring can "float".
 
-2. Repeat on the other side wall.
+- Repeat on the other side wall.
 
-3. Measure between the side baseboards at the rear wall. Measure long
+- Measure between the side baseboards at the rear wall. Measure long
 (about 1/16") so it will fit snugly. Cut a length of baseboard and nail.
 {{< pagebreak >}}
 ![](images/baseboards.png)
@@ -183,7 +180,7 @@ Check that **MEDUSA** (foam backer rod) is installed around the window.
 
 # Final Trim
 
-1.  Measure, cut, and place the final horizontal trim piece on the middle seam of one side wall
+1.  Measure, cut, and place the final horizontal trim piece in the middle of one side wall, lining it up with the long middle trim on that wall.
 2.  Repeat for the other side wall
 3.  Measure, cut, and place the horizontal piece that goes under the front window
     shelf, align with the horizontal trim at waist level on the side wall. USE a LEVEL, nail in place.
