@@ -45,15 +45,15 @@ from: markdown-implicit_figures
 - Remove any blocking behind the molding around the door frame
 - Unscrew retaining plug where doorknob will go
 - Using a countersink bit, drill a hole pointing down from the top of the door to the bottom in the top trim about 1" in from the edge of the trim on both sides and centered vertically
-- Make sure that the top and side door moldings are flush. Clamp if necessary.
-- Install a 3" (brown) screw in these two corner spots
+- Make sure that the top and side door moldings are flush. Clamp if necessary. Install a 3" (brown) screw in these two corner spots
 
 ## Prepare the opening
 
-- The flooring should extend through the doorway to the T1-11 siding.  If it does not, ask for help.
--   Cut a 54" length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway, with about 8" running up each side of the opening, and half the width sticking outside the home.
+- The flooring should extend only 3/4" into the doorway, measured from the interior of the front wall plywood.  If it does not, ask for help.
+- Install a set of 4 short chunks of flexible flooring (~3" wide) flush with the outside edge of the exterior siding, leaving a gap with the interior flooring.
+-   Cut a 54" length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway over these chunks of flooring, with about 8" running up each side of the opening, and half the width sticking outside the home.
 - Slit the corners, and fold the outer half of the flashing down and to the sides of the opening.
-{{< pagebreak >}}
+
 ![](images/door_install_1.png)
 
 ##  Install the door
@@ -68,7 +68,7 @@ from: markdown-implicit_figures
      --- Adjust side shims so the gap at the top is the same across door width\
     shims and just above doorknob opening
 -  Adjust and secure door frame\
-     --- Open & close door - should not hit door frame (\~1/8" gap)
+     --- Open & close door - it should not hit door frame (\~1/8" gap)
      
 - Screw door frame to the opening on the hinge side\
      --- open the door\
@@ -79,7 +79,7 @@ from: markdown-implicit_figures
      --- top 1st\
      --- bottom 2^nd^\
      --- insert shims both above and below the latch hole\
-     --- adjust shims above and below latch hole so the gap is approximately 1/8" between door and door jamb
+     --- adjust shims above and below latch hole so the gap between door and door jamb is approximately 1/8" 
 
 {{< pagebreak >}}
 ![](images/door_install_2.png)
@@ -91,11 +91,9 @@ from: markdown-implicit_figures
      --- Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are below the surface of the door frame.
 - If space above the door is narrow, use shims to make it even, if large
     then use a piece of scrap plywood like pieces used around the inside of the windows, and then shims
-- Insert shims 8-10" in from each side to fill space between top of
-    door frame and doorway framing
+- Insert shims 8-10" in from each side to fill space between top of door frame and doorway framing
 - Install screws as for the sides, behind the weatherstripping.
-- Install three silver screws into the holes in the metal threshold.
-    Do not overdrive these screws; it will distort the threshold.
+- Install three silver screws into the holes in the metal threshold.  Do not overdrive these screws; it will distort the threshold.
 
 ## Finishing
 
