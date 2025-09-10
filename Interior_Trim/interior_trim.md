@@ -23,7 +23,7 @@ insertion easier.
 
 ## Baseboards
 
-- Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. Use a putty knife under the baseboard to provide a small space between the baseboard and the floor, so that the flooring can "float".
+- Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. Use spacers under the baseboard to provide a small space between the baseboard and the floor, so that the flooring can "float".
 
 - Repeat on the other side wall.
 
