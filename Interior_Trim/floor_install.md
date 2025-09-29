@@ -11,14 +11,14 @@ from: markdown-implicit_figures
 ## Preparation
   • Clean interior with blower, twice, including window frames and A/C cutout\
   • Collect tools and material:\
-&nbsp;&nbsp;&nbsp;&nbsp;• 4½ to 5 boxes of flooring\
+&nbsp;&nbsp;&nbsp;&nbsp;• 4½ to 5 boxes of flooring; use ripped planks if available\
 &nbsp;&nbsp;&nbsp;&nbsp;• Knee pads, safety glasses, ear protection, gloves\
 &nbsp;&nbsp;&nbsp;&nbsp;• Black marker, pencil, tape measure, utility knife, speed square, blower\
 &nbsp;&nbsp;&nbsp;&nbsp;• Flooring cutter, jig saw, mallet, tapping blocks, small pry bars, tapping bar
 
 ## First Row – next to side wall on door side of home
 
-• Assemble first row from three full lengths (or use 3 ripped pieces from a previous floor).  The wide gray tongue on the long edge should face the interior of the home.\
+• Assemble first row from three full lengths (or use 3 ripped pieces from a previous floor).  The wide gray tongue on the long edge should face the interior of the home. Engage short edges, and align exactly.\
 • Cut last length for doorway and interior wall clearance.  The part that will extend into the doorway must reach to the limit line in the doorway.  Use a jigsaw to cut out the corner behind the door.\
 • Use spacers against the walls to insure 1/8” gap
 
