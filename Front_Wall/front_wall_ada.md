@@ -83,7 +83,9 @@ HAZARDS
     line at the middle of each stud to indicate where to put the nails
 - Place the next stud as shown and clamp it to the adjacent stud. Nail
     these two studs together in three places below the window opening
-    from the side opposite the window.
+    from the side opposite the window. If clamping does not make the
+    joint tight, use 3" brown screws to force the two studs together
+    below the window.
 - Secure all 3 studs on both sides of the window\
     --- Use a clamp to squeeze any gap between the double studs\
     --- 2 nails through the top plate into each stud\
@@ -104,11 +106,11 @@ HAZARDS
 ## Step 4
 
 - Place 2 long boards (studs), one on either side of the door opening,
-    and two header blocks and a plywood spacer above the door opening.
+    and two header blocks and a plywood spacer between them above the door opening.
 - Push the long blocks above the door opening toward the window, and clamp them to the
  top plate. Nail as shown: 3 nails down through the top plate, and 3 nails up through
- the blocks. Do not nail into the ends of either of the studs.
-- Do not put nails at the ends of the studs on either side of the door
+ the blocks.
+- **Do not** nail into the ends of the studs on either side of the door
     opening. That will come in the next step.
 
 HAZARDS
@@ -121,12 +123,15 @@ HAZARDS
 
 ## Step 5
 
-- Clamp the 3 studs in the center of the wall together, and nail as shown:\
+- Clamp the 3 studs in the center of the wall together, being certain that there is no gap, and nail as shown:\
     --- 3 nails from the window side, all below the window\
     --- 3 nails from the door side evenly spaced along the length of the stud.
+    If there is any gap between the new stud and the two closer to the window,
+    drive a 3" brown screw into the stud nearest the door and tighten it to remove
+    that gap.
 - Place 4 spacer blocks between the outer wall stud and the
     door-opening stud. Leave an 8" space above the top block and below
-    the bottom block. Clamp the block between the two studs, and nail
+    the bottom block. Clamp each block between the two studs, and nail
     twice from each side.
 
 HAZARDS
