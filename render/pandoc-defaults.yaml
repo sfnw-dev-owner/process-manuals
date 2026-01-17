@@ -1,0 +1,10 @@
+to: pdf
+pdf-engine: typst
+columns: 9999
+metadata:
+  papersize: us-letter
+  margin:
+    x: 0.5in
+    y: 0.5in
+  mainfont: Carlito
+  fontsize: 14pt
