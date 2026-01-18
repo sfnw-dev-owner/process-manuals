@@ -22,7 +22,10 @@ export FOOTER="Revised $REVISION_DATE"
 declare -a flags
 flags=(pandoc -d ../render/pandoc-defaults.yaml -H ../render/typst-header.typ)
 flags+=("'$INPUT_FILE'" -o "'$OUTPUT_FILE'")
-flags+=(-H '<(echo "#set page(footer: context [#if calc.even(here().page()) [#h(1fr) $FOOTER] else [$FOOTER #h(1fr)]])")')
+# To have alternating left/right-aligned footers:
+# flags+=(-H '<(echo "#set page(footer: context [#if calc.even(here().page()) [#h(1fr) $FOOTER] else [$FOOTER #h(1fr)]])")')
+export ALIGN="left" # Alternatively, "right" or "center".
+flags+=(-H '<(echo "#set page(footer: align($ALIGN)[$FOOTER])")')
 
 docker run -it --rm \
        -v "$PWD":/s \

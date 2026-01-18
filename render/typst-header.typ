@@ -1,4 +1,4 @@
-#set table(stroke: 0.5pt, inset: (x: 6pt, y: 4pt))
+// Typst header to apply uniform style to all documents.
 
 #show heading.where(level: 1): it => {
   set text(size: 20pt, weight: "bold")
@@ -13,3 +13,7 @@
 }
 
 #show heading.where(level: 4): set text(size: 14pt, weight: "regular")
+
+#set table(stroke: 0.5pt, inset: (x: 6pt, y: 4pt))
+
+#show image: it => block(height: 100%, width: 100%)[#align(center + horizon)[#it]]
