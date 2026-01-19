@@ -54,7 +54,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_01_ada.png)
+![](PDFs/front_wall_01_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -80,7 +80,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_02_ada.png)
+![](PDFs/front_wall_02_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -106,7 +106,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_03_ada.png)
+![](PDFs/front_wall_03_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -126,7 +126,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_04_ada.png)
+![](PDFs/front_wall_04_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -148,7 +148,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_05_ada.png)
+![](PDFs/front_wall_05_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -164,7 +164,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_06_ada.png)
+![](PDFs/front_wall_06_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -185,7 +185,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_07_ada.png)
+![](PDFs/front_wall_07_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -218,7 +218,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_08_ada.png)
+![](PDFs/front_wall_08_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -251,7 +251,7 @@ HAZARDS:
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_09_ada.png)
+![](PDFs/front_wall_09_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -278,7 +278,7 @@ to show where the trim will go.
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_10_ada.png)
+![](PDFs/front_wall_10_ada.pdf)
 
 `#pagebreak()`{=typst}
 
@@ -292,7 +292,7 @@ under these boards.
 
 `#pagebreak()`{=typst}
 
-![](images/front_wall_11_ada.png)
+![](PDFs/front_wall_11_ada.pdf)
 
 `#pagebreak()`{=typst}
 
