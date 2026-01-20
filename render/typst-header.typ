@@ -16,4 +16,5 @@
 
 #set table(stroke: 0.5pt, inset: (x: 6pt, y: 4pt))
 
-#show image: it => block(height: 100%, width: 100%)[#align(center + horizon)[#it]]
+// See ../Front_Wall/front_wall_ada.md for example usage.
+#let fullpage(path) = block(height: 100%, width: 100%)[#align(center + horizon)[#image(path)]]

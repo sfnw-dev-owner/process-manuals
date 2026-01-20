@@ -51,12 +51,7 @@ HAZARDS:
 - Bashed fingers: Keep fingers 6" from mallet
 - Nail Injury: Keep fingers 12" from joint
 
-
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_01_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_01_ada.pdf")`{=typst}
 
 ## Step 2
 
@@ -78,11 +73,7 @@ HAZARDS:
 - Bashed fingers: Keep fingers 6" from mallet
 - Nail Injury: Keep fingers 12" from joint
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_02_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_02_ada.pdf")`{=typst}
 
 ## Step 3
 
@@ -104,11 +95,7 @@ HAZARDS:
 - Nail Injury: Keep fingers 12" from joint
 - Ladder Fall: Ascend/descend ladder without carrying tools
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_03_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_03_ada.pdf")`{=typst}
 
 ## Step 4
 
@@ -124,11 +111,7 @@ HAZARDS:
 
 - Nail Injury: Keep fingers 12" from gun end
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_04_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_04_ada.pdf")`{=typst}
 
 ## Step 5
 
@@ -146,11 +129,7 @@ HAZARDS:
 HAZARDS:
 - Nail Injury: Keep fingers 12" from gun end
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_05_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_05_ada.pdf")`{=typst}
 
 ## Step 6
 
@@ -162,11 +141,7 @@ HAZARDS:
 
 - Nail Injury: Keep fingers 12" from gun end
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_06_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_06_ada.pdf")`{=typst}
 
 ## Step 7
 
@@ -183,11 +158,7 @@ HAZARDS:
 
 - Staple Injury: Keep fingers 12" from stapling point
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_07_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_07_ada.pdf")`{=typst}
 
 ## Step 8
 
@@ -216,11 +187,7 @@ HAZARDS:
 
 - Knife cut: Keep fingers clear of where the knife might slip
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_08_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_08_ada.pdf")`{=typst}
 
 ## Step 9
 
@@ -249,11 +216,7 @@ HAZARDS:
 - Nail Injury: Keep fingers 12" from joint
 - Ladder Fall: Ascend/descend ladder without carrying tools
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_09_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_09_ada.pdf")`{=typst}
 
 ## Step 10
 
@@ -276,11 +239,7 @@ to show where the trim will go.
     ---   Place all peel-and-stick FLUSH against the edge of the window\
     ---   Make sure the peel-and-stick does not extend over the pencil outline
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_10_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_10_ada.pdf")`{=typst}
 
 ## Step 11
 
@@ -290,11 +249,7 @@ under these boards.
 - Nail every 8" on the two sides and top of the door opening.
 - Caulk all nails after tilt-up.
 
-`#pagebreak()`{=typst}
-
-![](PDFs/front_wall_11_ada.pdf)
-
-`#pagebreak()`{=typst}
+`#fullpage("PDFs/front_wall_11_ada.pdf")`{=typst}
 
 # FRONT WALL CHECKLIST
 

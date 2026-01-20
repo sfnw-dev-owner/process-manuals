@@ -22,7 +22,7 @@ cut edge. Stack these panels on one cart per home in this order (back to
 front):
 
 | Width | Length | Label | Source |
-| --- | --- | --- | :--- |
+| :--- | :--- | --- | :--- |
 | 48" | 88" | D | Uncut panel from plywood stack |
 | 38 ¼" | 46 ¼" | E | Cut two E panels from one 38¼ x 96 |
 | 48" | 88" | G | Uncut panel from plywood stack |

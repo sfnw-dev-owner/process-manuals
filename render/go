@@ -4,17 +4,19 @@
 
 set -eu -o pipefail
 
-if [[ "$#" != 3 ]]; then
-    echo "Usage: $0 <subdir> <file>.md <revision-date>" >&2
-    echo "Example: $0 Cut_Lists 'Interior Panels.md' 2026-01-17" >&2
+if [[ "$#" != 1 ]]; then
+    echo "Usage: $0 <path/to/file>.md" >&2
+    echo "Example: $0 'Cut_Lists/Interior Panels.md'" >&2
     exit 1
 fi
 
+INPUT="$(realpath "$1")"
+
 cd "$(dirname "$0")/.."
 
-INPUT_DIR="$1"
-INPUT_FILE="$2"
-REVISION_DATE="$3"
+INPUT_FILE="$(basename "$INPUT")"
+INPUT_DIR="$(basename "$(dirname "$INPUT")")"
+REVISION_DATE="$(TZ=America/Los_Angeles git log -1 --format="%cd" --date=format:"%Y-%m-%d %H:%M:%S" -- "${INPUT}")"
 
 OUTPUT_FILE="${INPUT_FILE/%.md/.pdf}"
 export FOOTER="Revised $REVISION_DATE"
@@ -22,10 +24,7 @@ export FOOTER="Revised $REVISION_DATE"
 declare -a flags
 flags=(pandoc -d ../render/pandoc-defaults.yaml -H ../render/typst-header.typ)
 flags+=("'$INPUT_FILE'" -o "'$OUTPUT_FILE'")
-# To have alternating left/right-aligned footers:
-# flags+=(-H '<(echo "#set page(footer: context [#if calc.even(here().page()) [#h(1fr) $FOOTER] else [$FOOTER #h(1fr)]])")')
-export ALIGN="left" # Alternatively, "right" or "center".
-flags+=(-H '<(echo "#set page(footer: align($ALIGN)[$FOOTER])")')
+flags+=(-H '<(echo "#set page(footer: context [$FOOTER #h(1fr) #if counter(page).final().first() > 1 { [#counter(page).display() / #counter(page).final().first()] }])")')
 
 docker run -it --rm \
        -v "$PWD":/s \
