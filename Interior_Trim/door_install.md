@@ -1,38 +1,32 @@
----
-format:
-  docx:
-    reference-doc: ../manual-template.docx
-    fig-align: center
-from: markdown-implicit_figures
----
-
 # SETUP LIST
 
-- Door:\
-     --- Drill with countersink bit\
-     --- Screw gun\
-     --- Phillips-head drive bit\
-     --- T25 drive bit\
-     --- Shims\
-     --- Chrome T25 screws\
-     --- \#10 x 3" Screws (brown)\
-     --- Utility knife
+- Door:
+  - Drill with countersink bit
+  - Screw gun
+  - Phillips-head drive bit
+  - T25 drive bit
+  - Shims
+  - Chrome T25 screws
+  - \#10 x 3" Screws (brown)
+  - Utility knife
 
-- Interior Trim:\
-     --- Drill with countersink bit\
-     --- Screw gun with T25 drive bit\
-     --- Finish nailer and finish nails\
-     --- Level\
-     --- Measuring Tape\
-     --- Pencil
+- Interior Trim:
+  - Drill with countersink bit
+  - Screw gun with T25 drive bit
+  - Finish nailer and finish nails
+  - Level
+  - Measuring Tape
+  - Pencil
 
-- Install Vent Cap:\
-     --- Drill with countersink bit\
-     --- Screw gun with T25 drive bit\
-     --- \#10 x 3" Screws (brown)\
-     --- Measuring Tape\
-     --- Pencil
-{{< pagebreak >}}
+- Install Vent Cap:
+  - Drill with countersink bit
+  - Screw gun with T25 drive bit
+  - \#10 x 3" Screws (brown)
+  - Measuring Tape
+  - Pencil
+
+`#pagebreak()`{=typst}
+
 # DOOR INSTALLATION
 
 ## Prepare the door
@@ -50,7 +44,7 @@ been removed, and that the weatherstripping has been pulled out of the door fram
 - Cut a 54" length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway over the flooring strip, with about 8" running up each side of the opening, and half the width sticking outside the home.
 - Slit the corners, and fold the outer half of the flashing down and to the sides of the opening.
 
-![](images/door_install_1.png)
+`#fullpage("Images/door_install_1.png")`{=typst}
 
 ##  Install the door
 
@@ -61,31 +55,30 @@ been removed, and that the weatherstripping has been pulled out of the door fram
   Use a prybar at the top corners if necessary to push the sides of the door frame
   down so that they are in contact with the flooring. 
 - Helpers hold door frame tight against siding
-- Insert SHIMS as necessary to center the door in the opening and tighten any spaces\
-     --- hinge side, place shims just above each hinge\
-     --- doorknob side, place shims at same height as top and bottom hinge
-     --- Adjust side shims so the gap at the top is the same across door width\
+- Insert SHIMS as necessary to center the door in the opening and tighten any spaces
+  - hinge side, place shims just above each hinge
+  - doorknob side, place shims at same height as top and bottom hinge
+  - Adjust side shims so the gap at the top is the same across door width
     shims and just above doorknob opening
--  Adjust and secure door frame\
-     --- Open & close door - it should not hit door frame on the side opposite the hinges (\~1/8" gap)
+-  Adjust and secure door frame
+  - Open & close door - it should not hit door frame on the side opposite the hinges (\~1/8" gap)
      
-- Screw door frame to the opening on the hinge side\
-     --- open the door\
-     --- make sure door molding is tight against the siding
-     --- install 3" (brown) screws very close to the doorstop at the height of the center of each shim, starting at the top
-- Screw door frame to the opening on doorknob side\
-     --- top 1st\
-     --- bottom 2^nd^\
+- Screw door frame to the opening on the hinge side
+  - open the door
+  - make sure door molding is tight against the siding
+  - install 3" (brown) screws very close to the doorstop at the height of the center of each shim, starting at the top
+- Screw door frame to the opening on doorknob side
+  - top 1st
+  - bottom 2^nd^
  
-{{< pagebreak >}}
-![](images/door_install_2.png)
+`#fullpage("Images/door_install_2.png")`{=typst}
 
-- Strengthen door latch plate\
-     --- insert shims both above and below the latch hole\
-     --- adjust shims above and below latch hole so the gap between door and door jamb is approximately 1/8" \
-     --- Drill with countersink bit above and below the latch hole, as shown in the drawing\
-     --- Angle drill towards outside of the home, to assure that screws will go into the framing\
-     --- Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are below the surface of the door frame.
+- Strengthen door latch plate
+  - insert shims both above and below the latch hole
+  - adjust shims above and below latch hole so the gap between door and door jamb is approximately 1/8" 
+  - Drill with countersink bit above and below the latch hole, as shown in the drawing
+  - Angle drill towards outside of the home, to assure that screws will go into the framing
+  - Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are below the surface of the door frame.
 - If space above the door is narrow, use shims to make it even, if large
     then use a piece of 3/4" plywood, and then shims
 - Insert shims 8-10" in from each side to fill space between top of door frame and doorway framing
@@ -97,5 +90,5 @@ been removed, and that the weatherstripping has been pulled out of the door fram
 -   Remove one of the Phillips-head screws from each hinge, replace with
     3" silver screw from kit. Discard the short screw.
 -   Trim off the protruding ends of the shims, flush with the wall plywood. Use a box knife to score the shim, and then snap it off.
-{{< pagebreak >}}
-![](images/door_install_3.png)
+
+`#fullpage("Images/door_install_3.png")`{=typst}
