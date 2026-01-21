@@ -1,11 +1,3 @@
----
-format:
-  docx:
-    reference-doc: ../manual-template.docx
-    fig-align: center
-from: markdown-implicit_figures
---- 
-
 # Tiny Home Assembly
 
 ## Prepare Equipment
@@ -25,7 +17,7 @@ Before assembling a Tiny Home, all of the pieces must be complete.  Here are thi
 * Has sawdust been swept off all four walls and the floor?
 * Are all four walls up on blocks, so that they will lift out easily?
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Tools
 * mallet
@@ -35,7 +27,7 @@ Before assembling a Tiny Home, all of the pieces must be complete.  Here are thi
 * screw gun
 * 4-foot level
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ## Leading the Tilt-Up Process
 A comment we hear frequently from group-build participants is how excited they were to participate in making a difference -- that taking a home from sticks to framed-in during a single day was both exciting and eye-opening.  
@@ -46,11 +38,9 @@ Encourage the group to feel ownership of being a part of the solution.  Use "you
 
 Start by being sure to introduce yourself to the group.  You probably built on the jigs earlier with a few group members, but the rest of the group won't know you.  A sample intro might go like this:
 
-```
-"Hi, my name's Susan and I built a side wall with Jane and John this morning, and I'm going to be leading this tilt-up process.  In the next 45 minutes, we're going to take what we all built this morning and fasten it all together to create the bones of another new tiny home.  After that, we'll take a break while you meet with Barb and hear about the human side of homelessness then we'll all come back together to raise the roof and get it all framed in.  Sound good?  Okay, let's get started!"
-``` 
+>>> "Hi, my name's Susan and I built a side wall with Jane and John this morning, and I'm going to be leading this tilt-up process.  In the next 45 minutes, we're going to take what we all built this morning and fasten it all together to create the bones of another new tiny home.  After that, we'll take a break while you meet with Barb and hear about the human side of homelessness then we'll all come back together to raise the roof and get it all framed in.  Sound good?  Okay, let's get started!"
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ## Prepare crew
 Get everyone’s attention, and explain the first step; moving and tilting up the side wall.  
@@ -65,7 +55,7 @@ Remind those at the far end of the wall to be sure to keep their fingers away fr
 
 Emphasize that when a leader taps someone on the shoulder and asks them to move away from the wall, they should do so briskly.
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ## Tilt-up first side wall
 
@@ -83,8 +73,9 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Transport crew use shuffle step
 * Platform crew use leg muscles; keep your back straight.
 
-![&nbsp;](images/image_01.png){width="78%" height="78%"}
-{{< pagebreak >}}
+![](images/image_01.png)
+
+`#pagebreak()`{=typst}
 
 ### Lift & Shift
 *	On the count of three, have the transport crew lift the wall from the jig, shuffle towards the platform, and pass the top of the wall to the platform crew.
@@ -93,7 +84,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_02.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Align
 *	Use a mallet for fine adjustment to line up the ends of the wall with the ends of the platform.
@@ -103,9 +94,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_03.png)
 
-![](images/image_04.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_04.png")`{=typst}
 
 ### Attach
 *	If this is a group-build, favor group members for assignments below.
@@ -120,9 +109,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 *	Have the mallet person begin at one end of the wall, aiming for the chalk line, and halfway between the nails that mark where the studs for the first bay are positioned.
 *	If the first nail is successfully driven, move both the mallet person and the nail gun person to the next wall bay, and repeat, until each bay is nailed to the platform.  When the nail gun person is set, call out “Ready” to let the mallet person know that they can begin the next sequence.
 
-![](images/image_05.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_05.png")`{=typst}
 
 ## Tilt-up rear wall
 
@@ -137,29 +124,27 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
     *	As the wall is being raised, the people on the transport team (A and B) must drop out and move away, leaving the wall in the hands of the platform crew. 
     *	Once the wall is set down, those near the corner must keep their hands away from the corner as the wall is slid into place
 
-![](images/image_06.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_06.png")`{=typst}
 
 ### Lift & Shift
 *	On the count of three, have the transport crew lift the wall off the jig, shuffle sideways until the wall is clear of the jig, and then walk slowly toward the platform with the wall.
 *	As they hand the wall to the platform crew, the leading-edge transport people should drop away, so that they are not impeding the movement of the wall.
 
-![](images/image_07.png)
+`#fullpage("images/image_07.png")`{=typst}
 
-![](images/image_08.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_08.png")`{=typst}
 
 *	When the wall is about a foot away from the side wall, the platform crew starts lifting the wall into position.  The remaining transport crew can help guide the bottom of the wall into the marked position on the platform, being careful to keep fingers away from the bottom of the wall.
 *	Once the wall is vertical, the leader **must verify** that everyone’s fingers are out of the way of the corner about to be joined.  When that is so, the leader calls for the transport and platform crew to push and slide the rear wall against the end of the side wall.
 
 ![](images/image_09.png)
 
-![&nbsp;](images/image_10.png){width="78%" height="78%"}
+`#scale(78%, reflow: true)[#image("images/image_10.png")]`{=typst}
 
-![&nbsp;](images/image_11.png){width="78%" height="78%"}
-{{< pagebreak >}}
+`#scale(78%, reflow: true)[#image("images/image_11.png")]`{=typst}
+
+`#pagebreak()`{=typst}
+
 ### Align
 *	As before, have a mallet person go along the outside of the rear wall, stroking every 8” to tighten the rear wall against the platform, and, if necessary, adjust the position of the wall side-to-side.
 *	From inside the home, position a clamp on the 2x4s forming the corner about 2 feet above the bottom of the wall, and tighten the corner joint.
@@ -168,7 +153,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_12.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Attach Bottom Plate
 *	As before, assign a nailer (from the platform crew) and a mallet person (from the transport crew)
@@ -176,16 +161,14 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_13.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Attach Corner
 *	Verify that the top of the two walls are tightly clamped together, and are at the same height.
 *	Have the nailer shoot 5 nails into the corner, about 2 feet apart, centered on the rear wall side stud, and angled outward, so that the nail ends up driven into the side stud of the side wall, rather than going into the crack between the two pieces of wood that form the corner on the side wall.
 *	Remove the clamps
 
-![](images/image_14.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_14.png")`{=typst}
 
 ## Tilt-up second side wall
 
@@ -203,9 +186,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
     *	Once the wall is set down, those near the corner must keep their hands away from the corner as the wall is slid into place.
     *	After the wall is in place, the platform crew must continue to steady it, until nailing is complete.
 
-![](images/image_15.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_15.png")`{=typst}
 
 ### Lift & Shift
 *	On the count of three, have the transport crew lift the wall, shuffle towards the platform, pass the top of the wall to the platform crew, and, once the wall is clear of the jig, tilt the wall up and place the bottom 2x4 on the platform edge with the rear edge about a foot away from the back wall.
@@ -213,10 +194,11 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_16.png)
 
-![&nbsp;](images/image_17.png){width="78%" height="78%"}
+`#scale(78%, reflow: true)[#image("images/image_17.png")]`{=typst}
 
-![&nbsp;](images/image_18.png){width="78%" height="78%"}
-{{< pagebreak >}}
+`#scale(78%, reflow: true)[#image("images/image_18.png")]`{=typst}
+
+`#pagebreak()`{=typst}
 
 ### Align
 *	As necessary, use a mallet to adjust the position of the side wall so that the wall ends line up with the platform ends.
@@ -226,14 +208,14 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_19.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Attach Bottom
 *	As before, assign a nailer and a malleter, review the “Mississippi” timing ritual, and nail the bottom plate of the side wall to the platform, one nail per wall bay.  If it is necessary to use the wall lever, assign a third person to that task.
 
 ![](images/image_20.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Attach Corner
 *	Verify that the tops of the two walls are tightly clamped together, and have the nailer shoot 5 nails into the corner, about 2 feet apart, centered on the rear wall side stud, and angled outward, so that the nail ends up driven into the side stud of the side wall, rather than going into the crack between the two pieces of wood that form the corner on the side wall. 
@@ -241,7 +223,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_21.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ## Tilt-up front wall
 
@@ -256,9 +238,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
     *	Instruct platform crew to use elbows or shoulders to tip the side walls away if more room is needed to get the front wall into position.
     *	Once the front wall is set in place, platform crew must continue to support it until clamps are in place on both corners.
 
-![](images/image_22.png)
-
-{{< pagebreak >}}
+`#fullpage("images/image_22.png")`{=typst}
 
 ### Lift & Shift
 *	Once the platform crew are in place and the team leader is back on the platform, have ground crew members move the steps away from the front of the home.
@@ -267,15 +247,19 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_23.png)
 
-![&nbsp;](images/image_24.png){width="78%" height="78%"}
+`#pagebreak()`{=typst}
 
-![&nbsp;](images/image_25.png){width="78%" height="78%"}
+`#scale(78%, reflow: true)[#image("images/image_24.png")]`{=typst}
 
-![&nbsp;](images/image_26.png){width="78%" height="78%"}
+`#scale(78%, reflow: true)[#image("images/image_25.png")]`{=typst}
 
-![&nbsp;](images/image_27.png){width="78%" height="78%"}
+`#pagebreak()`{=typst}
 
-{{< pagebreak >}}
+`#scale(78%, reflow: true)[#image("images/image_26.png")]`{=typst}
+
+`#scale(78%, reflow: true)[#image("images/image_27.png")]`{=typst}
+
+`#pagebreak()`{=typst}
 
 ### Align
 *	Once the front wall is in position, have a mallet person go along the outside of the front wall, stroking every 8” to tighten the wall against the platform.
@@ -284,14 +268,14 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ![](images/image_28.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Attach Bottom
 *	As before, assign a nailer and a malleter, review the “Mississippi” timing ritual, and nail the bottom plate of the front wall to the platform, one nail per wall bay.  Finish with a nail into the small space between the two studs next to the door corner.
 
 ![](images/image_29.png)
 
-{{< pagebreak >}}
+`#pagebreak()`{=typst}
 
 ### Attach Corners
 *	Verify that the tops of the two walls are tightly clamped together, and have the nailer shoot 4 nails into the corner next to the window, about 2 feet apart, about centered on the front wall side stud, and angled outward, so that the nail ends up driven into the side stud of the side wall, rather than going into the crack between the two pieces of wood that form the corner on the side wall.
