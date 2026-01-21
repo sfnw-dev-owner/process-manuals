@@ -1,6 +1,6 @@
 # FRONT SAW CUT LIST: CUT FOR 2 HOMES
 
-On a single lumber cart, cut these lengths of 2x4
+On a single lumber cart, cut these lengths of 2x4:
 
 | Quantity | Dimensions | Notes |
 | --- | --- | --- |
@@ -10,9 +10,11 @@ On a single lumber cart, cut these lengths of 2x4
 | 2 | 2x4x13¾ in | Use 8' 2x4, or scrap |
 | 4 | 2x4x20½ in | Use block from Back Saw, or scrap |
 
+`#v(4em)`{=typst}
+
 # 1x4 TRIM -- SHIPMENT
 
-From 12' material, cut parts in this order
+From 12' material, cut parts in this order:
 
 | Length | Use | Notes |
 | --- | --- | --- |

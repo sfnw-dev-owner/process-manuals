@@ -1,28 +1,34 @@
----
-format:
-  docx:
-    reference-doc: ../manual-template.docx
-    fig-align: center
-from: markdown-implicit_figures
----
-
 # FRONT WALL - SET UP LIST
 
 - Put caulk by heater
+
 - Caulking gun
+
 - Framing nail gun
+
 - Framing nails
+
 - Panel nails
+
 - Triangle
+
 - Long Screws (brown)
+
 - Short Screws (yellow)
+
 - Screw gun with T25 bit
+
 - Chalk line
+
 - Stapler
+
 - Staples
+
 - Mallet
+
 - Hammer
-{{< pagebreak >}}
+
+`#pagebreak()`{=typst}
 
 ## Step 1
 
@@ -40,16 +46,12 @@ from: markdown-implicit_figures
 -  Put a second nail directly under each of the first nails in the
     three nailed corners.
 
-HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Bashed fingers                      Keep fingers 6" from mallet
-  ----------------------------------- -----------------------------------
-  Nail Injury                         Keep fingers 12" from joint
+- Bashed fingers: Keep fingers 6" from mallet
+- Nail Injury: Keep fingers 12" from joint
 
-  -----------------------------------------------------------------------
-{{< pagebreak >}}
-![](images/front_wall_01_ada.png)
+`#fullpage("PDFs/front_wall_01_ada.pdf")`{=typst}
 
 ## Step 2
 
@@ -66,16 +68,12 @@ HAZARDS
 - Put 2 nails into each end of the short 2x4 in the middle (through the studs
  at the bottom of the window).
 
- HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Bashed fingers                      Keep fingers 6" from mallet
-  ----------------------------------- -----------------------------------
-  Nail Injury                         Keep fingers 12" from joint
+- Bashed fingers: Keep fingers 6" from mallet
+- Nail Injury: Keep fingers 12" from joint
 
-  -----------------------------------------------------------------------
-{{< pagebreak >}}
-![](images/front_wall_02_ada.png)
+`#fullpage("PDFs/front_wall_02_ada.pdf")`{=typst}
 
 ## Step 3
 
@@ -91,17 +89,13 @@ HAZARDS
     --- 2 nails through the top plate into each stud\
     --- 2 nails through the bottom plate into those same studs
 
-HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Bashed fingers                      Keep fingers 6" from mallet
-  ----------------------------------- -----------------------------------
-  Nail Injury                         Keep fingers 12" from joint
+- Bashed fingers: Keep fingers 6" from mallet
+- Nail Injury: Keep fingers 12" from joint
+- Ladder Fall: Ascend/descend ladder without carrying tools
 
-  Ladder Fall                         Ascend/descend ladder without carrying tools
-  -----------------------------------------------------------------------
-{{< pagebreak >}}
-![](images/front_wall_03_ada.png)
+`#fullpage("PDFs/front_wall_03_ada.pdf")`{=typst}
 
 ## Step 4
 
@@ -113,13 +107,11 @@ HAZARDS
 - **Do not** nail into the ends of the studs on either side of the door
     opening. That will come in the next step.
 
-HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Nail Injury                         Keep fingers 12" from joint
-  ----------------------------------- -----------------------------------
-{{< pagebreak >}}
-![](images/front_wall_04_ada.png)
+- Nail Injury: Keep fingers 12" from gun end
+
+`#fullpage("PDFs/front_wall_04_ada.pdf")`{=typst}
 
 ## Step 5
 
@@ -134,13 +126,10 @@ HAZARDS
     the bottom block. Clamp each block between the two studs, and nail
     twice from each side.
 
-HAZARDS
+HAZARDS:
+- Nail Injury: Keep fingers 12" from gun end
 
-  -----------------------------------------------------------------------
-  Nail Injury                         Keep fingers 12" from gun end
-  ----------------------------------- -----------------------------------
-{{< pagebreak >}}
-![](images/front_wall_05_ada.png)
+`#fullpage("PDFs/front_wall_05_ada.pdf")`{=typst}
 
 ## Step 6
 
@@ -148,13 +137,11 @@ HAZARDS
 into the studs on either side of the door opening.
 - Check the perimeter to be sure all the long studs have 2 nails at each end.
 
-HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Nail Injury                         Keep fingers 12" from gun end
-  ----------------------------------- -----------------------------------
-{{< pagebreak >}}
-![](images/front_wall_06_ada.png)
+- Nail Injury: Keep fingers 12" from gun end
+
+`#fullpage("PDFs/front_wall_06_ada.pdf")`{=typst}
 
 ## Step 7
 
@@ -167,13 +154,11 @@ HAZARDS
 - Staple along ALL inner studs, and across the top and bottom of the window opening
  and across the top of the door opening.
 
- HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Staple Injury                       Keep fingers 12" from stapling point
-  ----------------------------------- -----------------------------------
-{{< pagebreak >}}
-![](images/front_wall_07_ada.png)
+- Staple Injury: Keep fingers 12" from stapling point
+
+`#fullpage("PDFs/front_wall_07_ada.pdf")`{=typst}
 
 ## Step 8
 
@@ -198,13 +183,11 @@ as shown in the drawing. Force the end down into the corner of the window openin
 - Cut the Tyvek out along the inside edge of the door opening. Save the cut-out piece;
  it can be used to create structural triangle covering later.
 
-HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Knife cut                           Keep fingers clear of where the knife might slip
-  ----------------------------------- -----------------------------------
-{{< pagebreak >}}
-![](images/front_wall_08_ada.png)
+- Knife cut: Keep fingers clear of where the knife might slip
+
+`#fullpage("PDFs/front_wall_08_ada.pdf")`{=typst}
 
 ## Step 9
 
@@ -228,17 +211,12 @@ HAZARDS
      --- **DO NOT NAIL BELOW THE DOOR**
 - Install three #8 (yellow) screws through the siding into the bottom plate.  Be sure these do not stick up above the panel; they will interfere with the router.  These screws will be removed after the wall is tilted up.
 
-HAZARDS
+HAZARDS:
 
-  -----------------------------------------------------------------------
-  Nail Injury                         Keep fingers 12" from joint
-  ----------------------------------- -----------------------------------
-  Ladder Fall                         Ascend/descend ladder without
-                                      carrying tools
+- Nail Injury: Keep fingers 12" from joint
+- Ladder Fall: Ascend/descend ladder without carrying tools
 
-  -----------------------------------------------------------------------
-{{< pagebreak >}}
-![](images/front_wall_09_ada.png)
+`#fullpage("PDFs/front_wall_09_ada.pdf")`{=typst}
 
 ## Step 10
 
@@ -260,8 +238,8 @@ to show where the trim will go.
     ---   Using the pattern board, cut two pieces “outer long” and one piece “outer short”\
     ---   Place all peel-and-stick FLUSH against the edge of the window\
     ---   Make sure the peel-and-stick does not extend over the pencil outline
-{{< pagebreak >}}
-![&nbsp;](images/front_wall_10_ada.png)
+
+`#fullpage("PDFs/front_wall_10_ada.pdf")`{=typst}
 
 ## Step 11
 
@@ -270,8 +248,8 @@ under these boards.
 - Staple Tyvek to underside of panels on the bottom and both sides. Trim Tyvek on all 3 sides.
 - Nail every 8" on the two sides and top of the door opening.
 - Caulk all nails after tilt-up.
-{{< pagebreak >}}
-![&nbsp;](images/front_wall_11_ada.png)
+
+`#fullpage("PDFs/front_wall_11_ada.pdf")`{=typst}
 
 # FRONT WALL CHECKLIST
 

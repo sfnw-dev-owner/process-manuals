@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Render a Markdown file to generate a PDF.
+
+set -eu -o pipefail
+
+if [[ "$#" != 1 ]]; then
+    echo "Usage: $0 <path/to/file>.md" >&2
+    echo "Example: $0 'Cut_Lists/Interior Panels.md'" >&2
+    exit 1
+fi
+
+INPUT="$(realpath "$1")"
+
+cd "$(dirname "$0")/.."
+
+INPUT_FILE="$(basename "$INPUT")"
+INPUT_DIR="$(basename "$(dirname "$INPUT")")"
+REVISION_DATE="$(TZ=America/Los_Angeles git log -1 --format="%cd" --date=format:"%Y-%m-%d %H:%M:%S" -- "${INPUT}")"
+
+OUTPUT_FILE="${INPUT_FILE/%.md/.pdf}"
+export FOOTER="Revised $REVISION_DATE"
+
+declare -a flags
+flags=(pandoc -d ../render/pandoc-defaults.yaml -H ../render/typst-header.typ)
+flags+=("'$INPUT_FILE'" -o "'$OUTPUT_FILE'")
+flags+=(-H '<(echo "#set page(footer: context [$FOOTER #h(1fr) #if counter(page).final().first() > 1 { [#counter(page).display() / #counter(page).final().first()] }])")')
+
+docker run -it --rm \
+       -v "$PWD":/s \
+       -w "/s/$INPUT_DIR" \
+       -e FOOTER \
+       -e TYPST_FONT_PATHS=/s/render/Carlito \
+       --entrypoint=/bin/sh \
+       pandoc/typst:3.8.3 \
+       -c \
+       "${flags[*]}"
+
+
+
