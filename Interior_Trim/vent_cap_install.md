@@ -1,19 +1,11 @@
----
-format:
-  docx:
-    reference-doc: ../manual-template.docx
-    fig-align: center
-from: markdown-implicit_figures
----
-
 # VENT CAP INSTALLATION
 
 ## Materials:
 
--   4 -- 5¾" 2x4 blocks (cut two 2x4x11½ blocks in half)
--   1 -- 9½" x 96" interior plywood
--   1 -- 9½" x 44" interior plywood
--   18 -- #10 x 3" brown screws
+-   4x 5¾" 2x4 blocks (cut two 2x4x11½ blocks in half)
+-   1x 9½" x 96" interior plywood
+-   1x 9½" x 44" interior plywood
+-   18x #10 x 3" brown screws
 
 ## Tools:
 
@@ -23,7 +15,8 @@ from: markdown-implicit_figures
 -   Spirit Level
 -   Support Block installation pattern
 -   Vent Cap Drill pattern
-{{< pagebreak >}}
+
+`#pagebreak()`{=typst}
 
 1.  Cut two 11½" 2x4 blocks (jenga blocks) in half to yield the 5½"
     support blocks.
@@ -63,8 +56,8 @@ from: markdown-implicit_figures
     screws fully into the rear mounting block.
 
 (More on next page)
-{{< pagebreak >}}
-![](images/vent_cap.png)
+
+`#fullpage("Images/vent_cap.png")`{=typst}
 
 10. While one person continues to support the vent cap, the other person
     drives the two screws in the middle of the vent cap into their
