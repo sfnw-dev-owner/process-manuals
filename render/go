@@ -26,8 +26,9 @@ flags=(pandoc -d ../render/pandoc-defaults.yaml -H ../render/typst-header.typ)
 flags+=("'$INPUT_FILE'" -o "'$OUTPUT_FILE'")
 flags+=(-H '<(echo "#set page(footer: context [$FOOTER #h(1fr) #if counter(page).final().first() > 1 { [#counter(page).display() / #counter(page).final().first()] }])")')
 
-docker run -it --rm \
-       -v "$PWD":/s \
+RUNNER="$(type -p docker || type -p podman)"
+"$RUNNER" run -it --rm \
+       -v "$PWD":/s:z \
        -w "/s/$INPUT_DIR" \
        -e FOOTER \
        -e TYPST_FONT_PATHS=/s/render/Carlito \
