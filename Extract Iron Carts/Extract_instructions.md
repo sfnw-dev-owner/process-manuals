@@ -38,7 +38,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Raise the front
+## Raise the front
 
 - When the rear is solidly on the two 4x4 posts, start to raise the front of the home.
 - Announced loudly "Front Going Up"
@@ -56,7 +56,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Drop front onto triple blocks
+## Drop front onto triple blocks
 
 - Once the triple blocks are in place, announced "Front Going Down", and get acknowledgment from the rear jack operator.
 - Lower the front of the home onto the blocks, leaving the jack just in contact with the frame, but not bearing any of the weight of the home.  This will provide additional stability in the next step.
@@ -67,7 +67,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Raise rear, remove posts
+## Raise rear, remove posts
 
 - When the  front is solidly on the blocks, begin to raise the rear.
 - Announce loudly "Back Going Up", and get acknowledgment from the front-jack operator.
@@ -88,7 +88,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Raise front, remove triple blocks
+## Raise front, remove triple blocks
 
 - When the rear of the home has been lowered onto the triple blocks, announce "Front going up", and get acknowledgment from the rear-jack operator.
 - Raise the front of the home just a few inches, so that helpers can pull the front triple blocks out from under the skids.
@@ -98,7 +98,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Drop front to final position
+## Drop front to final position
 
 - Have helpers move out of the way.
 - Once the front blocks have been removed and the helpers are clear of the home, lower the front jack all the way, so that the skids are resting on the front auto dollies.
@@ -108,7 +108,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Raise rear, remove triple blocks
+## Raise rear, remove triple blocks
 
 - When the front of the home is down on its auto dollies, announce "Back going up".
 - Raise the rear just a few inches, so that helpers can pull the rear triple blocks out from under the skids.
@@ -119,7 +119,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 
 `#pagebreak()`{=typst}
 
-# Drop rear to final position
+## Drop rear to final position
 
 - Have helpers move out of the way.
 - Once the front blocks have been removed and the helpers are clear of the home, announce "Back going down", and get acknowledgment from the front-jack operator.
