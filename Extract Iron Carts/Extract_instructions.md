@@ -1,3 +1,5 @@
+`#show heading.where(level: 2): it=>{ set text(size: 18pt, weight: "regular"); align(center, block(above: .5em, below: 1em)[#it])}`{=typst}
+
 # Removing Iron Carts from under a Home
 
 This is an inherently simple process, but the chances for a mishap are fairly high.  Given that the weight of a finished home is around 4000 pounds, extreme care is needed when performing this operation.
