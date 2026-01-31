@@ -18,4 +18,3 @@
 
 // See ../Front_Wall/front_wall_ada.md for example usage.
 #let fullpage(path) = block(height: 100%, width: 100%)[#align(center + horizon)[#image(path)]]
-#let ctrimage(path) = align(center)[#rect(stroke: none)[#image(path)]]
