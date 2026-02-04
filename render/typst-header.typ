@@ -1,4 +1,12 @@
-// Typst header to apply uniform style to all documents.
+// Typst template to apply uniform style to all documents. Replaces pandoc's typst template.
+
+#if "$title$" != "" {
+  align(center + horizon, image("/common/SoundFoundationsNW_logo.png"))
+  v(4em)
+  align(center, text(24pt, weight: "bold", [$title$]))
+  counter(page).update(0);
+  pagebreak()
+}
 
 #show heading.where(level: 1): it => {
   set text(size: 20pt, weight: "bold")
@@ -18,3 +26,8 @@
 
 // See ../Front_Wall/front_wall_ada.md for example usage.
 #let fullpage(path) = block(height: 100%, width: 100%)[#align(center + horizon)[#image(path)]]
+
+$header-includes$
+
+$body$
+
