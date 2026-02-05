@@ -1,8 +1,8 @@
 `#show heading.where(level: 2): it=>{ set text(size: 18pt, weight: "regular"); align(center, block(above: .5em, below: 1em)[#it])}`{=typst}
 
 `#let horizontal-center(path, vspace: 1in) = {
-  if (vspace != none) {
-    if (vspace != 0) {v(vspace)}
+  if (vspace != none and vspace != 0) {
+    v(vspace)
   };
   align(center)[#rect(stroke: none)[#image(path)]];
 }`{=typst}
