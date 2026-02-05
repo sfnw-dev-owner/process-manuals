@@ -35,8 +35,11 @@ declare -a flags
 flags=(pandoc -d ../render/pandoc-defaults.yaml --template ../render/typst-header.typ)
 flags+=("--pdf-engine-opt=--root=/s")
 flags+=("'$INPUT_FILE'" -o "'$OUTPUT_FILE'")
-flags+=(-H '<(echo "#set page(footer: context [$FOOTER #h(1fr) #if counter(page).final().first() > 1 { [#counter(page).display() / #counter(page).final().first()] }])")')
-flags+=(-V "title:\"$TITLE\"")
+flags+=(-H '<(echo "#set page(footer: context { if counter(page).get().first() > 0 [$FOOTER #h(1fr) [#counter(page).display() / #counter(page).final().first()]] })")')
+if ! grep -qF '#title-page[' "$INPUT"; then
+    # No custom title-page, create a default one.
+    flags+=(-V "title:\"$TITLE\"")
+fi
 # Make re-runs idempotent; typst embeds the "current" time into the .pdf, so set that "current" time to the last modification time of the input file.
 flags+=("--pdf-engine-opt=--creation-timestamp=$(git log -1 --format="%ct" -- "$INPUT")")
 

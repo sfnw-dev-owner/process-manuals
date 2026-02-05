@@ -1,11 +1,17 @@
 // Typst template to apply uniform style to all documents. Replaces pandoc's typst template.
 
-#if "$title$" != "" {
-  align(center + horizon, image("/common/SoundFoundationsNW_logo.png"))
-  v(4em)
-  align(center, text(24pt, weight: "bold", [$title$]))
-  counter(page).update(0);
+#let title-page(body) = {
+  align(center + horizon)[
+    #image("/common/SoundFoundationsNW_logo.png")
+    #v(4em)
+    #body
+  ]
+  counter(page).update(0)
   pagebreak()
+}
+
+#if "$title$" != "" and "$no-title-page$" == "" {
+  title-page(text(24pt, weight: "bold", [$title$]))
 }
 
 #show heading.where(level: 1): it => {
