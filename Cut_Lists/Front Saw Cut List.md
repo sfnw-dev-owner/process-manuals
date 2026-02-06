@@ -1,3 +1,7 @@
+---
+no-title-page: true
+---
+
 # FRONT SAW CUT LIST: CUT FOR 2 HOMES
 
 On a single lumber cart, cut these lengths of 2x4:

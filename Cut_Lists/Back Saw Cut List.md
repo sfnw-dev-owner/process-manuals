@@ -1,3 +1,7 @@
+---
+no-title-page: true
+---
+
 # BACK SAW CUT LIST: CUT FOR 2 HOMES
 
 ## Platform Frame Cart:
