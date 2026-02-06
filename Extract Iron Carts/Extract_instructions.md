@@ -1,11 +1,19 @@
-`#show heading.where(level: 2): it=>{ set text(size: 18pt, weight: "regular"); align(center, block(above: .5em, below: 1em)[#it])}`{=typst}
+```{=typst}
+#show heading.where(level: 2): it=>{ set text(size: 18pt, weight: "regular"); align(center, block(above: .5em, below: 1em)[#it])}
 
-`#let horizontal-center(path, vspace: 1in) = {
+#let horizontal-center(path, vspace: 1in) = {
   if (vspace != none and vspace != 0) {
     v(vspace)
   };
   align(center)[#rect(stroke: none)[#image(path)]];
-}`{=typst}
+}
+
+#title-page[
+  #text(36pt, weight: "bold")[Extracting Iron Carts]
+  #v(1em)
+  #text(24pt)[Instructions]
+]
+```
 
 # Removing Iron Carts from under a Home
 
