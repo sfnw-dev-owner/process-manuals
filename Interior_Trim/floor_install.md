@@ -1,6 +1,10 @@
----
-no-title-page: true
----
+```{=typst}
+#title-page[
+  #text(36pt, weight: "bold")[Floor and Door]
+  #v(1em)
+  #text(24pt)[Installation]
+]
+```
 
 # Floor Installation
 

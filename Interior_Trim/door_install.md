@@ -14,21 +14,6 @@ no-title-page: true
     - \#10 x 3" Screws (brown)
     - Utility knife
 
-- Interior Trim:
-    - Drill with countersink bit
-    - Screw gun with T25 drive bit
-    - Finish nailer and finish nails
-    - Level
-    - Measuring Tape
-    - Pencil
-
-- Install Vent Cap:
-    - Drill with countersink bit
-    - Screw gun with T25 drive bit
-    - \#10 x 3" Screws (brown)
-    - Measuring Tape
-    - Pencil
-
 `#pagebreak()`{=typst}
 
 # DOOR INSTALLATION

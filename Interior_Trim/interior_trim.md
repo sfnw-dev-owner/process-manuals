@@ -6,6 +6,28 @@
 ]
 ```
 
+# SETUP LIST
+
+- Interior Trim:
+    - Drill with countersink bit
+    - Screw gun with T25 drive bit
+    - Finish nailer and finish nails
+    - Level
+    - Measuring Tape
+    - Pencil
+
+- Install Vent Cap:
+    - Drill with countersink bit
+    - Screw gun with T25 drive bit
+    - Measuring Tape
+    - Pencil
+    - Spirit Level
+    - Support Block installation pattern
+    - Vent Cap Drill pattern
+    - \#10 x 3" Screws (brown)
+
+`#pagebreak()`{=typst}
+
 # INTERIOR TRIM
 
 - 1st Install **[MEDUSA]{.underline}** (foam backer rod) in the spaces between the front and back windows and the window framing.
