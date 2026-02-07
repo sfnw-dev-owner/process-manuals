@@ -1,3 +1,10 @@
+```{=typst}
+#title-page[
+  #text(36pt, weight: "bold")[Side Wall #1]
+  #v(1em)
+  #text(24pt)[Jig Instructions]
+]
+```
 # SIDE WALL - SET UP LIST
 
 - Put caulk by heater
@@ -15,36 +22,39 @@
 - Mallet
 - Hammer
 - Clamps
+- Router
 
 `#pagebreak()`{=typst}
 
 ## Step 1
 
-- Place 2x4s in the designated spots on the perimeter, standing up vertically.
-- Place a 2x4 flat at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig. Placing this board now insures that it will fit into the jig.  
+- Place 84" 2x4s (studs) in the designated spots on the perimeter, with thin face up.
+- Place an 84" 2x4 flat (wide face up) at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig.
+  Placing these boards now insures that it will fit into the jig.  
 - Put in 1 FRAMING nail (the longer ones) in each corner of the frame.  Do not nail into the flat 2x4.
-  - line up to be flush on top and sides
-  - one person holds and the other nails
-  - in the upper middle of the stud to connect the corner
-  - in each of the 4 corners
-- Measure the two long diagonals.  They should be equal; if not, adjust to within 1/8"
+    - line up to be flush on top and sides
+    - one person holds and the other nails
+    - in the upper middle of the stud to connect the corner
+    - in each of the 4 corners
+- Measure the two long diagonals. They should be equal; if not, adjust to within 1/8"
 - Put a second nail directly under each of the first nails.
 
 `#fullpage("images/side_wall_01.png")`{=typst}
 
 ## Step 2
 
-- Place a 2x4 flat at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig.
 - CLAMP the flat and perpendicular boards
-- TEAM LEADER - Pre-drill for 2 long SCREWS into each end of the flat board.  Drive long screws into these holes, and 8 SCREWS along the short side at the bottom to connect perpendicular 2x4 with the flat one. While this goes on, crew place the remaining boards in the jig.
+- TEAM LEADER - Pre-drill for 2 long SCREWS into each end of the flat board, and 8 SCREWS along the short side at the bottom to connect perpendicular 2x4 with the flat one. These 8 holes should be about 3/4" above the bottom edge of the perimeter studs.
+- Drive long screws into all these holes.
+- While this goes on, crew place the remaining studs in the jig (step 3).
 
 `#fullpage("images/side_wall_02.png")`{=typst}
 
 ## Step 3
 
 - Place the inner 2x4 studs
-  - make sure the 2x4s on both sides of the middle stud are good ones, they will be the magic studs
-- Team leader: put pencil marks vertically in the middle of each of the inner studs to designate nail placement
+  - make sure the 2x4s on both sides of the middle stud are fairly straight; they will be the magic studs
+- Team leader: Draw vertical lines on the top and bottom plates at the center of each of the inner studs to designate nail placement
 
 `#fullpage("images/side_wall_03.png")`{=typst}
 
@@ -55,14 +65,13 @@
      --- one person holds the stud so that it is flush while the other nails
 - Check that all studs have two nails (or screws) in each end.
 
-
 `#fullpage("images/side_wall_04.png")`{=typst}
 
 # Step 5
 
 - Place the Tyvek
   - start by stapling it flush with the top
-  - unroll gradually as it gets stapled, not all at once
+  - unroll a few feet at a time as it gets stapled, not all at once
 - Staple as you unroll
   - 3 staples in the corners and a staple every 8 inches.
 - Stretch the Tyvek so that it is tight.
@@ -87,7 +96,8 @@ Put PANEL nails (shorter ones) in the nail gun
 - Place a thin line of EXTERIOR caulk
   - along the outside edge of the tongue and groove part
 
-NOTE: DO **NOT** nail inside the grooves, nail very close but NOT IN, angling the nail gun if necessary to be sure that each nail hits the center of the stud (where the chalk line is.)
+NOTE: DO **NOT** nail inside the grooves, nail about 1/2" from the edge of the groove, angling the nail gun if necessary to be sure that each nail
+hits the center of the stud (where the chalk line is.)
 
 `#fullpage("images/side_wall_06_1.png")`{=typst}
 
@@ -99,7 +109,7 @@ NOTE: DO **NOT** nail inside the grooves, nail very close but NOT IN, angling th
 - Trim all Tyvek to be flush with edges
   - on the sides, trim the Tyvek flush with the framing.
 - Team leader
-  - router the side so that it is flush with stud underneath
+  - router the side of the paneling so that it is flush with stud underneath
 - Smooth out caulk along the panel joints, using a scrap of Tyvek or a paper towel. Do not caulk the nail heads if tilt-up is scheduled for the same day.
 
 `#fullpage("images/side_wall_07_1.png")`{=typst}
