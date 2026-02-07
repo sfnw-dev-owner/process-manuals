@@ -1,3 +1,7 @@
+---
+no-title-page: true
+---
+
 # VENT CAP INSTALLATION
 
 ## Materials:
