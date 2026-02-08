@@ -28,15 +28,15 @@
 
 ## Step 1
 
+- Place 144" top and bottom plates in the jig, being sure that any bow in these boards bends inward, as marked on the jig.
 - Place 84" 2x4s (studs) in the designated spots on the perimeter, with thin face up.
 - Place an 84" 2x4 flat (wide face up) at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig.
-  Placing these boards now insures that it will fit into the jig.  
+  Placing these boards now insures that they will fit into the jig.  
 - Put in 1 FRAMING nail (the longer ones) in each corner of the frame.  Do not nail into the flat 2x4.
     - line up to be flush on top and sides
     - one person holds and the other nails
     - in the upper middle of the stud to connect the corner
     - in each of the 4 corners
-- Measure the two long diagonals. They should be equal; if not, adjust to within 1/8"
 - Put a second nail directly under each of the first nails.
 
 `#fullpage("images/side_wall_01.png")`{=typst}

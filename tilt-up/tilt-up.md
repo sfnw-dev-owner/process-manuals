@@ -26,7 +26,9 @@ Before assembling a Tiny Home, all of the pieces must be complete.  Here are thi
 
 ### Tools
 * mallet
-* Framing nail gun (with regular and galvanized framing nails)
+* Framing nail gun
+* Framing nails
+* Panel nails
 * 2-step ladder
 * clamps (4 total) – yellow clamps work best; small blue ones are not good
 * screw gun with T25 bit

@@ -142,7 +142,9 @@ Clamp it to the double studs and nail it to these studs in two places.
     - apply caulk on the opposite side from the screen, the edge that will lie on the panel. Caulk only the sides and the top, NOT on the bottom flange
     - caulk line should be outside the line of slots in the window flange
 - Place the window into the window opening, taking care to avoid getting caulk on fingers or gloves.
-    - SCREEN at the BOTTOM facing up
+    - latch side down into the opening
+    - Push the window either up or down to contact the framing, so that it is aligned, and then push the other way about 1/2",
+    so that it will be possible to fit foam backer rod all the way around the window later.
 - Put SHORT SCREWS around the window
     - 4 on each side and 3 on top and bottom
 - Team leader: Using a piece of 1x4 trim, draw a pencil line on all four sides of the window, to show Where the trim will go

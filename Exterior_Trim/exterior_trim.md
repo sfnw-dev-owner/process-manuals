@@ -12,35 +12,35 @@ Check to be sure that the paneling has been routed (on the right edge as you fac
 the front or back of the home), so that it does not extend beyond the
 sidewall paneling.
 
+All exterior trim boards are together on a rack at the West end of the factory.  Corner boards are precut to 93¼ˮ.  Window trim pieces for tops and sides
+are also precut; the top trim has a 30° bevel on one long edge.
+
 Trim boards have an outer and an inner side.  The outer side has vertical grooves in the surface.  The inner side is not as attractive, and caulk should always be applied to that inner side.
 
-## Step 1 -- Board \#1
-* Use white or gray 1x4 boards, precut to 93¼ˮ. These are on the whiteboard rack.
-* The cut end of the 1x4 should be at the top. It is better protected from the weather that way.
+## Step 1 -- Corner Board \#1
+* The cut end of the 1x4 (without paint) should be at the top. It is better protected from the weather that way.
 * At each corner, mark upper edge of 1x4 to fit around inner rafter
-  - Line board up flush with end wall and below the double rafters (use alignment block) mark top of the board for a vertical cut
-  - Set board next to the rafter and flush with the bottom of the wall panel, mark at bottom of rafter for a horizontal cut
-  - Mark back of 1x4 to identify which corner it belongs to.
+    - Line board up flush with end wall and below the double rafters (use alignment block) mark top of the board for a vertical cut
+    - Set board next to the rafter and flush with the bottom of the wall panel, mark at bottom of rafter for a horizontal cut
+    - Mark back of 1x4 to identify which corner it belongs to.
 * Draw cutout lines and cut out corners with a jigsaw
 * Put EXTERIOR caulk as shown.
 * Flip board so that the caulk will be against the side wall, and position so that it is flush with the end wall (use alignment block.)
-* Nail (PANEL NAILS)\
-  - 2 nails about 2ˮ from top\
-  - 1 nail every 8ˮ down the middle\
-  - 2 nails about 2ˮ from the bottom
+* Nail (PANEL NAILS)
+    - 2 nails about 2ˮ from top
+    - 1 nail every 8ˮ down the middle
+    - 2 nails about 2ˮ from the bottom
 
 `#fullpage("images/back_corner_1.png")`{=typst}
 
-## Step 2 -- Board \#2
-* Use white or gray 1x4 boards, precut to 93¼ˮ.
-* The cut end of the 1x4 should be at the top. It is better protected from the weather that way.
+## Step 2 -- Corner Board \#2
+* The cut end of the 1x4 (without paint) should be at the top. It is better protected from the weather that way.
 * Put EXTERIOR caulk as shown, and flip board so that caulk will be against the end wall.
 * Line up the bottom of board with the bottom of Board #1.
 * Starting at the top (use alignment block) to line up outside (corner) edge of the Board #2 with the surface of Board #1, nail (PANEL NAILS)
-  - 2 nails about 2ˮ from top
-  - 1 nail every 8ˮ down the middle
-  - 2 nails about 2ˮ from the bottom.
-
+    - 2 nails about 2ˮ from top
+    - 1 nail every 8ˮ down the middle
+    - 2 nails about 2ˮ from the bottom.
 * Repeat for the other three corners of the home.  Note that on two of those corners, the caulking will be a mirror image of that shown.
 
 `#fullpage("images/back_corner_2.png")`{=typst}
@@ -52,9 +52,9 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 * Using precut side pieces, put EXTERIOR caulk as shown.
 * Place side piece snug up against the window. Use a block to align the top of each piece with the top of the window.
 * Nail (PANEL NAILS)
-  - 2 nails 1-½" below top
-  - 1 nail in the middle of the board every 8"
-  - 2 nails 1-½" above the bottom.
+    - 2 nails 1-½" below top
+    - 1 nail in the middle of the board every 8"
+    - 2 nails 1-½" above the bottom.
 
 ## Step 3 -- Top Piece
 
@@ -63,15 +63,15 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 * Put EXTERIOR caulk, as shown, near the beveled edge and at both ends.
 * Position with right edge flush with side trim.  **Do not** allow this top trim to extend past the right-hand side trim.  It will interfere with the trim around an air conditioner, when that is installed.
 * Nail (PANEL NAILS)
-  - 2 nails 1-½" in from each end
-  - 2 nails in the middle of the board.
+    - 2 nails 1-½" in from each end
+    - 2 nails in the middle of the board.
 
 ## Step 4 -- Bottom Piece
 
 * Measure between the 2 side pieces under the window, and cut a piece of 1x4 that length.
 * DO NOT caulk this piece.  Nail (PANEL NAILS) it in place
-  - 2 nails 1-½" in from each end
-  - 2 nails in the middle of the board.
+    - 2 nails 1-½" in from each end
+    - 2 nails in the middle of the board.
 
 `#fullpage("images/rear_window.png")`{=typst}
 
@@ -82,19 +82,19 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 ## Step 1 \-- Top trim
 
 * Using a small piece of 1x4 placed vertically beside the window edge furthest from the door, measure from the edge away from the window to the door trim
-  - Add ½", and cut a piece of top trim (with beveled edge) to this length
-  - Apply EXTERIOR caulk as shown
+    - Add ½", and cut a piece of top trim (with beveled edge) to this length
+    - Apply EXTERIOR caulk as shown
 * Nail (PANEL NAILS)\
-  - 2 nails 1-½" in from each end\
-  - 2 nails in the middle of the board.
+    - 2 nails 1-½" in from each end\
+    - 2 nails in the middle of the board.
 
 ## Step 2 \-- Side trim away from door
 
 - Using a pre-cut side trim piece for side of window away from door
 - Apply EXTERIOR caulk as shown
-- 2 nails 1-½" below top\
-  - 1 nail in the middle of the board every 8"\
-  - 2 nails 1-½" above the bottom.
+- 2 nails 1-½" below top
+    - 1 nail in the middle of the board every 8"
+    - 2 nails 1-½" above the bottom.
 
 ## Step 3 \-- Side trim between window and door
 
@@ -105,8 +105,8 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 
 * Measure between the two side pieces under the window, and cut a piece of 1x4 that length
 * DO NOT CAULK this piece. Nail it in place (PANEL NAILS)
-  - 2 nails 1-½" in from each end\
-  - 2 nails in the middle of the board
+    - 2 nails 1-½" in from each end
+    - 2 nails in the middle of the board
     
 `#fullpage("images/front_window.png")`{=typst}
 
@@ -122,7 +122,7 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 ## Step 2: Z-Flashing
 
 * Install pre-cut piece of metal flashing
-  - short leg down so that flashing rests on top of the\ T1-11 siding at the top of the wall and the short leg extends down over the siding
+    - short leg down so that flashing rests on top of the\ T1-11 siding at the top of the wall and the short leg extends down over the siding
 * Center the flashing between the rafter ends
 * Nail (PANEL NAILS) 3 places: near each end, and in middle
 
@@ -130,16 +130,16 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 
 ## Step 3: T1-11 Triangles
 
-* Install large pre-cut triangular piece of T1-11 siding\
-  - cover long leg of Z-flashing\
-  - bottom of siding a pencil-width above the Z-flashing fold\
-  - if necessary, trim siding piece so that it fits against the structural triangle\
-  - Nail (Panel Nails) every 8" along rafters, bottom of triangle, and along center blocking.
+* Install large pre-cut triangular piece of T1-11 siding
+    - cover long leg of Z-flashing\
+    - bottom of siding a pencil-width above the Z-flashing fold
+    - if necessary, trim siding piece so that it fits against the structural triangle
+    - Nail (Panel Nails) every 8" along rafters, bottom of triangle, and along center blocking.
 
 * Install small pre-cut triangular piece of T1-11 siding\
-  - line up the bottom edges\
-  - make the seam tight\
-  - Nail (Panel Nails) in two places
+    - line up the bottom edges
+    - make the seam tight
+    - Nail (Panel Nails) in two places
 
 * Caulk (EXTERIOR caulk) all exposed nails and seam
 

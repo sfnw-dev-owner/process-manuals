@@ -174,13 +174,16 @@ anchor into the frame, and do not split the edge of the 2nd panel.
 
 ## Step 10
 - Team leader: Bore a hole through the siding where the arrows on the jig indicate, and rout out the door opening (do this now,
-to avoid fouling the router plate with caulk later.)
+  to avoid fouling the router plate with caulk later.)
 - Prepare the window. Remove all the labeling, and fully open the window. Set it screen-side down on the paneling.
-- Apply caulk down the middle of the window flanges on the top and both sides
+- Apply caulk to the window flanges on the top and both sides
   - NOT at the bottom.
+  - caulk line should be outside the line of slots in the window flange
   - caulk on the opposite side from the screen (the surface that will lie on the panel)
 - Place the window in the opening
-  - SCREEN at the BOTTOM facing up
+  - latch side down into the opening
+  - Push the window either up or down to contact the framing, so that it is aligned, and then push the other way about 1/2",
+    so that it will be possible to fit foam backer rod all the way around the window later.
 - Put SHORT SCREWS around the window.
   - 4 on each side and 3 on the top and bottom.
 - Team leader: Using a piece of 1x4 trim, draw a pencil line on all four sides of the window to show where the trim will go.
