@@ -1,3 +1,7 @@
+---
+no-title-page: true
+---
+
 # SETUP LIST
 
 - Door:

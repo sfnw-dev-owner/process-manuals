@@ -29,7 +29,7 @@
 - Tilt each plank up about 30°, and engage the long edge with the flooring already placed.  Then lower the new plank and slide it towards a previous one until the short ends overlap.  Tap the joint with a block and mallet to seat the plank.
 - Trim last length to match limit line in doorway (3/4” towards outside from inside of interior wall), or 1/8” less than the distance to the front wall.
 
-`#fullpage("Images/flooring.png")`{=typst}
+`#fullpage("Images/flooring.pdf")`{=typst}
 
 ## Last Row
 - Measure distance from brown edge of last intermediate row to wall in several places.  If the measurement varies more than ¼”, cut each piece so that there will be ¼” gap between the floor and the wall.  Otherwise, use the minimum width for all three pieces
