@@ -1,5 +1,7 @@
 // Typst template to apply uniform style to all documents. Replaces pandoc's typst template.
 
+#set page("us-letter")
+
 #let title-page(body) = {
   align(center + horizon)[
     #image("/common/SoundFoundationsNW_logo.png")
