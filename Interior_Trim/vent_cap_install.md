@@ -1,22 +1,8 @@
+---
+no-title-page: true
+---
+
 # VENT CAP INSTALLATION
-
-## Materials:
-
--   4x 5¾" 2x4 blocks (cut two 2x4x11½ blocks in half)
--   1x 9½" x 96" interior plywood
--   1x 9½" x 44" interior plywood
--   18x #10 x 3" brown screws
-
-## Tools:
-
--   Drill and countersink bit
--   Screw gun with T25 bit
--   Measuring Tape
--   Spirit Level
--   Support Block installation pattern
--   Vent Cap Drill pattern
-
-`#pagebreak()`{=typst}
 
 1.  Cut two 11½" 2x4 blocks (jenga blocks) in half to yield the 5½"
     support blocks.
