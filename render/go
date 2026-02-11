@@ -44,7 +44,7 @@ fi
 flags+=("--pdf-engine-opt=--creation-timestamp=$(git log -1 --format="%ct" -- "$INPUT")")
 
 RUNNER="$(type -p docker || type -p podman)"
-"$RUNNER" run -it --rm \
+"$RUNNER" run --rm \
        -v "$PWD":/s:z \
        -w "/s/$INPUT_DIR" \
        -e FOOTER \
