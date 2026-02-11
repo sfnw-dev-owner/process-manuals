@@ -1,3 +1,7 @@
+---
+no-title-page: true
+---
+
 # STRUCTURAL TRIANGLE PARTS
 
 `#align(center)[== CUT FOR 6 HOMES (12 triangles)]`{=typst}

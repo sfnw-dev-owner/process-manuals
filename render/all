@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Run this to re-render every .md in this repo to its corresponding .pdf.
+
+set -eu -o pipefail
+
+git ls-files '**/*.md' | \
+    grep -vE '(README.md|/archived/)' | \
+    tr '\012' '\000' | \
+    xargs -0 -L1 -P0 ./render/go

@@ -1,3 +1,7 @@
+---
+no-title-page: true
+---
+
 # Installing a door – checklist (rtfm)
 
 ## Prepare:
