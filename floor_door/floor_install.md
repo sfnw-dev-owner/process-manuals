@@ -1,3 +1,12 @@
+```{=typst}
+#title-page[
+  #text(36pt, weight: "bold")[Floor/Door Installation]
+  #v(1em)
+  #text(24pt)[Floors\
+  Door Conversion -- ADA Threshold\
+  Door Installation]
+]
+```
 # Floor Installation
 
 ## Preparation

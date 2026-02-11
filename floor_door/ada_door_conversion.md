@@ -2,7 +2,7 @@
 no-title-page: true
 ---
 
-Steel Door Conversion
+## Steel Door Conversion
 
 To replace a standard threshold with an ADA-compliant threshold, here
 are the steps:
