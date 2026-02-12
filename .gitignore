@@ -1,0 +1,41 @@
+# Ignore generated PDFs to minimize noise when locally testing.
+
+Cut_Lists/Back Saw Cut List.pdf
+Cut_Lists/Front Saw Cut List.pdf
+Cut_Lists/Installing a door.pdf
+Cut_Lists/Insulation.pdf
+Cut_Lists/Interior Panels.pdf
+Cut_Lists/Structural_Triangle_Parts.pdf
+Exterior_Trim/exterior_trim.pdf
+Extract Iron Carts/Extract_instructions.pdf
+Front_Wall/front_wall_ada.pdf
+Half_Roof/half_roof.pdf
+Interior_Panels/interior_panels.pdf
+Interior_Trim/interior_trim.pdf
+Interior_Trim/vent_cap_install.pdf
+Misc/Steel Door Conversion.pdf
+Outdoor_Steps/Upper_Step.pdf
+Outdoor_Steps/Upper_Step_1.pdf
+Outdoor_Steps/Upper_Step_2.pdf
+Panel Cutting/Panel_Saw_Operation.pdf
+Platform/Platform_sngl_side.pdf
+Rear_Wall/rear_wall.pdf
+Side_Walls/sidewall_1.pdf
+Side_Walls/sidewall_3.pdf
+Structural Triangle/Triangle_screws.pdf
+Structural Triangle/rafter_dimensions.pdf
+Structural Triangle/triangle_01.pdf
+Structural Triangle/triangle_02.pdf
+Structural Triangle/triangle_03.pdf
+Structural Triangle/triangle_04.pdf
+Structural Triangle/triangle_05.pdf
+Structural Triangle/triangle_dims.pdf
+Structural Triangle/triangle_parts.pdf
+floor_door/ada_door_conversion.pdf
+floor_door/door_install.pdf
+floor_door/floor_install.pdf
+post-tilt-up/post-tilt-up.pdf
+render/example-custom-title-page.pdf
+render/example-default-title-page.pdf
+render/example-no-title-page.pdf
+tilt-up/tilt-up.pdf
