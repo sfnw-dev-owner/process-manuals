@@ -1,0 +1,59 @@
+name: Render PDFs
+
+on:
+  push:
+    branches: [ami-workflow-render-pdfs]
+    paths: ['**/*.md']
+  workflow_dispatch: # allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      # -- Install whatever render/all needs here --
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y ...
+
+      - name: Render, bundle, and release PDFs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu -o pipefail
+
+          render/all
+
+          SHORT_SHA="${GITHUB_SHA::8}"
+          TIMESTAMP=$(TZ='America/Los_Angeles' date +'%Y-%m-%dT%H%M%S')
+          TAG="pdfs-${TIMESTAMP}-${SHORT_SHA}"
+          TITLE="PDFs ${TIMESTAMP} Pacific (${SHORT_SHA})"
+
+          # Rendered PDFs: exist on disk but not tracked by git.
+          # This excludes static PDFs checked in to the repo.
+          rendered_pdfs() {
+            comm -z -23 \
+              <(find . -name '*.pdf' -not -path './.git/*' -print0 | sort -z) \
+              <(git ls-files -z -- '**/*.pdf' | sed -z 's|^|./|' | sort -z)
+          }
+
+          rendered_pdfs | xargs -0 zip "${TAG}.zip"
+
+          gh release create "$TAG" \
+            --title "$TITLE" \
+            --target "$GITHUB_SHA" \
+            --latest \
+            --notes "Rendered from commit ${GITHUB_SHA}.
+
+          **Download \`${TAG}.zip\` for everything, or pick individual files below.**" \
+            "${TAG}.zip"
+
+          rendered_pdfs | xargs -0 gh release upload "$TAG"
