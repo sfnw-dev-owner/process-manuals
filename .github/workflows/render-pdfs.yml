@@ -2,7 +2,7 @@ name: Render PDFs
 
 on:
   push:
-    branches: [ami-workflow-render-pdfs]
+    branches: [main]
     paths: ['**/*.md']
   workflow_dispatch: # allow manual trigger
 
