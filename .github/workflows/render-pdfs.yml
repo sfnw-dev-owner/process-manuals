@@ -18,12 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # -- Install whatever render/all needs here --
-      # - name: Install dependencies
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y ...
-
       - name: Render, bundle, and release PDFs
         env:
           GH_TOKEN: ${{ github.token }}
