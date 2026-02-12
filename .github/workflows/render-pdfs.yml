@@ -34,8 +34,8 @@ jobs:
 
           SHORT_SHA="${GITHUB_SHA::8}"
           TIMESTAMP=$(TZ='America/Los_Angeles' date +'%Y-%m-%dT%H%M%S')
-          TAG="pdfs-${TIMESTAMP}-${SHORT_SHA}"
-          TITLE="PDFs ${TIMESTAMP} Pacific (${SHORT_SHA})"
+          TAG="0-pdfs-${TIMESTAMP}-${SHORT_SHA}"
+          TITLE="PDFs ${TIMESTAMP} (${SHORT_SHA})"
 
           # Rendered PDFs: exist on disk but not tracked by git.
           # This excludes static PDFs checked in to the repo.
