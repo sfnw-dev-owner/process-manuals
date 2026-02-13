@@ -56,8 +56,9 @@ leaving a gap with the interior flooring.
     - make sure door molding is tight against the siding
     - install 3" (brown) screws very close to the doorstop at the height of the center of each shim, starting at the top
 - Screw door frame to the opening on doorknob side
-    - top 1st
+    - top 1^st^
     - bottom 2^nd^
+    - screws must go through shims, so that the door frame is not distorted
  
 `#fullpage("Images/door_install_2.png")`{=typst}
 
