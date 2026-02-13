@@ -1,6 +1,7 @@
 // Typst template to apply uniform style to all documents. Replaces pandoc's typst template.
 
-#set page("us-letter")
+#set page("us-letter", margin: (x: 0.5in, y: 0.5in))
+#set text(font: "Carlito", size: 14pt)
 
 #let title-page(body) = {
   align(center + horizon)[
