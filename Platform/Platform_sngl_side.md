@@ -148,7 +148,11 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 
 # Step 12
 
-- The next day, if necessary, router the edges of the platform (to let the adhesive dry first).
+- Router the edges of the platform. Ideally this would be done the next day, to let the liquid nails dry, but if tilt-up will be happening same-day, do it now.
+  - Wipe off any liquid nails that's been squeezed out around the platform's perimeter.
+  - Router the edges.
+  - Clean the router's blade & table using an exacto knife and paper towel / rag. Try to leave all of the knife, router blade, and router table free of adhesive.
+
 - Draw a line 3½ inches from the edge on all sides
     - use the marking jig; it hangs from the back saw table. Using a felt-tip pen, hold it against the inside of the jig,
     and slide the jig along the sides of the platform.

@@ -53,6 +53,3 @@ RUNNER="$(type -p docker || type -p podman)"
        pandoc/typst:3.8.3 \
        -c \
        "${flags[*]}"
-
-
-
