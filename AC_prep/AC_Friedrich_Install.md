@@ -7,9 +7,11 @@
   #text(24pt)[6000 BTU Window A/C]
 ]
 ```
-#Air Conditioner (AC) Prep and Install
 
-##Tools needed
+# Air Conditioner (AC) Prep and Install
+
+## Tools needed
+
 - 8mm wrench (or 5/16") and socket (socket set)
 - Milwaukee multi-screwdriver
 - scissors to cut strapping
@@ -44,13 +46,17 @@
     -  package of screws
     - (not battery bag)
 
--   Remove the Phillips screw near the front, lower left side (see photo), set aside
+![](images/image2.jpeg)
+
+-   Remove the Phillips screw near the front, lower left side, set aside
 
 -   Open the front, white cover by pulling on the top sides. Lift and remove the cover.
 
 -   Remove the air filter and set aside with the white cover
 
--   Remove the 2 Phillips screws that hold the black front cover.(see photo) The screws are about 2" from the top on either side, set screws aside
+![](images/image1.jpeg)
+
+-   Remove the 2 Phillips screws that hold the black front cover. The screws are about 2" from the top on either side (right side shown), set screws aside
 
 -   Pull to either side the black plastic cover at about 4" from the bottom. This will release the clips holding in the lower part of the cover.
 
@@ -71,12 +77,19 @@
 -   Place the inner AC part back in the bottom packaging. Replace box top and set unit aside to be installed just before the home is ready
     to leave the Hope Factory.
 
+![](images/image3.jpeg)
+
 -   Turn the outer part of the AC upside down. Install the R and L triangle brackets to the bottom of the unit using the four 5/16" (or 8mm)
     bolts and nuts. Insert the 5/16" bolts from inside the cover so the nut is installed on the bracket side. The front hole of the
     bracket should line up with the second hole in the cover closest to the front (see photo). The back hole in the bracket aligns with
     another hole in the AC cover. If installed with the nut inside the cover, the inner AC unit won't slide in later. Tighten the nuts securely.
 
--   Using a 3/16" bit and drill motor, drill two holes in the outer part of the AC on the top and bottom (see photos).
+![](images/image4.jpeg){ width=75% }
+
+-   Using a 3/16" bit and drill motor, drill two holes in the outer part of the AC cover. Drill through existing dimples on the top of the cover.
+    At the bottom, drill both holes through the bottom support rail.
+
+![](images/image5.jpeg){ width=75% }
 
 ## Installing the AC Outer Unit
 
@@ -85,6 +98,7 @@
   Tools needed - impact driver with ¼" hex driver bit (station 1) and Torx bit
 
   Supplies
+
 - 6 Simpson screws (station 1)
 - 1-5/8" tan Torx screws
 
@@ -97,16 +111,18 @@ Verify that the interior plywood and exterior siding are flush with the 2x4 fram
 - Install 2 Simpson screws in the upper holes of the support brackets; one on each side. Install 4 Simpson screws in each bracket on the
   lower holes, 2 on each side.
 
-- Install two 1-5/8" tan screws through the bottom of the AC outer shell into the 2 by 4 framing. (see photo)
+![](images/image6.jpeg)
 
-- Shim and install two 1-5/8" tan screws through the top of the AC outer shell into the 2 by 4 framing (see photo). Make sure the outer
-  top part of the AC isn't bent by the screws
+- Install two 1-5/8" tan screws through the bottom of the AC outer shell into the 2x4 framing.
+
+- Insert shims between the top of the box and the 2x4 framing, and install two 1-5/8" tan screws through the top of the AC outer shell
+  into the framing. Make sure the outer top part of the AC isn't bent by the screws.  Otherwise, the black front cover will nto install correctly.
 
 - Install larger foam weather stripping that comes with the AC along the bottom of the box.
 
 This completes the installation of the AC outer unit. The exterior and interior trim can then be installed.
 
-##To install the AC inner unit
+## To install the AC inner unit
 
 Tools -- Phillips screwdriver
 
@@ -114,9 +130,9 @@ Tools -- Phillips screwdriver
 
 - Open the white front cover, lift, remove and set aside along with the air filter.
 
-- Remove the lower left side screw (see photo).
+- Remove the lower left side screw (see photo on page 2).
 
-- Remove the two screws holding the black plastic cover. (see photo)
+- Remove the two screws holding the black plastic cover. (see photo on page 3)
 
 - Insert and slide the AC inner unit into the preinstalled outer cover being careful of the attached wiring to the black cover. The inner
   AC unit should slide fully into the cover so the holes on the lower left side line up. Install the single screw on the lower left
