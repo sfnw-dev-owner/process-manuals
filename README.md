@@ -1,28 +1,12 @@
 ## Tiny Home Manuals
 
-- [Tiny Home Manuals](#tiny-home-manuals)
-  - [Background](#background)
-  - [Authors](#authors)
-- [Setup \& Installation](#setup--installation)
-- [Formatting a manual](#formatting-a-manual)
-  - [Custom template file](#custom-template-file)
-  - [Bullet lists](#bullet-lists)
-  - [Aligning images in Markdown](#aligning-images-in-markdown)
-    - [Top of document](#top-of-document)
-    - [Centering an individual image](#centering-an-individual-image)
-    - [Resizing images to get more than one on a single page](#resizing-images-to-get-more-than-one-on-a-single-page)
-- [Rendering a Manual](#rendering-a-manual)
-  - [Generating the docx file](#generating-the-docx-file)
-  - [Add the rendered docx to source control](#add-the-rendered-docx-to-source-control)
-- [Editing 3D model and images used in Tilt Up \& Post Tilt Up](#editing-3d-model-and-images-used-in-tilt-up--post-tilt-up)
-
 ### Background
 
 This is the home of all manuals used in the Sound Foundations Tiny Home build process. 
 
 Each manual has its own separate folder. Text is stored in Markdown, and images are in a subfolder, so that they can be edited independently. 
 
-Rendering is done via an engine called Quarto, which generates a docx file that combines the text and images into a printable document. 
+Rendering is done through a pipeline of Pandoc and Typst, which generates a PDF file that combines the text and images into a printable document. 
 
 ### Authors
 
@@ -49,11 +33,11 @@ You will need:
 
 ## Formatting a manual
 
-Our process begins with a text file containing the desired content, and Markdown commands to indicate formatting.  This source file is processed by a pipeline of two stages: first by Pandoc, which parses the file and creates an internal tree-structured representation of the document, and then by Typst, a typesetting program that renders the document as a PDF file.  This pipeline is captured as a virtual machine, and is invoked by the script render/go {source_file}.  When this script is run, it either generates a PDF file with the same base name as the source_file, or else it coughs up some error report, saying why it could not.
+Our process begins with a text file containing the desired content, and Markdown commands to indicate formatting.  This source file is processed by a pipeline of two stages: first by Pandoc, which transform the markdown into Typst input, and then by Typst, a typesetting program that renders its input as a PDF file.  This pipeline is captured as a virtual machine, and is invoked as `render/go {source_file}`.  When this script is run, it either generates a PDF file with the same base name as the source_file, or else it coughs up some error report, saying why it could not.
 
 ### Common template file
 
-Using a template creates a consistent look and feel for all of the manuals generated. The default settings for our documents are kept in render/pandoc-defaults.yaml and render/typst-header.typ 
+Using a template creates a consistent look and feel for all of the manuals generated. The default settings for our documents are kept in `render/pandoc-defaults.yaml` and `render/typst-header.typ`. 
 
 The template has instances of:
 * Heading 1
@@ -73,7 +57,7 @@ Images that aren't geared to letter sized paper might require adjusting. These a
 
 #### Top of document 
 * Treat all images in the document as "figures" 
-* Align all figures in center for docx files
+* Align all figures in center for PDF files
   
 
 #### Centering an individual image
@@ -97,7 +81,7 @@ As above, we use a **78%** scale to get more than one image on a single page, wh
 ![](images/image_39.png){width="78%" height="78%"}
 ```
 
-This applies with the current Letter page size with 1" margins. 
+This applies with the current Letter page size with 0.5" margins. 
 
 ## Rendering a Manual
 
@@ -107,15 +91,19 @@ Contents are taken from the `<manual_markdown_file.md>`, combined with any image
 
 To render the document:
 * Open a command-line shell window
-* Connect to the directory where your markdown file is stored
-* Type the command ../render/go <manual_markdown_file.md>
+* `cd` to the directory where your markdown file is stored
+* Type the command `../render/go <manual_markdown_file.md>`
 * This generates a new file `<manual_markdown_file.pdf>` in the same folder as the `<manual_markdown_file.md>` file, with all of the correct formatting (based on styles in the template files), and the text and images referenced in the markdown. 
 
 
 ### Add the source file to source control
 
-After generating a PDF file, check it throughly for formatting errors, correct them in the source (.md) file, and repeat the rendering, until you are satisfied.
+After generating a PDF file, check it throughly for formatting errors, correct them in the source (.md) file, and repeat the rendering, until you are satisfied.  Then, it would be good practice to delete the PDF file, before you even commit changed files locally.
+
 Commit the source material only (the .md file and any images or other included files).  Do NOT commit the PDF generated above.  An automatic action will generate the PDF and put it in the right place when you generate a GIT pull request and it is accepted and merged into the main branch. These PDF files are kept on GitHub, but outside the version controlled area, to avoid the overhead of tracking the differences in PDFs.  The URL is (https://github.com/sfnw-dev-owner/process-manuals/releases/latest).
+
+If you create a brand-new .md file, it is good practice to add the corresponding .pdf filename to .gitignore. This will reduce the chance that
+you inadvertently add a PDF to a *git commit*, polluting the source tree with a derived file.
 
 ## Editing 3D model and images used in Tilt Up & Post Tilt Up 
 All of the 3D images and diagrams in the manuals are created using LayOut, based on this [Tiny Home Model](https://web.connect.trimble.com/projects/H3xXgzdyUMc/viewer/3d/?modelId=GoTtRh_ju8U&=&origin=app.connect.trimble.com&stoken=GOGUIZCqsLxEMBMi8d1WT_BkEB3nBpZNHqCMOSf_CtXKWa8dqnla6RG2KN0q6lWB) built in SketchUp. 
