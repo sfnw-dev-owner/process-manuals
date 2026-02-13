@@ -22,13 +22,13 @@
 -   Cut strapping on the AC box. Pull up on the top of the box leaving the AC sitting on the box bottom
 
 -   Check all corners, control panel, etc. for shipping damage. If damaged, reinstall box top, tape shut and leave a note on blue tape
-    of the damage. The AC will be returned to Lowes for replacement.
+    of the damage. The AC will be returned to Lowe's for replacement.
 
 -   If the AC unit is in good condition, lift the unit and place on a white rolling cart.
 
 -   Remove shipping tapes from the AC
 
--   Plug in the AC and make sure it is operating. If not operating, put it back into the box for return/replacement from Lowes, with a blue tape note
+-   Plug in the AC and make sure it is operating. If not operating, put it back into the box for return/replacement from Lowe's, with a blue tape note
 
 -   Remove all the installation pieces from the box.
     Not needed:
