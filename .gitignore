@@ -1,10 +1,11 @@
 # Ignore generated PDFs to minimize noise when locally testing.
 
+AC_prep/AC_Friedrich_Install.pdf
 Cut_Lists/Back_Saw_Cut_List.pdf
 Cut_Lists/Front_Saw_Cut_List.pdf
 Cut_Lists/Installing_a_door.pdf
 Cut_Lists/Insulation.pdf
-Cut_Lists/Interior_Panels.pdf
+Cut_Lists/Interior_Panels_Cut_List.pdf
 Cut_Lists/Structural_Triangle_Parts.pdf
 Exterior_Trim/exterior_trim.pdf
 Extract_Iron_Carts/Extract_instructions.pdf
