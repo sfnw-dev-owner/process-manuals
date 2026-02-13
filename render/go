@@ -27,6 +27,10 @@ INPUT_FILE="$(basename "$INPUT")"
 INPUT_DIR="$(basename "$(dirname "$INPUT")")"
 TITLE="$(capitalize "$INPUT_DIR") \\ $(capitalize "$INPUT_FILE")"
 REVISION_DATE="$(git log -1 --format="%cd" --date=format:"%Y-%m-%d %H:%M:%S" -- "${INPUT}")"
+CREATION_TIMESTAMP="$(git log -1 --format="%ct" -- "$INPUT")"
+# Handle new .md files that have no git log yet.
+REVISION_DATE="${REVISION_DATE:-0000-00-00 00:00:00}"
+CREATION_TIMESTAMP="${CREATION_TIMESTAMP:-0}"
 
 OUTPUT_FILE="${INPUT_FILE/%.md/.pdf}"
 export FOOTER="Revised $REVISION_DATE"
@@ -41,7 +45,7 @@ if ! grep -qF '#title-page[' "$INPUT"; then
     flags+=(-V "title:\"$TITLE\"")
 fi
 # Make re-runs idempotent; typst embeds the "current" time into the .pdf, so set that "current" time to the last modification time of the input file.
-flags+=("--pdf-engine-opt=--creation-timestamp=$(git log -1 --format="%ct" -- "$INPUT")")
+flags+=("--pdf-engine-opt=--creation-timestamp=$CREATION_TIMESTAMP")
 
 RUNNER="$(type -p docker || type -p podman)"
 "$RUNNER" run --rm \
