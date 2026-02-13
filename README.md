@@ -108,14 +108,14 @@ Contents are taken from the `<manual_markdown_file.md>`, combined with any image
 To render the document:
 * Open a command-line shell window
 * Connect to the directory where your markdown file is stored
-* Type the command `../render/go <manual_markdown_file.md>
+* Type the command ../render/go <manual_markdown_file.md>
 * This generates a new file `<manual_markdown_file.pdf>` in the same folder as the `<manual_markdown_file.md>` file, with all of the correct formatting (based on styles in the template files), and the text and images referenced in the markdown. 
 
 
 ### Add the source file to source control
 
 After generating a PDF file, check it throughly for formatting errors, correct them in the source (.md) file, and repeat the rendering, until you are satisfied.
-Commit the source material only (the .md file and any images or other included files).  Do NOT commit the PDF generated above.  An automatic action will generate the PDF and put it in the right place when you generate a GIT pull request and it is accepted and merged into the main branch. 
+Commit the source material only (the .md file and any images or other included files).  Do NOT commit the PDF generated above.  An automatic action will generate the PDF and put it in the right place when you generate a GIT pull request and it is accepted and merged into the main branch. These PDF files are kept on GitHub, but outside the version controlled area, to avoid the overhead of tracking the differences in PDFs.  The URL is (https://github.com/sfnw-dev-owner/process-manuals/releases/latest).
 
 ## Editing 3D model and images used in Tilt Up & Post Tilt Up 
 All of the 3D images and diagrams in the manuals are created using LayOut, based on this [Tiny Home Model](https://web.connect.trimble.com/projects/H3xXgzdyUMc/viewer/3d/?modelId=GoTtRh_ju8U&=&origin=app.connect.trimble.com&stoken=GOGUIZCqsLxEMBMi8d1WT_BkEB3nBpZNHqCMOSf_CtXKWa8dqnla6RG2KN0q6lWB) built in SketchUp. 
