@@ -4,6 +4,13 @@
   #v(1em)
   #text(24pt)[Instructions]
 ]
+
+#let horizontal-center(path, vspace: 1in) = {
+  if (vspace != none and vspace != 0) {
+    v(vspace)
+  };
+  align(center)[#rect(stroke: none)[#image(path)]];
+}
 ```
 
 # CORNER TRIM INSTALLATION
@@ -16,6 +23,8 @@ All exterior trim boards are together on a rack at the West end of the factory. 
 are also precut; the top trim has a 30° bevel on one long edge.
 
 Trim boards have an outer and an inner side.  The outer side has vertical grooves in the surface.  The inner side is not as attractive, and caulk should always be applied to that inner side.
+
+`#pagebreak()`{=typst}
 
 ## Step 1 -- Corner Board \#1
 * The cut end of the 1x4 (without paint) should be at the top. It is better protected from the weather that way.
@@ -31,7 +40,8 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 1 nail every 8ˮ down the middle
     - 2 nails about 2ˮ from the bottom
 
-`#fullpage("images/back_corner_1.png")`{=typst}
+`#horizontal-center("images/back_corner_1.pdf"); #pagebreak()`{=typst}
+
 
 ## Step 2 -- Corner Board \#2
 * The cut end of the 1x4 (without paint) should be at the top. It is better protected from the weather that way.
@@ -43,7 +53,9 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails about 2ˮ from the bottom.
 * Repeat for the other three corners of the home.  Note that on two of those corners, the caulking will be a mirror image of that shown.
 
-`#fullpage("images/back_corner_2.png")`{=typst}
+`#horizontal-center("images/back_corner_2.pdf"); #pagebreak()`{=typst}
+
+
 
 # REAR WINDOW TRIM
 
@@ -73,7 +85,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails 1-½" in from each end
     - 2 nails in the middle of the board.
 
-`#fullpage("images/rear_window.png")`{=typst}
+`#fullpage("images/rear_window.pdf")`{=typst}
 
 # FRONT WINDOW TRIM
 
@@ -108,7 +120,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails 1-½" in from each end
     - 2 nails in the middle of the board
     
-`#fullpage("images/front_window.png")`{=typst}
+`#fullpage("images/front_window.pdf")`{=typst}
 
 # EXTERIOR TRIANGLES - FRONT & BACK
 
@@ -126,7 +138,7 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 * Center the flashing between the rafter ends
 * Nail (PANEL NAILS) 3 places: near each end, and in middle
 
-`#fullpage("images/triangles_01.png")`{=typst}
+`#fullpage("images/triangles_01.pdf")`{=typst}
 
 ## Step 3: T1-11 Triangles
 
@@ -146,8 +158,8 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 ## Step 4: Soffits
 
 * Install precut soffit boards under rafters at each end of building.
-* Mark location of cross blocks between rafters
-* Position soffit board with angle-cut end tight against ridge beam and long edge tight against T1-11 siding. Trim as necessary to fit, so that soffit does not protrude past outer surface of outside rafter.  Otherwise, the fascia boards will not fit against the rafters when the roof goes on.
-* Nail (Panel Nails) 3 places into outside rafter, and one nail into each cross block
+  * Mark location of cross blocks between rafters
+  * Position soffit board with angle-cut end tight against ridge beam and long edge tight against T1-11 siding. Trim as necessary to fit, so that soffit does not protrude past outer surface of outside rafter.  Otherwise, the fascia boards will not fit against the rafters when the roof goes on.
+  * Nail (Panel Nails) 3 places into outside rafter, and one nail into each cross block
 
-`#fullpage("images/triangles_02.png")`{=typst}
+`#fullpage("images/triangles_02.pdf")`{=typst}
