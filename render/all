@@ -4,6 +4,10 @@
 
 set -eu -o pipefail
 
+# Explicitly pull the container to avoid having dozens of parallel
+# ./go processes fighting with each other to all pull the same image.
+docker pull ghcr.io/pandoc/typst:3.8.3 # Name must match what ./go uses.
+
 git ls-files '**/*.md' | \
     grep -vE '(README.md|/archived/)' | \
     tr '\012' '\000' | \
