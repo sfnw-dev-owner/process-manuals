@@ -3,11 +3,23 @@ name: Render PDFs
 on:
   push:
     branches: [main]
-    paths: ['**/*.md']
-  workflow_dispatch: # allow manual trigger
+    paths: &paths
+      - '**/*.md'
+      - 'render/go'
+      - 'render/all'
+      - 'render/pandoc-defaults.yaml'
+      - 'render/typst-header.typ'
+      - '.github/workflows/render-pdfs.yml'
+  pull_request:
+    paths: *paths
+  workflow_dispatch: # allow manual trigger.
 
 permissions:
   contents: write
+  pull-requests: write
+
+env:
+  RETENTION_DAYS: 7
 
 jobs:
   render:
@@ -18,28 +30,48 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Render, bundle, and release PDFs
+      - name: Render PDFs
+        run: |
+          set -eu -o pipefail
+          render/all
+          comm -23 \
+            <(find . -name '*.pdf' -not -path './.git/*' -not -path './_rendered/*' | sort) \
+            <(git ls-files -- '**/*.pdf' | sed 's|^|./|' | sort) \
+            > rendered-pdfs.txt
+          # Stage rendered PDFs in a dedicated directory so that actions/upload-artifact below can pick them up (can't give it a file list in a file, sadly).
+          mkdir -p _rendered
+          xargs -I{} cp --parents {} _rendered/ < rendered-pdfs.txt
+
+      - name: Upload artifacts (PR)
+        id: upload
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-pdfs
+          path: _rendered/
+          retention-days: ${{ env.RETENTION_DAYS }}
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body "📄 **Rendered PDFs available for the next ${{ env.RETENTION_DAYS }}d**: [Download artifacts](${{ steps.upload.outputs.artifact-url }})"
+
+      - name: Create release (main)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -eu -o pipefail
-
-          render/all
 
           SHORT_SHA="${GITHUB_SHA::8}"
           TIMESTAMP=$(TZ='America/Los_Angeles' date +'%Y-%m-%dT%H%M%S')
           TAG="0-pdfs-${TIMESTAMP}-${SHORT_SHA}"
           TITLE="PDFs ${TIMESTAMP} (${SHORT_SHA})"
 
-          # Rendered PDFs: exist on disk but not tracked by git.
-          # This excludes static PDFs checked in to the repo.
-          rendered_pdfs() {
-            comm -z -23 \
-              <(find . -name '*.pdf' -not -path './.git/*' -print0 | sort -z) \
-              <(git ls-files -z -- '**/*.pdf' | sed -z 's|^|./|' | sort -z)
-          }
-
-          rendered_pdfs | xargs -0 zip "${TAG}.zip"
+          xargs -d'\n' zip "${TAG}.zip" < rendered-pdfs.txt
 
           gh release create "$TAG" \
             --title "$TITLE" \
@@ -50,4 +82,4 @@ jobs:
           **Download \`${TAG}.zip\` for everything, or pick individual files below.**" \
             "${TAG}.zip"
 
-          rendered_pdfs | xargs -0 gh release upload "$TAG"
+          xargs -d'\n' gh release upload "$TAG" < rendered-pdfs.txt
