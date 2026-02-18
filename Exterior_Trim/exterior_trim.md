@@ -4,6 +4,13 @@
   #v(1em)
   #text(24pt)[Instructions]
 ]
+
+#let horizontal-center(path, vspace: 1in) = {
+  if (vspace != none and vspace != 0) {
+    v(vspace)
+  };
+  align(center)[#rect(stroke: none)[#image(path)]];
+}
 ```
 
 # CORNER TRIM INSTALLATION
