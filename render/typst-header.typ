@@ -33,8 +33,17 @@
 
 #set table(stroke: 0.5pt, inset: (x: 6pt, y: 4pt))
 
+// Display image as a separate page
 // See ../Front_Wall/front_wall_ada.md for example usage.
 #let fullpage(path) = block(height: 100%, width: 100%)[#align(center + horizon)[#image(path)]]
+
+// Display image centered horizontally on the page, maybe with some vertical separation from stuff above
+#let horizontal-center(path, vspace: 1in) = {
+  if (vspace != none and vspace != 0) {
+    v(vspace)
+  };
+  align(center)[#rect(stroke: none)[#image(path)]];
+}
 
 $header-includes$
 
