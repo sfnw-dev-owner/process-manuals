@@ -5,6 +5,7 @@
   #text(24pt)[Jig Instructions]
 ]
 ```
+
 # INTERIOR PANELS
 
 ## Tools and supplies
@@ -61,13 +62,16 @@ the brown screw into the vent block.
     - drill ½" to ¾" from the edge, slant drill slightly to the outside edge
 1. Pre-set **SHORT** screws
 1. Install B panel first
-    - at the back of side wall, on the floor, with factory edge on the interior stud line
+    - at the back of side wall, on the floor, with factory edge on the interior "magic" stud line
+    - drive in screws at the "magic" stud first, then at the back corner.
     - at each interior stud, pre-drill and install a short screw 3/4" below the panel edge, to identify the stud locations as well as to hold the panel flat against the framing.
 1. Install A panel
-    - at the back of side wall, on top of B, with factory edge at interior stud line
-    - make certain that the edges of A and B at the interior stud line are lined up exactly
+    - at the back of side wall, on top of B, with factory edge at interior "magic" stud line
+    - make certain that the edges of A and B at the interior stud line are lined up exactly, and drive preset screws in, first at the "magic" stud, and then at the rear of the home.
+    - pre-drill and install one screw at the bottom of the panel above the matching screw in the B panel below.  Be certain that the seam between the A and B panels is flat.  If not, you may need to loosen screws at one end of the panel, and reset the A panel so that it matches the B panel.
 1. Install C panel
     - line up snug against A and B
+    - drive in two screws at the top and two at the bottom along the seam first.  Then drive in screws at the front corner, and drive in the rest of the screws along the seam.
 
     REPEAT Steps 3, 4, and 5 on other side wall
 
@@ -76,7 +80,7 @@ the brown screw into the vent block.
     - For Panel B, use the installed screw and a mark on the floor, for a total of 4 screws per stud.
     - For panel A, use mark on top plate and installed screw on panel B as a guide, for 5 screws total per stud.
     - There is a separate long (84") Screw Pattern Board for Panel C.
-    - Pre-drill and screw in **SHORT** screws
+    - Pre-drill and screw in **SHORT** screws.  If these screws cannot be made to sink into the framing behind the panel, you may use a brown 3" screw.
 
 `#fullpage("images/wall_panels_01.png")`{=typst}
 
