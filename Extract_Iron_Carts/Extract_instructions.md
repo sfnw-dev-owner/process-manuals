@@ -36,7 +36,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Make sure that the jack handle is rotated clockwise, to close the hydraulic valve and allow the jack to raise the home.  Repeatedly operate the handle to raise the rear of the home just far enough to make it possible for helpers to slide the 4x4 stands under the home.
 - Position each stand so that the 4x4 post is just inside the siding; this will allow the platform frame to rest on the posts as the jack is lowered.
 
-`#horizontal-center("images/02_Rear Raised.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("images/02_Rear_Raised.pdf"); #pagebreak()`{=typst}
 
 ## Lower rear of home onto stands
 
@@ -45,7 +45,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Once the stands are in position, have the helpers move away from the home, and then cautiously rotate the jack handle counterclockwise to lower the home.  This is easier to control if you grip the jack handle where the foam rubber liner covers the handle.
 - When the home is resting solidly on the two posts, call out to the front, saying "Back is on the posts".
 
-`#v(72pt); #horizontal-center("images/03_Rear Dropped onto Posts.pdf"); #pagebreak()`{=typst}
+`#v(72pt); #horizontal-center("images/03_Rear_Dropped_onto_Posts.pdf"); #pagebreak()`{=typst}
 
 ## Raise the front
 
@@ -55,9 +55,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Have two helpers hook the ends of the extraction straps to the front of each iron cart, one hook on either side of the skid flanges, and pull the cart straight out from under the home. If the cart path is not straight, the rear flanges will bind up on the skid, and make it very difficult to pull the cart out without pulling the home off the rear stands.
 - The carts can then be taken to the materials area for reloading.
 
-`#horizontal-center("images/04_Front Raised.pdf"); #pagebreak()`{=typst}
-
-- Verify the position of the front triple blocks, making sure that they are centered side-to-side under the skids, and about 18" from the end of each skid.  This will leave room for an auto dolly to be placed between the end of the skid and the triple block in the next step.
+`#horizontal-center("images/04_Front_Raised.pdf"); #pagebreak()`{=typst}
 
 - Verify the position of the front triple blocks, making sure that they are centered side-to-side under the skids, and about 18" from the end of each skid.  This will leave room for an auto dolly to be placed between the end of the skid and the triple block in the next step.
 
