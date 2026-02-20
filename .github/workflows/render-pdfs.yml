@@ -29,6 +29,8 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed to have the runner see correct values for "last commit timestamp" in render/go.
 
       - name: Render PDFs
         run: |
