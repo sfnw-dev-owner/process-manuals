@@ -30,9 +30,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Check the frame for square: measure the diagonals; they should be the same. Adjust as necessary.
 - Put 2 more nails (total of 3) in a vertical line at each of the 4 corners.
 
-`#pagebreak()`{=typst}
-
-`#fullpage("images/platform_sngl_01.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_01.pdf")`{=typst}
 
 # Step 2
 - Put a second 2x6 inside the ones on each short end
@@ -41,14 +39,14 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Team leader
     - using the triangle, mark a line on the outside of the long 2x6s at the middle of the ends of each joist to show where the nails go.
 
-`#fullpage("images/platform_sngl_02.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_02.pdf")`{=typst}
 
 # Step 3
 - Put in all the inner 2x6 joists
 - Put 3 nails in a vertical line on each end of each joist
     - make sure joists are flush with side rail before nailing
 
-`#fullpage("images/platform_sngl_03.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_03.pdf")`{=typst}
 
 # Step 4
 
@@ -66,7 +64,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Measure the diagonals of the frame, and make sure that they are the same, so that the frame is square.
     - After any adjustments, **make sure** the frame is tight against the front jig crossbar.
 
-`#fullpage("images/platform_sngl_04.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_04.pdf")`{=typst}
 
 # Step 5
 
@@ -76,14 +74,14 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - alternate inside of the skid and outside of the skid all the way to the rear
     - make sure to make a mark on the inside of the double joist at the rear.
 
-`#fullpage("images/platform_sngl_05.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_05.pdf")`{=typst}
 
 # Step 6
 - At each X, screw in a metal bracket
     - use 6 small hexagonal screws for each metal bracket
     - 3 on the bottom 3 on the top, attaching the frame to the skids
 
-`#fullpage("images/platform_sngl_06.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_06.pdf")`{=typst}
 
 # Step 7
 
@@ -92,7 +90,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - DO NOT NAIL
     - In the front and back bays, place the "SAVE END" blocks
 
-`#fullpage("images/platform_sngl_07.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_07.pdf")`{=typst}
 
 # Step 8
 
@@ -107,7 +105,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - Start with tip of spray can at the middle, and pull towards you.
     - DO NOT SET THE SPRAY CANS ON WORK STATIONS
 
-`#fullpage("images/platform_sngl_08.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_08.pdf")`{=typst}
 
 # Step 9
 - Under the 1^st^ plywood panel ONLY
@@ -122,7 +120,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - walk backwards while nailing 8 inches apart.
 - Nail along all chalk lines in a pattern going diagonally towards the opposite corner from where you started
 
-`#fullpage("images/platform_sngl_09.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_09.pdf")`{=typst}
 
 # Step 10
 
@@ -133,7 +131,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - along the seam, nail about every 8 inches, slightly angled in towards the junction line
 - Nail along edges and chalk lines
 
-`#fullpage("images/platform_sngl_10.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_10.pdf")`{=typst}
 
 # Step 11
 
@@ -144,7 +142,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - along the seam, nail about every 8 inches, slightly angled in towards the junction line
 - Nail along edges and chalk lines
 
-`#fullpage("images/platform_sngl_11.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_11.pdf")`{=typst}
 
 # Step 12
 
@@ -157,4 +155,4 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - use the marking jig; it hangs from the back saw table. Using a felt-tip pen, hold it against the inside of the jig,
     and slide the jig along the sides of the platform.
 
-`#fullpage("images/platform_sngl_12.png")`{=typst}
+`#pagebreak(); #fullpage("images/platform_12.pdf")`{=typst}
