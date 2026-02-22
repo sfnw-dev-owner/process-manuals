@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Show the revision date for an MD file
+
+if [[ "$#" != 1 ]]; then
+    echo "Usage: $0 <path/to/file>.md" >&2
+    echo "Example: $0 'Cut_Lists/Interior Panels.md'" >&2
+    exit 1
+fi
+
+INPUT="$(realpath "$1")"
+
+cd "$(dirname "$0")/.."
+
+export TZ="America/Los_Angeles"
+
+function capitalize() {
+    local orig="$1"
+    local ret="${orig/.md/}"
+    read -ra words <<< "${ret//_/ }"
+    echo "${words[*]^}"
+}
+
+INPUT_FILE="$(basename "$INPUT")"
+REVISION_DATE="$(git log -1 --format="%cd" --date=format:"%Y-%m-%d %H:%M:%S" -- "${INPUT}")"
+# Handle new .md files that have no git log yet.
+REVISION_DATE="${REVISION_DATE:-0000-00-00 00:00:00}"
+
+echo -e "$REVISION_DATE\t$INPUT_FILE"

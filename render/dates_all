@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Produce a list of revision dates for all MD documents
+
+git ls-files '**/*.md' | \
+    grep -vE '(README.md|/archived/)' | \
+    tr '\012' '\000' | \
+    xargs -0 -L1 -P0 ./render/date_show
