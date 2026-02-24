@@ -50,6 +50,7 @@ the 2x6 boards that form the short ends of the frame.
   - using the triangle, mark a line on the outside of the long 2x6s
     at the middle of the ends of each joist to indicate where the nails
     go.
+
 `#pagebreak(); #fullpage("images/platform_v2_02.pdf")`{=typst}
 
 # Step 3
@@ -57,6 +58,7 @@ the 2x6 boards that form the short ends of the frame.
 - Put 3 nails in a vertical line on both ends of each joist
   - make sure joists are flush before nailing; one person holds the joist in position while the second person nails.
    --- include 3 nails in the doubled joist ends
+
 `#pagebreak(); #fullpage("images/platform_v2_03.pdf")`{=typst}
 
 # Step 4
