@@ -1,2 +1,3 @@
+set -eu -o pipefail
 TZ="America/Los_Angeles"
 git ls-files -- '*.md' ':!*/archived/*' ':!*README.md' | xargs -d '\n' -I{} git log -1 --format="%cd {}" --date=format:"%Y-%m-%d %H:%M:%S" -- {} | sort -nr
