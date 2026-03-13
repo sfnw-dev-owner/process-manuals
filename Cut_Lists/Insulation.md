@@ -14,7 +14,7 @@ Cut and load in this order, back to front of the insulation cart, bottom level.
 | 2 | 24"x42" | Mark "Under Window" (2 pieces from one bat) |
 | 1 | 24"x84" | Mark "Back Wall" |
 | 1 | 24"x67½" | Mark "Under A/C" |
-| 2 | 15"x84" | Mark "Skinny" |
+| 2 | 15½"x84" | Mark "Skinny" |
 
 ## EXTERIOR INSULATION
 
