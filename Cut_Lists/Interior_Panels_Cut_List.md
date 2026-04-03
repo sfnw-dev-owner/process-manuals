@@ -27,6 +27,7 @@ front):
 
 | Width | Length | Label | Source |
 | :--- | :--- | --- | :--- |
+|  4" | 38 ¼" | E2 | This piece will be left over from an H panel (see below) |
 | 48" | 88" | D | Uncut panel from plywood stack |
 | 38 ¼" | 46 ¼" | E | Cut two E panels from one 38¼ x 96 |
 | 48" | 88" | G | Uncut panel from plywood stack |
@@ -47,6 +48,6 @@ front):
 The cut-off piece from the H panel above will be 38 ¼" by 8 ½".  Rip
 two 4" pieces on the table saw, using the 4" Trim template. The two
 halves will be used on the left side of the door, under the D
-panel. Label them as "left of door" and put one on each cart. Extras
+panel. Label them as "E2" and put one on each cart. Extras
 can go in the standing short-materials bin by the long-materials
 shelves.
