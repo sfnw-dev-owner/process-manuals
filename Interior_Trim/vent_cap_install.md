@@ -43,7 +43,7 @@ no-title-page: true
 
 (More on next page)
 
-`#fullpage("Images/vent_cap.png")`{=typst}
+`#fullpage("Images/vent_cap.pdf")`{=typst}
 
 10. While one person continues to support the vent cap, the other person
     drives the two screws in the middle of the vent cap into their
