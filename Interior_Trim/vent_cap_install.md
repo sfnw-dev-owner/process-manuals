@@ -32,8 +32,8 @@ no-title-page: true
     places.
 
 8.  With two people, position this vent cap on the blocks, starting at
-    the rear of the home. The rear edge of the vent cap should be 1"
-    away from the rear wall trim, and centered on the white ridge
+    the rear of the home. The rear edge of the vent cap should touch
+    the rear wall trim, and be centered on the white ridge
     boards. The front edge of the vent cap should be half-way onto the
     mounting block at the front. Drive one screw most of the way into
     the rear mounting block.
@@ -51,7 +51,7 @@ no-title-page: true
     of the vent cap into their mounting block.
 
 11. Measure the distance from the front edge of the installed vent cap
-    to the front wall trim, subtract 1", and cut the shorter piece of
+    to the front wall trim, and cut the shorter piece of
     plywood to this length.
 
 12. Mark, drill, countersink, and preset 4 screws in this piece, as
