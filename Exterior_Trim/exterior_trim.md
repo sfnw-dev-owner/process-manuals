@@ -70,9 +70,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 
 ## Step 3 -- Top Piece
 
-* Measure from outside edge to outside edge of side trim and add ½ˮ
-* Check that the precut beveled-edge piece is that length.  Trim if it is not.
-* Put EXTERIOR caulk, as shown, near the beveled edge and at both ends.
+* Using precut beveled top piece, apply EXTERIOR caulk behind the beveled edge and at both ends, as shown.
 * Position with right edge flush with side trim.  **Do not** allow this top trim to extend past the right-hand side trim.  It will interfere with the trim around an air conditioner, when that is installed.
 * Nail (PANEL NAILS)
     - 2 nails 1-½" in from each end
@@ -93,9 +91,8 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 
 ## Step 1 \-- Top trim
 
-* Using a small piece of 1x4 placed vertically beside the window edge furthest from the door, measure from the edge away from the window to the door trim
-    - Add ½", and cut a piece of top trim (with beveled edge) to this length
-    - Apply EXTERIOR caulk as shown
+* Using precut beveled top piece, apply EXTERIOR caulk behind the beveled edge and at both ends, as shown.
+
 * Nail (PANEL NAILS)\
     - 2 nails 1-½" in from each end\
     - 2 nails in the middle of the board.
