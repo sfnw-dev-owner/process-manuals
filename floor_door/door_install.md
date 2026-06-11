@@ -33,7 +33,7 @@ leaving a gap with the interior flooring.
 - Cut a 54" length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway over the flooring strip, with about 8" running up each side of the opening, and half the width sticking outside the home.
 - Slit the corners, and fold the outer half of the flashing down and to the sides of the opening. Press the flashing into the corners of the doorway.
 
-`#fullpage("Images/door_install_1.png")`{=typst}
+`#fullpage("Images/door_install_1.pdf")`{=typst}
 
 ##  Install the door
 
@@ -60,7 +60,7 @@ leaving a gap with the interior flooring.
     - bottom 2^nd^
     - screws must go through shims, so that the door frame is not distorted
  
-`#fullpage("Images/door_install_2.png")`{=typst}
+`#fullpage("Images/door_install_2.pdf")`{=typst}
 
 - Strengthen door latch plate
     - insert shims both above and below the latch hole
@@ -78,4 +78,4 @@ leaving a gap with the interior flooring.
 - Remove one of the Phillips-head screws from each hinge, replace with 3" silver screw from kit. Discard the short screw.
 - Trim off the protruding ends of the shims flush with the wall plywood. Use a box knife to score the shim, and then snap it off.
 
-`#fullpage("Images/door_install_3.png")`{=typst}
+`#fullpage("Images/door_install_3.pdf")`{=typst}
