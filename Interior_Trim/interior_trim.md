@@ -44,11 +44,12 @@ Use a piece of flooring or a putty knife to make insertion easier.
 ## Baseboards
 
 - Set down spacers under the baseboardalong each wall to provide a small space between the baseboard and the floor, so that the flooring can "float".
+These spacers are squares of thin flooring marked with an **O**, and can be found in Workstation #4.
 - Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. 
 - Repeat on the other side wall.
 - Measure between the side baseboards at the rear wall. Measure long (about 1/16") so it will fit snugly. Cut a length of baseboard and nail.
 
-`#fullpage("Images/baseboards.png")`{=typst}
+`#fullpage("Images/baseboards.pdf")`{=typst}
 
 ## Rear Window Shelf
 
