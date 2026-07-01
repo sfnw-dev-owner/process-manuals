@@ -11,20 +11,22 @@
 `#set text(14pt)`{=typst}
 
 # Material Preparation
+  The preparation steps here are intended to make roof installation easier by minimizing the number of trips that installers need to make up and down the steps of the skybridge scaffolding.
 
 ## Plywood Deck
- - There are two options for ¾" plywood installation.  Cut pieces from ¾" sheets on the panel saw.
-    1. Cut two 77¾" sheets for each side of the roof.  This option leaves two 18¼"x48" scraps.
+ - Cut pieces from ¾" sheets on the panel saw.
+ - There are two options for eventual plywood installation on a roof.
+    1. Cut two 77¾" sheets for each side of the roof.  This option leaves four 18¼"x48" scraps.
     1. Use a full 96" sheet with two shorter pieces, one on each side of the full sheet for each side of the roof.  For this option,
-    use the 18¼" wide scraps from a previous roof, and cut a full sheet into two 41¼" pieces.
+    use two 18¼" wide scraps from a previous roof, and cut a full sheet into two 41¼" pieces.
     This will leave a single smaller scrap 13½" wide.
  - Alternating these two approaches will minimize the scrap we generate. For 3 homes, if we always used the first option, we would need 12 sheets.
 Using the second option for two of the three allows us to use only 10 sheets, a 17% saving in material. 
 
 ## Tar Paper
  - Cut 4 lengths at 13'4".  Line up the front edge of the roll with the front of the workbench, and roll out enough tar paper to reach
-the stop at the far end of the workbench.  Then use a straight-edge cutting guide lined up with the ink line on the workbench at the right end,
-almost under the roll of tar paper.  Cut with a razor knife.  Roll each length and secure with blue tape.
+the stop at the far end of the workbench.  Then lay a straight-edge cutting guide lined up with the left ink line on the workbench at the right end,
+near the roll of tar paper.  Cut with a razor knife.  Roll each length and secure with blue tape.
  - If the end of a roll is too short, add a second piece long enough to reach 13'4" and then another 12", to allow for overlap between the two parts.
 
 ## Metal Flashing
@@ -38,8 +40,12 @@ almost under the roll of tar paper.  Cut with a razor knife.  Roll each length a
   To insure that seams between shingles do not line up and permit water to penetrate the roof, we create start and end shingles
 of different lengths.  In between, for each course, we need 3 full-length shingles.  The length of the start plus end shingles is 42".
 We will create two sets of start and end shingles, one for each side of the roof.
+
   We cut shingles to length using the "shingleator", a large cutter.  Shingles must always be placed with the gravel side down on this cutter,
 to make the cuts cleanly.
+
+  In warm weather, the tar strips may soften and melt.  To avoid ruining shingles that might stick together in this situation, we always stack
+shingles alternating face down and face up.  This minimizes the likelihood that shingles will be damaged as they are pulled apart during installation.
 
 ### First 8 Rows
  - Cut 3" off a shingle to start. (There is a mark on blue tape to the right of the cutter blade for this.)  The 3" piece is scrap.
@@ -48,12 +54,12 @@ to make the cuts cleanly.
 Start two piles with these, gravel side down.
  - Move the remaining piece to the stop, and place a whole shingle up against the edge of this piece. Cut this shingle.
  - The two pieces left of the cutter are a start/end pair for the second half of the roof.  Start two piles with these, gravel side down.
- - Repeat the process using the scrap and a whole shingle, this time stacking the shingles gravel side up.  Alternating shingles in this way
+ - Repeat the process using the scrap and a whole shingle, this time placing the shingles gravel side up.  Alternating shingles in this way
 reduces the problem of them sticking to each other in warm weather.
  - Continue the sequence for a total of 2 sets of 10 pairs, stacking the pieces alternately gravel side down and gravel side up.
 When the scrap width is less than 3" discard it, and begin again, trimming 3" off a whole shingle.  This should occur after
 5 rows of start/end pairs have been cut for each side of the home.
- - Separate the top 2 pairs in each set and use them for Rows 9 and 10.
+ - Separate the top 2 pairs in each set and use them for the next two steps.
  - Place a separator flag on top of the left (start) stack and pile the right (end) stack on top of the left.  Using two pink plastic wrappers,
 wrap this bundle, and mark it with "1-8" using yellow crayon.
  - Repeat for the remaining two stacks. This creates a start/end bundle for each side of the roof.
@@ -64,14 +70,13 @@ wrap this bundle, and mark it with "1-8" using yellow crayon.
 ### Row 9
  - This row needs the top 1½" cut off, so that the remaining shingle reaches just to the edge of the vent block openings.
  - Clamp a T-square to the back edge of the work table, pressing the short part of the T against the edge of the table.
- - Place each shingle face down under the T-square clamped to the work table, and line up the inner edge of the upper black adhesive strip
-with the T-square.  Using a box knife, cut the shingle lengthwise, and save the narrow strip for packaging.
+ - Place each shingle face down under the T-square clamped to the work table, and line up the inner edge of the upper black adhesive strip with the T-square.  Using a box knife, cut the shingle lengthwise, and save the narrow strip for packaging.
  - Cut 6 full shingles down in this way, stacking 3 shingles alternately gravel-side down and gravel-side up. Add two narrow strips after the 3rd
  shingle.
  - Cut two start/end pairs down the same way, stacking each pair on top of the full-length shingles.
  - Mark each pile with "9" using yellow crayon, and bundle each stack using pink plastic wrappers.
 
-### Row 10
+### Final Row
  - This row needs the top half cut off, so that its top edge matches the top edge of Row 9, and does not obscure the vent block opening.
  - Place each shingle face down under the T-square as above, but line the shingle up so that the bottom edge of the lower adhesive strip is
  even with the T-square edge.
@@ -81,9 +86,7 @@ with the T-square.  Using a box knife, cut the shingle lengthwise, and save the 
 
 ### Starter Course
  - This row uses special single-layer shingle material.  We need 14 pieces for a full roof.  Some of these can be left-over cutoffs
-from Row 10, above.  The rest are prepared by tearing a single-layer shingle in half lengthwise, along the perforation.
-
-`#pagebreak()`{=typst}
+from the Final Row, above.  The rest are prepared by tearing a single-layer shingle in half lengthwise, along the perforation.
 
 ### Ridge Cap
  - These 28 to 32 small shingles are supplied as tear-offs, 3 to a sheet.
@@ -92,7 +95,7 @@ from Row 10, above.  The rest are prepared by tearing a single-layer shingle in 
 ### Ridge Vent
   - If there is no scrap length of this material, retrieve a full 20' roll and unroll most of it on the workbench.  Line up the left end
 with the stop at the end of the workbench, and flatten the material out all the way across the workbench.  There is a mark on the bench to
-indicate where to cut the vent.
+indicate where to cut the vent; it should be 161½"
   - If there is a scrap length, place it on the workbench up against the stop on the left, and unroll an additional length of material from
 another roll.  Butt this up against the scrap length, and cut the roll at the mark at the right end of the bench.  Save the left-over piece
 for the next vent.
@@ -103,7 +106,7 @@ for the next vent.
 
 ## Setting up
 
- - Close the drain stopper on the bottom of the compressor.
+ - Close the drain stopper on the bottom of the air compressor (under) the shelves in the middle of the building).
  - Turn on air compressor.  There is a switch on the power strip strapped to a shelf corner leg above the compressor.
  - Unlock the nailers from the skymobile.
  - Add 3 drops of air gun oil into the compressed air connector on the framing nailer, and attach the air hose to it.
@@ -128,9 +131,9 @@ for the next vent.
  - There are two options for each half of the deck, as noted in the Material Preparation section: either 2 equal-width sheets, or 3 unequal pieces.
  - In the first option, the sheets line up with the center rafter; in the second, the seams do not.
  - In the second option, use three hurricane clips on each seam, evenly spaced, to insure that the roof deck is a single plane.  If the plywood pieces cannot be made to line up because of bowing, ask for help from the factory manager.
- - Position the plywood tight against the 1x8 white board at the bottom of the half roof.
+ - Position the plywood tight against the 1x8 white board at the bottom of the half roof.  Line up the ends of the roof with the end rafters.  The plywood may not extend all the way to the outer edge of the rafters; a difference of ½" is acceptable.
  - Snap chalk lines to show where the rafters under the plywood are: use the screw heads on the white board and the visible end of the rafter at the peak as references.
- - Nail the plywood to the rafters every 8", using framing nails.
+ - Nail the plywood to the rafters every 8", along these chalk lines, using framing nails.
  - Repeat on the other side of the home.
 
 `#align(center)[#rect(stroke: none)[#image("images/panel_options.pdf", width:70%)]];`{=typst}
@@ -140,15 +143,14 @@ for the next vent.
 ## Fascia Boards
  - With one person holding the fascia board from the roof and another on a ladder, position one fascia board on the back
 of the home so that it is flush with the top of the plywood, and its upper end is exactly on the parting line between the
-two 1x6 boards that form the ridge beam.  Using panel nails, nail fascia board to the rafter behind it, with 2 nails an inch from each end,
-and one nail every 8" - 10" between.
+two 1x6 boards that form the ridge beam.  Using panel nails, nail fascia board to the rafter behind it.
  - Line up the second fascia board on the other side of the roof at the back of the home so that it is flush with the roof deck
 and so that the center seam is tight.  Nail this board to the rafter behind it, with 2 nails an inch from each end, and one nail
 every 8" - 10" between.
  - After installing soffits (below) repeat these steps on the front of the home.
 
 ## Soffets
- - Mark on the bottom edge of the fascia boards where the cross blocks are.
+ - From a ladder, use a pencil to mark the position of each of the cross blocks; mark on the outside or bottom edge of the fascia.
  - From a ladder, position each soffet board so that it is tight against the ridge beam (white boards at the peak) and against the T1-11 siding.
 If the soffet is too wide, mark where it needs to be trimmed, and trim on the table saw.  There is a sled that will allow you to adjust
 the angle of the cut from one end to the other, so that this cut can be made safely.
@@ -165,14 +167,14 @@ the long flashing.  Nail this piece through the whiteboard into the rafters, and
  - Place one of the long pieces of metal flashing that has been partially cut in the middle so that it extends over the peak from one eave
 to the other, and overlaps the end of the eave flashing.  Overlap the vertical parts of the flashing at the peak.  If one end hangs over
 beyond the eave flashing, trim it with metal shears.
- - Nail the end flashing to the roof decking below, about 1¼" from the outer edge of the flashing.
+ - Nail the end flashing to the roof decking below, about 1¼" back from the outer edge of the flashing.
  - Repeat on the other end of the roof.
 
 `#pagebreak()`{=typst}
 
 ## Flexible Flashing
 - At each eave, peel the backing paper off the first foot or two of a roll of flexible flashing, and position the
-  flashing nearly even with the metal end flashing, and about ¼" up from the outer edge of the metal eave flashing.  Press this
+  flashing nearly even with the end flashing, and about ¼" up from the outer edge of the eave flashing.  Press this
   section down, and then, with a helper, roll out more material from the roll, set the flashing approximately where you
   want it, and then pull the brown paper out sideways from under the flashing, pressing the flashing into place as you
   go.
@@ -198,8 +200,8 @@ beyond the eave flashing, trim it with metal shears.
 ## Shingles
  - Underlay Course
      - Use single layer starter shingles.
-     - Starting at the front of the home, position a starter shingle parallel to the eave edge hanging over 1" beyond the front fascia and 1" below the eave edge.
-    - Nail 3 places just above the black adhesive in the middle of the shingle.
+     - Starting at the front of the home, position a starter shingle parallel to the eave edge hanging over 1" beyond the front fascia and 1" below the eave edge. (These should line up with the tar paper.)
+    - Nail 3 places just above the middle of the shingle.
     - Similarly position 2 more starter shingles, maintaining the 1" overhang at the eave, and butted up against the previous shingle.  Nail these in place.
     - Position a 4th starter shingle overhanging the rear fascia by 1" and extending 1" below the eave edge.  Nail it in place.
     - Cut a small piece of scrap to fill in the 2"-3" gap, and nail that in place.
@@ -207,10 +209,12 @@ beyond the eave flashing, trim it with metal shears.
     - Position a starter shingle running up the roof, butted against the one at the eave, and hanging 1" beyond the outer edge of the rear fascia.  Nail it in place.
     - Repeat, running a row of these starter shingles all the way over the peak, and ending at the eave row on the other side.  Do not allow this row to overlap the eave shingles; trim the last one as necessary.
     - Similarly, place and nail a row of starter shingles at the front of the roof.
- - First 8 Courses
+ 
+- First 8 Courses
     - Separate the start and end shingles, keeping them in the same order.  Count the first 8 pieces and separate them from the second 8.
-The first start shingle should be a long one, so if that is not so, either swap the starts and ends,or turn both groups over.  Then the top start shingle should be long and the first end shingle should be short. 
-    - Set the first start shingle so that it extends 1" beyond the outer edge of the front fascia board and 1" below the eave edge. Nail it in place.
+The first start shingle should be a long one, so if that is not so, either swap the starts and ends, or turn both groups over.  Then the top start shingle should be long and the first end shingle should be short. 
+    - Set the first start shingle so that it extends 1" beyond the outer edge of the front fascia board and 1" below the eave edge.
+ Nail it in 3 or 4 places, setting the nails just above the black tar strip.
     - Using standard (double-layer) shingles, set three full shingles, each butted up against the previous one, and each extending 1" below the eave edge.  Nail these in place.
     - The first end shingle should then fill the space left in this row, and extend 1" beyond the outer edge of the rear fascia board. Nail it in place.
     - For each succeeding row, set the start shingle so that its lower edge lines up with the cutout pattern in the shingle under it, and with a 1" overhang of the front fascia.  Set three full shingles next, also lined up with their bottom edges even with the cutout pattern on the shingles below them.  The ending shingle for the row should then fill the remaining space in that row at the back of the home.
@@ -223,9 +227,10 @@ The first start shingle should be a long one, so if that is not so, either swap 
 but for this row, align the **top** of the shingle with the top edge of the plywood (or tar paper).  Nail the start shingle down.
     - Position and nail down the 3 full shingles for this row, each butted against the previous one, and with the top even with the edge of the plywood.
     - The end shingle for this row should fill the space left, and hang over the rear fascia by 1".
+
 - 10th Course
-    - Using the half-height shingles, position the start shingle so that it hangs over the front fascia by 1" and is parallel with the top edge
-of the plywood.  Nail it in place.
+    - Using the half-height shingles, position the start shingle so that it hangs over the front fascia by 1" and is even with the top edge
+of the plywood.  Nail it in place, setting the nails about 1" below the top edge of the shingle.
     - Position and nail down the 3 full-width shingles for this row, each butted against the previous one, and with the top even with the edge of the plywood.
     - The end shingle for this row should fill the space left, and hang over the rear fascia by 1".
      
