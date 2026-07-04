@@ -4,6 +4,8 @@
   #v(1em)
   #text(24pt)[Instructions]
 ]
+
+#let imgCtr(path) = {align(center + horizon)[#image(path)]}
 ```
 
 # SETUP LIST
@@ -43,11 +45,11 @@ Use a piece of flooring or a putty knife to make insertion easier.
 
 ## Baseboards
 
-- Set down spacers under the baseboardalong each wall to provide a small space between the baseboard and the floor, so that the flooring can "float".
-These spacers are squares of thin flooring marked with an **O**, and can be found in Workstation #4.
-- Measure along a sidewall from back to front. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. 
+- Set down spacers under the baseboard along each wall to provide a small space between the baseboard and the floor, so that the flooring can "float".
+These spacers are squares of thin flooring marked with an **O**, and can be found in a plastic bucket in Workstation #4.
+- Measure along a sidewall from back to front near the floor. Using long 4" white baseboards, cut a piece this length and nail in place to the side wall. 
 - Repeat on the other side wall.
-- Measure between the side baseboards at the rear wall. Measure long (about 1/16") so it will fit snugly. Cut a length of baseboard and nail.
+- Measure between the side baseboards at the rear wall. Measure long (about 1/16") so it will fit snugly. Cut a length of baseboard and nail.  Save the cut-off piece for the front wall.
 
 `#fullpage("Images/baseboards.pdf")`{=typst}
 
@@ -56,104 +58,114 @@ These spacers are squares of thin flooring marked with an **O**, and can be foun
 Check that MEDUSA (foam backer rod) is installed around the window unit.
 
 - Use pre-cut rear shelf
-- Pre-drill three holes using countersink bit, as shown in the diagram
-- Position shelf in window frame, and screw in 3 **LONG** screws next to bottom of the window
-- Cut 2x4 support block for under the shelf\
-  - Subtract 1 inch from shelf width ( ½" on each side )
-- Center block under the shelf with long side against the wall, **and 1/2" shelf overhang on each end.**
-- Mark on the wall where the ends of the 2x4 should be, and then mark on the 2x4 where the lines of paneling screws fall (stud markers).
-- Preset 2 **LONG** screws in a vertical line into the block at each of the stud markers
-- Position the 2x4 up against the underside of the shelf, and lined up with the end marks on the wall
-    - Drive the screws into the wall to secure the support block
-    - Be sure there is no space between the wall and the support block
-- Pre-drill and insert a **LONG** screw next to the wall down through the shelf and into the 2x4 on each side of the window.
 
-`#fullpage("Images/rear_window_1.png")`{=typst}
+1. Pre-drill three holes using countersink bit, as shown in the diagram
+   - Position shelf in window opening, and screw in 3 **LONG** screws next to bottom of the window
+
+2.Cut 2x4 support block for under the shelf
+
+   - Subtract 1 inch from shelf width ( ½" on each side )
+   - Center block under the shelf with long side against the wall, **and 1/2" shelf overhang on each end.**
+   - Mark on the wall where the ends of the 2x4 should be, and then mark on the 2x4 where the lines of paneling screws fall (stud markers).
+   - Preset 2 **LONG** screws in a vertical line into the block at each of the stud markers
+   - Position the 2x4 up against the underside of the shelf, and lined up with the end marks on the wall
+   - Drive the screws into the wall to secure the support block
+   - Be sure there is no space between the wall and the support block
+
+3. Pre-drill and insert a **LONG** screw next to the wall down through the shelf and into the 2x4 on each side of the window, about 2" in
+from each edge of the shelf (#3).
+
+`#fullpage("Images/rear_window_1.pdf")`{=typst}
 
 ## Rear Window Trim
 
-- Use precut pieces to line the sides of the window opening
-- Nail 1 piece to each side of the window opening, edge flush with wall, and tight at the bottom. (2 nails at top, 1 every 8", 2 at the bottom)
-- Measure (very close to window) between the sides for the top of the window liner. Cut one piece that length and nail in place.
-- Measure the sides of the window from shelf to top of window opening.
-    - Cut a piece of trim this length for each side, and check that when these are in place, a third piece of trim will be exactly flush with the
+- Use precut pieces (3-1/8 x 35) to line the sides of the window opening
+1. Nail 1 piece to each side of the window opening, edge flush with wall, and tight at the bottom. (2 nails at top, 1 every 8", 2 at the bottom)
+2. Measure (very close to window) between the sides for the top of the window liner. Cut one piece of window liner that length and nail in place.
+3. Measure the sides of the window from shelf to top of window opening.
+    - Cut a piece of 2" trim this length for each side, and check that when these are in place, a third piece of trim will be exactly flush with the
       inner edge of the lining at the top of the window.
     - Nail 2" trim to both sides of the window, keeping the trim flush with the inside of the window lining boards.
-- Measure above the window from the outer edges of the vertical trim
+4. Measure above the window from the outer edges of the vertical trim
     and add one inch. Cut 2" trim and nail above the window with 1/2" overhang on each side, keeping the trim flush with the top window lining.
 
-`#fullpage("Images/rear_window_2.png")`{=typst}
+`#fullpage("Images/rear_window_2.pdf")`{=typst}
 
 ## Top trim (2" trim boards)
 
-1. Start on the side walls at the back. Push the trim board up so it is tight against the ceiling. Nail.
-1. When back upper trim is installed, measure from end of that piece to the front wall.
-    - Cut a piece of trim of the same width about 1/16" longer, and snap it into place.
-    - Line up the bottom edge with the trim already in place, and nail the second piece.
+- Start on the side walls at the back. Select an 8' x 2" trim piece and a shorter piece of the same width
+1. Set the long trim board against the rear wall, and push it up so it is tight against the ceiling. Nail.
+2. When back upper trim is installed, measure from end of that piece to the front wall
+    - Cut a piece of trim of the same width about 1/16" longer than the measurement, and snap it into place
+    - Line up the bottom edge with the trim already in place, and nail the shorter piece in place
 3. (& 4) Repeat 1 & 2 on the other wall
 
-<!--- -->
-5. Measure between the upper trim at the back wall.
-    - Measure long (about 1/16" over) so it fits snugly 
-    - Cut and nail.
+<!-- -->
+5. Select another long piece of 2" trim that is the same width as the trim on the side walls.
+    - Measure between the upper trim at the back wall.
+    - Cut long (about 1/16" over) so that the trim fits snugly 
+    - Nail trim into place
 
-`#fullpage("Images/top_trim.png")`{=typst}
+`#fullpage("Images/top_trim.pdf")`{=typst}
 
 # Vertical Trim (2" trim boards)
 
-- **Side walls first** - measure from the top of the baseboards to the bottom of upper trim in back corner
-- Cut and nail. Repeat on the other wall.
-- Measure at the vertical seam between the side panels from top of baseboard to bottom of upper trim.
-- Cut and nail. Use a level to be sure this trim is vertical. Repeat on the other wall.
-- On the **back wall** - Measure from the top of the baseboards to the bottom of upper trim in the corner. Cut and nail
+1. **Side walls first** - measure from the top of the baseboards to the bottom of upper trim in back corner, add 1/16".
+   - Cut and nail. Repeat on the other side wall.
+   - Measure at the vertical seam between the side panels from top of baseboard to bottom of upper trim.
+   - Cut and nail. Use a level to be sure this trim is vertical.
+2. Repeat on the other wall.
+3. On the **back wall** - Measure from the top of the baseboards to the bottom of upper trim in the corner.
+Cut and nail a piece of trim in each corner.  Push this trim against the sidewall trim as you are nailing, to insure a tight seam.
 
-`#fullpage("Images/vertical_trim.png")`{=typst}
+`#fullpage("Images/vertical_trim.pdf")`{=typst}
 
 # Horizontal Trim
 
-## Back wall
+## 1. Back wall
 
 - Measure from back corner vertical trim on one side to the other back corner vertical trim.
 - Cut a piece of 2" trim this length plus 1/16" for a snug fit.
 - Measure the height of the seam between upper and lower wall panels above floor, and mark on the wall panel at 1" less than this dimension
-  near each corner, and in the center of the wall.  Remember this measurement for other walls.
+  near each corner, on either side of the vertical trim covering the wall seam, and in the center of the wall.
+- Remember this measurement for other walls.
 - Line back wall trim piece up so that its bottom edge is on these marks, and nail in place
-
-## Side walls at the back
+  
+## 2 & 3. Side walls at the back
 
 - Measure from the back corner trim to middle vertical trim (add 1/16" so it fits snugly), and cut 2" trim to this dimension
 - Measure and mark on the wall on both sides of the vertical trim, at the same dimension used on the back wall.
   Make another mark halfway between the two ends of the panel.
-- Line side wall trim piece up so that its bottom edge is on these marks, check that it lines up visually with the corresponding trim on the back wall, and nail in place.
+- Line side wall trim piece up so that its bottom edge is on these marks, check that it lines up visually with the
+  corresponding trim on the back wall, and nail in place.
 
 Do NOT install mid-level horizontal trim between vertical trim
 and front wall. This will be done after Front Wall trim.
 
-`#fullpage("Images/horizontal_trim.png")`{=typst}
+`#fullpage("Images/horizontal_trim.pdf")`{=typst}
 
 # Triangle trim
 
 - Collect precut pieces of 2" X 42" trim from the rack: 2 left, 2 right, 6 straight.  These will be used for rear and front triangle trim.  Cut (from scraps) 2 strips 12" long.
-- Position two angled pieces on the back wall and nail in place.
+- Position two angled pieces on the back wall and nail in place. (#4)
     - A helper can push the trim up so that it is tight against the ceiling.
-- **Position a straight piece (42") on the ceiling and tight against each of the angled piece just installed. Nail it in place.**
+- Position a straight piece (42") on the ceiling and tight against each of the angled piece just installed. Nail it in place.
     - A helper can push the trim tight against the piece just installed, so that the trim is tight all along the joint
-- Install a 12" piece of 2" trim vertically to cover the seam between the triangles.
+- Install a 12" piece of 2" trim vertically to cover the seam between the triangles (#5)
 - Save remaining trim pieces for the front wall triangle
 
-`#fullpage("Images/triangle_trim.png")`{=typst}
+`#fullpage("Images/triangle_trim.pdf")`{=typst}
 
 # Front Wall 
 
 ## Prepare and Inspect
 
-Check that **MEDUSA** (foam backer rod) is installed around the window.
-
-`#text(16pt)[*The door must be installed before the steps below.*]`{=typst}
+- Check that **MEDUSA** (foam backer rod) is installed around the window.
+- `#text(16pt)[The door must be installed before the steps below.]`{=typst}
 
 ## Baseboard
 
-- Measure near the floor from the center of the door jamb to the sidewall baseboard.
+1. Measure near the floor from the center of the door jamb to the sidewall baseboard.
     - Position two spacers on the floor where the baseboard will go
     - Cut a piece of baseboard and nail in place.  
     - Do this first, to avoid hitting your head on the shelf above.
@@ -164,25 +176,27 @@ Check that **MEDUSA** (foam backer rod) is installed around the window.
 - Test fit the shelf
     - If the extension does not touch the wall, trim the edge that sits in the window frame
     - Otherwise, if the gap between the window and the edge of the shelf is too big, trim the extension (jigsaw)
-- Pre-drill and countersink 3 places at shelf edge near the window.
-- Position shelf in window frame, and screw in with 3 **LONG** screws next to bottom of the window.
-- Cut 2x4 shelf support block, subtracting 1/2" from shelf width
-- Place 2x4 under the shelf with 4 inch side against the wall
+2. Pre-drill and countersink 3 places at shelf edge near the window.
+    - Position shelf in window frame, and screw in with 3 **LONG** screws next to bottom of the window.
+3. Cut 2x4 shelf support block, subtracting 1/2" from shelf width
+    - Place 2x4 under the shelf with 4 inch side against the wall
     - This block **must be** flush with door side of the shelf
     - There will be 1/2" shelf overhang on the side wall side
-- Mark on the 2x4 where the line of paneling screw falls (stud marker).
-- Mark about 2" in from each end and 3/4" from the top of the 2x4
-  - Preset **LONG** screws into the block as shown in the diagram
-- Position the block up against the bottom of the shelf
+    - Mark on the 2x4 where the line of paneling screw falls (stud marker).
+    - Mark about 2" in from each end and 3/4" from the top of the 2x4
+    - Preset **LONG** screws into the block as shown in the diagram
+    - Position the block up against the bottom of the shelf
     - Drive the screws into the wall
     - Be sure that the 2x4 is tight against the wall.  If not, back the screw out and re-install it, putting pressure on the 2x4
-- Pre-drill and install 3 **LONG** screws next to the wall going through the shelf and into the 2X4 on both sides of the window as shown in diagram.
-- Nail precut pieces to line the side walls of the front window opening.
+4. Pre-drill and install 3 **LONG** screws next to the wall going through the shelf and into the 2X4 on both sides of the window as shown in diagram
+5. Nail precut pieces of window liner (3-1/8 x 35) to the side walls of the front window opening
     - Be sure that the front edge of these pieces is flush with the interior of the wall panel
-    - Place the precut piece tight against the shelf, leaving any gap at the top
--  Measure (very close to window) between the sides for the top of the window piece. Cut one piece that length and nail in place.
+    - Place the precut piece of window liner tight against the shelf, leaving any gap at the top
+6.  Measure (very close to window) between the sides for the top of the window piece. Cut one piece of window liner that length and nail in place
 
-`#fullpage("Images/front_window.png")`{=typst}
+`#imgCtr("Images/front_window.pdf")`{=typst}
+
+`#pagebreak()`{=typst}
 
 # Front Wall Trim -- Part I
 
@@ -195,11 +209,11 @@ Check that **MEDUSA** (foam backer rod) is installed around the window.
      - Measure from the top horizontal trim to the baseboard and cut the wide trim to this length
      - Mark where a cutout must be made on this wide trim for the front shelf and support block
      - Cut out a notch for the shelf using a jigsaw. Nail in place, being sure that the edge next to the window is flush with the window liner.
-1.  Measure the height on the front wall behind the door from upper trim to the baseboard. Check that the narrow board from step 3 will span from the center of the door jamb to within 3/8" of the wall. If it is too narrow, cut and install the piece in the next step first.
+1.  Measure the height on the front wall behind the door from upper trim to the baseboard. Check that the narrow board from step 3 will span from the center of the door jamb to within 3/8" of the wall. If it is too narrow, cut and install the 2" trim piece in step 5 first.
      - Cut this piece to length, and nail in place, halfway across the door jamb
 1.  Measure from the baseboard to the upper trim on the sidewall in the corner behind the door. Cut a length of 2" trim and nail. This should cover any gap at the corner.
 
-`#fullpage("Images/front_wall_trim_a.png")`{=typst}
+`#fullpage("Images/front_wall_trim_a.pdf")`{=typst}
 
 # Front Wall Trim -- Part II
 
@@ -215,15 +229,18 @@ Check that **MEDUSA** (foam backer rod) is installed around the window.
      - Nail a straight piece (42") on the ceiling tight against each angled piece just installed.
      - Position a 12" piece of 2" trim vertically over the center seam in the front triangle and nail.
  
-`#fullpage("Images/front_wall_trim_b.png")`{=typst}
+`#fullpage("Images/front_wall_trim_b.pdf")`{=typst}
 
 # Final Trim
 
 1.  Measure, cut, and place the final horizontal trim piece in the middle of one side wall, lining it up with the long middle trim on that wall.
+    - Marks should be on the wall to indicate the bottom of this trim piece (from Horizontal Trim section, above)
 1.  Repeat for the other side wall
-1.  Measure, cut, and place the horizontal piece that goes under the front window
-    shelf, align with the horizontal trim at waist level on the side wall. USE a LEVEL, nail in place.
+1.  Measure, cut, and place the horizontal piece that goes under the front window shelf
+    - Measure up from the top of the baseboard the same distance that was used for the side wall trim, and mark near the corner and near the door.
+    - Align the bottom of the trim with the marks at waist level. Nail in place.
 1.  DON'T FORGET - Measure, cut, and nail in place a small piece of trim on the front wall behind the door, to match the middle trim on the side wall.
-1.  Nail the remaining two pieces of 2" straight trim (42") over the ceiling seams, tight against the top trim strips on each side wall, and extending up near the roof vent.
+1.  Nail the remaining two pieces of 2" straight trim (42") over the ceiling seams, tight against the top trim strips on each side wall,
+and extending up near the roof vent.
 
-`#fullpage("Images/final_trim.png")`{=typst}
+`#fullpage("Images/final_trim.pdf")`{=typst}
