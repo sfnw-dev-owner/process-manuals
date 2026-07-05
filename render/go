@@ -65,6 +65,9 @@ mapfile -t IMAGE_PATHS < <(printf '%s' "$extract_out")
 last_modification="$(git log -1 --format="%cd|%ct" --date=format:"%Y-%m-%d %H:%M:%S" -- "${INPUT}" "${IMAGE_PATHS[@]}")"
 IFS='|' read -r REVISION_DATE CREATION_TIMESTAMP <<< "${last_modification:-0000-00-00 00:00:00|0}" # Handle new .md files that have no git log yet.
 OUTPUT_FILE="${INPUT_FILE/%.md/.pdf}"
+if [[ -n "${RENDER_GO_EMIT_TIMESTAMPS:-}" ]]; then # Set in ./all.
+    echo "$REVISION_DATE $1"
+fi
 export FOOTER="Revised $REVISION_DATE"
 
 declare -a flags

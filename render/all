@@ -6,9 +6,12 @@ set -eu -o pipefail
 
 # Explicitly pull the container to avoid having dozens of parallel
 # ./go processes fighting with each other to all pull the same image.
-docker pull ghcr.io/pandoc/typst:3.8.3 # Name must match what ./go uses.
+docker pull --quiet ghcr.io/pandoc/typst:3.8.3 > /dev/null # Name must match what ./go uses.
+
+export RENDER_GO_EMIT_TIMESTAMPS=1 # Read in ./go.
 
 git ls-files '**/*.md' | \
     grep -vE '(README.md|/archived/)' | \
     tr '\012' '\000' | \
-    xargs -0 -L1 -P0 ./render/go
+    `# Pipe to sort, and rely on ./go emitting less than PIPE_BUF (4096) bytes in a single write(2) to avoid interleaving` \
+    xargs -0 -L1 -P0 sh -c 'printf "%s\n" "$(./render/go "$1")"' _ | sort -n
