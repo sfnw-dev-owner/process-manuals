@@ -78,9 +78,14 @@ jobs:
           {
             printf 'Rendered from commit %s.\n\n' "$GITHUB_SHA"
             printf '**Download `%s.zip` for everything, or pick individual files below.**\n\n' "$TAG"
-            printf '<details><summary>render/all output (revision timestamps)</summary>\n\n'
+            printf '<details open><summary>render/all output (revision timestamps chronologically)</summary>\n\n'
             printf '```\n'
             cat "${RUNNER_TEMP}/render-all.log"
+            printf '\n```\n\n</details>\n\n'
+
+            printf '<details><summary>render/all output (revision timestamps sorted by filename)</summary>\n\n'
+            printf '```\n'
+            sort -k3 -f "${RUNNER_TEMP}/render-all.log"
             printf '\n```\n\n</details>\n'
           } > "${RUNNER_TEMP}/notes.md"
 
