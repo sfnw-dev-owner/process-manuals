@@ -35,7 +35,7 @@ jobs:
       - name: Render PDFs
         run: |
           set -eu -o pipefail
-          render/all
+          render/all | tee "${RUNNER_TEMP}/render-all.log"
           comm -23 \
             <(find . -name '*.pdf' -not -path './.git/*' -not -path './_rendered/*' | sort) \
             <(git ls-files -- '**/*.pdf' | sed 's|^|./|' | sort) \
@@ -75,13 +75,20 @@ jobs:
 
           xargs -d'\n' zip "${TAG}.zip" < rendered-pdfs.txt
 
+          {
+            printf 'Rendered from commit %s.\n\n' "$GITHUB_SHA"
+            printf '**Download `%s.zip` for everything, or pick individual files below.**\n\n' "$TAG"
+            printf '<details><summary>render/all output (revision timestamps)</summary>\n\n'
+            printf '```\n'
+            cat "${RUNNER_TEMP}/render-all.log"
+            printf '\n```\n\n</details>\n'
+          } > "${RUNNER_TEMP}/notes.md"
+
           gh release create "$TAG" \
             --title "$TITLE" \
             --target "$GITHUB_SHA" \
             --latest \
-            --notes "Rendered from commit ${GITHUB_SHA}.
-
-          **Download \`${TAG}.zip\` for everything, or pick individual files below.**" \
+            --notes-file "${RUNNER_TEMP}/notes.md" \
             "${TAG}.zip"
 
           xargs -d'\n' gh release upload "$TAG" < rendered-pdfs.txt
