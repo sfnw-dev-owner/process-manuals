@@ -62,12 +62,15 @@
 
 - Team leader: When boards are in place, draw a straight vertical line on the top and bottom plates at the middle of each stud to indicate
 where to put the nails
-- Place the next stud as shown and clamp it to the adjacent stud. Nail these two studs together in three places below the window opening
-from the side opposite the window. If clamping does not make the joint tight, use 3" brown screws to force the two studs together below the window.
-- Secure all 3 studs on both sides of the window
-  - Use a clamp to squeeze any gap between the double studs
+- Place the next stud as shown and clamp it to the adjacent stud.
+  - Clamp **tight** on bottom of two middle studs
+  - If clamping does not make the joint tight, use 3" brown screws to force the two studs together below the window.
+  - Nail these two studs together in three places below the window opening from the side opposite the window.
+
+- Secure all 3 studs on both sides of the window to the top plate
+  - Use a clamp to squeeze any gap between the double studs near the top
   - 2 nails through the top plate into each stud
-  - 2 nails through the bottom plate into those same studs
+  - 2 nails through the bottom plate only into the single stud farthest from the door opening.
 
 #### HAZARDS:
 - Bashed fingers: Keep fingers 6" from mallet
@@ -78,9 +81,10 @@ from the side opposite the window. If clamping does not make the joint tight, us
 
 ## Step 4
 
-- Place 2 long boards (studs), one on either side of the door opening, and two header blocks and a plywood spacer between them above the door opening.
-- Push the long blocks above the door opening toward the window, and clamp them to the top plate. Nail as shown: 3 nails down through the top plate,
-and 3 nails up through the blocks.
+- Place 2 long boards (studs), one on either side of the door opening, and two header blocks
+**and a plywood spacer** between them above the door opening.
+- Push the long blocks above the door opening toward the window, and clamp them to the top plate.
+Nail as shown: 3 nails down through the top plate, and 3 nails up through the blocks.
 - **Do not** nail into the ends of the studs on either side of the door opening. That will come in the next step.
 
 #### HAZARDS:
@@ -105,8 +109,11 @@ Clamp each block between the two studs, and nail twice from each side.
 
 ## Step 6
 
-- Put in the 2 nails through the top plate and 2 nails through the bottom plate into the studs on either side of the door opening.
+- Insert the doorway stretcher into the doorway near the bottom, and make certain that the doorway is wide enough.
+- Nail twice through the top plate and twice through the bottom plate into the studs on either side of the door opening.
+- Nail twice through the bottom plate into the other two middle studs.
 - Check the perimeter to be sure all the long studs have 2 nails at each end.
+- Remove the doorway stretcher, and save it for the next wall crew.
 
 #### HAZARDS:
 
