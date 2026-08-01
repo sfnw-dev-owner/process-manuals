@@ -1,12 +1,10 @@
 ```{=typst}
 #title-page[
-  #text(36pt, weight: "bold")[Post Tilt-up Operations]
+  #text(36pt, weight: "bold")[Frame Completion]
   #v(1em)
   #block(width: 60%)[#align(left)[#text(24pt)[Secure Walls\
   Install Structural Triangles\
-  Install Half-roofs\
-  Install Bird Blocks\
-  Install Vent Blocks]]]
+  Install Half-roofs]]]
 ]
 ```
 
@@ -91,7 +89,7 @@
 While these tasks are being completed, have two crew members position a half-roof assembly against each of the side walls, with the 1x8
 white board at the bottom and facing away from the wall.
 
-Check that there is a pencil line drawn at 6 ¼” from the front of the 1x6 board (the top of the half roof) all the way down and across
+Check that there is a pencil line drawn at 6¼” from the front of the 1x6 board (the top of the half roof) all the way down and across
 what will be the bottom of the half roof when it is installed.
 
 Inspect the screws that hold the 1x6 board to the rafters, to make sure that the screw heads do not protrude from the surface of the board.
@@ -152,113 +150,3 @@ Fetch the two Funky Boards (#3 and #4), and position them near the side-wall jig
 ![](images/image_47.png)
 
 ![](images/image_48.png)
-
-`#pagebreak()`{=typst}
-
-## Create Center Beam
-
-* In each bay (between the rafters), clamp the two white boards together, first vertically and then horizontally, to align them and make a tight joint.
-* insert four #8 x 1½" (yellow) screws, two above and two below the centerline, and about 4” from the rafters.  Alternate directions of the screws
-  from one bay to the next.
-
-![](images/image_49.png)
-
-![](images/image_50.png)
-
-`#pagebreak()`{=typst}
-
-# Secure Roof
-
-## Align Half-Roof with Walls
-
-* Using the angle-iron guide in Station #4, mark the centerline of the “magic” rafters; these are the ones to the rear of the second bay.
-* Align the “magic” rafters with the stud just below them.  Using a clamp, pull each of these rafters either forward or back so that it
-  lines up exactly with the wall stud immediately below it.  If necessary, have a second person use a mallet to assist.  The place to aim
-  the mallet is on the outermost rafter at the point where the lowest block is screwed to the rafter.  If you hammer on the rafter end,
-  something will split.
-
-![](images/image_51.png)
-
-`#pagebreak()`{=typst}
-
-## Install Magic Stud Lag Bolts
-
-* Install lag bolts in these two rafters, screwing them down into the top plate of the side wall.
-
-![](images/image_52.png)
-
-`#pagebreak()`{=typst}
-
-## Secure Brackets
-
-* At the peak of the roof, there are two steel brackets at each end of the roof.  Install three galvanized hex-head screws in each bracket
-  to secure the roof to the structural triangles.
-
-![](images/image_53.png)
-
-`#pagebreak()`{=typst}
-
-## Install All Lag Bolts
-* After these brackets are secured, install lag bolts in all the other rafters.
-
-![](images/image_54.png)
-
-`#pagebreak()`{=typst}
-
-# Install Bird Blocking
-*  Collect a set of bird blocks from the tall shelves.  There should be four blocks labeled “E” (for the end bays) and eight blocks unlabeled
-   (for the middle bays).
-* One crew member is stationed on a ladder outside the home; the other, inside, has a screw gun and a box of #10 x 3" screws.
-* The outside person positions each block, tapping gently with a mallet, so that it is flat against the top plate of the side wall,
-  and tucked just under the edge of the white board at the bottom edge of the roof. If a block is shorter than the space between the rafters,
-  it should be centered; if it is too long, cut it off with a chop saw.  The blocks must not protrude beyond the siding on the outside of the home.
-
-![](images/image_56.png)
-
-![](images/image_57.png)
-
-`#pagebreak()`{=typst}
-
-## Attach Bird Blocking
-* When a block is in position, the inside person drives two brown screws up through the top plate of the side wall into the bird block.
-* The outside person then inspects the block to make sure that no screw ends are visible on the outside of the home. If one is found protruding,
-  it must be removed and reinstalled correctly.
-
-![](images/image_58.png)
-
-## Complete for All Bird Blocking
-
-![](images/image_59.png)
-
-`#pagebreak()`{=typst}
-
-# Install Ridge Vent Blocks
-* Install vent jig between rafters (this jig does not fit into the end bays).
-
-![](images/image_60.png)
-
-`#v(0.5in)`{=typst}
-
-* Collect a set of vent blocks from the tall shelves.  There should be 4 marked “END” and 8 unmarked.
-* Preset three #10 x 3” screws in each vent block.
-
-## Align and Clamp Ridge Vent
-
-![](images/image_61.png)
-
-* In each bay (between the rafters), position a vent block so that it just touches the guide board, clamp it in place, and drive the three screws
-  into the white board.  If the vent block is too long, it can be cut off with a chop saw, but you may need to remove a screw for clearance.
-  It is important that the vent block end up tight against the white board.  If there is a gap, back the screws out, reclamp, and then drive
-  the screws back in again.  This will ensure that the roof panels will actually fit when they are installed.
-
-## Secure Ridge Vent
-
-![](images/image_62.png)
-
-* Move the guide board to the other side of the roof peak.
-* Install the remaining vent blocks on the other side of the roof peak.
-* Unclamp the guide board, and return it to the rack.
-
-## Complete for All Ridge Vents
-
-![](images/image_63.png)
