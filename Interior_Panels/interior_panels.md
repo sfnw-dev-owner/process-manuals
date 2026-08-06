@@ -20,7 +20,8 @@
 - Work light
 - 3" #10 screws (brown)
 - 2" #8 screws (yellow)
-- Panel cart with all of the cut and labeled interior panels
+- Panel cart with most of the cut and labeled interior panels
+- 4 plywood half-triangle panels (2 left-hand and 2 right-hand)
 
 `#pagebreak()`{=typst}
 
@@ -54,7 +55,7 @@ the brown screw into the vent block.
     and with marks on wall top plate.
     - Pre-drill and screw in **LONG** screws at each marked location.
 
-`#fullpage("images/ceiling_panels.png")`{=typst}
+`#fullpage("images/ceiling_panels.pdf")`{=typst}
 
 ## SIDE WALL Panels A, B & C
 
@@ -82,7 +83,7 @@ the brown screw into the vent block.
     - There is a separate long (84") Screw Pattern Board for Panel C.
     - Pre-drill and screw in **SHORT** screws.  If these screws cannot be made to sink into the framing behind the panel, you may use a brown 3" screw.
 
-`#fullpage("images/wall_panels_01.png")`{=typst}
+`#fullpage("images/wall_panels_01.pdf")`{=typst}
 
 ## BACK WALL Panels G & H 
 
@@ -91,7 +92,7 @@ the brown screw into the vent block.
 1. Pre-set **SHORT** screws
 1. Install H panel
     - on the back wall, resting on the floor
-    - at each interior stud, pre-drill and install a short screw 3/4 inch below the panel edge, to mark the stud locations.
+    - at each interior stud, pre-drill and install a short screw ¾" below the panel edge, to mark the stud locations.
 1. Install G, making sure the back window is OPEN
     - at the back wall on top of H
     - The window opening will be routed out later.
@@ -103,7 +104,7 @@ the brown screw into the vent block.
       out to 7 screws on each side of the window framing on panel G.
     - Pre-drill and screw in **SHORT** screws
 
-`#fullpage("images/wall_panels_02.png")`{=typst}
+`#fullpage("images/wall_panels_02.pdf")`{=typst}
 
 ## FRONT WALL Panels D & E
 
@@ -128,5 +129,22 @@ the brown screw into the vent block.
       - Pre-drill along the long edges about 8" apart.
       - Install, making sure that the edge next to the doorway aligns with the routed doorway above it.
 
-`#fullpage("images/wall_panels_03.png")`{=typst}
+`#fullpage("images/wall_panels_03.pdf")`{=typst}
 
+## Triangle Panels
+
+1. Pre-drill each panel along the edges as indicated in the diagram.
+    - be certain to drill from the good side of the plywood, and insert screws from this side.
+    - drill ½" to ¾" from the edge; on the long diagonal edge, slant the drill slightly toward the outside of the panel.
+    - on the other two edges, drill perpendicular to the panel.
+    - preset **short** screws in all the drilled holes, making sure to insert them from the good side of the panel.
+1. Install the first half-triangle on the front or rear wall
+    - set the half-triangle right on the top edge of the wall panel.
+    - line up the shortest edge with the center of the roof beam.
+    - This alignment will leave a gap near the ceiling.  This gap will get covered by the trim.
+1. Install the second half-triangle next to the first, being sure to line it up tight against the half-triangle already in place.
+1. Repeat on the rear or front wall.
+
+`#pagebreak()`{=typst}
+
+`#fullpage("images/wall_panels_04.pdf")`{=typst}
