@@ -34,3 +34,10 @@ no-title-page: true
 | 44 | 56 ¾ in, 18.5° cut one end | Use 10' 2x4, for 2 pieces |
 
 Mark rafter cutout using pattern, then take to Band Saw.
+
+## Vent Blocks:
+
+| Quantity | Dimensions | Notes |
+| --- | --- | --- |
+| 16 | 21 7/8 in | for middle bays |
+|  8 | 18 1/8 in | for end bays|
