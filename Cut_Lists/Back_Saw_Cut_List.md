@@ -9,7 +9,7 @@ no-title-page: true
 | Quantity | Dimensions | Notes |
 | --- | --- | --- |
 | 24 | 2x6x93 in | Use 8' 2x6 |
-| 8 | 2x6x144 in | Use 12' 2x6 |
+| 4 | 2x6x144 in | Use 12' 2x6 |
 
 ## Back Saw Cart:
 
