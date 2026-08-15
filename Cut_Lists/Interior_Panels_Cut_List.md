@@ -27,11 +27,11 @@ front):
 
 | Width | Length | Label | Source |
 | :--- | :--- | --- | :--- |
-|  4" | 38 ¼" | E2 | This piece will be left over from an H panel (see below) |
 | 48" | 88" | D | Uncut panel from plywood stack |
 | 38 ¼" | 46 ¼" | E | Cut two E panels from one 38¼ x 96 |
 | 48" | 88" | G | Uncut panel from plywood stack |
 | 38 ¼" | 88" | H | Temporary cart (thinnest panels); see below for cut-off. |
+|  4" | 38 ¼" | E2 | Remainder from H panel above; take to table saw per below |
 | 44" | 86 ½" | C | Temporary cart (widest panels) |
 | 48" | 92" | A | Uncut panel from plywood stack |
 | 38 ¼" | 92 | B | Temporary cart (thinnest panels) |
