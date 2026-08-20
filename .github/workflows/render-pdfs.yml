@@ -3,15 +3,7 @@ name: Render PDFs
 on:
   push:
     branches: [main]
-    paths: &paths
-      - '**/*.md'
-      - 'render/go'
-      - 'render/all'
-      - 'render/pandoc-defaults.yaml'
-      - 'render/typst-header.typ'
-      - '.github/workflows/render-pdfs.yml'
   pull_request:
-    paths: *paths
   workflow_dispatch: # allow manual trigger.
 
 permissions:
@@ -62,7 +54,8 @@ jobs:
             --body "📄 **Rendered PDFs available for the next ${{ env.RETENTION_DAYS }}d**: [Download artifacts](${{ steps.upload.outputs.artifact-url }})"
 
       - name: Create release (main)
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' &&
+            (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
