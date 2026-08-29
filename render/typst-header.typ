@@ -35,10 +35,10 @@
 
 // Display image as a separate page
 // See ../Front_Wall/front_wall_ada.md for example usage.
-#let fullpage(path) = block(height: 100%, width: 100%)[#align(center + horizon)[#image(path)]]
+#let fullpage(path, layers: none) = block(height: 100%, width: 100%)[#align(center + horizon)[#image(path)]]
 
 // Display image centered horizontally on the page, maybe with some vertical separation from stuff above
-#let horizontal-center(path, vspace: 1in) = {
+#let horizontal-center(path, vspace: 1in, layers: none) = {
   if (vspace != none and vspace != 0) {
     v(vspace)
   };
