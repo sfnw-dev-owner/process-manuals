@@ -44,7 +44,8 @@ function repointToClipart(di, document, clipartDir) {
   var op = new RModifyObjectsOperation();
   document.queryAllEntities().forEach(id => {
     var ent = document.queryEntity(id);
-    if (ent.getType() !== RS.EntityImage) { return; }
+    if (ent.getType() !== RS.EntityImage) return;
+    if (document.queryLayer(ent.getLayerId()).isFrozen()) return;
     var ref = ent.getData().getFileName();
     var baseName = new QFileInfo(ref).fileName();
     var candidate = clipartDir + QDir.separator + baseName;
@@ -115,11 +116,6 @@ function main() {
   if (testArgument(args, "-h", "--help")) { showUsage(); return; }
   const { di, document } = load(absolutePathFor(args[args.length - 1]));
 
-  var clipartDir = getArgument(args, "-c", "--clipart");
-  if (!clipartDir) { showUsage(); fatal("Missing arg --clipart"); }
-  clipartDir = absolutePathFor(clipartDir);
-  repointToClipart(di, document, clipartDir);
-
   var layersArg = getArgument(args, "-l", "--layers");
   if (!layersArg) {
     showUsage();
@@ -127,6 +123,11 @@ function main() {
       document.queryAllLayers().map(id => { return document.queryLayer(id).getName(); }).sort().join("\n") + "\n");
   }
   selectLayers(di, document, layersArg.split(","));
+
+  var clipartDir = getArgument(args, "-c", "--clipart");
+  if (!clipartDir) { showUsage(); fatal("Missing arg --clipart"); }
+  clipartDir = absolutePathFor(clipartDir);
+  repointToClipart(di, document, clipartDir);
 
   cropToContents(di, document);
 
