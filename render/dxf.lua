@@ -90,6 +90,6 @@ function RawInline(el)
       string.format("%q", relativePath),
       1
    )
-   el.text = el.text:gsub(", *layers:.*", "", 1) .. ")"
+   el.text = el.text:gsub(", *layers:[^)]*", "", 1)
    return el
 end
