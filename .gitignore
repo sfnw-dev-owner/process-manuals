@@ -1,5 +1,5 @@
 # Ignore generated PDFs to minimize noise when locally testing.
-
+.rendered-dxfs/
 AC_prep/AC_Friedrich_Install.pdf
 Cut_Lists/Back_Saw_Cut_List.pdf
 Cut_Lists/Front_Saw_Cut_List.pdf
@@ -31,6 +31,7 @@ post-tilt-up/roof-blocking.pdf
 post-tilt-up/roof-framing-cklist.pdf
 render/example-custom-title-page.pdf
 render/example-default-title-page.pdf
+render/example-dxf.pdf
 render/example-no-title-page.pdf
 Roof/roof_manual.pdf
 tilt-up/tilt-up.pdf
