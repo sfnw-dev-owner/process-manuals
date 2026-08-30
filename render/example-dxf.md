@@ -2,7 +2,7 @@
 no-title-page: true
 ---
 
-# An example incorporating .dxf sources.
+# An example incorporating .dxf sources
 
 <!-- Markdown style -->
 ![](../Interior_Trim/Images/rear_window.dxf){layers="0,1_Paneling,2_Shelf"}

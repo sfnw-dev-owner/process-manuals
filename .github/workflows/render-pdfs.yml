@@ -12,6 +12,7 @@ permissions:
 
 env:
   RETENTION_DAYS: 7
+  VISUAL_DIFF_IMAGE: ghcr.io/${{ github.repository_owner }}/visual-diff:latest
 
 jobs:
   render:
@@ -90,3 +91,120 @@ jobs:
             "${TAG}.zip"
 
           xargs -d'\n' gh release upload "$TAG" < rendered-pdfs.txt
+
+  diff:
+    needs: render
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download PR artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: rendered-pdfs
+          path: pr-pdfs/
+
+      - name: Download latest release PDFs
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu -o pipefail
+          TAG=$(gh release view --json tagName --jq '.tagName')
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "Latest release tag: ${TAG}"
+          gh release download "$TAG" --pattern '*.zip' --dir release/ --clobber
+          URL=$(gh release view "$TAG" --json url --jq '.url')
+          echo "url=${URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Zip PR PDFs
+        run: |
+          set -eu -o pipefail
+          cd pr-pdfs
+          zip -r -q ../pr.zip .
+
+      - name: Run visual diff
+        run: |
+          set -eu -o pipefail
+          REL_ZIP=$(find release/ -name '*.zip' -type f | head -1)
+          echo "Comparing release ${REL_ZIP} against pr.zip"
+          mkdir -p "$PWD/pdf-diffs"
+          docker run --rm \
+            -v "$PWD/$REL_ZIP:/left.zip:ro" \
+            -v "$PWD/pr.zip:/right.zip:ro" \
+            -v "$PWD/pdf-diffs:/output" \
+            "${VISUAL_DIFF_IMAGE}" \
+            /left.zip /right.zip /output \
+            | tee "${RUNNER_TEMP}/diff-log.txt"
+
+      - name: Upload diff PDFs
+        id: upload-diff
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-diffs
+          path: pdf-diffs/
+          retention-days: ${{ env.RETENTION_DAYS }}
+          if-no-files-found: ignore
+
+      - name: Report on PR
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu -o pipefail
+          LOG="${RUNNER_TEMP}/diff-log.txt"
+          TAG="${{ steps.release.outputs.tag }}"
+          URL="${{ steps.release.outputs.url }}"
+          ART="${{ steps.upload-diff.outputs.artifact-url }}"
+
+          if [[ ! -f "$LOG" ]]; then
+            gh pr comment ${{ github.event.pull_request.number }} \
+              --body "⚠️ Visual diff failed to run. Check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details."
+            exit 0
+          fi
+
+          # Parse compare-pdfs.sh output.
+          CHANGED=$(awk -F'\t' '/^=== Visual comparison ===/{v=1;next} /^=== /{v=0;next} v&&$1=="DIFF"{print $2}' "$LOG")
+          ONLY_PR=$(awk '/^=== PDFs only in right ZIP ===/{p=1;next} /^=== /{p=0;next} p&&!/^\(none\)$/{print}' "$LOG")
+          ONLY_REL=$(awk '/^=== PDFs only in left ZIP ===/{l=1;next} /^=== /{l=0;next} l&&!/^\(none\)$/{print}' "$LOG")
+          SAME_N=$(awk -F'\t' '/^=== Visual comparison ===/{v=1;next} /^=== /{v=0;next} v&&$1=="SAME"' "$LOG" | wc -l)
+
+          CHANGED_N=$(printf '%s\n' "$CHANGED" | grep -c . || true)
+          ONLY_PR_N=$(printf '%s\n' "$ONLY_PR" | grep -c . || true)
+          ONLY_REL_N=$(printf '%s\n' "$ONLY_REL" | grep -c . || true)
+
+          ml() { local s="$1"; if [[ -z "$s" ]]; then echo "(none)"; else printf -- '- `%s`\n' $s; fi; }
+
+          OPEN="$([[ $CHANGED_N -gt 0 ]] && echo " open" || true)"
+
+          {
+            printf '## 📐 Visual PDF diff vs latest release\n\n'
+            printf 'Comparing this PR'\''s PDFs against release [`%s`](%s).\n\n' "$TAG" "$URL"
+            printf '| | Count |\n|---|---|\n'
+            printf '| ➕ Only in PR (added) | %s |\n' "$ONLY_PR_N"
+            printf '| ➖ Only in release (removed) | %s |\n' "$ONLY_REL_N"
+            printf '| 📝 Visually changed | %s |\n' "$CHANGED_N"
+            printf '| ✅ Unchanged | %s |\n' "$SAME_N"
+            printf '<details '
+            [[ $CHANGED_N -gt 0 ]] && printf 'open'
+            printf '><summary><b>Visually changed (%s)</b></summary>\n\n' "$CHANGED_N"
+            ml "$CHANGED"
+            printf '\n</details>\n\n'
+            printf '<details><summary><b>Only in PR (%s)</b></summary>\n\n' "$ONLY_PR_N"
+            ml "$ONLY_PR"
+            printf '\n</details>\n\n'
+            printf '<details><summary><b>Only in release (%s)</b></summary>\n\n' "$ONLY_REL_N"
+            ml "$ONLY_REL"
+            printf '\n</details>\n\n'
+            if [[ -n "$ART" ]]; then
+              printf '📥 [Download diff PDFs](%s) (available for %s days)\n' "$ART" "${{ env.RETENTION_DAYS }}"
+            else
+              printf '*(all matching PDFs were visually identical)*\n'
+            fi
+          } > /tmp/pr-comment.md
+
+          gh pr comment ${{ github.event.pull_request.number }} --body-file /tmp/pr-comment.md
