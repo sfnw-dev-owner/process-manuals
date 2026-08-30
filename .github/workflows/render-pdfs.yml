@@ -186,7 +186,7 @@ jobs:
             printf 'Comparing this PR'\''s PDFs against release [`%s`](%s).\n\n' "$TAG" "$URL"
             printf '| | Count |\n|---|---|\n'
             printf '| ➕ Only in PR (added) | %s |\n' "$ONLY_PR_N"
-            printf '| ➖ Only in release (removed) | %s |\n\n' "$ONLY_REL_N"
+            printf '| ➖ Only in release (removed) | %s |\n' "$ONLY_REL_N"
             printf '| 📝 Visually changed | %s |\n' "$CHANGED_N"
             printf '| ✅ Unchanged | %s |\n' "$SAME_N"
             printf '<details '
