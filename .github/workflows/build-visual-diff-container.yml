@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - ami/visual-diff-container
     paths:
       - 'render/visual-diff/**'
   workflow_dispatch:
