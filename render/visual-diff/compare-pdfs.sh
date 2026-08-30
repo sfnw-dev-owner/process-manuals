@@ -107,4 +107,4 @@ export -f compare_one
 xargs -d '\n' -r -n1 -P "$JOBS" bash -c 'compare_one "$1"' _ < "$MATCHES"
 
 # Prune any directories with no diffs.
-find "$OUTPUT" -depth -type d -empty -delete
+find "$OUTPUT" -mindepth 1 -depth -type d -empty -delete
