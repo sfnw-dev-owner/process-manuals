@@ -29,7 +29,7 @@ jobs:
           set -eu -o pipefail
           render/all | tee "${RUNNER_TEMP}/render-all.log"
           comm -23 \
-            <(find . -name '*.pdf' -not -path './.git/*' -not -path './_rendered/*' | sort) \
+            <(find . -name '*.pdf' -not -path './.git/*' -not -path './_rendered/*' -not -path './.rendered-dxfs/*' | sort) \
             <(git ls-files -- '**/*.pdf' | sed 's|^|./|' | sort) \
             > rendered-pdfs.txt
           # Stage rendered PDFs in a dedicated directory so that actions/upload-artifact below can pick them up (can't give it a file list in a file, sadly).
