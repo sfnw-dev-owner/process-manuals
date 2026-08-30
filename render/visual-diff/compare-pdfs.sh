@@ -27,7 +27,6 @@ for f in "$ZIP1" "$ZIP2"; do
 done
 
 JOBS="$(nproc)"
-echo "Using ${JOBS} parallel jobs (nproc)"
 
 TMPDIR=$(mktemp -d)
 trap 'rm -rf "$TMPDIR"' EXIT
