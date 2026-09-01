@@ -15,6 +15,13 @@ INPUT="$(realpath "$1")"
 CONTAINER="$(head -1 $(dirname $(realpath "$0"))/.container)" # Must match ./all!
 cd "$(dirname "$0")/.."
 
+# Delete any previous renderings of DXFs that happened before the
+# newest file in render/ was touched, to avoid using outdated cached
+# files when the pipeline changes.
+[[ -d .rendered-dxfs ]] && find .rendered-dxfs/ -type f \
+     ! -newer "$(find render -type f -printf '%T@ %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
+     -delete
+
 export TZ="America/Los_Angeles"
 
 function capitalize() {

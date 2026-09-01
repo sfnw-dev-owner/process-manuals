@@ -16,4 +16,10 @@ git ls-files '**/*.md' | \
     grep -vE '(README.md|/archived/)' | \
     tr '\012' '\000' | \
     `# Pipe to sort, and rely on ./go emitting less than PIPE_BUF (4096) bytes in a single write(2) to avoid interleaving` \
-    xargs -0 -L1 -P0 sh -c 'printf "%s\n" "$(./render/go "$1")"' _ | sort -n
+    xargs -0 -L1 -P0 sh -c '
+        set +e # To unconditionally capture $? below.
+        output="$(./render/go "$1")"
+        status=$?
+        printf "%s\n" "$output"
+        exit $status
+    ' _ | sort -n
