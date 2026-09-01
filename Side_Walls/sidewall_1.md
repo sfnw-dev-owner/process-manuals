@@ -31,7 +31,7 @@
 - Place 144" top and bottom plates in the jig, being sure that any bow in these boards bends inward, as marked on the jig.
 - Place 84" 2x4s (studs) in the designated spots on the perimeter, with thin face up.
 - Place an 84" 2x4 flat (wide face up) at each of the short ends. Be sure that this flat board is all the way down against the bottom of the jig.
-  Placing these boards now insures that they will fit into the jig.  
+  Placing these boards now insures that they will fit into the jig.
 - Put in 1 FRAMING nail (the longer ones) in each corner of the frame.  Do not nail into the flat 2x4.
     - line up to be flush on top and sides
     - one person holds and the other nails
@@ -39,7 +39,7 @@
     - in each of the 4 corners
 - Put a second nail directly under each of the first nails.
 
-`#fullpage("images/side_wall_01.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_01")`{=typst}
 
 ## Step 2
 
@@ -48,7 +48,7 @@
 - Drive long screws into all these holes.
 - While this goes on, crew place the remaining studs in the jig (step 3).
 
-`#fullpage("images/side_wall_02.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_02" )`{=typst}
 
 ## Step 3
 
@@ -56,7 +56,7 @@
   - make sure the 2x4s on both sides of the middle stud are fairly straight; they will be the magic studs
 - Team leader: Draw vertical lines on the top and bottom plates at the center of each of the inner studs to designate nail placement
 
-`#fullpage("images/side_wall_03.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_03")`{=typst}
 
 ## Step 4
 
@@ -65,7 +65,7 @@
      --- one person holds the stud so that it is flush while the other nails
 - Check that all studs have two nails (or screws) in each end.
 
-`#fullpage("images/side_wall_04.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_04")`{=typst}
 
 # Step 5
 
@@ -78,7 +78,7 @@
 - Staple top, side, bottom, side
 - Staple along the length of ALL of the inner studs
 
-`#fullpage("images/side_wall_05.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_05")`{=typst}
 
 ## Step 6
 
@@ -99,7 +99,7 @@ Put PANEL nails (shorter ones) in the nail gun
 NOTE: DO **NOT** nail inside the grooves, nail about 1/2" from the edge of the groove, angling the nail gun if necessary to be sure that each nail
 hits the center of the stud (where the chalk line is.)
 
-`#fullpage("images/side_wall_06_1.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_06a")`{=typst}
 
 ## Step 7
 
@@ -112,7 +112,7 @@ hits the center of the stud (where the chalk line is.)
   - router the side of the paneling so that it is flush with stud underneath
 - Smooth out caulk along the panel joints, using a scrap of Tyvek or a paper towel. Do not caulk the nail heads if tilt-up is scheduled for the same day.
 
-`#fullpage("images/side_wall_07_1.png")`{=typst}
+`#fullpage("images/side_wall.dxf", layers:"0_Framing,Step_07a")`{=typst}
 
 # SIDE WALL ASSEMBLY CHECKLIST
 
