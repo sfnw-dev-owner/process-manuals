@@ -7,7 +7,8 @@ RUNNER="$(type -p docker || type -p podman)"
 
 # Explicitly pull the container to avoid having dozens of parallel
 # ./go processes fighting with each other to all pull the same image.
-$RUNNER pull --quiet "$(head -1 $(dirname "$0")/.container)" > /dev/null # Must match ./go! 
+CONTAINER="$(head -1 $(dirname $(realpath "$0"))/.container)" # Must match ./go!
+$RUNNER pull --quiet "$CONTAINER" > /dev/null
 
 export RENDER_GO_EMIT_TIMESTAMPS=1 # Read in ./go.
 
