@@ -12,6 +12,7 @@ fi
 
 INPUT="$(realpath "$1")"
 
+CONTAINER="$(head -1 $(dirname $(realpath "$0"))/.container)" # Must match ./all!
 cd "$(dirname "$0")/.."
 
 export TZ="America/Los_Angeles"
@@ -39,7 +40,7 @@ function dockerRun() {
               -e TYPST_FONT_PATHS=/s/render/Carlito \
               "${debug_flags[@]}" \
               --entrypoint=/bin/bash \
-              "$(head -1 $(dirname "$0")/.container)" `# Must match ./all!` \
+              "$CONTAINER" \
               -c \
               "$@"
 }
