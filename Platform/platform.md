@@ -46,8 +46,6 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Put 3 nails in a vertical line on each end of each joist
     - make sure joists are flush with side rail before nailing
 
-`#pagebreak()`{=typst}
-
 `#fullpage("images/platform.dxf", layers:"Jig-Framing,Step_03")`{=typst}
 
 # Step 4
