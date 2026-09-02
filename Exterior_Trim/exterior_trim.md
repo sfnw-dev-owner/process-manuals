@@ -40,7 +40,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 1 nail every 8ˮ down the middle
     - 2 nails about 2ˮ from the bottom
 
-`#horizontal-center("images/back_corner_1.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("images/back_corner.dxf", layers:"Building,Roof_Framing,Corners_1"); #pagebreak()`{=typst}
 
 
 ## Step 2 -- Corner Board \#2
@@ -53,7 +53,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails about 2ˮ from the bottom.
 * Repeat for the other three corners of the home.  Note that on two of those corners, the caulking will be a mirror image of that shown.
 
-`#horizontal-center("images/back_corner_2.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("images/back_corner.dxf", layers:"Building,Roof_Framing,Corners_2"); #pagebreak()`{=typst}
 
 
 
@@ -83,7 +83,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails 1-½" in from each end
     - 2 nails in the middle of the board.
 
-`#fullpage("images/rear_window.pdf")`{=typst}
+`#fullpage("images/rear_window.dxf", layers:"Window Trim")`{=typst}
 
 # FRONT WINDOW TRIM
 
@@ -100,7 +100,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 ## Step 2 \-- Side trim away from door
 
 - Using a pre-cut side trim piece for side of window away from door
-- Apply EXTERIOR caulk as shown
+- Apply EXTERIOR caulk as shown for Rear Window
 - 2 nails 1-½" below top
     - 1 nail in the middle of the board every 8"
     - 2 nails 1-½" above the bottom.
@@ -108,7 +108,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 ## Step 3 \-- Side trim between window and door
 
 - Use a pre-cut side trim piece
-- Apply EXTERIOR caulk down the middle. Center and nail as above
+- Apply EXTERIOR caulk as shown for Rear Window. Center and nail as above
 
 ## Step 4 \-- Bottom piece
 
@@ -117,7 +117,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails 1-½" in from each end
     - 2 nails in the middle of the board
     
-`#fullpage("images/front_window.pdf")`{=typst}
+`#fullpage("images/front_window.dxf", layers:"Window Trim")`{=typst}
 
 # EXTERIOR TRIANGLES - FRONT & BACK
 
@@ -135,17 +135,17 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 * Center the flashing between the rafter ends
 * Nail (PANEL NAILS) 3 places: near each end, and in middle
 
-`#fullpage("images/triangles_01.pdf")`{=typst}
+`#fullpage("images/triangles.dxf", layers:"Framing,Step_1_2")`{=typst}
 
 ## Step 3: T1-11 Triangles
 
 * Install large pre-cut triangular piece of T1-11 siding
-    - cover long leg of Z-flashing\
+    - cover long leg of Z-flashing
     - bottom of siding a pencil-width above the Z-flashing fold
     - if necessary, trim siding piece so that it fits against the structural triangle
     - Nail (Panel Nails) every 8" along rafters, bottom of triangle, and along center blocking.
 
-* Install small pre-cut triangular piece of T1-11 siding\
+* Install small pre-cut triangular piece of T1-11 siding
     - line up the bottom edges
     - make the seam tight
     - Nail (Panel Nails) in two places
@@ -156,7 +156,9 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 
 * Install precut soffit boards under rafters at each end of building.
   * Mark location of cross blocks between rafters
-  * Position soffit board with angle-cut end tight against ridge beam and long edge tight against T1-11 siding. Trim as necessary to fit, so that soffit does not protrude past outer surface of outside rafter.  Otherwise, the fascia boards will not fit against the rafters when the roof goes on.
+  * Position soffit board with angle-cut end tight against ridge beam and long edge tight against T1-11 siding. Trim as necessary to fit,
+    so that soffit does not protrude past outer surface of outside rafter.  Otherwise, the fascia boards will not fit against the rafters
+    when the roof goes on.
   * Nail (Panel Nails) 3 places into outside rafter, and one nail into each cross block
 
-`#fullpage("images/triangles_02.pdf")`{=typst}
+`#fullpage("images/triangles.dxf", layers:"Framing,Step_3_4")`{=typst}
