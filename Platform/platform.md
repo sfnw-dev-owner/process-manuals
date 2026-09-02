@@ -30,7 +30,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Check the frame for square: measure the diagonals; they should be the same. Adjust as necessary.
 - Put 2 more nails (total of 3) in a vertical line at each of the 4 corners.
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Jig-Framing,Step_01")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Jig-Framing,Step_01")`{=typst}
 
 # Step 2
 - Put a second 2x6 inside the ones on each short end
@@ -39,7 +39,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Team leader
     - using the triangle, mark a line on the outside of the long 2x6s at the middle of the ends of each joist to show where the nails go.
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Jig-Framing,Step_02")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Jig-Framing,Step_02")`{=typst}
 
 # Step 3
 - Put in all the inner 2x6 joists
@@ -66,7 +66,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Measure the diagonals of the frame, and make sure that they are the same, so that the frame is square.
     - After any adjustments, **make sure** the frame is tight against the front jig crossbar.
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_04-overlay")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_04-overlay")`{=typst}
 
 # Step 5
 
@@ -76,14 +76,14 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - alternate inside of the skid and outside of the skid all the way to the rear
     - make sure to make a mark on the inside of the double joist at the rear.
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_05")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_05")`{=typst}
 
 # Step 6
 - At each X, screw in a metal bracket
     - use 6 small hexagonal screws for each metal bracket
     - 3 on the bottom 3 on the top, attaching the frame to the skids
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_06")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_06")`{=typst}
 
 # Step 7
 
@@ -92,7 +92,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - DO NOT NAIL
     - In the front and back bays, place the "SAVE END" blocks
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_07")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_07")`{=typst}
 
 # Step 8
 
@@ -107,7 +107,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - Start with tip of spray can at the middle, and pull towards you.
     - DO NOT SET THE SPRAY CANS ON WORK STATIONS
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_08")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_08")`{=typst}
 
 # Step 9
 - Under the 1^st^ plywood panel ONLY
@@ -122,7 +122,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - walk backwards while nailing 8 inches apart.
 - Nail along all chalk lines in a pattern going diagonally towards the opposite corner from where you started
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_09")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_09")`{=typst}
 
 # Step 10
 
@@ -133,7 +133,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - along the seam, nail about every 8 inches, slightly angled in towards the junction line
 - Nail along edges and chalk lines
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_10")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_10")`{=typst}
 
 # Step 11
 
@@ -144,7 +144,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - along the seam, nail about every 8 inches, slightly angled in towards the junction line
 - Nail along edges and chalk lines
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_11")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_11")`{=typst}
 
 # Step 12
 
@@ -157,4 +157,4 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - use the marking jig; it hangs from the back saw table. Using a felt-tip pen, hold it against the inside of the jig,
     and slide the jig along the sides of the platform.
 
-`#pagebreak(); #fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_12")`{=typst}
+`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_12")`{=typst}
