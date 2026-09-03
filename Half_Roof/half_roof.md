@@ -23,47 +23,50 @@
 - Put white 1x6 board into the top of the jig. Note that there are also 1x8 boards in the same rack. Do not use these wider boards for this step
 - Tap it down with mallet.
 
-`#fullpage("images/half_roof_01.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 01")`{=typst}
 
 # Step 2
 
 - Prepare 2 notched 2x4 rafters by securing an angle plate to the left side of one and the right side of the other, as shown in the diagram, using 3 SD #10 Galvanized screws. **Make sure that the bottom of the angle plate is flush with the bottom of the rafter**.
 
-- Put in these 2 rafters one slot in from each end. Place 2 additional rafters in the end slots.\
+- Put in these 2 rafters one slot in from each end. Place 2 additional rafters in the end slots, as shown in the drawing.
   - put a place holder (short 2x4) in the spot of the double rafter to stabilize first rafter
 
-- Pre-drill (countersink drill bit) 2 holes in the white board at each of the 4 rafters.\
-  - top of white board and top of rafter flush\
-  - top hole 1 inch below top of white board\
-  - holes in a vertical line, one inch apart\
+- Pre-drill (countersink drill bit) 2 holes in the white board at each of the 4 rafters.
+  - top of white board and top of rafter flush
+  - top hole 1 inch below top of white board
+  - holes in a vertical line, one inch apart
   - holes angled down following 2x4 rafter centerline
 
-- Drive in LONG SCREWS\
-  - tilted down following the 2x4 rafter centerline\
+- Drive in LONG SCREWS
+  - tilted down following the 2x4 rafter centerline
   - making sure top of rafter is flush with top of white board
   - be sure that the screw head is flush with the white board vertical surface.  If it protrudes at all, the half-roof assemblies will not join properly.
 
-`#fullpage("images/half_roof_02.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 02")`{=typst}
 
 # Step 3
 - Place three small blocks between the two end rafters. Start at the top, and for each block
   - Place a small 6½ inch 2x4 block between the rafters, in the space between a pair of angle irons.
   - Adjust the position of the block so that it is flush with the rafters at each end. Clamp the rafters below the block
-  - Put 2 long screws into each end of the block through the rafters
+  - Drive 2 brown (\#10) screws through the rafters into each end of the block
   - position screws so that they go into the block near its vertical centerline
   - insert screws about 2 fingers apart, one below the other
 
-`#fullpage("images/half_roof_03.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 03")`{=typst}
 
 # Step 4
 
+- Remove the placeholder blocks from the rafter sockets
+
 - Put a 3^rd^ rafter right next to the inner rafter of the 2 with the cross blocks.
+  - Be certain that these two rafters are flush with each other, and that they both have tips aligned with the white board.
 
 - Clamp those 2 rafters together
 
-- Drive in 4 long screws spaced along the length of those rafters
-  - to attach them together
-  - 4 screws above bottom cross block, from inside
+- Drive in 4 brown (\#10) screws spaced along the length of those rafters, to attach them together
+  - Drive screws from inside the double rafters
+  - All 4 screws above bottom cross block
 
 - Place all the inner rafters
 
@@ -73,12 +76,12 @@
   - holes in a vertical line, one inch apart
   - holes angled down following 2x4 rafter centerline
 
-- Drive in 2 LONG SCREWS at each rafter
+- Drive in 2 **brown (\#10) screws** at each rafter
   - tilted down to follow the 2x4 rafter centerline
 
-- Remove all stickers from the ends of the rafters
+- Remove all paper stickers from the ends of the rafters
 
-`#fullpage("images/half_roof_04.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 04")`{=typst}
 
 # Step 5
 
@@ -89,20 +92,20 @@
   - make sure white board is flush with the outside rafter on the right end
 
 - Working your way from the right end (top of the diagram), align the bottom edge of the white board flush with the end of each rafter. Pre-drill
-through the white board and place 1 SHORT SCREW into each rafter
+through the white board and drive a **short (yellow) screw** into each rafter
   - use funky board \#9 to push the white board out to be flush with the end of each rafter, or push the white board toward the top of the assembly
 if it hangs over the rafter end
 
-`#fullpage("images/half_roof_05.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 05")`{=typst}
 
 # Step 6
 
-- Pre-drill and place a 2nd SHORT SCREW at each rafter
+- Pre-drill and drive in a 2nd **short (yellow) screw** at each rafter
   - repeat all the way across the top of the 1x8 white board
 
 - If white board extends past the left edge of the outside rafter, use a router to trim it flush.
 
-`#fullpage("images/half_roof_06.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 06")`{=typst}
 
 # Step 7
 
@@ -120,7 +123,7 @@ if it hangs over the rafter end
 - Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof
 when it is installed on the home. There is a pattern block that will make this easy; that block fits over the end of the 1x6 white board.
 
-`#fullpage("images/half_roof_07.png")`{=typst}
+`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 07")`{=typst}
 
 # Remove Half Roof
 
