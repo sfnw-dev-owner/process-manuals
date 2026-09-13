@@ -83,6 +83,14 @@ As above, we use a **78%** scale to get more than one image on a single page, wh
 
 This applies with the current Letter page size with 0.5" margins. 
 
+## Generating 2-d drawings
+We have moved to a mechanism that allows us to put a QCAD .dxf file under revision control, and to create PDF images automatically from the .dxf file.
+The invocation for an image that is to be included is
+
+### `#fullpage("images/{qcad_filename}.dxf", layers:"{comma-separated list of layer names}")`{=typst}
+### By convention, the DXF file is placed in the images sub-folder
+### The layers to be made visible in the drawing file are specified as a comma-separated list.  Spaces are allowed within each layer name, but there should not be any white-space between the layer name and the preceding or following comma.
+
 ## Rendering a Manual
 
 ### Generating the PDF file
@@ -100,7 +108,10 @@ To render the document:
 
 After generating a PDF file, check it throughly for formatting errors, correct them in the source (.md) file, and repeat the rendering, until you are satisfied.  Then, it would be good practice to delete the PDF file, before you even commit changed files locally.
 
-Commit the source material only (the .md file and any images or other included files).  Do NOT commit the PDF generated above.  An automatic action will generate the PDF and put it in the right place when you generate a GIT pull request and it is accepted and merged into the main branch. These PDF files are kept on GitHub, but outside the version controlled area, to avoid the overhead of tracking the differences in PDFs.  The URL is (https://github.com/sfnw-dev-owner/process-manuals/releases/latest).
+Commit the source material only (the .md file and any images, qcad drawing files or other included files).  Do NOT commit the PDF generated above.
+An automatic action will generate the PDF and put it in the right place when you generate a GIT pull request and it is accepted and merged
+into the main branch. These PDF files are kept on GitHub, but outside the version controlled area, to avoid the overhead of tracking
+the differences in PDFs.  The URL is (https://github.com/sfnw-dev-owner/process-manuals/releases/latest).
 
 If you create a brand-new .md file, it is good practice to add the corresponding .pdf filename to .gitignore. This will reduce the chance that
 you inadvertently add a PDF to a *git commit*, polluting the source tree with a derived file.
