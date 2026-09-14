@@ -32,8 +32,6 @@ You will need:
 * A text editor that can edit plain text without introducing other markup (eg Vi, Emacs, Notepad)
 * A local computer to run this stuff on, and to keep a local copy of the repository.
 
-`#pagebreak()`{=typst}
-
 ## Formatting a manual
 
 Our process begins with a text file containing the desired content, and Markdown commands to indicate formatting.  This source file is processed by a pipeline of two stages: first by Pandoc, which transform the markdown into Typst input, and then by Typst, a typesetting program that renders its input as a PDF file.  This pipeline is captured as a virtual machine, and is invoked as `render/go {source_file}`.  When this script is run, it either generates a PDF file with the same base name as the source_file, or else it coughs up some error report, saying why it could not.
@@ -63,7 +61,6 @@ Images that aren't geared to letter sized paper might require adjusting. These a
 * Treat all images in the document as "figures" 
 * Align all figures in center for PDF files
   
-`#pagebreak()`{=typst}
 
 #### Centering an individual image
 For an individual image, you must leave an empty line before and after each image in the markdown, otherwise the center alignment won't work. 
@@ -98,9 +95,7 @@ By convention, the DXF file is placed in the **images** sub-folder
 
  The layers to be made visible in the drawing file are specified as a comma-separated list.  Spaces are allowed within each layer name, but there should not be any white-space between the layer name and the preceding or following comma.
 
- Also note that the `typst` syntax in the example above (anything passed to a `\`#...\`{=typst}\` macro) requires a colon (`:`) between `layers` and the layer names, whereas the markdown syntax (e.g. `![](...)`) requires an equal sign (`=`).
-
-`#pagebreak()`{=typst}
+ Also note that the `typst` syntax in the example above (anything passed to a \'#...{=typst}\` macro) requires a colon (`:`) between `layers` and the layer names, whereas the markdown syntax (e.g. `![](...)`) requires an equal sign (`=`).
 
 ## Rendering a Manual
 
