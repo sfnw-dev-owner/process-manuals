@@ -27,6 +27,7 @@ If you have questions about the manuals, please direct them to:
 ## Setup & Installation
 
 You will need:
+
 * Git source control software, either in [command line](https://git-scm.com/downloads) version or a [user interface like GitHub Desktop](https://github.com/apps/desktop)
 * A text editor that can edit plain text without introducing other markup (eg Vi, Emacs, Notepad)
 * A local computer to run this stuff on, and to keep a local copy of the repository.
@@ -40,13 +41,14 @@ Our process begins with a text file containing the desired content, and Markdown
 Using a template creates a consistent look and feel for all of the manuals generated. The default settings for our documents are kept in `render/pandoc-defaults.yaml` and `render/typst-header.typ`. 
 
 The template has instances of:
+
 * Heading 1
 * Heading 2
 * Heading 3
 * Heading 4
 * Normal text (which bullet lists also use, see note below)
 * Footer with automatic revision date insertion
-* 
+
 ### Bullet lists
 
 Generally, a bullet list is defined in markdown with a prefix of `*` `-` or `+`. Sub-lists look the same, but indented (2 spaces, or a tab)
@@ -87,9 +89,13 @@ This applies with the current Letter page size with 0.5" margins.
 We have moved to a mechanism that allows us to put a QCAD .dxf file under revision control, and to create PDF images automatically from the .dxf file.
 The invocation for an image that is to be included is
 
-### `#fullpage("images/{qcad_filename}.dxf", layers:"{comma-separated list of layer names}")`{=typst}
-### By convention, the DXF file is placed in the images sub-folder
-### The layers to be made visible in the drawing file are specified as a comma-separated list.  Spaces are allowed within each layer name, but there should not be any white-space between the layer name and the preceding or following comma.
+```#fullpage("images/{qcad_filename}.dxf", layers:"{comma-separated list of layer names}")`{=typst}```
+
+By convention, the DXF file is placed in the **images** sub-folder
+
+ The layers to be made visible in the drawing file are specified as a comma-separated list.  Spaces are allowed within each layer name, but there should not be any white-space between the layer name and the preceding or following comma.
+
+ Also note that the `typst` syntax in the example above (anything passed to a \'#...{=typst}\` macro) requires a colon (`:`) between `layers` and the layer names, whereas the markdown syntax (e.g. `![](...)`) requires an equal sign (`=`).
 
 ## Rendering a Manual
 
@@ -98,6 +104,7 @@ The invocation for an image that is to be included is
 Contents are taken from the `<manual_markdown_file.md>`, combined with any images referenced from the markdown, and rendered into a new `pdf` document.
 
 To render the document:
+
 * Open a command-line shell window
 * `cd` to the directory where your markdown file is stored
 * Type the command `../render/go <manual_markdown_file.md>`
@@ -109,9 +116,8 @@ To render the document:
 After generating a PDF file, check it throughly for formatting errors, correct them in the source (.md) file, and repeat the rendering, until you are satisfied.  Then, it would be good practice to delete the PDF file, before you even commit changed files locally.
 
 Commit the source material only (the .md file and any images, qcad drawing files or other included files).  Do NOT commit the PDF generated above.
-An automatic action will generate the PDF and put it in the right place when you generate a GIT pull request and it is accepted and merged
-into the main branch. These PDF files are kept on GitHub, but outside the version controlled area, to avoid the overhead of tracking
-the differences in PDFs.  The URL is (https://github.com/sfnw-dev-owner/process-manuals/releases/latest).
+
+A github **workflow** will kick off an **action** which will generate a GitHub Release containing all rendered PDFs. See the latest release at https://github.com/sfnw-dev-owner/process-manuals/releases/latest.
 
 If you create a brand-new .md file, it is good practice to add the corresponding .pdf filename to .gitignore. This will reduce the chance that
 you inadvertently add a PDF to a *git commit*, polluting the source tree with a derived file.
@@ -120,6 +126,7 @@ you inadvertently add a PDF to a *git commit*, polluting the source tree with a 
 All of the 3D images and diagrams in the manuals are created using LayOut, based on this [Tiny Home Model](https://web.connect.trimble.com/projects/H3xXgzdyUMc/viewer/3d/?modelId=GoTtRh_ju8U&=&origin=app.connect.trimble.com&stoken=GOGUIZCqsLxEMBMi8d1WT_BkEB3nBpZNHqCMOSf_CtXKWa8dqnla6RG2KN0q6lWB) built in SketchUp. 
 
 You will need:
+
  * [SketchUp](https://www.sketchup.com) to edit the model. There are [free web-based editions of SketchUp](https://www.sketchup.com/en/plans-and-pricing/sketchup-free), although the model was built on a desktop using SketchUp Pro.
  * [LayOut](https://www.sketchup.com/en/products/layout), part of the SketchUp Pro package, for taking scenes built in the model and laying them out on to pages with various insets and annotations.
  * Permissions to edit the model. At the moment, only a limited number of people have access. 
