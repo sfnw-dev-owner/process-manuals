@@ -89,7 +89,9 @@ This applies with the current Letter page size with 0.5" margins.
 We have moved to a mechanism that allows us to put a QCAD .dxf file under revision control, and to create PDF images automatically from the .dxf file.
 The invocation for an image that is to be included is
 
-\`#fullpage("images/{qcad_filename}.dxf", layers:"{comma-separated list of layer names}")`{=typst}
+```
+`#fullpage("images/{qcad_filename}.dxf", layers:"{comma-separated list of layer names}")`{=typst}
+```
 
 By convention, the DXF file is placed in the **images** sub-folder
 
