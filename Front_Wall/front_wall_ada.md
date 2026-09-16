@@ -38,7 +38,7 @@
 - Bashed fingers: Keep fingers 6" from mallet
 - Nail Injury: Keep fingers 12" from joint
 
-`#fullpage("PDFs/front_wall_01_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_01")`{=typst}
 
 ## Step 2
 - Place
@@ -56,7 +56,7 @@
 - Bashed fingers: Keep fingers 6" from mallet
 - Nail Injury: Keep fingers 12" from joint
 
-`#fullpage("PDFs/front_wall_02_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_02")`{=typst}
 
 ## Step 3
 
@@ -77,7 +77,7 @@ where to put the nails
 - Nail Injury: Keep fingers 12" from joint
 - Ladder Fall: Ascend/descend ladder without carrying tools
 
-`#fullpage("PDFs/front_wall_03_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_03")`{=typst}
 
 ## Step 4
 
@@ -91,7 +91,7 @@ Nail as shown: 3 nails down through the top plate, and 3 nails up through the bl
 
 - Nail Injury: Keep fingers 12" from gun end
 
-`#fullpage("PDFs/front_wall_04_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_04")`{=typst}
 
 ## Step 5
 
@@ -105,7 +105,7 @@ Clamp each block between the two studs, and nail twice from each side.
 #### HAZARDS:
 - Nail Injury: Keep fingers 12" from gun end
 
-`#fullpage("PDFs/front_wall_05_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_05")`{=typst}
 
 ## Step 6
 
@@ -119,7 +119,7 @@ Clamp each block between the two studs, and nail twice from each side.
 
 - Nail Injury: Keep fingers 12" from gun end
 
-`#fullpage("PDFs/front_wall_06_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_06")`{=typst}
 
 ## Step 7
 
@@ -132,7 +132,7 @@ Clamp each block between the two studs, and nail twice from each side.
 #### HAZARDS:
 - Staple Injury: Keep fingers 12" from stapling point
 
-`#fullpage("PDFs/front_wall_07_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_07")`{=typst}
 
 ## Step 8
 - Cut the Tyvek out along the inside edge of the window.
@@ -154,7 +154,7 @@ as shown in the drawing. Force the end down into the corner of the window openin
 #### HAZARDS:
 - Knife cut: Keep fingers clear of where the knife might slip
 
-`#fullpage("PDFs/front_wall_08_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_08")`{=typst}
 
 ## Step 9
 - Place Panel 1 with window cut out. Align with top edge of frame and side stops.
@@ -177,7 +177,7 @@ anchor into the frame, and do not split the edge of the 2nd panel.
 - Nail Injury: Keep fingers 12" from joint
 - Ladder Fall: Ascend/descend ladder without carrying tools
 
-`#fullpage("PDFs/front_wall_09_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_09")`{=typst}
 
 ## Step 10
 - Team leader: Bore a hole through the siding where the arrows on the jig indicate, and rout out the door opening (do this now,
@@ -200,7 +200,7 @@ anchor into the frame, and do not split the edge of the 2nd panel.
   - Place all flashing FLUSH against the corner stops on the window. It is not necessary for the flashing to be tight all the way down the window sides
   - Make sure the flashing does not extend over the pencil outline
 
-`#fullpage("PDFs/front_wall_10_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_10")`{=typst}
 
 ## Step 11
 - Pry gently on the top and bottom plates to raise the wall out of the jig, and place blocks under these boards.
@@ -208,7 +208,7 @@ anchor into the frame, and do not split the edge of the 2nd panel.
 - Nail every 8" on the two sides and top of the door opening.
 - Caulk all nails after tilt-up.
 
-`#fullpage("PDFs/front_wall_11_ada.pdf")`{=typst}
+`#fullpage("images/front_wall_ada.dxf", layers:"Framing,step_11")`{=typst}
 
 # FRONT WALL CHECKLIST
 
