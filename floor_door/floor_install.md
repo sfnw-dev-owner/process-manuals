@@ -18,6 +18,8 @@
 - Verify that there is a limit line in the doorway, to show how far the flooring should extend.  This line should be ¾" from the inside of the wall framing to the line.  If it is not there, draw one.
 - Tape spacer strips to the the starting side wall and the back wall, using blue tape.  These spacer strips should rest on the sub-floor, and are used to ensure space between the flooring and the walls.
 
+`#pagebreak()`{=typst}
+
 ## First Row – next to side wall on door side of home
 
 - Assemble first row from three full lengths (or use 3 ripped pieces from a previous floor).
@@ -43,7 +45,9 @@ the starting wall and the front wall.  Place the last plank against the front wa
 the previous plank in that row.
 - Cut the plank at the mark, and then install it normally.  The wide gray tab that was against the front wall now slides under the previous plank, so that when you tap it into place, there will be ¼" of space between the finished floor and the front wall.
 
-`#fullpage("Images/flooring.pdf")`{=typst}
+`#horizontal-center("images/flooring.dxf", layers:"FloorTiles,Notes")`{=typst}
+
+`#pagebreak()`{=typst}
 
 ## Last Row
 - Measure distance from brown edge of last intermediate row to side-wall in several places.  If the measurement varies more than ¼”, cut each piece so that there will be ¼” gap between the floor and the wall.  Otherwise, use the minimum width for all three pieces.
