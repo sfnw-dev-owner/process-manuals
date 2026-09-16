@@ -38,7 +38,7 @@
 - Check that the perimeter is square by measuring the diagonals; they should be the same
 - Put a second nail directly under each of the first nails, about 2/3 of the way down
 
-`#fullpage("images/rear_wall_01.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_01")`{=typst}
 
 # Step 2
 
@@ -56,7 +56,7 @@
 - Put 2 nails into both endseach end of the short 2x4 in the middle (at the bottom of the window).
     - make sure that the short board is flush with the studs before nailing each end
 
-`#fullpage("images/rear_wall_02.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_02")`{=typst}
 
 # Step 3
 
@@ -68,7 +68,7 @@
   - ONLY in the lower half BELOW the window.
 - Put 2 FRAMING nails at each end of this stud, through the top and bottom plates, on the marked lines.
 
-`#fullpage("images/rear_wall_03.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_03")`{=typst}
 
 # Step 4
 
@@ -82,7 +82,7 @@ Clamp it to the double studs and nail it to these studs (2 nails).
   installed stud (2 nails), as shown in the diagram.  Make certain that the block is flush with the surface of the stud.
 - Finally, put two nails through the top plate and two nails through bottom plate into the new stud.
 
-`#fullpage("images/rear_wall_04.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_04")`{=typst}
 
 # Step 4b
 - There should be a crate of blocks under the jig.  If not, cut blocks from under the front chop saw in half for this step.
@@ -90,7 +90,7 @@ Clamp it to the double studs and nail it to these studs (2 nails).
 - Position a third 6½" block next to the one on the window side, and nail this block
  to its neighbor, again with two nails
 
-`#fullpage("images/rear_wall_04b.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_04b")`{=typst}
 
 # Step 5
 - Place the Tyvek roll along the window side of the frame, and roll out a few feet.
@@ -101,7 +101,7 @@ Clamp it to the double studs and nail it to these studs (2 nails).
 - Staple around the perimeter pulling so that it is tight
 - Staple along ALL of the inner studs, across the top and bottom of the window, and across the bottom of the A/C blocking
 
-`#fullpage("images/rear_wall_05.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_05")`{=typst}
 
 # Step 6
 
@@ -116,7 +116,7 @@ Clamp it to the double studs and nail it to these studs (2 nails).
 
 - Add 4 small pieces of flashing at the corners of the window, as shown in the figure, to reinforce the corners
 
-`#fullpage("images/rear_wall_06.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_06")`{=typst}
 
 # Step 7
 
@@ -137,7 +137,7 @@ Clamp it to the double studs and nail it to these studs (2 nails).
 - Position the A/C nailing template over the top center of the wall, against the jig stop marked, and make pencil marks
   at the spots indicated at the edges of the template. Nail (PANEL NAILS) at each mark.
 
-`#fullpage("images/rear_wall_07.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_07")`{=typst}
 
 # Step 8
 
@@ -162,4 +162,4 @@ Clamp it to the double studs and nail it to these studs (2 nails).
 - Trim Tyvek on both sides and bottom
 - Caulk all nails after tilt-up
 
-`#fullpage("images/rear_wall_08.pdf")`{=typst}
+`#fullpage("images/rear_wall.dxf", layers:"Framing,step_08")`{=typst}
