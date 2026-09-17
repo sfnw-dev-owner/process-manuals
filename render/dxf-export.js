@@ -42,7 +42,7 @@ function absolutePathFor(path) { // Necessary because qcad changes CWD to /opt/q
 // Return true on success.
 function repointToClipart(di, document, clipartDir) {
   var op = new RModifyObjectsOperation();
-  document.queryAllEntities().forEach(id => {
+  document.queryAllEntities(false /* exclude entities in undo system */, true /* include entities in block definitions */).forEach(id => {
     var ent = document.queryEntity(id);
     if (ent.getType() !== RS.EntityImage) return;
     if (document.queryLayer(ent.getLayerId()).isFrozen()) return;
