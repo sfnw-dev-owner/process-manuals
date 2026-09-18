@@ -38,26 +38,6 @@ function absolutePathFor(path) { // Necessary because qcad changes CWD to /opt/q
   return path;  
 }
 
-// Redirect embedded image references to clipart directory.
-// Return true on success.
-function repointToClipart(di, document, clipartDir) {
-  var op = new RModifyObjectsOperation();
-  document.queryAllEntities(false /* exclude entities in undo system */, true /* include entities in block definitions */).forEach(id => {
-    var ent = document.queryEntity(id);
-    if (ent.getType() !== RS.EntityImage) return;
-    if (document.queryLayer(ent.getLayerId()).isFrozen()) return;
-    var ref = ent.getData().getFileName();
-    var baseName = new QFileInfo(ref).fileName();
-    var candidate = clipartDir + QDir.separator + baseName;
-    if (!new QFileInfo(candidate).exists()) {
-      fatal("ERROR: clipart NOT FOUND: " + baseName + " in " + clipartDir + "; (referenced as " + ref + ")");
-    }
-    ent.setFileName(candidate);
-    op.addObject(ent, false);
-  });
-  di.applyOperation(op);
-}
-
 // Freeze/thaw layers based on --layers flag. Return true on success.
 function selectLayers(di, document, layerNames) {
   var op = new RModifyObjectsOperation();
@@ -102,7 +82,7 @@ function load(inFile) {
 }
 
 function showUsage() {
-  stderr("\n\nUsage: qcad -platform offscreen -no-gui -allow-multiple-instances -autostart export.js -f -o out.pdf --layers=A,B --clipart path/to/dir in.dxf");
+  stderr("\n\nUsage: qcad -platform offscreen -no-gui -allow-multiple-instances -autostart export.js -f -o out.pdf --layers=A,B in.dxf");
 }
 
 function printToPDF(di, document, outFile) {
@@ -123,11 +103,6 @@ function main() {
       document.queryAllLayers().map(id => { return document.queryLayer(id).getName(); }).sort().join("\n") + "\n");
   }
   selectLayers(di, document, layersArg.split(","));
-
-  var clipartDir = getArgument(args, "-c", "--clipart");
-  if (!clipartDir) { showUsage(); fatal("Missing arg --clipart"); }
-  clipartDir = absolutePathFor(clipartDir);
-  repointToClipart(di, document, clipartDir);
 
   cropToContents(di, document);
 

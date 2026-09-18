@@ -31,7 +31,6 @@ local function renderDXF(src, layers)
             "-autostart", "/s/render/dxf-export.js",
             "-f",
             "-o", absOutput,
-            "--clipart=/s/common/clipart",
             "--layers=" .. layers,
             src,
          },
