@@ -6,7 +6,7 @@ no-title-page: true
 
 `#align(center)[== CUT FOR 6 HOMES (12 triangles)]`{=typst}
 
-`#align(center)[#rect(stroke: 0.5pt, inset: 4pt)[#image("images/triangle_parts.dxf", layers:"0,Z-Labels")]]`{=typst}
+`#align(center)[#rect(stroke: 0.5pt, inset: 4pt)[#image("model:structural_triangle_parts/parts")]]`{=typst}
 
 Cut these (rough) lengths of 2x4, and place them on a yellow cart.
 

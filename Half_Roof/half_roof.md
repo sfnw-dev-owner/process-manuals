@@ -23,7 +23,7 @@
 - Put white 1x6 board into the top of the jig. Note that there are also 1x8 boards in the same rack. Do not use these wider boards for this step
 - Tap it down with mallet.
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 01")`{=typst}
+`#fullpage("model:half_roof/step_01")`{=typst}
 
 # Step 2
 
@@ -43,7 +43,7 @@
   - making sure top of rafter is flush with top of white board
   - be sure that the screw head is flush with the white board vertical surface.  If it protrudes at all, the half-roof assemblies will not join properly.
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 02")`{=typst}
+`#fullpage("model:half_roof/step_02")`{=typst}
 
 # Step 3
 - Place three small blocks between the two end rafters. Start at the top, and for each block
@@ -53,7 +53,7 @@
   - position screws so that they go into the block near its vertical centerline
   - insert screws about 2 fingers apart, one below the other
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 03")`{=typst}
+`#fullpage("model:half_roof/step_03")`{=typst}
 
 # Step 4
 
@@ -81,7 +81,7 @@
 
 - Remove all paper stickers from the ends of the rafters
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 04")`{=typst}
+`#fullpage("model:half_roof/step_04")`{=typst}
 
 # Step 5
 
@@ -96,7 +96,7 @@ through the white board and drive a **short (yellow) screw** into each rafter
   - use funky board \#9 to push the white board out to be flush with the end of each rafter, or push the white board toward the top of the assembly
 if it hangs over the rafter end
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 05")`{=typst}
+`#fullpage("model:half_roof/step_05")`{=typst}
 
 # Step 6
 
@@ -105,7 +105,7 @@ if it hangs over the rafter end
 
 - If white board extends past the left edge of the outside rafter, use a router to trim it flush.
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 06")`{=typst}
+`#fullpage("model:half_roof/step_06")`{=typst}
 
 # Step 7
 
@@ -123,7 +123,7 @@ if it hangs over the rafter end
 - Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof
 when it is installed on the home. There is a pattern block that will make this easy; that block fits over the end of the 1x6 white board.
 
-`#fullpage("images/half_roof.dxf", layers:"Framing Layer,Step 07")`{=typst}
+`#fullpage("model:half_roof/step_07")`{=typst}
 
 # Remove Half Roof
 

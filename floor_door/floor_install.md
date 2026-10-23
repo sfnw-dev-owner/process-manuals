@@ -39,13 +39,13 @@
 long edge for the thin gray tab. Then tilt the previous plank and the new one up just enough to tap the new plank in to engage the previous row. 
   Tap the joint with a tapping block and mallet to seat the plank.  When correctly engaged, the new plank will lie flat on the floor,
 without any springiness.
-- Trim last length to match limit line in doorway (¾” towards outside from inside of interior wall) One of these finishing lengths will need a corner cut out where it meets the doorway.
+- Trim last length to match limit line in doorway (¾” towards outside from inside of wall framing) One of these finishing lengths will need a corner cut out where it meets the doorway.
 - For rows that meet the front wall instead of the doorway, reverse the last plank (or partial plank) so that its wide locking tabs face
 the starting wall and the front wall.  Place the last plank against the front wall, and mark where it overlaps the brown surface of
 the previous plank in that row.
 - Cut the plank at the mark, and then install it normally.  The wide gray tab that was against the front wall now slides under the previous plank, so that when you tap it into place, there will be ¼" of space between the finished floor and the front wall.
 
-`#horizontal-center("images/flooring.dxf", layers:"FloorTiles,Notes")`{=typst}
+`#horizontal-center("model:floor_install/tiles")`{=typst}
 
 `#pagebreak()`{=typst}
 

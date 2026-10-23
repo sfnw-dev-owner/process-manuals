@@ -4,7 +4,7 @@ no-title-page: true
 
 # VENT CAP INSTALLATION
 
-1.  Cut two 11½" 2x4 blocks (jenga blocks) in half to yield the 5½"
+1.  Cut two 13" 2x4 blocks (jenga blocks) in half to yield the 6½"
     support blocks.
 
 2.  Preset 2 brown screws in the center of each block, as shown opposite.
@@ -43,7 +43,7 @@ no-title-page: true
 
 (More on next page)
 
-`#fullpage("Images/vent_cap.dxf", layers:"0,Dimensions")`{=typst}
+`#fullpage("model:vent_cap_install/vent_cap")`{=typst}
 
 10. While one person continues to support the vent cap, the other person
     drives the two screws in the middle of the vent cap into their
