@@ -17,7 +17,7 @@ $RUNNER run --rm -v "$PWD":/s:z -w /s --entrypoint=/bin/bash "$CONTAINER" -c "py
 export RENDER_GO_EMIT_TIMESTAMPS=1 # Read in ./go.
 
 git ls-files '**/*.md' | \
-    grep -vE '(README.md|/archived/)' | \
+    grep -vE '((README|TODO).md|/archived/)' | \
     tr '\012' '\000' | \
     `# Pipe to sort, and rely on ./go emitting less than PIPE_BUF (4096) bytes in a single write(2) to avoid interleaving` \
     xargs -0 -L1 -P0 sh -c '
