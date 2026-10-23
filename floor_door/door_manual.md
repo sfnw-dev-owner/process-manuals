@@ -54,7 +54,7 @@ are the steps:
     clear the bottom edge of the door-stop, and remove the router.
     Repeat on the other side
 
-`#fullpage("images/door_preparation.dxf", layers:"2_Door")`{=typst}
+`#fullpage("model:door_manual/door")`{=typst}
 
 11. Remove the routing guides, and place a tarp under the door frame
     legs. Using the rattle-can of Kilz primer, spray the cut surfaces.
@@ -99,7 +99,7 @@ are the steps:
 - Verify that weatherstripping has been removed.
 - Verify that the home's flooring extends only ¾" into the door opening
 - Verify that the doorway opening is at least 37¾" wide at its narrowest point.  If not, ask for help.
-- Verify that a separate flooring strip 3½" wide is installed in the doorway, flush with the outside of the siding.
+- Verify that a separate flooring strip 3" wide is installed in the doorway, flush with the outside of the siding.
 - Verify that all labeling, bottom plastic protectors and hinge protectors have been removed.
 
 `#pagebreak()`{=typst}
@@ -117,7 +117,7 @@ are the steps:
 - Slit the corners of the flexible flashing, and fold the outer half of the flashing down and to the sides of the opening.
 Press the flashing into the corners of the doorway.
 
-`#imgCtr("images/door_preparation.dxf", layers:"3_Threshold")`{=typst}
+`#imgCtr("model:door_manual/threshold")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -131,7 +131,7 @@ Press the flashing into the corners of the doorway.
 - Helpers hold door frame tight against siding.  Use a clamp if necessary.
 - Mark the screw locations with a pencil.
 
-`#imgCtr("images/door_preparation.dxf", layers:"3.1_ScrewLocs")`{=typst}
+`#imgCtr("model:door_manual/screw_locations")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -140,7 +140,7 @@ Press the flashing into the corners of the doorway.
     - doorknob side, place two shims, one high and one low, centered vertically where screw holes have been drilled
     - Adjust side shims so the gap at the top is the same across door width
 
-`#imgCtr("images/door_preparation.dxf", layers:"4_Shimming")`{=typst}
+`#imgCtr("model:door_manual/shimming")`{=typst}
 `#pagebreak()`{=typst}
 
 ##  2. Adjust and secure door frame
@@ -166,7 +166,7 @@ Press the flashing into the corners of the doorway.
 - Angle drill towards outside of the home, to assure that screws will go into the framing
 - Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are sunk below the surface of the door frame.
 
-`#imgCtr("images/door_preparation.dxf", layers:"5_Strike Plate")`{=typst}
+`#imgCtr("model:door_manual/strike_plate")`{=typst}
 
 `#pagebreak()`{=typst}
 

@@ -55,7 +55,7 @@ the brown screw into the vent block.
     and with marks on wall top plate.
     - Pre-drill and screw in **LONG** screws at each marked location.
 
-`#fullpage("images/ceiling_panels.dxf", layers:"Panels,Notes")`{=typst}
+`#fullpage("model:interior_panels/ceiling_panels")`{=typst}
 
 ## SIDE WALL Panels A, B & C
 
@@ -83,7 +83,7 @@ the brown screw into the vent block.
     - There is a separate long (84") Screw Pattern Board for Panel C.
     - Pre-drill and screw in **SHORT** screws.  If these screws cannot be made to sink into the framing behind the panel, you may use a brown 3" screw.
 
-`#fullpage("images/wall_panels.dxf", layers:"01_Side_Panels")`{=typst}
+`#fullpage("model:interior_panels/side_panels")`{=typst}
 
 ## BACK WALL Panels G & H 
 
@@ -104,7 +104,7 @@ the brown screw into the vent block.
       out to 7 screws on each side of the window framing on panel G.
     - Pre-drill and screw in **SHORT** screws
 
-`#fullpage("images/wall_panels.dxf", layers:"02_Rear_Panels")`{=typst}
+`#fullpage("model:interior_panels/rear_panels")`{=typst}
 
 ## FRONT WALL Panels D & E
 
@@ -129,7 +129,7 @@ the brown screw into the vent block.
       - Pre-drill along the long edges about 8" apart.
       - Install, making sure that the edge next to the doorway aligns with the routed doorway above it.
 
-`#fullpage("images/wall_panels.dxf", layers:"03_Front_Panels")`{=typst}
+`#fullpage("model:interior_panels/front_panels")`{=typst}
 
 ## Triangle Panels
 
@@ -147,4 +147,4 @@ the brown screw into the vent block.
 
 `#pagebreak()`{=typst}
 
-`#fullpage("images/wall_panels.dxf", layers:"04_Triangle_Panels")`{=typst}
+`#fullpage("model:interior_panels/triangle_panels")`{=typst}

@@ -56,7 +56,7 @@ When the scrap width is less than 3" discard it, and begin again, trimming 3" of
 wrap this bundle, and mark it with "1-8" using yellow crayon.
  - Repeat for the remaining two stacks. This creates a start/end bundle for each side of the roof.
 
-`#align(center)[#rect(stroke: none)[#image("images/start-end.dxf", width:70%, layers:"0")]];`{=typst}
+`#align(center)[#rect(stroke: none)[#image("model:roof_manual/start_end_shingles", width:70%)]];`{=typst}
 `#pagebreak()`{=typst}
 
 ### Row 9
@@ -127,6 +127,7 @@ for the next vent.
  
 ## Plywood Deck
  - There are two options for each half of the deck, as noted in the Material Preparation section: either 2 equal-width sheets, or 3 unequal pieces.
+ <!-- TODO: The Material Preparation section doesn't give the 3-piece sizes; the model takes 18½", 96" and 41" (from the front) from panel_options.dxf, and spaces the three H-clips per seam evenly. -->
  - In the first option, the sheets line up with the center rafter; in the second, the seams do not.
  - In the second option, use three hurricane clips on each seam, evenly spaced, to insure that the roof deck is a single plane.  If the plywood pieces cannot be made to line up because of bowing, ask for help from the factory manager.
  - Position the plywood tight against the 1x8 white board at the bottom of the half roof.  Line up the ends of the roof with the end rafters.  The plywood may not extend all the way to the outer edge of the rafters; a difference of ½" is acceptable.
@@ -134,7 +135,7 @@ for the next vent.
  - Use framing nails to nail the plywood to the rafters every 8", at these marks.
  - Repeat on the other side of the home.
 
-`#align(center)[#rect(stroke: none)[#image("images/panel_options.dxf", width:70%, layers:"Framing,Plywood 1,Plywood 2")]];`{=typst}
+`#align(center)[#rect(stroke: none)[#image("model:roof_manual/panel_options", width:70%)]];`{=typst}
 
 `#pagebreak()`{=typst}
 

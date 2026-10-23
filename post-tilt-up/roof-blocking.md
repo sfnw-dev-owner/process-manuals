@@ -15,9 +15,9 @@
 * insert four #8 x 1½" (yellow) screws, two above and two below the centerline, and about 4” from the rafters.  Alternate directions of the screws
   from one bay to the next.
 
-![](images/image_49.png)
+![](model:roof-blocking/ridge_beam_bay)
 
-![](images/image_50.png)
+![](model:roof-blocking/ridge_beam)
 
 `#pagebreak()`{=typst}
 
@@ -29,7 +29,7 @@
   the mallet is on the outermost rafter at the point where the lowest block is screwed to the rafter.  If you hammer on the rafter end,
   something will split.
 
-![](images/image_51.png)
+![](model:roof-blocking/align_magic_rafters)
 
 `#pagebreak()`{=typst}
 
@@ -37,7 +37,7 @@
 
 * Install lag bolts in these two rafters, screwing them down into the top plate of the side wall.
 
-![](images/image_52.png)
+![](model:roof-blocking/magic_lag_bolts)
 
 `#pagebreak()`{=typst}
 
@@ -46,14 +46,14 @@
 * At the peak of the roof, there are two steel brackets at each end of the roof.  Install three galvanized hex-head screws in each bracket
   to secure the roof to the structural triangles.
 
-![](images/image_53.png)
+![](model:roof-blocking/bracket_screws)
 
 `#pagebreak()`{=typst}
 
 # Install All Lag Bolts
 * After these brackets are secured, install lag bolts in all the other rafters.
 
-![](images/image_54.png)
+![](model:roof-blocking/all_lag_bolts)
 
 `#pagebreak()`{=typst}
 
@@ -65,9 +65,9 @@
   and tucked just under the edge of the white board at the bottom edge of the roof. If a block is shorter than the space between the rafters,
   it should be centered; if it is too long, cut it off with a chop saw.  The blocks must not protrude beyond the siding on the outside of the home.
 
-![](images/image_56.png)
+![](model:roof-blocking/insert_bird_block)
 
-![](images/image_57.png)
+![](model:roof-blocking/tap_bird_block)
 
 `#pagebreak()`{=typst}
 
@@ -76,18 +76,18 @@
 * The outside person then inspects the block to make sure that no screw ends are visible on the outside of the home. If one is found protruding,
   it must be removed and reinstalled correctly.
 
-![](images/image_58.png)
+![](model:roof-blocking/bird_block_screws)
 
 ## Complete for All Bird Blocking
 
-![](images/image_59.png)
+![](model:roof-blocking/all_bird_blocks)
 
 `#pagebreak()`{=typst}
 
 # Install Ridge Vent Blocks
 * Install vent jig between rafters (this jig does not fit into the end bays).
 
-![](images/image_60.png)
+![](model:roof-blocking/vent_guide_board)
 
 `#v(0.5in)`{=typst}
 
@@ -96,7 +96,7 @@
 
 ## Align and Clamp Ridge Vent
 
-![](images/image_61.png)
+![](model:roof-blocking/align_vent_block)
 
 * Vent block assemblies have a top and a bottom.  The bottom is the edge where all the plywood spacer blocks are even.  Always install a
   vent block with this edge down.
@@ -113,8 +113,8 @@
 * Drive the three screws into the white board.  It is important that the vent block end up tight against the white board.
   If there is a gap, back the screws out, reclamp, and then drive the screws back in again.  This will ensure that the
   ceiling panels will actually fit when they are installed.
-![](images/image_62.png)
+![](model:roof-blocking/vent_block_screws)
 
 * Move the vent jig to the next bay, and repeat these two steps.
 
-![](images/image_63.png)
+![](model:roof-blocking/all_vent_blocks)

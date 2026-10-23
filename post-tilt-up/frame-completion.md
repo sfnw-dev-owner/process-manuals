@@ -13,7 +13,7 @@
 * Equip two crews of two people with screw guns and brown #10 x 3” screws, and have them install 4 screws in each bay of all four walls,
   through the bottom plate into the platform, as shown in the diagram.
 
-![](images/image_31.png)
+![](model:frame-completion/secure_walls)
 
 `#pagebreak()`{=typst}
 
@@ -21,9 +21,9 @@
 * Have one person install 5 #10 x 3” screws in each wall corner
 
 ```{=typst}
-#scale(70%, reflow: true)[#image("images/image_32.png")]
+#scale(70%, reflow: true)[#image("model:frame-completion/corner_screws_front")]
 #align(center)[Front Wall]
-#scale(70%, reflow: true)[#image("images/image_33.png")]
+#scale(70%, reflow: true)[#image("model:frame-completion/corner_screws_rear")]
 #align(center)[Rear Wall]
 #pagebreak()
 ```
@@ -56,7 +56,7 @@
   in from one side of the triangle, starting about ¾” in from the edge of the bottom plate.  Then there are two screws driven in vertically
   about 1” toward the center from the seam between the bottom plate and the angled side of the triangle.
 
-![](images/image_34.png)
+![](model:frame-completion/triangles)
 
 `#pagebreak()`{=typst}
 
@@ -64,14 +64,14 @@
 
 * Position a triangle on the front wall, and, with a helper inside the home, center it from side to side.
 
-![](images/image_36.png)
+![](model:frame-completion/triangle_centered)
 
 `#pagebreak()`{=typst}
 
 * Verify that the bottom plate of the triangle is flush with the inside wall framing all the way across the front wall.
 * Clamp the triangle to the wall top plate (or door opening) about 6" from each end.
 
-![](images/image_35.png)
+![](model:frame-completion/triangle_clamped)
 
 `#pagebreak()`{=typst}
 
@@ -80,7 +80,7 @@
 * From the ladder, drive all the preset screws into the wall framing to secure the triangle.
 * Repeat these last three steps on the rear wall.
 
-![](images/image_37.png)
+![](model:frame-completion/triangle_screws)
 
 `#pagebreak()`{=typst}
 
@@ -97,7 +97,7 @@ If any are found, drive them in so that the heads are flush with the board surfa
 
 Fetch the two Funky Boards (#3 and #4), and position them near the side-wall jig.
 
-![](images/image_38.png)
+![](model:frame-completion/half_roof_setup)
 
 `#pagebreak()`{=typst}
 
@@ -115,8 +115,8 @@ Fetch the two Funky Boards (#3 and #4), and position them near the side-wall jig
 * Lift the first half-roof.
 
 ```{=typst}
-#scale(78%, reflow: true)[#image("images/image_39.png")]
-#scale(78%, reflow: true)[#image("images/image_40.png")]
+#scale(78%, reflow: true)[#image("model:frame-completion/raise_half_roof")]
+#scale(78%, reflow: true)[#image("model:frame-completion/raise_half_roof_up")]
 #pagebreak()
 ```
 ## Align First Half-Roof
@@ -124,7 +124,7 @@ Fetch the two Funky Boards (#3 and #4), and position them near the side-wall jig
   from the people on the funky boards, to lift (temporarily) the rafter ends either at the front or rear so that the half roof is properly positioned.
 * Then the front ladder person aligns the assembly so that the mark on the half-roof is even with the outer edge of the front structural triangle.
 
-![](images/image_42.png)
+![](model:frame-completion/align_half_roof)
 
 `#pagebreak()`{=typst}
 
@@ -133,11 +133,11 @@ Fetch the two Funky Boards (#3 and #4), and position them near the side-wall jig
 * Rotate ground crew members who were standing out, and position everyone on the other side of the home for the second half roof lifting.
 * Once the ladder crew have repositioned their ladders, lift the second half roof into position.
 
-![](images/image_43.png)
+![](model:frame-completion/second_half_roof_setup)
 
 ```{=typst}
-#scale(78%, reflow: true)[#image("images/image_45.png")]
-#scale(78%, reflow: true)[#image("images/image_46.png")]
+#scale(78%, reflow: true)[#image("model:frame-completion/raise_second_half_roof")]
+#scale(78%, reflow: true)[#image("model:frame-completion/second_half_roof_on")]
 #pagebreak()
 ```
 ## Connect Half-Roof Assemblies
@@ -147,6 +147,6 @@ Fetch the two Funky Boards (#3 and #4), and position them near the side-wall jig
   the boards to slide past each other more easily before applying clamp pressure horizontally. Then drive 4 #8 x 1½ screws into the white
   boards, to secure the two halves together.
 
-![](images/image_47.png)
+![](model:frame-completion/join_half_roofs)
 
-![](images/image_48.png)
+![](model:frame-completion/ridge_screws)

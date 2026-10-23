@@ -19,7 +19,7 @@ Check to be sure that the paneling has been routed (on the right edge as you fac
 the front or back of the home), so that it does not extend beyond the
 sidewall paneling.
 
-All exterior trim boards are together on a rack at the West end of the factory.  Corner boards are precut to 93¼ˮ.  Window trim pieces for tops and sides
+All exterior trim boards are together on a rack at the West end of the factory.  Corner boards are precut to 93½ˮ.  Window trim pieces for tops and sides
 are also precut; the top trim has a 30° bevel on one long edge.
 
 Trim boards have an outer and an inner side.  The outer side has vertical grooves in the surface.  The inner side is not as attractive, and caulk should always be applied to that inner side.
@@ -40,7 +40,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 1 nail every 8ˮ down the middle
     - 2 nails about 2ˮ from the bottom
 
-`#horizontal-center("images/back_corner.dxf", layers:"Building,Roof_Framing,Corners_1"); #pagebreak()`{=typst}
+`#horizontal-center("model:exterior_trim/corners_1"); #pagebreak()`{=typst}
 
 
 ## Step 2 -- Corner Board \#2
@@ -53,7 +53,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails about 2ˮ from the bottom.
 * Repeat for the other three corners of the home.  Note that on two of those corners, the caulking will be a mirror image of that shown.
 
-`#horizontal-center("images/back_corner.dxf", layers:"Building,Roof_Framing,Corners_2"); #pagebreak()`{=typst}
+`#horizontal-center("model:exterior_trim/corners_2"); #pagebreak()`{=typst}
 
 
 
@@ -83,7 +83,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails 1-½" in from each end
     - 2 nails in the middle of the board.
 
-`#fullpage("images/rear_window.dxf", layers:"Window Trim")`{=typst}
+`#fullpage("model:exterior_trim/rear_window")`{=typst}
 
 # FRONT WINDOW TRIM
 
@@ -117,7 +117,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
     - 2 nails 1-½" in from each end
     - 2 nails in the middle of the board
     
-`#fullpage("images/front_window.dxf", layers:"Window Trim")`{=typst}
+`#fullpage("model:exterior_trim/front_window")`{=typst}
 
 # EXTERIOR TRIANGLES - FRONT & BACK
 
@@ -135,7 +135,7 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
 * Center the flashing between the rafter ends
 * Nail (PANEL NAILS) 3 places: near each end, and in middle
 
-`#fullpage("images/triangles.dxf", layers:"Framing,Step_1_2")`{=typst}
+`#fullpage("model:exterior_trim/triangles_1_2")`{=typst}
 
 ## Step 3: T1-11 Triangles
 
@@ -161,4 +161,4 @@ NOTE - Pre-cut Tyvek, metal flashing and triangle siding are on the back shelves
     when the roof goes on.
   * Nail (Panel Nails) 3 places into outside rafter, and one nail into each cross block
 
-`#fullpage("images/triangles.dxf", layers:"Framing,Step_3_4")`{=typst}
+`#fullpage("model:exterior_trim/triangles_3_4")`{=typst}

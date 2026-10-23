@@ -80,7 +80,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Transport crew use shuffle step
 * Platform crew use leg muscles; keep your back straight.
 
-![](images/image_01.png)
+![](model:tilt-up/rhs_jig)
 
 `#pagebreak()`{=typst}
 
@@ -91,7 +91,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   and have the remaining transport crew guide the bottom of the wall to line up with the layout mark on the platform edge.
 * Remind transport crew to protect their fingers, and to step away from the wall when a team leader asks.
 
-![](images/image_02.png)
+![](model:tilt-up/rhs_tilting)
 
 `#pagebreak()`{=typst}
 
@@ -104,9 +104,9 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   fetch the wall lever from Workstation 2 or 4.
 * Once the wall is in position, use the 4-foot level to set the wall vertical, and have a team leader secure the wall with the first-wall brace. 
 
-![](images/image_03.png)
+![](model:tilt-up/rhs_upright)
 
-`#fullpage("images/image_04.png")`{=typst}
+`#fullpage("model:tilt-up/rhs_brace")`{=typst}
 
 ### Attach
 * If this is a group-build, favor group members for assignments below.
@@ -128,7 +128,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   until each bay is nailed to the platform.  When the nail gun person is set, call out “Ready” to let the mallet person know that
   they can begin the next sequence.
 
-![](images/image_05.png)
+![](model:tilt-up/rhs_mississippis)
 
 `#pagebreak()`{=typst}
 
@@ -149,7 +149,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
       in the hands of the platform crew. 
     * Once the wall is set down, those near the corner must keep their hands away from the corner as the wall is slid into place
 
-![](images/image_06.png)
+![](model:tilt-up/back_jig)
 
 `#pagebreak()`{=typst}
 
@@ -158,20 +158,20 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   and then walk slowly toward the platform with the wall.
 * As they hand the wall to the platform crew, the leading-edge transport people should drop away, so that they are not impeding the movement of the wall.
 
-`#scale(70%, reflow: true)[#image("images/image_07.png")]`{=typst}
+`#scale(70%, reflow: true)[#image("model:tilt-up/back_off_jig")]`{=typst}
 
-`#scale(70%, reflow: true)[#image("images/image_08.png")]`{=typst}
+`#scale(70%, reflow: true)[#image("model:tilt-up/back_to_platform")]`{=typst}
 
 * When the wall is about a foot away from the side wall, the platform crew starts lifting the wall into position.  The remaining transport crew
   can help guide the bottom of the wall into the marked position on the platform, being careful to keep fingers away from the bottom of the wall.
 * Once the wall is vertical, the leader **must verify** that everyone’s fingers are out of the way of the corner about to be joined.
   When that is so, the leader calls for the transport and platform crew to push and slide the rear wall against the end of the side wall.
 
-![](images/image_09.png)
+![](model:tilt-up/back_raise)
 
-`#scale(78%, reflow: true)[#image("images/image_10.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/back_clear_hands")]`{=typst}
 
-`#scale(78%, reflow: true)[#image("images/image_11.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/back_slide")]`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -184,7 +184,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Check that there is no gap between the back wall siding and the end wall, all the way from the bottom to the top of the corner,
   and that the two walls are even at the top.
 
-![](images/image_12.png)
+![](model:tilt-up/back_clamp)
 
 `#pagebreak()`{=typst}
 
@@ -192,7 +192,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * As before, assign a nailer (from the platform crew) and a mallet person (from the transport crew)
 * Review the “Mississippi” timing ritual, and nail the bottom plate of the rear wall to the platform, one nail per wall bay
 
-![](images/image_13.png)
+![](model:tilt-up/back_mississippis)
 
 `#pagebreak()`{=typst}
 
@@ -202,7 +202,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   is driven into the side stud of the side wall, rather than going into the crack between the two pieces of wood that form the corner on the side wall.
 * Remove the clamps
 
-![](images/image_14.png)
+![](model:tilt-up/back_nail)
 
 `#pagebreak()`{=typst}
 
@@ -226,7 +226,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
     * Once the wall is set down, those near the corner must keep their hands away from the corner as the wall is slid into place.
     * After the wall is in place, the platform crew must continue to steady it, until nailing is complete.
 
-`#fullpage("images/image_15.png")`{=typst}
+`#fullpage("model:tilt-up/lhs_jig")`{=typst}
 
 ### Lift & Shift
 * On the count of three, have the transport crew lift the wall, shuffle towards the platform, pass the top of the wall to the platform crew,
@@ -235,11 +235,11 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Once the side wall is vertical, the leader **must verify** that everyone’s fingers are out of the way of the corner about to be joined.
   When that is so, the leader may call for the transport and platform crew to slide the side wall against the end of the rear wall.
 
-![](images/image_16.png)
+![](model:tilt-up/lhs_tilted)
 
-`#scale(78%, reflow: true)[#image("images/image_17.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/lhs_clear_hands")]`{=typst}
 
-`#scale(78%, reflow: true)[#image("images/image_18.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/lhs_slide")]`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -250,7 +250,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Have a tall person use the mallet to hammer the rear-wall paneling tight against the side wall framing, all the way up to the top of the walls.
   Then install a second clamp inside the home near the top of the corner.
 
-![](images/image_19.png)
+![](model:tilt-up/lhs_clamp)
 
 `#pagebreak()`{=typst}
 
@@ -258,7 +258,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * As before, assign a nailer and a malleter, review the “Mississippi” timing ritual, and nail the bottom plate of the side wall to the platform,
   one nail per wall bay.  If it is necessary to use the wall lever, assign a third person to that task.
 
-![](images/image_20.png)
+![](model:tilt-up/lhs_mississippis)
 
 `#pagebreak()`{=typst}
 
@@ -268,7 +268,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   going into the crack between the two pieces of wood that form the corner on the side wall. 
 * Remove the clamps
 
-![](images/image_21.png)
+![](model:tilt-up/lhs_side_nails)
 
 `#pagebreak()`{=typst}
 
@@ -289,7 +289,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
     * Instruct platform crew to use elbows or shoulders to tip the side walls away if more room is needed to get the front wall into position.
     * Once the front wall is set in place, platform crew must continue to support it until clamps are in place on both corners.
 
-![](images/image_22.png)
+![](model:tilt-up/front_jig)
 
 `#pagebreak()`{=typst}
 
@@ -302,19 +302,19 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
   The two plastic-hook people bear much of the weight of the wall, and they guide the wall into the opening.  The leader’s job at this time
   is to make certain that everyone else has their fingers out of the way.
 
-![](images/image_23.png)
+![](model:tilt-up/front_off_jig)
 
 `#pagebreak()`{=typst}
 
-`#scale(78%, reflow: true)[#image("images/image_24.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/front_to_platform")]`{=typst}
 
-`#scale(78%, reflow: true)[#image("images/image_25.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/front_align")]`{=typst}
 
 `#pagebreak()`{=typst}
 
-`#scale(78%, reflow: true)[#image("images/image_26.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/front_tilted")]`{=typst}
 
-`#scale(78%, reflow: true)[#image("images/image_27.png")]`{=typst}
+`#scale(78%, reflow: true)[#image("model:tilt-up/front_upright")]`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -325,14 +325,14 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Have a tall person use the mallet to hammer the front-wall paneling tight against the side wall framing, all the way up to the top of the walls.
   Then install a second clamp inside the home near the top of each corner.
 
-![](images/image_28.png)
+![](model:tilt-up/front_clamp)
 
 `#pagebreak()`{=typst}
 
 ### Attach Bottom
 *	As before, assign a nailer and a malleter, review the “Mississippi” timing ritual, and nail the bottom plate of the front wall to the platform, one nail per wall bay.  Finish with a nail into the small space between the two studs next to the door corner.
 
-![](images/image_29.png)
+![](model:tilt-up/front_mississippis)
 
 `#pagebreak()`{=typst}
 
@@ -343,4 +343,4 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 * Similarly, check the corner next to the door for tightness, and have the nailer shoot a nail into each gap between the spacer blocks, angled outward.
 * Remove the clamps
 
-![](images/image_30.png)
+![](model:tilt-up/front_nail)

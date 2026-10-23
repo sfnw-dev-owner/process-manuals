@@ -15,12 +15,9 @@ INPUT="$(realpath "$1")"
 CONTAINER="$(head -1 $(dirname $(realpath "$0"))/.container)" # Must match ./all!
 cd "$(dirname "$0")/.."
 
-# Delete any previous renderings of DXFs that happened before the
-# newest file in render/ was touched, to avoid using outdated cached
-# files when the pipeline changes.
-[[ -d .rendered-dxfs ]] && find .rendered-dxfs/ -type f \
-     ! -newer "$(find render -type f -printf '%T@ %p\n' | sort -nr | head -1 | cut -d' ' -f2-)" \
-     -delete
+# Figures drawn from the model are cached in .rendered-figures/, keyed by
+# everything they're drawn from (see render/model2svg.py), so nothing here
+# needs invalidating; ./all prunes figures no manual uses any more.
 
 export TZ="America/Los_Angeles"
 
@@ -35,16 +32,16 @@ INPUT_FILE="$(basename "$INPUT")"
 INPUT_DIR="$(dirname "$(realpath --relative-to="$PWD" "$INPUT")")"
 TITLE="$(capitalize "$INPUT_DIR") \\ $(capitalize "$INPUT_FILE")"
 
-export DEBUG="" # Set to non-empty to debug subprocess (pandoc/typst/qcad) failures.
+export DEBUG="" # Set to non-empty to debug subprocess (pandoc/typst/model2svg) failures.
 RUNNER="$(type -p docker || type -p podman)"
 function dockerRun() {
     local -a debug_flags
-    [[ -n "$DEBUG" ]] && debug_flags+=(-e DEBUG=1 -e QT_LOGGING_RULES="*.debug=false;qt.*.debug=false;qt.*.warning=false")
+    [[ -n "$DEBUG" ]] && debug_flags+=(-e DEBUG=1)
     "$RUNNER" run --rm \
               -v "$PWD":/s:z \
               -w "/s/$INPUT_DIR" \
               -e FOOTER \
-              -e TYPST_FONT_PATHS=/s/render/Carlito \
+              -e TYPST_FONT_PATHS=/s/render/Carlito:/s/render/DejaVu \
               "${debug_flags[@]}" \
               --entrypoint=/bin/bash \
               "$CONTAINER" \
@@ -56,13 +53,13 @@ RELATIVE_RENDER_PATH="$(realpath --relative-to="$INPUT_DIR" "$PWD/render")"
 
 declare -a common_flags
 common_flags=(pandoc -d "${RELATIVE_RENDER_PATH}/pandoc-defaults.yaml" --template "${RELATIVE_RENDER_PATH}/typst-header.typ")
-common_flags+=("--lua-filter=/s/render/dxf.lua")
+common_flags+=("--lua-filter=/s/render/model.lua")
 
 # Extract from $INPUT any images it embeds, to account for in the last-revision timestamp.
 # Needs to be a dockerRun separate from the typst invocation because the container doesn't have git.
 export TEMPTYP=".TEMP.$$.typ"
 extract_out="$(dockerRun "trap 'rm -f ${TEMPTYP}' EXIT; \
-                         export DXF_DEPS=true; \
+                         export FIGURE_DEPS=true; \
                          ${common_flags[*]} \
                   --to typst '$INPUT_FILE' -o ${TEMPTYP} \
         && typst compile --root /s -f pdf --deps /dev/stdout ${TEMPTYP} /dev/null | \

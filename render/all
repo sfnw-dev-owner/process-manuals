@@ -8,7 +8,11 @@ RUNNER="$(type -p docker || type -p podman)"
 # Explicitly pull the container to avoid having dozens of parallel
 # ./go processes fighting with each other to all pull the same image.
 CONTAINER="$(head -1 $(dirname $(realpath "$0"))/.container)" # Must match ./go!
-$RUNNER pull --quiet "$CONTAINER" > /dev/null
+[[ "$CONTAINER" == *:* ]] && $RUNNER pull --quiet "$CONTAINER" > /dev/null
+
+# Render every figure the manuals embed first (in parallel, a few of a
+# manual's at a time); the parallel ./go runs below then find them all cached.
+$RUNNER run --rm -v "$PWD":/s:z -w /s --entrypoint=/bin/bash "$CONTAINER" -c "python3 render/model2svg.py --all"
 
 export RENDER_GO_EMIT_TIMESTAMPS=1 # Read in ./go.
 

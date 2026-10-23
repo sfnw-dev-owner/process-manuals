@@ -25,10 +25,10 @@ Trim widths (4" or 2") are approximate.  Do not rely on these dimensions.
 
 | Qty | Size | Length | Description |
 | :--- | :--- | :--- | --- |
-| 1 | 3/4 x 8 | 40" | Rear Shelf |
-| 1 | 3/4 x 8 | 40" | Front Shelf |
-| 1 | 2 x 4 | 39" | Rear Support Block |
-| 1 | 2 x 4 | 39-1/2" | Front Support Block |
+| 1 | 3/4 | 40" | Rear Shelf |
+| 1 | 3/4 | 40" | Front Shelf |
+| 1 | 2 x 4 | 38-3/4" | Rear Support Block |
+| 1 | 2 x 4 | 38-3/4" | Front Support Block |
 
 ## Vent Cap (on Trim Rack)
 
