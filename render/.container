@@ -1,4 +1,4 @@
-ghcr.io/sfnw-dev-owner/renderer:20260930T215245
+ghcr.io/sfnw-dev-owner/renderer:20261023T022406
 
 The first line in this file is the container that will be used for all
 PDF rendering.
