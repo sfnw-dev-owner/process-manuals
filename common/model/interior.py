@@ -13,16 +13,9 @@ framing's inside face and increasing outward (so everything here is at
 negative Y); Z up from the deck. Children are tagged with the interior-trim
 step that installs them (see STEPS), so the manuals' figures can show a wall
 as it is at each step.
-
-SketchUp's converted insulation and staged trim are in interior_sketchup.py.
 """
 
 from .common import *
-from .interior_sketchup import (  # noqa: F401 (the iron-cart scenes use these)
-    insulation,
-    interior_trim_painted,
-    interior_trim_raw,
-)
 from .platform import DECK
 from .walls import (
     AC_HEADER_Z, AC_OPENING, AC_SILL_Z, AC_X, DOOR_HEADER_Z, DOOR_OPENING, DOOR_X, STUD, WALL_DEPTH,
@@ -432,10 +425,3 @@ def interior():
         (front_wall_interior, FRONT_WALL_AT, [], ''),
         (rear_wall_interior, REAR_WALL_AT, [], ''),
     ]
-
-
-@component
-def interior_panel_raw():
-    """The interior, where house.py places SketchUp's interior panels (at
-    (3 1/2, 3 3/8, 3/4) above the deck's corner)."""
-    return [], [(interior, Pos(-(3 + 1/2), -(3 + 3/8), -(DECK + 3/4)), [], '')]

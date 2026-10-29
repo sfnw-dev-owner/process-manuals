@@ -137,26 +137,6 @@ def skid():
     return solids, children
 
 
-@component
-def floor():
-    """SketchUp: 'Group#78'"""
-    solids = []
-    children = [
-        (floor_finished, Pos(87, 136 + 1/2, 0) * Rot(Z=180), [], ''),  # Floor (Finished)
-    ]
-    return solids, children
-
-
-@component
-def floor_finished():
-    """SketchUp: 'Group#29'"""
-    solids = [
-        Pos(87, -0.0205, 0) * Rot(Z=90) * Sheet(1/2, 136.5205, 87, facing="Z"),
-    ]
-    children = []
-    return solids, children
-
-
 # ── jig items for Platform/platform.md's figures ──────────────────────────
 
 # "SAVE" spacer blocks (Platform/platform.md step 7): set on the skids,

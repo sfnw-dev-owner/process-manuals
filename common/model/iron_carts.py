@@ -9,15 +9,6 @@ bounding box; model() places them.
 
 
 from .common import *
-from .platform import (
-    floor,
-)
-from .interior import (
-    insulation,
-    interior_panel_raw,
-    interior_trim_painted,
-    interior_trim_raw,
-)
 from .equipment import (
     _2x8_block,
     arrow_1_2,
@@ -195,18 +186,10 @@ ROOT = {
     'arrow_rear_down_2': (arrow_1_2, STATIONS['carts_removed'] * Pos(-(54 + 3/8), 15 + 11/16, -(22 + 3/4)) * Rot(Z=-90) * Rot(X=-90), ['mirror'], 'Arrow Rear Down'),
     'arrow_rear_up_2': (arrow_1_2, STATIONS['carts_removed'] * Pos(-(41 + 7/8), 16.4585, -(56 + 3/4)) * Rot(Z=-90) * Rot(X=90), ['mirror'], 'Arrow Rear Up'),
     'arrow_rear_down_final': (arrow_1_2, STATIONS['carts_removed'] * Pos(-(54 + 1/16), 49.5923, -(22 + 3/4)) * Rot(Z=-90) * Rot(X=-90), ['mirror'], 'Arrow Rear Down Final'),
-    'interior_trim_raw': (interior_trim_raw, STATIONS['prepare'] * Pos(-4, -5/8, 12 + 7/8) * Rot(Z=180), [], ''),
-    'insulation': (insulation, STATIONS['prepare'] * Pos(-1/8, 1/8, 14 + 3/8) * Rot(Z=180), [], ''),
-    'floor_1': (floor, STATIONS['prepare'] * Pos(-(91 + 1/2), -(140 + 7/16), 12 + 3/8), [], ''),
-    'interior_trim_painted': (interior_trim_painted, STATIONS['prepare'] * Pos(-(3 + 1/2), -5/8, -(13 + 1/16)) * Rot(Z=180), [], ''),
-    'interior_panel_painted': (interior_panel_raw, STATIONS['prepare'] * Pos(-(3 + 1/2), -(3 + 3/8), 13 + 1/8) * Rot(Z=180), [], ''),
-    'floor_2': (floor, STATIONS['rear_raised'] * Pos(-(91 + 1/2), -(140 + 7/16), 12 + 3/8), [], ''),
     'home_level': (house, STATIONS['rear_raised'] * Pos(0, 0, 5/8) * Rot(Z=180), [], 'Home - Level'),
     'home_back_raised_1': (house, STATIONS['rear_raised'] * Pos(0, -3/16, 7.8938) * Rot(Z=180) * Rot(X=-3), [], 'Home - Back Raised'),
-    'floor_3': (floor, STATIONS['rear_dropped_onto_posts'] * Pos(-91.4802, -(140 + 7/16), 12 + 3/8), [], ''),
     'home_level_raised_1': (house, STATIONS['rear_dropped_onto_posts'] * Pos(0, 0, 3 + 7/16) * Rot(Z=180), [], 'Home - Level Raised'),
     'home_back_raised_2': (house, STATIONS['rear_dropped_onto_posts'] * Pos(0, 0, 2 + 5/16) * Rot(Z=180) * Rot(X=-0.7), [], 'Home - Back Raised'),
-    'floor_4': (floor, STATIONS['carts_removed'] * Pos(-(91 + 1/2), -(140 + 7/16), 12 + 3/8), [], ''),
     'home_level_raised_2': (house, STATIONS['carts_removed'] * Pos(0, 0, 3 + 7/16) * Rot(Z=180), [], 'Home - Level Raised'),
     'home_front_lowered_onto_triple_block': (house, STATIONS['carts_removed'] * Pos(0, 0, 3 + 11/16) * Rot(Z=180) * Rot(X=-3.5), [], 'Home - Front lowered onto Triple Block'),
     'home_level_on_triple_blocks': (house, STATIONS['carts_removed'] * Pos(0, 1/4, -(4 + 7/8)) * Rot(Z=180), [], 'Home - Level on Triple Blocks'),
@@ -317,18 +300,10 @@ BOUNDS = {
     'arrow_rear_down_2': ((-3144.2, 1975.2, -62.5), (-3132.2, 1975.7, -22.8)),
     'arrow_rear_up_2': ((-3143.7, 1976, -56.8), (-3131.7, 1976.5, -17)),
     'arrow_rear_down_final': ((-3143.9, 2009.1, -62.5), (-3131.9, 2009.6, -22.8)),
-    'interior_trim_raw': ((11.7, 20.9, 14.9), (99.7, 163.5, 115.1)),
-    'insulation': ((8, 20.1, 16.4), (103.6, 164.2, 99.8)),
-    'floor_1': ((12.2, 23.6, 14.4), (99.2, 160.2, 14.9)),
-    'interior_trim_painted': ((11.2, 20.9, -11.1), (100.2, 163.5, 115.1)),
-    'interior_panel_painted': ((11.2, 23.6, 15.1), (100.2, 160.7, 115.5)),
-    'floor_2': ((-1038.7, 611, 14.4), (-951.8, 747.6, 14.9)),
     'home_level': ((-1049.5, 599.2, 0.6), (-941.1, 759.5, 122.1)),
     'home_back_raised_1': ((-1049.5, 592.9, 0.6), (-941.1, 754, 129.6)),
-    'floor_3': ((-2089.7, 1198.4, 14.4), (-2002.7, 1335, 14.9)),
     'home_level_raised_1': ((-2100.4, 1186.6, 3.4), (-1992.1, 1346.9, 124.9)),
     'home_back_raised_2': ((-2100.4, 1185.1, 0.6), (-1992.1, 1345.6, 123.9)),
-    'floor_4': ((-3181.3, 1819.1, 14.4), (-3094.3, 1955.6, 14.9)),
     'home_level_raised_2': ((-3192, 1807.3, 3.4), (-3083.6, 1967.5, 124.9)),
     'home_front_lowered_onto_triple_block': ((-3192, 1800.1, -4.9), (-3083.6, 1961.3, 125.4)),
     'home_level_on_triple_blocks': ((-3192, 1807.5, -4.9), (-3083.6, 1967.8, 116.6)),
