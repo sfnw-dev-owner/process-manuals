@@ -9,11 +9,10 @@ Each row of SCENES:
   eye, target, up, fov   camera (inches; fov in degrees, across the figure)
   hidden_tags  tags hidden in this scene
   show, hide   top-level instance names (iron_carts.ROOT keys) forced on/off
-  numbers      {arrow instance: n}: a circled n behind the arrow's tail, or
-               (n, "head"): past its head, or (n, along, across): that far
-               along the arrow from its tail, and across it (inches), or
-               (n, (x, y)): at that point of the page (inches from the
-               top-left corner, y down: where the export it replaces had it)
+  numbers      {arrow instance: n}: a circled n beside the arrow's middle,
+               or (n, along, across): that far along the arrow from its
+               tail, and across it (inches; across is the arrow's width
+               direction, + toward its wider side)
   far          (optional) drop instances farther than this (inches)
 """
 
@@ -27,6 +26,7 @@ from model.notes import Circle, Label
 from . import Figure, Viewport
 
 MD = "Extract_Iron_Carts/Extract_instructions.md"
+PAPER_NOTES = True
 
 # Horizontal/vertical ratio assumed when deciding what's inside the camera's
 # view. SketchUp's fov is vertical; the width depends on the window it was
@@ -39,10 +39,10 @@ ASPECT = 1.8
 FAR = 4
 
 ARROW_TAIL = (0, 0, 6)  # arrow_1_2's tail, in its own frame
-NUMBER_BACK = 16  # the circled number, this far behind the tail
+NUMBER_BESIDE = 14  # the circled number, this far beside the arrow's middle (across its width)
 
 WINDOW = (6, 4.8)  # each figure's size, inches, with the camera's fov across its width (as SketchUp's is)
-NOTE_SCALE = WINDOW[0] / 150  # page inches per unit of the numbers' sizes below
+NUMBER = (0.15, 0.14)  # a circled number: its circle's radius and its digit's height, page inches
 
 
 def _sub(a, b):
@@ -89,28 +89,17 @@ def in_view(row):
 ARROW_LENGTH = 39.7148  # arrow_1_2's, tail to head
 
 
-NUMBER_RADIUS, NUMBER_HEIGHT = 3.8, 3.5  # the circle and its digit (in NOTE_SCALE units), as the exports had them
-
-
 def circled(n):
-    return [Circle(NUMBER_RADIUS * NOTE_SCALE, fill=(255, 255, 255), weight=2.5 * NOTE_SCALE / 0.06),  # 0.06: PAGE_UNIT in render/model2svg.py
-            Label(str(n), NUMBER_HEIGHT * NOTE_SCALE)]
+    radius, height = NUMBER
+    return [Circle(radius, fill=(255, 255, 255), weight=2), Label(str(n), height)]
 
 
 def number(arrow, n):
-    """(x, y, z, note)s: a circled n behind an arrow's tail (or past its head),
-    sized in page inches; or (x, y, note)s on the page, for (n, (x, y))."""
+    """(x, y, z, note)s: a circled n beside an arrow (at its middle, or as
+    given), sized in page inches."""
     comp, loc, mods, _ = iron_carts.ROOT[arrow]
     n, *where = n if isinstance(n, tuple) else (n,)
-    if where and isinstance(where[0], tuple):
-        x, y = where[0]
-        return [(x, y, note) for note in circled(n)]
-    if not where:
-        along, across = -NUMBER_BACK, 0
-    elif where == ["head"]:
-        along, across = ARROW_LENGTH + NUMBER_BACK, 0
-    else:
-        along, across = where
+    along, across = where if where else (ARROW_LENGTH / 2, NUMBER_BESIDE)
     back = loc * Location((ARROW_TAIL[0], ARROW_TAIL[1] + along, ARROW_TAIL[2] + across))
     p = back.position
     return [(p.X, p.Y, p.Z, note) for note in circled(n)]
@@ -126,14 +115,12 @@ def figures(only=None):
         # (the SketchUp houses' roofs were plain: no shingles)
         shapes = iron_carts.model(names, list(row["hidden_tags"]) + ["Roofing"], row["show"])
         notes = [x for arrow, n in row.get("numbers", {}).items() for x in number(arrow, n)]
-        page_notes = [x for x in notes if len(x) == 3]  # on the page
-        notes = [x for x in notes if len(x) == 4]  # at points of the model
         w, h = WINDOW
         # SketchUp's fov spans the window's width; a Viewport's its height.
         fov = math.degrees(2 * math.atan(math.tan(math.radians(row["fov"]) / 2) * h / w))
         view = Viewport((0, 0, w, h), row["eye"], row["target"], row["up"], [(s, "hlr") for s in shapes.values()],
                         fov=fov, notes=notes)
-        out.append(Figure(MD, row["name"], page=(w, h), viewports=[view], notes=page_notes))
+        out.append(Figure(MD, row["name"], page=(w, h), viewports=[view]))
     return out
 
 
@@ -176,7 +163,7 @@ SCENES = [
                      'Floor Insulation'],
      'show': [],
      'hide': [],
-     'numbers': {'arrow_rear_up_1': (1, (4.15, 4.89)), 'arrow_1_2_1': (2, (3.17, 4.19)), 'arrow_1_2_2': (2, (5.51, 3.76))}},
+     'numbers': {'arrow_rear_up_1': 1, 'arrow_1_2_1': 2, 'arrow_1_2_2': 2}},
     {'name': '03_rear_dropped_onto_posts',
      'skp_scene': 'ISO - Rear\t dropped onto Posts',
      'eye': (-1822.5656, 1681.1681, 132.3369),
@@ -212,7 +199,7 @@ SCENES = [
                      'Arrow Rear Down'],
      'show': [],
      'hide': [],
-     'numbers': {'arrow_front_up_1': (1, (2.59, 5.10)), 'arrows_1': (2, (3.16, 4.10)), 'arrows_2': (2, (1.41, 3.89))}},
+     'numbers': {'arrow_front_up_1': 1, 'arrows_1': 2, 'arrows_2': 2}},
     {'name': '05_carts_removed',
      'skp_scene': 'ISO - Carts Removed',
      'eye': (-2979.3506, 1436.8306, 101.9201),
@@ -250,7 +237,7 @@ SCENES = [
                      'Arrow Rear Down Final'],
      'show': [],
      'hide': [],
-     'numbers': {'triple_block_front_arrow_in_1': (1, (4.00, 3.61)), 'triple_block_front_arrow_in_2': (1, (1.40, 3.36))}},
+     'numbers': {'triple_block_front_arrow_in_1': 1, 'triple_block_front_arrow_in_2': 1}},
     # No matching image in Extract_Iron_Carts/images/:
     # {'name': 'iso_front_triple_blocks_in_place',
     #  'skp_scene': 'ISO - Front Triple Blocks in place',
@@ -366,7 +353,7 @@ SCENES = [
                      'Arrow Rear Down Final'],
      'show': [],
      'hide': [],
-     'numbers': {'arrow_rear_up_2': (1, (3.93, 4.64)), 'triple_block_rear_arrow_in_1': (2, (1.88, 3.01)), 'triple_block_rear_arrow_in_2': (2, (5.22, 3.35)), 'post_arrow_out_1': (3, (2.86, 3.86)), 'post_arrow_out_2': (3, (5.12, 2.40))}},
+     'numbers': {'arrow_rear_up_2': 1, 'triple_block_rear_arrow_in_1': 2, 'triple_block_rear_arrow_in_2': 2, 'post_arrow_out_1': 3, 'post_arrow_out_2': 3}},
     {'name': '09_rear_lowered_onto_triple_blocks',
      'skp_scene': 'ISO - Rear lowered onto Triple Blocks',
      'eye': (-2938.6725, 2317.1551, 134.7265),
@@ -447,7 +434,7 @@ SCENES = [
                      'Arrow Rear Down Final'],
      'show': [],
      'hide': [],
-     'numbers': {'arrow_front_up_2': (1, (2.62, 5.18)), 'triple_block_front_arrow_out_1': (2, (3.95, 3.81)), 'triple_block_front_arrow_out_2': (2, (1.93, 3.59)), 'dolly_front_arrow_1': (3, (5.65, 3.47)), 'dolly_front_arrow_2': (3, (0.60, 2.96))}},
+     'numbers': {'arrow_front_up_2': 1, 'triple_block_front_arrow_out_1': 2, 'triple_block_front_arrow_out_2': 2, 'dolly_front_arrow_1': 3, 'dolly_front_arrow_2': 3}},
     {'name': '11_front_dollies_in_place',
      'skp_scene': 'ISO - Front Dollies in place',
      'eye': (-3004.4694, 1488.2756, 86.458),
@@ -532,7 +519,7 @@ SCENES = [
                      'Arrow Rear Down Final'],
      'show': [],
      'hide': [],
-     'numbers': {'arrow_rear_up_2': (1, (3.43, 4.79)), 'triple_block_rear_arrow_out_1': (2, (2.05, 3.58)), 'triple_block_rear_arrow_out_2': (2, (3.90, 3.24)), 'dolly_rear_arrow_1': (3, (0.65, 4.08)), 'dolly_rear_arrow_2': (3, (5.25, 3.15))}},
+     'numbers': {'arrow_rear_up_2': 1, 'triple_block_rear_arrow_out_1': 2, 'triple_block_rear_arrow_out_2': 2, 'dolly_rear_arrow_1': 3, 'dolly_rear_arrow_2': 3}},
     {'name': '13_home_in_final_position',
      'skp_scene': 'ISO - Home in Final Position',
      'eye': (-2938.6725, 2317.1551, 134.7265),
