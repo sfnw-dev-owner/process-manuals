@@ -313,11 +313,12 @@ def title(point, text, side="below", height=TITLE, gap=3/16, rotation=0, **kw):
 
 # ── line drawings ──────────────────────────────────────────────────────────
 
-def crossed_box(width, height):
-    """Lines drawing a box with both diagonals (lumber cut in section), from
-    the anchor at its lower-left corner."""
+def crossed_box(width, height, dx=0, dy=0):
+    """Lines drawing a box with both diagonals (lumber cut in section), its
+    lower-left corner (dx, dy) off the anchor."""
     w, h = width, height
-    return Lines((((0, 0), (w, 0)), ((w, 0), (w, h)), ((w, h), (0, h)), ((0, h), (0, 0)), ((0, 0), (w, h)), ((0, h), (w, 0))))
+    return Lines((((0, 0), (w, 0)), ((w, 0), (w, h)), ((w, h), (0, h)), ((0, h), (0, 0)), ((0, 0), (w, h)), ((0, h), (w, 0))),
+                 dx=dx, dy=dy)
 
 
 def box(width, height, weight=1, color=(0, 0, 0)):
