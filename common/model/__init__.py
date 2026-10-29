@@ -15,7 +15,7 @@ Modules:
   hardware       hardware stand-ins
   common         helpers shared by every module
   notes          annotations for the manuals' figures
-  platform       the platform (floor framing, subfloor, floor insulation)
+  platform_assembly  the platform (floor framing, subfloor, foam insulation)
   walls          the four walls
   roof           roof framing, sheathing and roofing
   interior*      interior panels, trim, insulation and ceiling

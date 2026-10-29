@@ -12,7 +12,7 @@ from build123d import Location, Pos, Rot
 
 from .dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH
 from .common import component
-from .platform import (
+from .platform_assembly import (
     DECK,
     platform,
 )

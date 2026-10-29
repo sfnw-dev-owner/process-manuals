@@ -14,7 +14,7 @@ from model.exterior_trim import (
     window_side_trim, window_top_trim, window_trim, window_trim_in_wall, window_trim_nails, window_trim_parts,
 )
 from model.notes import CIRCLED, SMALL, TITLE, Circle, Label, arc, at, beside, callout, circled, crossed_box, pointer, title
-from model.platform import DECK
+from model.platform_assembly import DECK
 from model.roof import (
     RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_X, ROOF_Y, SLOPE, TAIL_U, TIP_X, gable_siding_large,
     gable_siding_small, gable_wrap, rafter, ridge_board, structural_triangle, z_flashing,

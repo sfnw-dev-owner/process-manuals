@@ -19,7 +19,7 @@ from build123d import (
 from .lumber import TwoByFour, thickness, width
 from .common import CORNER, component, driven, key
 from .house import WALL_TOP
-from .platform import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
+from .platform_assembly import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from .roof import (
     PLUMB_DEPTH, RIDGE_BOARD, TRI_HALF, RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, TIP_X, VENT_BLOCK_HEIGHT, VENT_BLOCK_THICKNESS,
     angle_plate,
@@ -37,7 +37,7 @@ SKETCHUP_HOUSE = Pos(103.7285, 164.0849, 14.375 - 11.75) * Rot(Z=180)
 
 def walls():
     """The platform and the four walls, as tilted up: (component, placement, mods)."""
-    from .platform import DECK
+    from .platform_assembly import DECK
     return [
         (platform, Location(), []),
         (side_wall, Pos(WALL_DEPTH, 0, DECK) * Rot(Z=90), []),

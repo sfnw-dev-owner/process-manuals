@@ -1,5 +1,6 @@
 """The platform: a 2x6 frame on two 4x6 skids, rigid foam between the joists,
-and a 3/4" plywood subfloor. Also the finished floor laid on top of it.
+and a 3/4" plywood subfloor. (Named platform_assembly so it doesn't shadow
+the standard library's platform module.)
 
 Per Platform/platform.md and Platform/images/platform.dxf.
 

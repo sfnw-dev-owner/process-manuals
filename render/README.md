@@ -43,7 +43,7 @@ parallel, and prunes cached figures no manual uses any more.
   with a citation (`NAME = value  # note; manual.md:line`). The manuals are
   the ground truth; where the model and a manual disagree, one of them is
   wrong and needs fixing.
-- `common/model/<assembly>.py` (`platform`, `walls`, `roof`, `interior`,
+- `common/model/<assembly>.py` (`platform_assembly`, `walls`, `roof`, `interior`,
   `interior_roof`, `doors`, `flooring`, `exterior_trim`, `house`): the parts,
   as `@component` functions returning their solids and their placed children.
   Anything derived from the geometry is computed there (stud positions, bay

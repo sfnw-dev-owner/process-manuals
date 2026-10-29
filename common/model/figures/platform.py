@@ -8,7 +8,7 @@ from model.dimensions import FOAM_LENGTH, JOIST_LENGTH, PLATFORM_LENGTH, PLATFOR
 from model.notes import (
     ICONS, SMALL, Label, aimed, at, beside, callout, icon, line, next_to, pointer, title,
 )
-from model.platform import (
+from model.platform_assembly import (
     FRAME_BOTTOM, FRAME_TOP, JOIST_Y, RIM, SKID_HEIGHT, bays, bracket_marks, foam, foam_width, platform_joist,
     platform_long_side, platform_plywood, save_blocks, skid,
 )

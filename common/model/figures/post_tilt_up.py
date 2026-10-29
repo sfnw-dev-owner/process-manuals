@@ -12,7 +12,7 @@ from build123d import Align, Box, Location, Pos, Vector
 
 from model import post_tilt_up as P
 from model.notes import Icon, Label, Leader, Span, Lines
-from model.platform import DECK, PLATFORM_LENGTH, PLATFORM_WIDTH, platform
+from model.platform_assembly import DECK, PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from model.roof import RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, bays, wall_bays
 from model.house import WALL_TOP
 from model.walls import WALL_DEPTH, WALL_HEIGHT

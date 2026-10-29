@@ -13,7 +13,7 @@ from build123d import Plane, Pos, Rot, Vector
 
 from model.house import house
 from model.notes import Icon, Label, Leader, dashed_line
-from model.platform import DECK, PLATFORM_LENGTH, PLATFORM_WIDTH, platform
+from model.platform_assembly import DECK, PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from model import tilt_up as tu
 from model.walls import SIDE_STUDS, STUD, WALL_DEPTH, WALL_HEIGHT
 

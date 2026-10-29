@@ -17,7 +17,7 @@ from build123d import Align, Box, Cylinder, Location, Plane, Polygon, Pos, Rot, 
 from .lumber import TwoByFour, thickness, width
 from .common import CORNER, component, driven
 from .house import house
-from .platform import DECK, FRAME_BOTTOM, PLATFORM_LENGTH, PLATFORM_WIDTH
+from .platform_assembly import DECK, FRAME_BOTTOM, PLATFORM_LENGTH, PLATFORM_WIDTH
 from .roof import SIDING_FACE
 from .walls import DOOR_X, STUD, WALL_DEPTH, WALL_HEIGHT, front_wall, rear_wall, side_wall
 

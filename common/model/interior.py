@@ -20,7 +20,7 @@ from build123d import Box, Location, Plane, Polygon, Pos, Rectangle, Rot, extrud
 from .lumber import TwoByFour, thickness, width
 from .dimensions import END_WALL_PLATE_LENGTH, PLATFORM_LENGTH, PLATFORM_WIDTH, SIDE_WALL_PLATE_LENGTH
 from .common import CORNER, component
-from .platform import DECK
+from .platform_assembly import DECK
 from .walls import (
     AC_HEADER_Z, AC_OPENING, AC_SILL_Z, AC_X, DOOR_HEADER_Z, DOOR_OPENING, DOOR_X, STUD, WALL_DEPTH,
     WALL_HEIGHT, WINDOW_HEIGHT, WINDOW_WIDTH, WINDOW_X, WINDOW_Z,

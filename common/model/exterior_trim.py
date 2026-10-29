@@ -12,7 +12,7 @@ from .lumber import board, thickness, width
 from .dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH, SIDING_HEIGHT
 from .common import CORNER, component
 from .dimensions import WINDOW_OPENING
-from .platform import DECK
+from .platform_assembly import DECK
 from .walls import SIDING, SIDING_Y, WALL_DEPTH, WALL_HEIGHT, WINDOW_X, WINDOW_Z, WRAP
 
 # The house puts this assembly at its origin: its children are in the
