@@ -2,20 +2,55 @@
 above its top face. Drawing X runs down the slope from the ridge board (the
 rafters' tips at 4.54), Y along the roof."""
 
-from build123d import Pos, Rot
+from build123d import Compound, Plane, Pos, Rot, extrude
 
-from model.dimensions import HALF_ROOF_LENGTH
-from model.notes import Circle
+from model.dimensions import HALF_ROOF_LENGTH, RAFTER_LENGTH
+from model.lumber import width
+from model.notes import Circle, Leader, horizontal_dimension, inches
 from model.roof import (
     CROSS_BLOCKS_FROM_TIP, EAVE_BOARD, LAG_BORE_AT, LAG_COUNTERBORE, LAG_HOLE, RAFTER, RAFTER_DEPTH, RAFTER_Y,
     RIDGE_BOARD_BOTTOM, ROOF_Y, SLOPE, TAIL_U, TIP_U, TIP_X, ANGLE_PLATE_FROM_TIP, UNBORED, angle_plate,
-    cross_block, eave_board, rafter, ridge_board, HALF_ROOF_DRAWING, half_roof,
+    bored_rafter, cross_block, eave_board, rafter, ridge_board, HALF_ROOF_DRAWING, half_roof,
 )
 
-from . import Figure, figure_names, optional_parts, placed_notes, title
+from . import Figure, break_box, camera, enlarged, figure_names, optional_parts, placed_notes, title
 
 MD = "Half_Roof/half_roof.md"
 TO_DRAWING = HALF_ROOF_DRAWING
+
+DETAIL_SCALE = 2  # the insets are drawn at twice size
+BRACKET_DETAIL_AT = (83.59, 20.83)  # the center of step 2's inset, in the drawing
+BRACKET_DETAIL_REACH = 13  # how much of the rafter it shows, from the tip
+BORE_DETAIL_AT = (81.45, 15.21)  # step 7's
+BORE_DETAIL_REACH = (6, 8)  # past the bore up the rafter, and along the white board either way
+
+
+def bracket_detail():
+    """Step 2's inset: a rafter's tip from the side, its angle plate's leg on
+    its face, the plate's distance from the tip dimensioned; and the line
+    pointing it out from the plate in the drawing."""
+    plate = Pos(RAFTER_LENGTH - ANGLE_PLATE_FROM_TIP[0], RAFTER, 0) * angle_plate.shape()  # on the rafter's +Y face
+    window = extrude(Plane.XZ * Pos(RAFTER_LENGTH - BRACKET_DETAIL_REACH, -1)
+                     * break_box(BRACKET_DETAIL_REACH + 1, RAFTER_DEPTH + 2, ("left",)), RAFTER + 2, both=True)
+    shape, at = enlarged(Compound([rafter.shape() & window, plate]), camera((0, 1, 0)), DETAIL_SCALE, BRACKET_DETAIL_AT)
+    tip, edge = at((RAFTER_LENGTH, 0, RAFTER_DEPTH)), at((RAFTER_LENGTH - ANGLE_PLATE_FROM_TIP[0], 0, 0))
+    gap = -4  # the dimension line this far under the rafter
+    notes = [(min(tip[0], edge[0]), edge[1] + gap, n)
+             for n in horizontal_dimension(abs(edge[0] - tip[0]), inches(ANGLE_PLATE_FROM_TIP[0]), -1.5, -gap)]
+    return [(shape, "hlr_thin")], notes
+
+
+def bore_detail():
+    """Step 7's inset: a rafter crossing the 1x8 white board, with its lag
+    bolt bore, in isometric."""
+    x, y, _ = LAG_BORE_AT
+    up, along = BORE_DETAIL_REACH
+    board = Pos(0, y - along, RAFTER_DEPTH) * eave_board.shape()
+    window = extrude(Plane.XY * Pos(-1, y - along) * break_box(x + up + 1, 2 * along, ("right", "top", "bottom"), tooth=1/4),
+                     2 * RAFTER_DEPTH + 2, both=True)
+    shape, _ = enlarged(Compound([bored_rafter.shape() & window, board & window]), camera((1, -1, 2)), DETAIL_SCALE,
+                        BORE_DETAIL_AT)
+    return [(shape, "hlr_thin")], []
 
 
 def top_edge(shape):
@@ -65,6 +100,7 @@ def figures():
         ctx(ridge + ends + blocks + inner + eave) + outl(plates),            # 6: second screws
         ctx(ridge + ends + blocks + eave + inner),                           # 7: lag bolt bores (drawn as notes; the plates, under the rafters, left out)
     ]
+    details = {2: bracket_detail(), 7: bore_detail()}
     out = []
     for i, (fig_name, parts) in enumerate(zip(figure_names(MD), steps), 1):
         shown = {"manual:half_roof", f"manual:half_roof:{i}"}
@@ -72,5 +108,8 @@ def figures():
         notes = placed_notes(TO_DRAWING, half_roof, shown) + [title(f"Step {i}", 102, 66, 3.5, 90)]
         if i == 7:
             notes += bores
+        if i in details:
+            detail_parts, detail_notes = details[i]
+            parts, notes = parts + detail_parts, notes + detail_notes
         out.append(Figure(MD, fig_name, parts, notes))
     return out

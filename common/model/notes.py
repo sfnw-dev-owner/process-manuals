@@ -10,6 +10,7 @@ Icons are the PNGs in common/clipart.
 """
 
 from dataclasses import dataclass
+from math import cos, radians, sin
 
 from build123d import Compound, Location
 
@@ -27,7 +28,8 @@ class Note:
 
 @dataclass(frozen=True)
 class Icon(Note):
-    """A clipart icon, centered on its anchor (plus an offset)."""
+    """A clipart icon, centered on its anchor (plus an offset), scaled to
+    width x height."""
     name: str  # common/clipart/<name>.png
     width: float
     height: float
@@ -90,6 +92,33 @@ def vertical_dimension(length, text, text_offset=-1.9):
             Label(text, 2, rotation=90, dx=text_offset, dy=length / 2, attach=8 if text_offset < 0 else 2)]
 
 
+def horizontal_dimension(length, text, text_offset=-1.9, extension=0):
+    """A dimension line to the right from its anchor, arrows at both ends, its
+    text alongside (below for a negative offset), and extension lines
+    `extension` long up from both ends (down if negative)."""
+    out = [Leader(((length, 0),)), Leader(((-length, 0),), dx=length),
+           Label(text, 2, dx=length / 2, dy=text_offset, attach=2 if text_offset < 0 else 8)]
+    if extension:
+        out += [Leader(((0, extension),), arrow=False, dx=dx, weight=1/2) for dx in (0, length)]
+    return out
+
+
+def inches(x):
+    """x inches as the manuals write them: 4½" (to the nearest 1/16)."""
+    whole, sixteenths = divmod(round(x * 16), 16)
+    if sixteenths == 0:
+        return f'{whole}"'
+    from fractions import Fraction
+    frac = Fraction(sixteenths, 16)
+    glyphs = {Fraction(1, 2): "½", Fraction(1, 4): "¼", Fraction(3, 4): "¾", Fraction(1, 8): "⅛", Fraction(3, 8): "⅜",
+              Fraction(5, 8): "⅝", Fraction(7, 8): "⅞"}
+    part = glyphs.get(frac)
+    if part is None:  # no glyph: 4 7/16"
+        part = f"{frac.numerator}/{frac.denominator}"
+        return f'{whole} {part}"' if whole else f'{part}"'
+    return f'{whole}{part}"' if whole else f'{part}"'
+
+
 @dataclass(frozen=True)
 class Lines(Note):
     """A small line drawing (a detail or an illustration): segments
@@ -99,3 +128,45 @@ class Lines(Note):
     dy: float = 0
     color: tuple = (0, 0, 0)
     weight: float = 1  # line weight, relative to the usual
+
+
+def box(width, height, weight=1, color=(0, 0, 0)):
+    """A rectangle from its anchor at the top-left corner (as LayOut drew the
+    frames around tool icons; at LayOut's stroke weight: Lines draw at half a
+    Leader's)."""
+    w, h = width, height
+    return Lines((((0, 0), (w, 0)), ((w, 0), (w, -h)), ((w, -h), (0, -h)), ((0, -h), (0, 0))), weight=2 * weight, color=color)
+
+
+def cross(size):
+    """A + mark centered on its anchor, e.g. where a screw goes."""
+    return Lines((((-size, 0), (size, 0)), ((0, -size), (0, size))))
+
+
+def dashed_line(dx, dy, dash=0.06, gap=0.05, weight=1, color=(0, 0, 0)):
+    """A dashed line from its anchor to (dx, dy), in dashes `dash` long with
+    `gap` between them (LayOut's dashes by default)."""
+    length = (dx * dx + dy * dy) ** 0.5
+    ux, uy = dx / length, dy / length
+    segments, s = [], 0
+    while s < length:
+        e = min(s + dash, length)
+        segments.append(((ux * s, uy * s), (ux * e, uy * e)))
+        s += dash + gap
+    return Lines(tuple(segments), weight=weight, color=color)
+
+
+def dashed_arc(radius, start, end, dash=0.06, gap=0.05, weight=1, color=(0, 0, 0)):
+    """A dashed arc centered on its anchor, from `start` to `end` degrees
+    (counterclockwise from +X; the short way round), in dashes `dash` long
+    with `gap` between them (LayOut's dashes by default)."""
+    sweep = radians(end - start)
+    length = abs(sweep) * radius
+    sign = 1 if sweep >= 0 else -1
+    segments, s = [], 0
+    while s < length:
+        a0 = radians(start) + sign * s / radius
+        a1 = radians(start) + sign * min(s + dash, length) / radius
+        segments.append(((radius * cos(a0), radius * sin(a0)), (radius * cos(a1), radius * sin(a1))))
+        s += dash + gap
+    return Lines(tuple(segments), weight=weight, color=color)

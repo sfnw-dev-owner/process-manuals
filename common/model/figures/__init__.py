@@ -37,7 +37,7 @@ import importlib
 import inspect
 from dataclasses import dataclass, field
 
-from build123d import Location, Plane, Vector
+from build123d import Location, Plane, Pos, Vector
 
 from model.notes import Label
 
@@ -330,6 +330,46 @@ def title(text, x, y, height=3, rotation=0, runs=None):
     """A figure's caption, e.g. "Step 3", at (x, y) in the drawing (its
     top-left corner); `runs` for pieces of different heights."""
     return (x, y, Label(text, height, attach=1, rotation=rotation, runs=runs))
+
+
+def break_box(width, height, broken=(), tooth=1/2):
+    """A width x height rectangle (minimum corner at the origin) whose sides
+    named in `broken` ("left", "right", "top", "bottom") zigzag: a detail
+    cuts a part to it, and the ragged edge shows the part running on."""
+    import math
+    from build123d import Polygon
+
+    def zigzag(p0, p1):
+        (x0, y0), (x1, y1) = p0, p1
+        length = math.hypot(x1 - x0, y1 - y0)
+        n = max(2, int(length / (2 * tooth)))
+        nx, ny = -(y1 - y0) / length * tooth, (x1 - x0) / length * tooth
+        return [(x0 + (x1 - x0) * i / n + (nx if i % 2 else -nx), y0 + (y1 - y0) * i / n + (ny if i % 2 else -ny))
+                for i in range(1, n)]
+    corners = [(0, 0), (width, 0), (width, height), (0, height)]
+    sides = ["bottom", "right", "top", "left"]
+    pts = []
+    for i, side in enumerate(sides):
+        a, b = corners[i], corners[(i + 1) % 4]
+        pts.append(a)
+        if side in broken:
+            pts += zigzag(a, b)
+    return Polygon(*pts, align=None)
+
+
+def enlarged(shape, view, factor, at):
+    """A detail: `shape` seen through `view` (a camera Location), scaled by
+    `factor`, centered at `at` in the drawing; and the Location taking a
+    point of the shape to the drawing."""
+    from build123d import scale
+    seen = scale(view * shape, by=factor)
+    bb = seen.bounding_box()
+    move = Pos(at[0] - bb.center().X, at[1] - bb.center().Y, 0)
+
+    def to_drawing(point):
+        p = (view * Pos(*point)).position
+        return at[0] + factor * p.X - bb.center().X + 0, at[1] + factor * p.Y - bb.center().Y
+    return move * seen, to_drawing
 
 
 def camera(direction, up=(0, 0, 1)):

@@ -856,6 +856,7 @@ _ICONS = {}
 
 
 def _icon_href(name):
+    """A PNG icon, as a data URI."""
     if name not in _ICONS:
         _ICONS[name] = "data:image/png;base64," + base64.b64encode((CLIPART / f"{name}.png").read_bytes()).decode()
     return _ICONS[name]

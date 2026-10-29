@@ -9,7 +9,7 @@ in inches), and returns children for that component.
 
 from build123d import Location, Plane, Pos
 
-from .notes import Circle, Icon, Label, Leader, Lines, crossed_box
+from .notes import Circle, Icon, Label, Leader, cross, crossed_box
 
 # A wall seen from inside the house: drawing x = the wall frame's X (left to
 # right as seen from inside), drawing y = Z.
@@ -253,7 +253,7 @@ def trim_rear_shelf_notes(at):
     t = trim_tag("rear_shelf")
     return [
         # the support block's screws, marked on it
-        *[(Lines((((-0.6, 0), (0.6, 0)), ((0, -0.6), (0, 0.6)))), at(x, y), [], t) for x, y in ((76.26, 22.93), (76.26, 21.43), (101.76, 22.93), (101.76, 21.43))],
+        *[(cross(0.6), at(x, y), [], t) for x, y in ((76.26, 22.93), (76.26, 21.43), (101.76, 22.93), (101.76, 21.43))],
         (Icon('Screw', 3, 7.2, rotation=180), at(75.99, 15.82), [], t),
         (Icon('Screw', 3, 7.2, rotation=180, flip=True), at(101.53, 16.05), [], t),
         (Icon('Screw', 3, 7.2), at(119.58, -59.04), [], t),
@@ -420,7 +420,7 @@ def trim_front_window_notes(at):
     return [
         # the support block's screws, marked on it
         # (shifted BLOCK_SCREWS_DX along from the drawing: the block sits that much further along here)
-        *[(Lines((((-0.6, 0), (0.6, 0)), ((0, -0.6), (0, 0.6)))), at(x + BLOCK_SCREWS_DX, y), [], t) for x, y in ((42.83, 42.36), (65.36, 42.47), (65.36, 40.97), (77.69, 42.4))],
+        *[(cross(0.6), at(x + BLOCK_SCREWS_DX, y), [], t) for x, y in ((42.83, 42.36), (65.36, 42.47), (65.36, 40.97), (77.69, 42.4))],
         (Icon('Screw', 3, 7.2, rotation=180, flip=True), at(42.72 + BLOCK_SCREWS_DX, 36.25), [], t),
         (Icon('Screw', 3, 7.2, rotation=180, flip=True), at(65.4 + BLOCK_SCREWS_DX, 36.18), [], t),
         (Icon('Screw', 3, 7.2, rotation=180, flip=True), at(77.72 + BLOCK_SCREWS_DX, 36.22), [], t),
