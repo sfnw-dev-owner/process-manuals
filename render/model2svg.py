@@ -527,11 +527,21 @@ def write_page_svg(fig, path):
             if q is None:
                 return None
             return (cx + (q[0] - tx) * scale, cy - (q[1] - ty) * scale)
-        from model.notes import Icon
+        from dataclasses import replace
+        from model.notes import Icon, Span
         persons = []
-        for px, py, pz, note in vp.notes:
+        for entry in vp.notes:
+            if len(entry) == 3 and isinstance(entry[2], Span):  # between two points of the model
+                a, b = page_point(entry[0]), page_point(entry[1])
+                if a and b:
+                    root.extend(_span_svg(a, b, entry[2]))
+                continue
+            px, py, pz, note = entry
             at = page_point((px, py, pz))
             if at:
+                if isinstance(note, Icon) and note.model:  # sized in model inches
+                    note = replace(note, width=note.width * scale, height=note.height * scale,
+                                   dx=note.dx * scale, dy=note.dy * scale, model=False)
                 for el, _ in _page_note(fig, at[0], at[1], note):
                     root.append(el)
                 if isinstance(note, Icon) and note.name == "ptu_person":
@@ -554,6 +564,27 @@ def write_page_svg(fig, path):
     ET.register_namespace("", "http://www.w3.org/2000/svg")
     ET.ElementTree(root).write(path, xml_declaration=True, encoding="utf-8")
     return edges
+
+
+def _span_svg(a, b, span):
+    """A Span between page points a and b: the line, its arrowheads and text."""
+    from model.notes import ARROWHEAD, LINE as NOTE_LINE, Label
+    (ax, ay), (bx, by) = a, b
+    els = [ET.Element(f"{SVGNS}path", {"d": f"M {ax:.3f} {ay:.3f} L {bx:.3f} {by:.3f}", "fill": "none",
+                                       "stroke": _hex(span.color), "stroke-width": f"{NOTE_LINE * span.weight:.4f}"})]
+    L = math.hypot(bx - ax, by - ay) or 1
+    ux, uy = (bx - ax) / L, (by - ay) / L
+    if span.arrows:
+        s_ = ARROWHEAD * span.weight ** 0.5
+        for (x, y), (fx, fy) in (((ax, ay), (ux, uy)), ((bx, by), (-ux, -uy))):
+            p1 = (x + fx * s_ - fy * s_ * 0.3, y + fy * s_ + fx * s_ * 0.3)
+            p2 = (x + fx * s_ + fy * s_ * 0.3, y + fy * s_ - fx * s_ * 0.3)
+            els.append(ET.Element(f"{SVGNS}path", {"d": f"M {x:.3f} {y:.3f} L {p1[0]:.3f} {p1[1]:.3f} L {p2[0]:.3f} {p2[1]:.3f} Z",
+                                                   "fill": _hex(span.color)}))
+    if span.text:
+        mx, my = (ax + bx) / 2, (ay + by) / 2
+        els += [el for el, _ in _note_svg(mx - uy * 0.1, my + ux * 0.1, Label(span.text, span.height), 1, PAGE_FONT)]
+    return els
 
 
 def _projected_box(shapes, page_point):
