@@ -1,7 +1,9 @@
 """Dimensions from the construction manuals.
 
-The manuals (and the drawings they embed) are the ground truth; the SketchUp
-model this package was bootstrapped from is not to be trusted where they differ.
+The manuals are the ground truth; the SketchUp model and the QCAD drawings
+(*.dxf) this package was bootstrapped from are not to be trusted where they
+differ. Those files were removed in commit 1492ff3; a citation of one here
+is read with `git show 1492ff3^:<path>`.
 """
 
 # Platform: Platform/platform.md and Platform/images/platform.dxf.
@@ -35,12 +37,21 @@ RAFTER_LENGTH = 56 + 3/4  # 2x4, along its top edge; Back_Saw_Cut_List.md:34
 HALF_ROOF_LENGTH = 156  # Half_Roof/images/half_roof.dxf
 FRONT_ROOF_OVERHANG = 6 + 1/4  # past the front triangle; post-tilt-up/frame-completion.md:92
 CROSS_BLOCK_LENGTH = 6 + 1/2  # 2x4; Half_Roof/half_roof.md:50
+RAFTER_SPACING = 24  # inner rafter centers; Half_Roof/images/half_roof.dxf
+INNER_RAFTERS = 5  # on those centers, between the doubled rafters; half_roof.dxf
+FIRST_INNER_RAFTER = 30  # its center, from the half-roof's rear end; half_roof.dxf
+DOUBLED_RAFTER_FROM_REAR = 8  # the doubled rafters' slots ("one slot in from each end", half_roof.md:28), from the ends; half_roof.dxf
+DOUBLED_RAFTER_FROM_FRONT = 11
+ANGLE_PLATE_FROM_TIP = 4 + 1/2  # down the slope from the rafter's tip; half_roof.dxf (Step 02)
+CROSS_BLOCKS_FROM_TIP = (12 + 5/8, 26, 39 + 3/8)  # the three cross blocks, down the slope from the tips; half_roof.dxf (Step 03)
+END_BAY = 20  # a rafter bay this wide or narrower is an end bay (over a gable); the wider ones take the longer blocks and batts
 ROOF_DECK_SHEET = (48, 77 + 3/4)  # 3/4" CDX, up the slope x along the roof; Panel_Saw_Operation.md:46
 BIRD_BLOCK_LENGTH = 22 + 1/4  # 2x4; Back_Saw_Cut_List.md:23
 BIRD_BLOCK_END_LENGTH = 18  # end bays; Back_Saw_Cut_List.md:24
 VENT_BLOCK_LENGTH = 21 + 7/8  # Back_Saw_Cut_List.md:42
 VENT_BLOCK_END_LENGTH = 18 + 1/8  # end bays; Back_Saw_Cut_List.md:43
 VENT_BLOCK_HEIGHT = 4  # per the shop (not in the manuals)
+VENT_SPACER_LENGTH = 2  # the plywood spacer blocks at a vent block's ends and middle (roof-blocking.md:101); per the shop
 SHINGLE_OVERHANG = 1  # past the eave and the fascia; Roof/roof_manual.md (Shingles)
 SHINGLE_LENGTH = 39 + 3/8  # standard metric shingle; see roof.py
 SHINGLE_WIDTH = 13 + 1/4

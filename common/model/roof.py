@@ -14,7 +14,7 @@ half's 1x6 ridge board. The two ridge boards meet on the center line.
 """
 
 from functools import cache
-from math import cos, radians, sin, tan
+from math import ceil, cos, radians, sin, tan
 
 from .common import *
 from .walls import SIDING, WALL_DEPTH, WRAP
@@ -58,12 +58,12 @@ BIRDSMOUTH_SEAT = SEAT_X + SIDING_FACE
 # FRONT_ROOF_OVERHANG (frame-completion.md:92), and run HALF_ROOF_LENGTH.
 ROOF_Y = PLATFORM_LENGTH + FRONT_ROOF_OVERHANG - HALF_ROOF_LENGTH
 
-# Rafters along the half-roof (half_roof.dxf): at both ends, doubled one slot
-# in from each end, and on 24" centers in between.
+# Rafters along the half-roof: at both ends, doubled one slot in from each
+# end, and on RAFTER_SPACING centers in between.
 RAFTER_Y = [ROOF_Y + y for y in (
-    0, 8, 8 + RAFTER,
-    *[c - RAFTER / 2 for c in spaced(30, 24, 5)],
-    HALF_ROOF_LENGTH - 11, HALF_ROOF_LENGTH - 11 + RAFTER,
+    0, DOUBLED_RAFTER_FROM_REAR, DOUBLED_RAFTER_FROM_REAR + RAFTER,
+    *[c - RAFTER / 2 for c in spaced(FIRST_INNER_RAFTER, RAFTER_SPACING, INNER_RAFTERS)],
+    HALF_ROOF_LENGTH - DOUBLED_RAFTER_FROM_FRONT, HALF_ROOF_LENGTH - DOUBLED_RAFTER_FROM_FRONT + RAFTER,
     HALF_ROOF_LENGTH - RAFTER,
 )]
 # The "magic" rafter (roof-blocking.md "Align Magic Rafters"): the one over
@@ -84,10 +84,10 @@ def wall_bays():
     return [(a, b) for a, b in bays() if a > 0 and b < PLATFORM_LENGTH]
 
 
-# Cross blocks between the two rafters at each end, measured down the slope
-# from the rafters' tips (half_roof.dxf: 17 1/8, 30 1/2, 43 7/8 from the
-# drawing's origin, whose rafter tips are at 4.54).
-CROSS_BLOCKS_FROM_TIP = [x - 4.54 for x in (17 + 1/8, 30 + 1/2, 43 + 7/8)]
+def middle_bay(bay):
+    """Whether a bay this wide is one of the middle bays (the end bays, over
+    the gables, are narrower and take shorter blocks and batts)."""
+    return bay > END_BAY
 
 
 @component
@@ -121,8 +121,8 @@ def half_roof():
           for i, y in enumerate(RAFTER_Y)],
         # A35 angle plates on the rafters one slot in from each end, on the
         # side facing that end, bottom flush with the rafter's bottom.
-        (angle_plate, SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[1], RAFTER_Y[1], 0) * Rot(Z=180), [], ''),
-        (angle_plate, SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[0], RAFTER_Y[-2] + RAFTER, 0), [], ''),
+        (angle_plate, SLOPE * Pos(TIP_U - ANGLE_PLATE_EDGES[1], RAFTER_Y[1], 0) * Rot(Z=180), [], ''),
+        (angle_plate, SLOPE * Pos(TIP_U - ANGLE_PLATE_EDGES[0], RAFTER_Y[-2] + RAFTER, 0), [], ''),
         (ridge_board, Pos(TIP_X, ROOF_Y, RIDGE_BOARD_BOTTOM), [], ''),
         (eave_board, SLOPE * Pos(TAIL_U, ROOF_Y, RAFTER_DEPTH), [], ''),
         # Cross blocks between the pairs of rafters at each end.
@@ -198,12 +198,12 @@ def bored_rafter():
     return solids, [], {**rafter.anchors(), "bore": Pos(*LAG_BORE_AT)}
 
 
-# A35 angle plates (Half_Roof/half_roof.md Step 2; placed per half_roof.dxf,
-# Step 02: 3 1/2" long, starting 4 1/2" down the slope from the rafters' tips,
-# reaching 1 3/4" out from the rafter).
+# A35 angle plates (Half_Roof/half_roof.md Step 2: 3 1/2" long, starting
+# ANGLE_PLATE_FROM_TIP down the slope from the rafters' tips, reaching 1 3/4"
+# out from the rafter).
 ANGLE_PLATE = (3 + 1/2, 1 + 3/4, 1 + 1/2)  # length along the rafter, out, up the rafter's face
 ANGLE_PLATE_GAUGE = 0.05  # 18 ga
-ANGLE_PLATE_FROM_TIP = (9 - 4.54, 9 - 4.54 + ANGLE_PLATE[0])  # (near, far) edges, from the tip
+ANGLE_PLATE_EDGES = (ANGLE_PLATE_FROM_TIP, ANGLE_PLATE_FROM_TIP + ANGLE_PLATE[0])  # (near, far) edges, from the tip
 ANGLE_PLATE_HOLE = 0.39  # diameter (half_roof.dxf)
 ANGLE_PLATE_HOLES = (1/2, 1 + 3/4, 3)  # along the flat leg, from its near end
 ANGLE_PLATE_HOLE_OUT = 1.4  # out from the rafter's face
@@ -293,7 +293,7 @@ def roof_deck(option):
 # ── bird blocks and vent blocks ────────────────────────────────────────────
 
 def bird_length(bay):
-    return BIRD_BLOCK_LENGTH if bay > 20 else BIRD_BLOCK_END_LENGTH
+    return BIRD_BLOCK_LENGTH if middle_bay(bay) else BIRD_BLOCK_END_LENGTH
 
 
 def bird_block(bay):
@@ -321,7 +321,7 @@ VENT_BLOCK_THICKNESS = VENT_TOPPER + VENT_SPACERS
 
 
 def vent_length(bay):
-    return VENT_BLOCK_LENGTH if bay > 20 else VENT_BLOCK_END_LENGTH
+    return VENT_BLOCK_LENGTH if middle_bay(bay) else VENT_BLOCK_END_LENGTH
 
 
 def vent_block(bay):
@@ -334,7 +334,7 @@ def _vent_block(length):
     in the middle on the side against the ridge board."""
     @component
     def vent_block_():
-        spacer = 2
+        spacer = VENT_SPACER_LENGTH
         solids = [Box(VENT_TOPPER, length, VENT_BLOCK_HEIGHT, align=CORNER)]
         for y in (0, (length - spacer) / 2, length - spacer):
             for i in range(3):  # three 1/2" strips, stacked against the topper
@@ -480,12 +480,13 @@ def cap_shingles():
     y0 = ROOF_Y - thickness(FASCIA) - RIDGE_VENT_OVERHANG
     y1 = y0 + HALF_ROOF_LENGTH + 2 * (thickness(FASCIA) + RIDGE_VENT_OVERHANG)
     middle = (y0 + y1) / 2
+    per_half = ceil((middle - y0) / SHINGLE_EXPOSURE)  # enough to reach the middle from either end
     solids = []
-    for i, y in enumerate(spaced(y0, SHINGLE_EXPOSURE, 99)):  # from the rear
+    for i, y in enumerate(spaced(y0, SHINGLE_EXPOSURE, per_half)):  # from the rear
         if y + CAP_SHINGLE > middle + SHINGLE_EXPOSURE:
             break
         solids.append(Pos(0, y, (i % 2) * SHINGLE) * extrude(cap, -CAP_SHINGLE))
-    for i, y in enumerate(spaced(y1 - CAP_SHINGLE, -SHINGLE_EXPOSURE, 99)):  # from the front
+    for i, y in enumerate(spaced(y1 - CAP_SHINGLE, -SHINGLE_EXPOSURE, per_half)):  # from the front
         if y < middle - SHINGLE_EXPOSURE:
             break
         solids.append(Pos(0, y, (i % 2) * SHINGLE) * extrude(cap, -CAP_SHINGLE))

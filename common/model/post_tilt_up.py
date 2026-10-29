@@ -628,13 +628,13 @@ def bracket_screws(side="left", end="front"):
     """The three galvanized hex-head screws down through a roof bracket's flat
     leg (its holes) into the structural triangle (roof-blocking.md "Secure
     Brackets")."""
-    from .roof import (ANGLE_PLATE, ANGLE_PLATE_FROM_TIP, ANGLE_PLATE_GAUGE, ANGLE_PLATE_HOLE_OUT, ANGLE_PLATE_HOLES,
+    from .roof import (ANGLE_PLATE, ANGLE_PLATE_EDGES, ANGLE_PLATE_GAUGE, ANGLE_PLATE_HOLE_OUT, ANGLE_PLATE_HOLES,
                        RAFTER, SLOPE, TIP_U)
     length = ANGLE_PLATE[0]
     if end == "front":
-        plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[0], RAFTER_Y[-2] + RAFTER, 0)
+        plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_EDGES[0], RAFTER_Y[-2] + RAFTER, 0)
     else:
-        plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[1], RAFTER_Y[1], 0) * Rot(Z=180)
+        plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_EDGES[1], RAFTER_Y[1], 0) * Rot(Z=180)
     out = []
     for hx in ANGLE_PLATE_HOLES:
         # the head on the plate's flat leg over its hole, driven down through it (in the left half's frame)

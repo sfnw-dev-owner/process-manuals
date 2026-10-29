@@ -13,7 +13,7 @@ Frame: the roof's (roof.py): the house's X and Y, Z = 0 at the top of the walls.
 
 from .common import *
 from .roof import (
-    C, S, T, RAFTER, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_X, SEAT_X, SLOPE, TIP_X,
+    C, S, T, RAFTER, RAFTER_DEPTH, RAFTER_Y, middle_bay, RIDGE_BOARD_BOTTOM, RIDGE_X, SEAT_X, SLOPE, TIP_X,
     TRI_BASE, TRI_D, TRI_E, TRI_HALF, TRI_SIDE_FOOT, VENT_BLOCK_THICKNESS,
     tri_inner, underside, wall_bays,
 )
@@ -110,7 +110,7 @@ ROOF_BATT_THICKNESS = 3  # as modeled in SketchUp
 
 def batt_width(bay):
     """The cut list's batt for a bay, squeezed to fit between the rafters."""
-    return min(ROOF_BATT_WIDTH if bay > 20 else ROOF_BATT_END_WIDTH, bay)
+    return min(ROOF_BATT_WIDTH if middle_bay(bay) else ROOF_BATT_END_WIDTH, bay)
 
 
 def batt(bay):

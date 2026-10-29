@@ -5,15 +5,17 @@ rafters' tips (the ridge board at X < 0), Y along the roof from the front
 
 from build123d import Compound, Cylinder, Plane, Pos, Rot, extrude
 
-from model.dimensions import FRONT_ROOF_OVERHANG, HALF_ROOF_LENGTH, RAFTER_LENGTH
+from model.dimensions import (
+    ANGLE_PLATE_FROM_TIP, CROSS_BLOCKS_FROM_TIP, FRONT_ROOF_OVERHANG, HALF_ROOF_LENGTH, RAFTER_LENGTH,
+)
 from model.lumber import width
 from model.notes import (
     CIRCLED, SMALL, TITLE, Label, aimed, around, at, beside, callout, circled, dimension, icon, inches, line, next_to, pointer,
     title,
 )
 from model.roof import (
-    CROSS_BLOCKS_FROM_TIP, EAVE_BOARD, LAG_COUNTERBORE, LAG_HOLE, RAFTER, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD_BOTTOM,
-    ROOF_Y, SLOPE, TAIL_U, TIP_U, TIP_X, ANGLE_PLATE_FROM_TIP, UNBORED, angle_plate, bored_rafter, cross_block,
+    EAVE_BOARD, LAG_COUNTERBORE, LAG_HOLE, RAFTER, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD_BOTTOM,
+    ANGLE_PLATE_EDGES, ROOF_Y, SLOPE, TAIL_U, TIP_U, TIP_X, UNBORED, angle_plate, bored_rafter, cross_block,
     eave_board, rafter, ridge_board,
 )
 
@@ -54,12 +56,12 @@ def bracket_detail(scale, at_):
     """Step 2's inset: a rafter's tip from the side, its angle plate's leg on
     its face, the plate's distance from the tip dimensioned. Returns its
     parts and notes, and its Extent."""
-    plate = Pos(RAFTER_LENGTH - ANGLE_PLATE_FROM_TIP[0], RAFTER, 0) * angle_plate.shape()  # on the rafter's +Y face
+    plate = Pos(RAFTER_LENGTH - ANGLE_PLATE_FROM_TIP, RAFTER, 0) * angle_plate.shape()  # on the rafter's +Y face
     window = extrude(Plane.XZ * Pos(RAFTER_LENGTH - BRACKET_DETAIL_REACH, -1)
                      * break_box(BRACKET_DETAIL_REACH + 1, RAFTER_DEPTH + 2, ("left",)), RAFTER + 2, both=True)
     shape, to_drawing = enlarged(Compound([rafter.shape() & window, plate]), camera((0, 1, 0)), DETAIL_SCALE, at_)
-    tip, edge = to_drawing((RAFTER_LENGTH, 0, RAFTER_DEPTH)), to_drawing((RAFTER_LENGTH - ANGLE_PLATE_FROM_TIP[0], 0, 0))
-    notes = dimension((tip[0], edge[1]), edge, scale, inches(ANGLE_PLATE_FROM_TIP[0]), offset=-3/16)
+    tip, edge = to_drawing((RAFTER_LENGTH, 0, RAFTER_DEPTH)), to_drawing((RAFTER_LENGTH - ANGLE_PLATE_FROM_TIP, 0, 0))
+    notes = dimension((tip[0], edge[1]), edge, scale, inches(ANGLE_PLATE_FROM_TIP), offset=-3/16)
     return [(shape, "hlr_thin")], notes, Extent(shape)
 
 
@@ -85,8 +87,8 @@ def figures(scale=1/20, only=None):
     bores = {i: xy(TO_DRAWING * rafter_at[i] * bored_rafter.anchors()["bore"]) for i in rafter_at if i not in UNBORED}
     last = len(RAFTER_Y) - 1
     ridge = [top_edge(place(Pos(TIP_X, ROOF_Y, RIDGE_BOARD_BOTTOM), ridge_board))]
-    plate_at = SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[0], RAFTER_Y[last - 1] + RAFTER, 0)
-    plates = [place(SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[1], RAFTER_Y[1], 0) * Rot(Z=180), angle_plate),
+    plate_at = SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP, RAFTER_Y[last - 1] + RAFTER, 0)
+    plates = [place(SLOPE * Pos(TIP_U - ANGLE_PLATE_EDGES[1], RAFTER_Y[1], 0) * Rot(Z=180), angle_plate),
               place(plate_at, angle_plate)]
     # Cross blocks between the pairs of rafters at each end: (block, the pair's outer and inner rafters)
     blocks = [(place(SLOPE * Pos(TIP_U - d - RAFTER, y, 0), cross_block), outer, inner)
