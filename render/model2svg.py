@@ -500,6 +500,7 @@ def write_page_svg(fig, path):
     root.append(ET.fromstring(SVG_DEFS))
     edges = []
     projections = {}  # the page's views with the same camera share their projections
+    fig.viewports = [_fitted(vp) for vp in fig.viewports]
     for i, vp in enumerate(fig.viewports):
         project, scale, point = _viewport_projection(vp, projections)
         x, y, vw, vh = vp.rect
@@ -537,6 +538,15 @@ def write_page_svg(fig, path):
                     persons.append(((px, py, pz), at, note))
         if persons:
             _occlude_persons(root, g, i, vp, persons, page_point)
+        for shapes, color, weight, pad in vp.highlights:
+            box = _projected_box(shapes, page_point)
+            if box:
+                from model.notes import LINE as NOTE_LINE
+                x0, y0, x1, y1 = box
+                root.append(ET.Element(f"{SVGNS}rect", {
+                    "x": f"{x0 - pad:.4f}", "y": f"{y0 - pad:.4f}", "width": f"{x1 - x0 + 2 * pad:.4f}",
+                    "height": f"{y1 - y0 + 2 * pad:.4f}", "fill": "none", "stroke": _hex(color),
+                    "stroke-width": f"{NOTE_LINE * weight:.4f}"}))
     for x, y, note in fig.notes:
         for el, _ in _page_note(fig, x, y, note):
             root.append(el)
@@ -544,6 +554,52 @@ def write_page_svg(fig, path):
     ET.register_namespace("", "http://www.w3.org/2000/svg")
     ET.ElementTree(root).write(path, xml_declaration=True, encoding="utf-8")
     return edges
+
+
+def _projected_box(shapes, page_point):
+    """The page box (x0, y0, x1, y1) of some shapes' vertices, or None."""
+    pts = [page_point(tuple(v)) for shape in shapes for v in shape.vertices()]
+    pts = [q for q in pts if q]
+    if not pts:
+        return None
+    return min(q[0] for q in pts), min(q[1] for q in pts), max(q[0] for q in pts), max(q[1] for q in pts)
+
+
+def _fitted(vp):
+    """A Viewport given by a direction and what to fit (see Viewport), with
+    its camera worked out: looking along the direction, the fitted shapes'
+    projection centered in the rect and `margin` of the rect around them."""
+    import copy
+    import numpy as np
+    from build123d import Vector
+    if vp.direction is None:
+        return vp
+    fit = vp.fit if vp.fit is not None else [p[0] for p in vp.parts]
+    d = Vector(*vp.direction).normalized()
+    center = Vector(0, 0, 0)
+    bbs = [s.bounding_box() for s in fit]
+    lo = Vector(min(b.min.X for b in bbs), min(b.min.Y for b in bbs), min(b.min.Z for b in bbs))
+    hi = Vector(max(b.max.X for b in bbs), max(b.max.Y for b in bbs), max(b.max.Z for b in bbs))
+    center = (lo + hi) / 2
+    far = (hi - lo).length + 100
+    guess = copy.copy(vp)
+    guess.eye, guess.target, guess.height = tuple(center - d * far), tuple(center), 100
+    _, _, point = _viewport_projection(guess)
+    pts = [point(tuple(v)) for s in fit for v in s.vertices()]
+    pts = [q for q in pts if q]
+    x0, y0, x1, y1 = min(q[0] for q in pts), min(q[1] for q in pts), max(q[0] for q in pts), max(q[1] for q in pts)
+    _, _, vw, vh = vp.rect
+    m = 1 + 2 * vp.margin
+    height = max((y1 - y0) * m, (x1 - x0) * m * vh / vw)
+    # the target: the model point whose projection is the box's center
+    c = point(tuple(center))
+    want = np.array([(x0 + x1) / 2 - c[0], (y0 + y1) / 2 - c[1]])
+    P = np.array([[point(tuple(center + Vector(*axis)))[j] - c[j] for axis in ((1, 0, 0), (0, 1, 0), (0, 0, 1))] for j in (0, 1)])
+    move = np.linalg.pinv(P) @ want
+    target = center + Vector(*move)
+    out = copy.copy(vp)
+    out.eye, out.target, out.height = tuple(target - d * far), tuple(target), height
+    return out
 
 
 def _page_note(fig, x, y, note):
@@ -1012,10 +1068,22 @@ def _note_svg(x, y, note, k, font=DRAWING_FONT):
                                                 "stroke": "black", "stroke-width": f"{line * note.weight:.4f}"}),
                  (cx - r, cy - r, cx + r, cy + r))]
     if isinstance(note, Leader):
-        pts = [(x + note.dx * k, y - note.dy * k)] + [(x + (note.dx + px) * k, y - (note.dy + py) * k) for px, py in note.points]
-        d = "M " + " L ".join(f"{a:.3f} {b:.3f}" for a, b in pts)
-        els = [ET.Element(f"{SVGNS}path", {"d": d, "fill": "none", "stroke": _hex(note.color),
-                                           "stroke-width": f"{line * note.weight:.4f}"})]
+        if note.absolute:  # (a page: its coordinates are the SVG's)
+            pts = [(x + note.dx * k, y - note.dy * k)] + [(px, py) for px, py in note.points]
+        else:
+            pts = [(x + note.dx * k, y - note.dy * k)] + [(x + (note.dx + px) * k, y - (note.dy + py) * k) for px, py in note.points]
+        if note.curve and len(pts) == 2:  # bowed out: a quadratic curve through a control point off the chord's middle
+            (ax, ay), (bx, by) = pts
+            mx, my, nx, ny = (ax + bx) / 2, (ay + by) / 2, -(by - ay), bx - ax
+            cx, cy = mx + nx * note.curve * 2, my + ny * note.curve * 2
+            d = f"M {ax:.3f} {ay:.3f} Q {cx:.3f} {cy:.3f} {bx:.3f} {by:.3f}"
+            pts = [(ax, ay), (cx, cy), (bx, by)]  # (the arrowhead points along the curve's start)
+        else:
+            d = "M " + " L ".join(f"{a:.3f} {b:.3f}" for a, b in pts)
+        attrs = {"d": d, "fill": "none", "stroke": _hex(note.color), "stroke-width": f"{line * note.weight:.4f}"}
+        if note.dash:
+            attrs["stroke-dasharray"] = f"{note.dash[0] * k:.3f} {note.dash[1] * k:.3f}"
+        els = [ET.Element(f"{SVGNS}path", attrs)]
         if note.arrow and len(pts) > 1:
             (ax, ay), (bx, by) = pts[0], pts[1]
             L = math.hypot(bx - ax, by - ay) or 1

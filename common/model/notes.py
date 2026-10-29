@@ -94,7 +94,12 @@ class Label(Note):
 @dataclass(frozen=True)
 class Leader(Note):
     """A line from its anchor (plus an offset) through the given points,
-    relative to the anchor, with an arrowhead at the anchor end."""
+    relative to the anchor, with an arrowhead at the anchor end. On a page,
+    `absolute` points are page coordinates (inches from the top-left corner,
+    y down) instead, so a leader can run from a tool inset to a point of
+    the model; `curve` bows a two-point leader out sideways by that fraction
+    of its length (negative for the other side); `dash` dashes it (dash,
+    gap: paper inches)."""
     points: tuple  # ((dx, dy), ...)
     dx: float = 0
     dy: float = 0
@@ -102,6 +107,9 @@ class Leader(Note):
     color: tuple = (0, 0, 0)
     weight: float = 1  # line weight, relative to LINE
     head: float = 1  # arrowhead size, relative to ARROWHEAD
+    absolute: bool = False
+    curve: float = 0
+    dash: tuple = None
 
 
 @dataclass(frozen=True)

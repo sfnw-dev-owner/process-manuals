@@ -103,14 +103,24 @@ class Viewport:
     inches of the model top to bottom; a perspective one (`fov` degrees,
     vertical) as much as that angle takes in at the target."""
     rect: tuple
-    eye: tuple
-    target: tuple
-    up: tuple
+    eye: tuple = None
+    target: tuple = None
+    up: tuple = (0, 0, 1)
     parts: list = field(default_factory=list)  # (shape, "hlr" | "hlr_thin" | "hlr_light" (gray)), in the model's frame
     height: float = None
     fov: float = None
     notes: list = field(default_factory=list)  # (x, y, z, note) at points of the model, sized in page inches
     offset: tuple = (0, 0)  # the view's center, moved this far (page inches, y down)
+    # A parallel view given logically instead: looking along `direction`
+    # (toward the model), framed on `fit` (shapes; or the parts, by default)
+    # with `margin` of the rect's size around them, whereupon the renderer
+    # sets eye, target and height.
+    direction: tuple = None
+    fit: list = None
+    margin: float = 0.05
+    # Boxes drawn around the projections of some shapes: (shapes, color,
+    # weight relative to notes.LINE, padding in page inches).
+    highlights: list = field(default_factory=list)
 
 
 @dataclass

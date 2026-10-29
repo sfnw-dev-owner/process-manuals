@@ -198,6 +198,25 @@ def _arc_points(x0, y0, rx, ry, rot, large, sweep, x1, y1):
     return pts
 
 
+def _dashed(pts, on, off):
+    """A polyline's dashes, as (start, end) segments."""
+    out, t, drawing = [], 0.0, True
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        length = math.hypot(x1 - x0, y1 - y0)
+        s = 0.0
+        while s < length:
+            span = (on if drawing else off) - t
+            e = min(length, s + span)
+            if drawing:
+                out.append(((x0 + (x1 - x0) * s / length, y0 + (y1 - y0) * s / length),
+                            (x0 + (x1 - x0) * e / length, y0 + (y1 - y0) * e / length)))
+            t += e - s
+            s = e
+            if t >= (on if drawing else off) - 1e-9:
+                t, drawing = 0.0, not drawing
+    return out
+
+
 def _path_polylines(d):
     """A path's subpaths as lists of points (curves approximated)."""
     toks = re.findall(r"[MmLlHhVvZzAaCcQqSsTt]|-?(?:\d+\.?\d*|\.\d+)(?:e-?\d+)?", d or "")
@@ -250,8 +269,18 @@ def _path_polylines(d):
                 x, y = cur[0] + x, cur[1] + y
             poly += _arc_points(*cur, rx, ry, rot, bool(large), bool(sweep), x, y)[1:]
             cur = (x, y)
-        elif cmd in "CcQqSsTt":
-            n = {"c": 6, "q": 4, "s": 4, "t": 2}[cmd.lower()]
+        elif cmd in "Qq":  # a quadratic curve, as a polyline
+            x1, y1, x, y = (num() for _ in range(4))
+            if rel:
+                x1, y1, x, y = cur[0] + x1, cur[1] + y1, cur[0] + x, cur[1] + y
+            x0, y0 = cur
+            for k in range(1, 17):
+                t = k / 16
+                poly.append(((1 - t) ** 2 * x0 + 2 * (1 - t) * t * x1 + t * t * x,
+                             (1 - t) ** 2 * y0 + 2 * (1 - t) * t * y1 + t * t * y))
+            cur = (x, y)
+        elif cmd in "CcSsTt":
+            n = {"c": 6, "s": 4, "t": 2}[cmd.lower()]
             vals = [num() for _ in range(n)]
             x, y = vals[-2], vals[-1]
             if rel:
@@ -346,12 +375,17 @@ class _Raster:
             p1 = _apply(m, float(el.get("x2")), float(el.get("y2")))
             d.line([p0, p1], fill=stroke or (0, 0, 0), width=width)
         elif tag == "path":
+            dashes = el.get("stroke-dasharray")
             for poly in _path_polylines(el.get("d")):
                 pts = [_apply(m, *p) for p in poly]
                 if fill and len(pts) > 2:
                     d.polygon(pts, fill=fill)
                 if stroke or not fill:
-                    if len(pts) > 1:
+                    if len(pts) > 1 and dashes:
+                        on, off = (float(v) * _scale_of(m) for v in dashes.split()[:2])
+                        for a, b in _dashed(pts, on, off):
+                            d.line([a, b], fill=stroke or (0, 0, 0), width=width)
+                    elif len(pts) > 1:
                         d.line(pts, fill=stroke or (0, 0, 0), width=width)
         elif tag == "circle":
             cx, cy = _apply(m, float(el.get("cx")), float(el.get("cy")))
