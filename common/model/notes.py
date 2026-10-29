@@ -35,7 +35,7 @@ CIRCLED = 1/8  # radius of a circled number
 # (degrees counterclockwise from +X), as drawn
 ICONS = {
     "Screw": ((0.2, 0.48), (0, -0.5), 270),
-    "NailGun": ((0.58, 0.56), (-0.42, -0.45), 225),
+    "NailGun": ((0.58, 0.56), (-0.4, -0.47), 270),
     "Pencil": ((0.36, 0.36), (-0.45, -0.45), 225),
     "mallet": ((0.38, 0.38), (0.3, 0.35), 45),
     "Router": ((0.48, 0.48), (0, -0.5), 270),
@@ -245,17 +245,20 @@ def icon(name, size=1, rotation=0, flip=False):
     return Icon(name, w * size, h * size, rotation=rotation, flip=flip)
 
 
-def aimed(point, name, toward, size=1, gap=GAP, flip=False):
+def aimed(point, name, toward, size=1, gap=GAP, flip=None):
     """A tool icon with its nose `gap` short of `point`, pointing `toward`
     it: a side ("below": the tool is below the point, pointing up) or
     degrees counterclockwise from +X, the direction from the tool to the
-    point."""
+    point. The icon is mirrored if that turns it less (or as `flip` says)."""
     (w, h), (nx, ny), nose = ICONS[name]
     w, h = w * size, h * size
     angle = SIDES[toward] + 180 if isinstance(toward, str) else toward
+    turn = lambda rot: (rot + 180) % 360 - 180  # the least turn
+    if flip is None:
+        flip = abs(turn(angle - (180 - nose))) < abs(turn(angle - nose))
     if flip:
         nx, nose = -nx, 180 - nose
-    rotation = angle - nose
+    rotation = turn(angle - nose)
     a = math.radians(rotation)
     # the nose, from the icon's center, once rotated
     ox, oy = nx * w, ny * h
