@@ -11,7 +11,6 @@ from model.notes import Label, around, at, callout
 from . import Extent, extent, table
 
 MD = "floor_door/floor_install.md"
-PAPER_NOTES = True
 ROWS_SHOWN = 5
 
 

@@ -15,7 +15,6 @@ from model.roof import T, TRI_BASE, TRI_BASE_END, TRI_D, TRI_E, TRI_NOTCH_HALF, 
 from . import Extent, camera, table
 
 MD = "Structural_Triangle/triangle.md"
-PAPER_NOTES = True
 VIEW = camera((0, -1, 0))  # face on: X to the right, Z up
 SMALL_GUN = 0.6  # the nail gun icon, scaled down
 SCREWS_IN = 4  # the sides' screws into the base, this far in from the base's ends

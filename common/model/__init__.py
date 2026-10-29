@@ -4,9 +4,8 @@ figures (see figures/ and render/model2svg.py).
 
 Units are inches. Each component is a function returning its own solids and
 its children as (component, placement, modifiers, tag). A child is only shown
-when its tag isn't hidden; untagged ("") children follow their parent. Tags
-starting "manual:" mark optional children (tools, annotations) that only a
-manual's figures ask for. Modifiers ("mirror", ("scale", (sx, sy, sz))) cover
+when its tag isn't hidden; untagged ("") children follow their parent.
+Modifiers ("mirror", ("scale", (sx, sy, sz))) cover
 transforms that a Location can't express. Boxes and sheets are placed by their
 minimum corner.
 

@@ -48,18 +48,7 @@ ICONS = {
 # ── the notes ──────────────────────────────────────────────────────────────
 
 class Note:
-    """(Until every manual's notes are in its figure table: a note placed as
-    a component's child, which has no solids.)"""
-    def shape(self, hidden=frozenset(), mods=(), shown=frozenset()):
-        from build123d import Compound
-        return Compound([])
-
-    def tags(self):
-        return frozenset()
-
-    def notes(self, shown=frozenset(), hidden=frozenset()):
-        from build123d import Location
-        return [(Location(), self)]
+    """An annotation: see the subclasses."""
 
 
 @dataclass(frozen=True)
@@ -434,24 +423,3 @@ def inches(x):
         part = f"{frac.numerator}/{frac.denominator}"
         return f'{whole} {part}"' if whole else f'{part}"'
     return f'{whole}{part}"' if whole else f'{part}"'
-
-
-# ── until every manual's notes are in its figure table (drawing-inch notes) ─
-
-def vertical_dimension(length, text, text_offset=-1.9):
-    """A dimension line up from its anchor, arrows at both ends, its text
-    rotated alongside (to the left for a negative offset)."""
-    return [Leader(((0, length),)), Leader(((0, -length),), dy=length),
-            Label(text, 2, rotation=90, dx=text_offset, dy=length / 2, attach=8 if text_offset < 0 else 2)]
-
-
-def legacy_crossed_box(width, height):
-    """Leaders drawing a box with both diagonals (lumber cut in section), from
-    the anchor at its lower-left corner."""
-    return [Leader(((width, 0), (width, height), (0, height), (0, 0), (width, height)), arrow=False),
-            Leader(((width, -height),), arrow=False, dy=height)]
-
-
-def legacy_box(width, height, weight=1, color=(0, 0, 0)):
-    """box(), at a legacy page's line weights (Lines draw at half a Leader's)."""
-    return box(width, height, 2 * weight, color)

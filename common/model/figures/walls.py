@@ -31,7 +31,6 @@ from . import TYVEK, Extent, Figure, extent, table, xy
 SIDE_MD = {1: "Side_Walls/sidewall_1.md", 3: "Side_Walls/sidewall_3.md"}
 FRONT_MD = "Front_Wall/front_wall_ada.md"
 REAR_MD = "Rear_Wall/rear_wall.md"
-PAPER_NOTES = True
 
 SIDE_TO_DRAWING = Location(Plane((WALL_HEIGHT, SIDE_WALL_PLATE_LENGTH, 0), x_dir=(0, -1, 0), z_dir=(-1, 0, 0)))
 END_TO_DRAWING = Location(Plane((END_WALL_PLATE_LENGTH, 0, 0), x_dir=(-1, 0, 0), z_dir=(0, 1, 0)))

@@ -9,7 +9,7 @@ import math
 
 from build123d import Align, Box, Location, Pos
 
-from model.common import OPTIONAL, key
+from model.common import key
 from model.interior import (
     BASEBOARD_TOP, DOOR_SIDE_WALL_AT, END_INSIDE, FAR_SIDE_WALL_AT, FRONT_WALL_AT, PANEL, SHELF_TOP, SHELF_Z, TOP_TRIM_Z,
     W, front_wall_interior, rear_wall_interior, side_wall_interior_door_side, side_wall_interior_far_side,
@@ -25,7 +25,6 @@ from . import TYVEK, Extent, extent, table
 from .interior_panels import INSIDE_VIEW
 
 MD = "Interior_Trim/interior_trim.md"
-PAPER_NOTES = True
 ORDER = [
     "baseboards", "rear_shelf", "rear_window_trim", "top_trim", "vertical_trim", "horizontal_trim",
     "triangle_trim", "front_baseboard", "front_shelf", "front_window_trim", "front_trim_a", "front_trim_b",
@@ -65,7 +64,7 @@ def wall_parts(component, step, new, loc=Location(), hide=(), also=()):
     """A wall interior component's pieces as they are at `step` (those tagged
     in `hide` left out, those in `also` drawn as done though later), seen
     from inside."""
-    tags = {t for t in component.tags() if not t.startswith(OPTIONAL) and t}
+    tags = {t for t in component.tags() if t}
     out = []
     for tag in sorted(tags):
         style = None if tag in hide else styled(tag, step, new, also)
@@ -103,7 +102,7 @@ def window():
 
 def gable_trim():
     """An end wall's triangle trim, in the wall's frame."""
-    tags = {t for t in end_wall_interior.tags() if not t.startswith(OPTIONAL)}
+    tags = set(end_wall_interior.tags())
     return END_INTERIOR_AT * end_wall_interior.shape(frozenset(tags - {"triangle_trim"}), key(["mirror"]))
 
 

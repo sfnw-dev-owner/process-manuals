@@ -53,9 +53,6 @@
   depth to 6 and its chamfers to 1-3/4" (the template's straight ends are
   4-1/4").
 
-- Interior_Trim front window figure, first view: the "LONG Screws" label
-  overlaps the "Mount support block ... of shelf" label above it (as the
-  drawing had them); move one, or shorten the note.
 - post-tilt-up/frame-completion.md "triangle_screws": the two screws at each
   of the structural triangle's narrowest sections are too close together;
   space them farther apart.

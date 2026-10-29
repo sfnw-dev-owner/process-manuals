@@ -25,7 +25,6 @@ from .pages import (
 
 FRAME_MD = "post-tilt-up/frame-completion.md"
 BLOCKING_MD = "post-tilt-up/roof-blocking.md"
-PAPER_NOTES = True
 LOWER = LOWER_RECT
 HIGHLIGHT = 6  # a red box's line, relative to notes.LINE
 PERSON = (29.7, 57.5)  # the silhouette clipart's size, inches of model

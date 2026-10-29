@@ -20,7 +20,6 @@ from model.roof import (
 from . import Extent, Figure, break_box, camera, enlarged, extent, table, xy
 
 MD = "Half_Roof/half_roof.md"
-PAPER_NOTES = True
 
 # The drawing: the slope frame (roof.py) seen from above the roof, turned so
 # X runs down the slope from the rafters' tips and Y along the roof from the front.

@@ -24,7 +24,6 @@ from model.walls import WALL_DEPTH, WALL_HEIGHT, front_wall_skin, rear_wall_skin
 from . import GRAY, TYVEK, Extent, Figure, camera, extent, table, xy
 
 MD = "Exterior_Trim/exterior_trim.md"
-PAPER_NOTES = True
 
 BACK_CORNER = (0, 0)  # the corner the corner-board figures show: rear, left
 FLAT_BOARD_OFF = 40  # the new board's back, laid flat this far left of the building

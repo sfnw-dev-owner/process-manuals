@@ -129,7 +129,6 @@ class Figure:
     name: str  # see FIGURES
     parts: list = field(default_factory=list)
     notes: list = field(default_factory=list)
-    paper_notes: bool = False  # its notes are in paper inches (model/notes.py); else (not yet converted) drawing inches
     # Only the parts' edges inside this box (x0, y0, x1, y1, in the drawing's
     # frame) are drawn, as if the drawing were cut off there; notes aren't cut.
     clip: tuple = None
@@ -166,8 +165,6 @@ def manual_figures(manual, only=None, scale=1):
     if "scale" in params:
         kw["scale"] = scale
     figures = module.figures(**kw)
-    for f in figures:
-        f.paper_notes = getattr(module, "PAPER_NOTES", False)
     return {f.name: f for f in figures if f.manual == manual and (only is None or f.name in only)}
 
 
@@ -277,29 +274,6 @@ def placed(component, name):
         raise LookupError(f"{component.__name__} has {len(found)} children named {name!r}; "
                           f"its children are {sorted({c[0].__name__ for c in children})}")
     return found[0]
-
-
-def placed_notes(to_drawing, component, shown, loc=Location()):
-    """A component's annotations that `shown` asks for, as (x, y, note) in
-    the drawing's frame."""
-    out = []
-    for l, note in component.notes(shown):
-        p = (to_drawing * loc * l).position
-        out.append((p.X, p.Y, note))
-    return out
-
-
-def optional_parts(to_drawing, component, shown, style, fill=None):
-    """The optional (tagged) parts of a component that `shown` asks for,
-    placed in the drawing, as figure parts."""
-    from model.common import OPTIONAL, key, shown_by
-    from model.notes import Note
-    out = []
-    for child, loc, mods, tag in component()[1]:
-        if tag.startswith(OPTIONAL) and shown_by(tag, shown) and not isinstance(child, Note):
-            shape = to_drawing * (loc * child.shape(frozenset(), key(mods), shown))
-            out.append((shape, style) if fill is None else (shape, style, fill))
-    return out
 
 
 def vertical_fov(fov, rect):

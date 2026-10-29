@@ -16,7 +16,6 @@ from model.platform import (
 from . import GRAY, Extent, break_box, extent, table, xy
 
 MD = "Platform/platform.md"
-PAPER_NOTES = True
 
 # The model's rear is at Y = 0; the drawing puts it at the top: X across the
 # platform (the drawing's X runs the other way), Y up it from the front.

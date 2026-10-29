@@ -11,7 +11,6 @@ from model.roof import TRI_E, TRI_NOTCH_HALF, TRI_PEAK, tri_top, triangle_parts
 from . import Extent, camera, enlarged, table
 
 MD = "Cut_Lists/Structural_Triangle_Parts.md"
-PAPER_NOTES = True
 VIEW = camera((0, -1, 0))  # from inside: X to the right, Z up
 # How far each part is moved apart from where it goes in the triangle
 EXPLODE = {"B": (0, 4), "C": (0, 8), "D": (0, 8), "E": (4, 8), "A": (0, 16)}

@@ -26,7 +26,6 @@ from model.notes import Circle, Label
 from . import Figure, Viewport
 
 MD = "Extract_Iron_Carts/Extract_instructions.md"
-PAPER_NOTES = True
 
 # Horizontal/vertical ratio assumed when deciding what's inside the camera's
 # view. SketchUp's fov is vertical; the width depends on the window it was

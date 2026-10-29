@@ -24,7 +24,6 @@ from .pages import (
 )
 
 MD = "tilt-up/tilt-up.md"
-PAPER_NOTES = True
 LOWER = main_rect(1.5)  # the main view under a row of insets
 # Looking down the house from above its rear end: the front wall's corners
 # and their clamps.

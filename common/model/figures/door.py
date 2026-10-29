@@ -23,7 +23,6 @@ from model.walls import DOOR_OPENING, WALL_DEPTH, front_wall_framing, front_wall
 from . import GRAY, Extent, Figure, extent, table
 
 MD = "floor_door/door_manual.md"
-PAPER_NOTES = True
 
 # The front wall and floor, in the assembly's frame.
 HOUSE = DOOR_IN_HOUSE.inverse()  # the house's frame, with the deck at Z = 0

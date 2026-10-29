@@ -26,7 +26,6 @@ from model.walls import front_wall_framing, rear_wall_framing, side_wall_framing
 from . import TYVEK, Extent, camera, extent, table, xy
 
 MD = "Interior_Panels/interior_panels.md"
-PAPER_NOTES = True
 PANEL_FILL = TYVEK  # the drawings' light gray (ACI 9)
 
 # A wall seen from inside the house (its frame: X along the wall left to

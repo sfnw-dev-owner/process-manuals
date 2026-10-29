@@ -16,7 +16,6 @@ from . import Extent, camera, enlarged, table
 from .interior_panels import FLAT_VIEW
 
 MD = "Interior_Trim/vent_cap_install.md"
-PAPER_NOTES = True
 BLOCK_SCALE = 4  # the block is drawn enlarged
 PIECES_GAP = 40  # the short piece drawn this far below the long one
 BLOCK_GAP = 24  # the block this far above the long piece

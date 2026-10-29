@@ -12,7 +12,6 @@ from . import GRAY, Extent, extent, table
 from .half_roof import HALF_ROOF_DRAWING
 
 MD = "Roof/roof_manual.md"
-PAPER_NOTES = True
 STACK = 5  # pairs cut before the sequence restarts (one pile per side)
 FAN = 1  # each piece set this far up and over from the one under it
 PILES_GAP = 6  # between a side's start and end piles, and between the sides' rows
