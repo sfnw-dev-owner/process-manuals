@@ -173,12 +173,15 @@ def table(md, rows, tools_style=("outline", "laid")):
 
 
 class Extent:
-    """The axis-aligned box of some shapes in the drawing, and points on it."""
+    """The axis-aligned box of some shapes (or other Extents) in the drawing,
+    and points on it."""
 
     def __init__(self, *shapes):
-        boxes = [s.bounding_box() for s in shapes]
-        self.x0, self.y0 = min(b.min.X for b in boxes), min(b.min.Y for b in boxes)
-        self.x1, self.y1 = max(b.max.X for b in boxes), max(b.max.Y for b in boxes)
+        boxes = [(s.x0, s.y0, s.x1, s.y1) if isinstance(s, Extent) else
+                 (s.bounding_box().min.X, s.bounding_box().min.Y, s.bounding_box().max.X, s.bounding_box().max.Y)
+                 for s in shapes]
+        self.x0, self.y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
+        self.x1, self.y1 = max(b[2] for b in boxes), max(b[3] for b in boxes)
 
     @property
     def center(self):

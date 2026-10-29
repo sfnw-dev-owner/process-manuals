@@ -4,7 +4,7 @@ Per Exterior_Trim/exterior_trim.md. Frame: Z = 0 at the top of the walls.
 """
 
 from functools import cache
-from math import cos, radians, sin, tan
+from math import radians, tan
 
 from .common import *
 from .dimensions import WINDOW_OPENING
@@ -154,7 +154,6 @@ def external_trim():
     children += [
         (window_trim, FRONT_WALL_IN_HOUSE * window_trim_in_wall(), [], ''),
         (window_trim, REAR_WALL_IN_HOUSE * window_trim_in_wall(), [], ''),
-        *corner_manual(),
     ]
     return [], children
 
@@ -270,12 +269,7 @@ def window_trim_nails():
 
 @component
 def window_trim():
-    from .notes import Circle
-    children = [(c, loc, mods, '') for c, loc, mods in window_trim_parts().values()]
-    children += [(Circle(0.15, fill=(0, 0, 0)), loc, [], "manual:exterior_trim:rear_window manual:exterior_trim:front_window")
-                 for loc in window_trim_nails()]
-    children += window_trim_manual()
-    return [], children
+    return [], [(c, loc, mods, '') for c, loc, mods in window_trim_parts().values()]
 
 
 def window_trim_in_wall():
@@ -285,97 +279,11 @@ def window_trim_in_wall():
     return Location(Plane((WINDOW_X + RO_W, SIDING_Y + SIDING, WINDOW_Z), x_dir=(-1, 0, 0), z_dir=(0, 1, 0)))
 
 
-# The trim figures' annotations, in images/{rear,front}_window.dxf's frame
-# (the window unit's lower-left corner at 0, 0, WINDOW_UNIT_INSET inside the
-# rough opening's), tagged "manual:exterior_trim:rear_window"/"front_window".
-
-def flip_arrow(cx, cy, r, a0, a1, at):
-    """A curved double-headed "flip" arrow: an arc of radius r around
-    (cx, cy) from angle a0 to a1 (degrees)."""
-    from .notes import Leader
-    pts = [(cx + r * cos(radians(a)), cy + r * sin(radians(a))) for a in
-           [a0 + (a1 - a0) * k / 16 for k in range(17)]]
-    (x0, y0), (x1, y1) = pts[0], pts[-1]
-    return [(Leader(tuple((x - x0, y - y0) for x, y in pts[1:])), at(x0, y0)),
-            (Leader(((pts[-2][0] - x1, pts[-2][1] - y1),)), at(x1, y1))]
-
-
-def circled(text, x, y, cx, cy, at):
-    from .notes import Circle, Label
-    return [(Label(text, 2, attach=1), at(x, y)), (Circle(1.62), at(cx, cy))]
-
-
-def window_trim_manual():
-    from .notes import Label, Leader
-
-    def at(x, y):
-        return Pos(x + WINDOW_UNIT_INSET, y + WINDOW_UNIT_INSET, TRIM_T)
-
-    rear, front = "manual:exterior_trim:rear_window", "manual:exterior_trim:front_window"
-    both = f"{rear} {front}"
-    notes = [
-        (both, Label('1/2" overhang', 1, attach=3), at(-9.4, 31.23)),
-        (both, Leader(((-3.02, -4.27), (-5.02, -4.27))), at(-4.01, 35.22)),
-        # rear
-        (rear, Leader(((-2.75, -5), (-4.63, -5))), at(-3.76, -1.2)),
-        (rear, Leader(((2.75, -5), (4.62, -5))), at(26.74, -1.2)),
-        (rear, Leader(((2.5, 4.25), (5.12, 4.25))), at(26.75, 37)),
-        (rear, Leader(((-1.57, -4.87), (-2.97, -4.86))), at(10, -3.75)),
-        (rear, Label("30° bevel", 1, attach=1), at(6.34, 41.54)),
-        (rear, Leader(((2.5, 2.25), (4.5, 2.25))), at(0.5, 38.75)),
-        (rear, Leader(((-4.5, -4.2), (-6, -4.2))), at(19, 45.2)),
-        (rear, Label("Measure and cut to fit", 1, attach=1), at(15.57, -7.51)),
-        (rear, Leader(((2.87, -4.29), (3.87, -4.29))), at(11.13, -3.71)),
-        (rear, Label("DO NOT CAULK", 1.5, attach=1), at(15.44, -9.71)),
-        (rear, Label("Flip", 1, attach=1), at(-10, 43)),
-        (rear, Label("Flip", 1, attach=2), at(-9.09, 16)),
-        (rear, Label("Flip", 1, attach=2), at(32, 16)),
-        (rear, Label('Note: nail 1½" in from each end each board', 1.5, attach=2), at(12.64, -17.03)),
-        # front
-        (front, Leader(((2, 4.25), (4.63, 4.25))), at(18.25, 38.75)),
-        (front, Leader(((-2.75, -5), (-4.63, -5))), at(-3.75, 25)),
-        (front, Leader(((2.75, -5), (4.63, -5))), at(26.75, 25)),
-        (front, Leader(((-3, -4.3), (-5, -4.3))), at(4, -3.7)),
-        (front, Label("Measure and\n cut to fit", 2, attach=1), at(8.72, -7.48)),
-        (front, Leader(((-3, -4.3), (0, -4.3))), at(8, -3.7)),
-        (front, Label("DO NOT CAULK", 2, attach=1), at(4.01, -13.96)),
-        (front, Label("Door Jamb", 2, attach=1), at(25.23, -19.98)),
-    ]
-    for tag, args in ((rear, ("1", -10.61, -5.1, -10.01, -6.2)), (rear, ("2", 32.29, -5.2, 32.99, -6.2)),
-                      (rear, ("3", 32.9, 42.35, 33.5, 41.25)), (rear, ("4", 4.76, -7.7, 5.4, -8.61)),
-                      (front, ("1", 23.9, 44.1, 24.5, 43)), (front, ("2", -10.6, 21.1, -10, 20)),
-                      (front, ("3", 32.3, 21, 33, 20)), (front, ("4", -3.22, -6.9, -2.62, -8))):
-        notes += [(tag, n, loc) for n, loc in circled(*args, at)]
-    for arc in ((-1, 42.5, 6.02, 131.6, 228.4), (39.73, 26.26, 14.73, 207.4, 261.7),
-                (-16.82, 26.26, 14.73, 278.3, 332.6)):
-        notes += [(rear, n, loc) for n, loc in flip_arrow(*arc, at)]
-    return [(n, loc, [], tag) for tag, n, loc in notes]
-
-
-# ── Corner Trim figures ─────────────────────────────────────────────────────
-# images/back_corner.dxf: the rear-left corner in isometric (looking from
-# the rear, left and above), each board's back laid flat beside it, and a
-# section at the top of the corner. Jig tools and annotations are tagged
-# "manual:exterior_trim:corners_1" / "corners_2" (the two steps).
+# ── the corner trim's jig tool ─────────────────────────────────────────────
 
 ALIGNMENT_BLOCK = (20, "1x4")  # length; a jig tool
 ALIGNMENT_BLOCK_BELOW_TOP = 18  # its top, below the top of the siding
 ALIGNMENT_BLOCK_PAST = 2  # past the side wall's siding: Board #1's edge rests against it
-
-
-def iso_view(direction, up=(0, 0, 1)):
-    """The Location taking the house into a drawing looking from `direction`."""
-    z = Vector(*direction).normalized()
-    x = Vector(*up).cross(z).normalized()
-    return Location(Plane((0, 0, 0), x_dir=x, z_dir=z)).inverse()
-
-
-# The drawing's frame: the corner of the siding, at its bottom, is at
-# (0.74, -0.47) as in back_corner.dxf.
-BACK_CORNER = (0, 0)
-_side, _, _end, _ = corner_frame(BACK_CORNER)
-BACK_CORNER_DRAWING = (Pos(0.74, -0.47, 0) * iso_view((-1, -1, 1))
-                       * Pos(-_side, -_end, -(DECK + WALL_HEIGHT - SIDING_HEIGHT)))
 
 
 @component
@@ -386,51 +294,9 @@ def alignment_block():
     return [board(nominal, length, along="X", wide="Z")], []
 
 
-def corner_manual():
-    from .notes import Label, Leader
-
-    def at(x, y):
-        return BACK_CORNER_DRAWING.inverse() * Pos(x, y, 0)
-
-    side_face, ox, end_face, oy = corner_frame(BACK_CORNER)
+def alignment_block_at(corner):
+    """Where the block is held at a corner (the house's frame)."""
+    side_face, ox, end_face, oy = corner_frame(corner)
     block_top = DECK + WALL_HEIGHT - ALIGNMENT_BLOCK_BELOW_TOP
-    block = Pos(side_face + ox * ALIGNMENT_BLOCK_PAST, end_face - thickness(ALIGNMENT_BLOCK[1]),
-                block_top - width(ALIGNMENT_BLOCK[1]))
-    one, two = "manual:exterior_trim:corners_1", "manual:exterior_trim:corners_2"
-    notes = [
-        (one, Label("Flip", 4, attach=1), at(-50, 0)),
-        (one, Label("Cutout for rafter", 2.5, attach=3), at(-90.38, 85.5)),
-        (one, Leader(((6.03, 15.01), (-4.3, 14.75))), at(-83.5, 69.2)),
-        (one, Label("Caulk line", 2.5, attach=1), at(-67.13, 22.21)),
-        (one, Leader(((6.34, -11.59), (10.34, -11.66))), at(-80.8, 32.86)),
-        (one, Label("Alignment Block", 2.5, attach=1), at(37.97, 35.27)),
-        (one, Leader(((14.73, -25.41), (33.23, -25.41))), at(3.77, 58.41)),
-        (one, Label("Board #1", 4, attach=1), at(-72.33, -14.97)),
-        (one, Leader(((9.35, -21.86), (12.26, -21.86))), at(-86.15, 4.92)),
-        (one, Label("Corner Edge", 3, attach=1), at(-101.18, -24.96)),
-        (one, Leader(((-17.5, -43.35), (-10.4, -43.35))), at(-92.65, 16.85)),
-        (one, Leader(((9.77, -7.67),)), at(-78.06, 7.42)),
-        (one, Leader(((-13.82, -5.23),)), at(-1.15, -0.13)),
-        (one, Label("Double Rafter", 2.5, attach=1), at(98.75, 56)),
-        (one, Leader(((-7.5, 13), (-2, 13))), at(99.43, 41.35)),
-        (one, Label("Board #1", 2.5, attach=3), at(90.94, 12.88)),
-        (one, Leader(((-7.26, -10.95), (-11.45, -10.95))), at(104, 22.7)),
-        (one, Label("Board #2", 2.5, attach=1), at(126.43, 38.85)),
-        (one, Leader(((7, 11.25), (13, 11.25))), at(111.43, 25.85)),
-        (one, Label("Surface of end wall", 2.5, attach=1), at(125.77, 7.15)),
-        (one, Leader(((8.5, -11.04), (17.25, -11.04))), at(109.43, 20.67)),
-        (two, Label("Flip", 4, attach=1), at(-44.43, -22.13)),
-        (two, Label("Caulk", 3, attach=1), at(-73.31, 39.37)),
-        (two, Leader(((10, 9), (13, 9))), at(-88, 28.88)),
-        (two, Label("Board #2", 4, attach=1), at(-91.59, -33.38)),
-        (two, Leader(((-15.68, -25.71), (-9.48, -25.71))), at(-83.5, -10)),
-        (two, Label("Corner Edge", 3, attach=3), at(-74.56, 63.7)),
-        (two, Leader(((8.72, 18.56), (4.61, 18.69))), at(-77.05, 43.14)),
-        (two, Leader(((5.77, -9.88),)), at(-77, 5)),
-        (two, Leader(((-12.36, -10.06),)), at(0.74, -1.22)),
-    ]
-    out = [(n, loc, [], tag) for tag, n, loc in notes]
-    for tag, arc in ((one, (-36.38, 51.96, 61.19, 238.6, 290.5)), (two, (-37.96, 24.22, 44.21, 221.2, 306.6))):
-        out += [(n, loc, [], tag) for n, loc in flip_arrow(*arc, at)]
-    out.append((alignment_block, block, [], one))
-    return out
+    return Pos(side_face + ox * ALIGNMENT_BLOCK_PAST, end_face - thickness(ALIGNMENT_BLOCK[1]),
+               block_top - width(ALIGNMENT_BLOCK[1]))

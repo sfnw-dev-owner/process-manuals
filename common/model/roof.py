@@ -703,38 +703,5 @@ def gable_skin():
         (z_flashing, Location(), [], ''),
         (gable_siding_large, Location(), [], ''),
         (gable_siding_small, Location(), [], ''),
-        *gable_manual(),
     ]
     return [], children
-
-
-# Exterior_Trim/exterior_trim.md's triangle figures show the gable from
-# outside, one view per step, tagged "manual:exterior_trim:<view>". Note
-# positions are in a view's drawing frame: x to the right from the gable's
-# center, y up from the wall top.
-GABLE_VIEWS = ["tyvek", "z_flashing", "siding_large", "siding_small"]
-
-
-def gable_manual():
-    from .notes import Circle, Label, Leader
-
-    def at(x, y):
-        return Pos(-x, WRAP + SIDING, y)
-
-    def views(*vs):
-        return " ".join(f"manual:exterior_trim:{v}" for v in vs)
-
-    return [
-        # (where the drawing had it, which differed between its upper and lower views)
-        (Label("Existing T1-11 Siding", 3, attach=1), at(-18.39, -15.7), [], views("tyvek", "siding_large")),
-        (Label("Existing T1-11 Siding", 3, attach=1), at(-20.41, -11.1), [], views("z_flashing", "siding_small")),
-        (Label("Tyvek", 3, attach=1), at(-5.55, 10.55), [], views("tyvek")),
-        (Label("Z-flashing", 3, attach=1), at(15.63, -5.38), [], views("z_flashing")),
-        (Leader(((6.31, -6.44), (9.31, -6.44))), at(4.85, -0.47), [], views("z_flashing")),
-        (Label("3.1", 4, attach=1), at(23.05, -6.14), [], views("siding_large")),
-        (Circle(5.85), at(26.68, -8.47), [], views("siding_large")),
-        (Leader(((6.47, -9.05), (9.83, -9.05))), at(11, GABLE_SIDING_LIFT), [], views("siding_large")),
-        (Label("3.2", 4, attach=1), at(-32.86, -5.8), [], views("siding_small")),
-        (Circle(5.85), at(-29.23, -8.13), [], views("siding_small")),
-        (Leader(((3, -8.51), (5.06, -8.51))), at(-40.15, 0.41), [], views("siding_small")),
-    ]

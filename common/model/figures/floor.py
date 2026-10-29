@@ -2,16 +2,17 @@
 (the first five rows), the doorway at the top. The drawing's frame is the
 house's plan."""
 
-from build123d import Align, Box, Location, Pos
+from build123d import Align, Box, Pos
 
 from model.dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH
-from model.flooring import DOORWAY_X, FLOORING, ROOM_X, ROOM_Y, floor_rows, flooring
-from model.walls import WALL_DEPTH
+from model.flooring import DOORWAY_X, FLOORING, FLOOR_X, FLOOR_Y, ROOM_X, ROOM_Y, floor_rows
+from model.notes import Label, around, at, callout
 
-from . import Figure, figure_names, placed_notes
+from . import Extent, extent, table
 
 MD = "floor_door/floor_install.md"
-TO_DRAWING = Location()
+PAPER_NOTES = True
+ROWS_SHOWN = 5
 
 
 def walls_in_plan():
@@ -24,9 +25,16 @@ def walls_in_plan():
     return outside - room - doorway
 
 
-def figures():
-    planks = [loc * comp.shape() for comp, loc, _, _ in floor_rows(5)]
-    shown = {"manual:floor", "manual:floor:tiles"}
-    parts = [(walls_in_plan(), "hlr_thin")] + [(p, "hlr_thin") for p in planks]
-    fig_name, = figure_names(MD)
-    return [Figure(MD, fig_name, parts, placed_notes(TO_DRAWING, flooring, shown))]
+def figures(scale=1/20, only=None):
+    planks = [loc * comp.shape() for comp, loc, _, _ in floor_rows(ROWS_SHOWN)]
+    first = Extent(planks[len(floor_rows(1)) - 1])  # the first row's last plank, notched beside the doorway
+    notch = (first.x0, first.y1)  # the corner cut out of it, by the wall
+    whole = extent(planks)
+    notes = [
+        at(((DOORWAY_X[0] + DOORWAY_X[1]) / 2, ROOM_Y[1] + 6), Label("DOORWAY")),
+        around(notch, 1/2),
+        *callout((notch[0] + 1/2 / scale * 0.7, notch[1] + 1/2 / scale * 0.7), "Note notch cut out for wall clearance.", "above right", lead=1/2),
+        *callout((FLOOR_X[0], FLOOR_Y[0]), '1/4" space from walls', "below left", lead=3/4),
+    ]
+    rows = {"tiles": ([(walls_in_plan(), "hlr_thin")] + [(p, "hlr_thin") for p in planks], [], notes)}
+    return table(MD, rows)

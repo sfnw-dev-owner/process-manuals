@@ -296,6 +296,19 @@ def dimension(a, b, scale, text=None, offset=1/4):
     return out
 
 
+def arc(center, radius, start, end, scale, heads=(True, True), steps=16):
+    """A curved arrow (a "flip" arrow) about a point of a drawing printed at
+    `scale`: an arc of `radius` (drawing inches) from `start` to `end`
+    degrees, with an arrowhead at either end as `heads` says."""
+    pts = [(center[0] + radius * math.cos(math.radians(a)), center[1] + radius * math.sin(math.radians(a)))
+           for a in [start + (end - start) * k / steps for k in range(steps + 1)]]
+    (x0, y0), (x1, y1) = pts[0], pts[-1]
+    out = [(x0, y0, Leader(tuple(((x - x0) * scale, (y - y0) * scale) for x, y in pts[1:]), arrow=heads[0]))]
+    if heads[1]:
+        out.append((x1, y1, Leader((((pts[-2][0] - x1) * scale, (pts[-2][1] - y1) * scale),))))
+    return out
+
+
 def around(point, radius, **kw):
     """A circle of `radius` (paper inches) centered on a point."""
     return (point[0], point[1], Circle(radius, **kw))

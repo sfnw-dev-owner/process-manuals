@@ -107,7 +107,6 @@ def flooring():
         *floor_rows(ROWS),
         (doorway_strip, Pos((DOORWAY_X[0] + DOORWAY_X[1] - DOORWAY_STRIP[0]) / 2,
                             SIDING_FACE_Y - DOORWAY_STRIP[1], 0), [], ''),
-        *floor_manual(),
     ]
 
 
@@ -120,25 +119,3 @@ def doorway_strip():
     length, wide = DOORWAY_STRIP
     block = length / DOORWAY_BLOCKS
     return [Pos(i * block, 0, 0) * Box(block, wide, FLOORING, align=CORNER) for i in range(DOORWAY_BLOCKS)], []
-
-
-# ── floor_door/floor_install.md figure ─────────────────────────────────────
-# Tagged "manual:floor:tiles". Positions in the drawing's frame, which is the
-# house's plan (X, Y) as is.
-
-from .notes import Circle, Label, Leader  # noqa: E402
-
-
-def floor_manual():
-    t = "manual:floor:tiles"
-    at = lambda x, y: Pos(x, y, FLOORING)
-    return [
-        (Label("DOORWAY", 3, attach=1), at(20, 150), [], t),
-        (Circle(12.68), at(2.05, 141.87), [], t),
-        (Leader(((5, 6), (16, 6))), at(11, 151), [], t),
-        (Label("Note notch cut out for wall clearance.", 2.5, attach=1), at(29.14, 158.22), [], t),
-        (Leader(((-10, -19), (14, -19))), at(FLOOR_X[0], 12), [], t),
-        (Leader(((9.12, -11.12), (12.12, -11.12))), at(8.88, FLOOR_Y[0]), [], t),
-        (Label('1/4" space from walls', 2.5, attach=1), at(22, -5), [], t),
-    ]
-
