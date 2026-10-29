@@ -191,7 +191,7 @@ def main(argv):
 # divided by its printed scale.
 PAPER_LINE = 0.004
 PAPER_HEAVY = 0.025  # a "heavy" outline: how the drawings emphasized a new part that can't be filled black
-LINE = 0.12  # inches of drawing: the notes' line weights are defined relative to this at full size
+LINE = 0.12  # (legacy notes) inches of drawing: their line weights are defined relative to this at full size
 # Labels: the drawings' were typeset in DejaVu Sans (QCAD's default); a page's
 # (as LayOut's) in Carlito.
 DRAWING_FONT = ("DejaVu Sans", REPO / "render" / "DejaVu" / "DejaVuSans.ttf", REPO / "render" / "DejaVu" / "DejaVuSans-Bold.ttf")
@@ -241,13 +241,16 @@ def _render_job(job):
     manual, wanted = job
     _import_build123d()
     from model.figures import manual_figures
-    built = manual_figures(manual, {name for name, _, _ in wanted})
-    for name, scale, path in wanted:
-        fd, tmp = tempfile.mkstemp(dir=CACHE, suffix=".svg.tmp")
-        os.close(fd)
-        write_svg(built[name], pathlib.Path(tmp), scale)
-        os.replace(tmp, path)  # atomically: render/all runs manuals in parallel
-        print(f"model2svg: rendered {path.name}", file=sys.stderr)
+    for scale in sorted({scale for _, scale, _ in wanted}):
+        built = manual_figures(manual, {name for name, s, _ in wanted if s == scale}, scale)
+        for name, s, path in wanted:
+            if s != scale:
+                continue
+            fd, tmp = tempfile.mkstemp(dir=CACHE, suffix=".svg.tmp")
+            os.close(fd)
+            write_svg(built[name], pathlib.Path(tmp), scale)
+            os.replace(tmp, path)  # atomically: render/all runs manuals in parallel
+            print(f"model2svg: rendered {path.name}", file=sys.stderr)
 
 
 def styles(line=LINE, heavy=4 * LINE):
@@ -479,13 +482,13 @@ def write_svg(fig, path, scale=1):
             edges += [(e, style) for e in es]
     path.parent.mkdir(parents=True, exist_ok=True)
     svg.write(path)
-    _add_notes(path, fig.notes, scale, unit=line / LINE)
+    _add_notes(path, fig.notes, scale, unit=line / LINE, paper=fig.paper_notes)
     return edges
 
 
 PAGE_LINES = {"hlr_light": 0.012, "hlr": 0.012, "hlr_thin": 0.006}  # a page's stroke widths, inches (as SketchUp drew them)
 PAGE_COLORS = {"hlr_light": "#8a8a8a"}  # (default black): "hlr_light" for a page's background view
-PAGE_UNIT = 0.06  # notes' line weights on a page, relative to a drawing's
+PAGE_UNIT = 0.06  # (legacy notes) their line weights on a page, relative to a drawing's
 
 
 def write_page_svg(fig, path):
@@ -528,19 +531,25 @@ def write_page_svg(fig, path):
         for px, py, pz, note in vp.notes:
             at = page_point((px, py, pz))
             if at:
-                for el, _ in _note_svg(at[0], at[1], note, PAGE_UNIT, PAGE_FONT):
+                for el, _ in _page_note(fig, at[0], at[1], note):
                     root.append(el)
                 if isinstance(note, Icon) and note.name == "ptu_person":
                     persons.append(((px, py, pz), at, note))
         if persons:
             _occlude_persons(root, g, i, vp, persons, page_point)
     for x, y, note in fig.notes:
-        for el, _ in _note_svg(x, y, note, PAGE_UNIT, PAGE_FONT):
+        for el, _ in _page_note(fig, x, y, note):
             root.append(el)
     path.parent.mkdir(parents=True, exist_ok=True)
     ET.register_namespace("", "http://www.w3.org/2000/svg")
     ET.ElementTree(root).write(path, xml_declaration=True, encoding="utf-8")
     return edges
+
+
+def _page_note(fig, x, y, note):
+    if fig.paper_notes:
+        return _note_svg(x, y, note, 1, PAGE_FONT)
+    return _note_svg_legacy(x, y, note, PAGE_UNIT, PAGE_FONT)
 
 
 PERSON_RAYS = (5, 9)  # rays through a silhouette's box (across, down), to find what's in front of it
@@ -825,10 +834,12 @@ def _hex(rgb):
     return "#%02x%02x%02x" % rgb
 
 
-def _add_notes(path, notes, scale=1, margin=MARGIN, unit=1):
+def _add_notes(path, notes, scale=1, margin=MARGIN, unit=1, paper=True):
     """Add the notes and the pattern fills, fit the view box (the drawing's
     geometry and notes plus `margin`, in drawing units, all around), and set
-    the printed size."""
+    the printed size. Notes are in paper inches (the drawing's inch is
+    `scale` of them), or, for a manual not yet converted, drawing inches at
+    line weight `unit`."""
     ET.register_namespace("", "http://www.w3.org/2000/svg")
     tree = ET.parse(path)
     root = tree.getroot()
@@ -841,7 +852,7 @@ def _add_notes(path, notes, scale=1, margin=MARGIN, unit=1):
     box = [vx, vy, vx + vw, vy + vh]
     group = ET.SubElement(root, f"{SVGNS}g", {"id": "notes"})
     for x, y, note in notes:
-        for el, bb in _note_svg(x, -y, note, unit):
+        for el, bb in (_note_svg(x, -y, note, 1 / scale) if paper else _note_svg_legacy(x, -y, note, unit)):
             group.append(el)
             box = [min(box[0], bb[0]), min(box[1], bb[1]), max(box[2], bb[2]), max(box[3], bb[3])]
     vx, vy, vw, vh = box[0] - margin, box[1] - margin, box[2] - box[0] + 2 * margin, box[3] - box[1] + 2 * margin
@@ -935,7 +946,91 @@ def _rotated_box(x0, y0, x1, y1, cx, cy, degrees):
     return (min(p[0] for p in pts), min(p[1] for p in pts), max(p[0] for p in pts), max(p[1] for p in pts))
 
 
-def _note_svg(x, y, note, unit=1, font=DRAWING_FONT):
+def _note_svg(x, y, note, k, font=DRAWING_FONT):
+    """SVG elements for a note at SVG coordinates (x, y), with its bounds.
+    The note's own sizes are paper inches: `k` SVG units each."""
+    from model.notes import ARROWHEAD, LINE as NOTE_LINE, Circle, Icon, Label, Leader, Lines
+    line = NOTE_LINE * k
+    if isinstance(note, Icon):
+        cx, cy = x + note.dx * k, y - note.dy * k
+        g = ET.Element(f"{SVGNS}g", {"transform": f"translate({cx:.3f},{cy:.3f}) rotate({-note.rotation:.1f})"
+                                                  + (" scale(-1,1)" if note.flip else "")})
+        w, h = note.width * k / 2, note.height * k / 2
+        ET.SubElement(g, f"{SVGNS}image", {"href": _icon_href(note.name), "x": f"{-w:.3f}", "y": f"{-h:.3f}",
+                                            "width": f"{2 * w:.3f}", "height": f"{2 * h:.3f}", "preserveAspectRatio": "none"})
+        return [(g, _rotated_box(cx - w, cy - h, cx + w, cy + h, cx, cy, -note.rotation))]
+    if isinstance(note, Label):
+        anchor, frac = _ANCHOR[note.attach]
+        cap = _font(font)[2]
+        height = note.height * k
+        # each line: its pieces (text, font size, bold)
+        if note.runs:
+            lines = [[(r[0], r[1] * k / cap, bool(r[2]) if len(r) > 2 else note.bold is True) for r in note.runs]]
+        else:
+            lines = [_bold_pieces(line_, height / cap, note.bold) for line_ in note.text.split("\n")]
+        tx, ty = x + note.dx * k, y - note.dy * k
+        gap = height * 5 / 3  # MTEXT line spacing
+        total = height + gap * (len(lines) - 1)  # cap top of the first line to baseline of the last
+        top = ty - frac * total  # top of the text block
+        g = ET.Element(f"{SVGNS}g", {"transform": f"rotate({-note.rotation:.1f},{tx:.3f},{ty:.3f})"})
+        t = ET.SubElement(g, f"{SVGNS}text", {"x": f"{tx:.3f}", "y": f"{top + height:.3f}", "font-family": font[0],
+                                               "fill": "black", "{http://www.w3.org/XML/1998/namespace}space": "preserve"})
+        box = None
+        for i, pieces in enumerate(lines):
+            # the line's ink, from its pen origin, to anchor it as MTEXT is (by its ink, not its advance)
+            extents = [_text_extent(s_, size, font, bold) for s_, size, bold in pieces]
+            adv = sum(e[0] for e in extents)
+            left, right = extents[0][3], adv - extents[-1][0] + extents[-1][4]
+            x0 = tx - {"start": left, "middle": (left + right) / 2, "end": right}[anchor]
+            for j, ((s_, size, bold), e) in enumerate(zip(pieces, extents)):
+                attrs = {"font-size": f"{size:.3f}"}
+                if bold:
+                    attrs["font-weight"] = "bold"
+                if j == 0:
+                    attrs["x"] = f"{x0:.3f}"
+                    attrs["dy"] = "0" if i == 0 else f"{gap:.3f}"
+                span = ET.SubElement(t, f"{SVGNS}tspan", attrs)
+                span.text = s_
+            y0 = top + height - max(e[1] for e in extents) if i == 0 else box[1]
+            y1 = top + height + gap * i + max(e[2] for e in extents)
+            b = (x0 + left, y0, x0 + right, y1)
+            box = b if box is None else (min(box[0], b[0]), min(box[1], b[1]), max(box[2], b[2]), max(box[3], b[3]))
+        return [(g, _rotated_box(*box, tx, ty, -note.rotation))]
+    if isinstance(note, Lines):
+        ox, oy = x + note.dx * k, y - note.dy * k
+        pts = [(ox + a * k, oy - b * k) for seg in note.segments for a, b in seg]
+        d = " ".join(f"M {ox + a0 * k:.3f} {oy - b0 * k:.3f} L {ox + a1 * k:.3f} {oy - b1 * k:.3f}"
+                     for (a0, b0), (a1, b1) in note.segments)
+        xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+        return [(ET.Element(f"{SVGNS}path", {"d": d, "fill": "none", "stroke": _hex(note.color),
+                                              "stroke-width": f"{line * note.weight:.4f}"}),
+                 (min(xs), min(ys), max(xs), max(ys)))]
+    if isinstance(note, Circle):
+        cx, cy, r = x + note.dx * k, y - note.dy * k, note.radius * k
+        fill = "none" if note.fill is None else _hex(note.fill)
+        return [(ET.Element(f"{SVGNS}circle", {"cx": f"{cx:.3f}", "cy": f"{cy:.3f}", "r": f"{r:.3f}", "fill": fill,
+                                                "stroke": "black", "stroke-width": f"{line * note.weight:.4f}"}),
+                 (cx - r, cy - r, cx + r, cy + r))]
+    if isinstance(note, Leader):
+        pts = [(x + note.dx * k, y - note.dy * k)] + [(x + (note.dx + px) * k, y - (note.dy + py) * k) for px, py in note.points]
+        d = "M " + " L ".join(f"{a:.3f} {b:.3f}" for a, b in pts)
+        els = [ET.Element(f"{SVGNS}path", {"d": d, "fill": "none", "stroke": _hex(note.color),
+                                           "stroke-width": f"{line * note.weight:.4f}"})]
+        if note.arrow and len(pts) > 1:
+            (ax, ay), (bx, by) = pts[0], pts[1]
+            L = math.hypot(bx - ax, by - ay) or 1
+            ux, uy = (bx - ax) / L, (by - ay) / L
+            s_ = ARROWHEAD * k * note.weight ** 0.5 * note.head
+            p1 = (ax + ux * s_ - uy * s_ * 0.3, ay + uy * s_ + ux * s_ * 0.3)
+            p2 = (ax + ux * s_ + uy * s_ * 0.3, ay + uy * s_ - ux * s_ * 0.3)
+            els.append(ET.Element(f"{SVGNS}path", {"d": f"M {ax:.3f} {ay:.3f} L {p1[0]:.3f} {p1[1]:.3f} "
+                                                        f"L {p2[0]:.3f} {p2[1]:.3f} Z", "fill": _hex(note.color)}))
+        xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+        return [(el, (min(xs), min(ys), max(xs), max(ys))) for el in els]
+    return []
+
+
+def _note_svg_legacy(x, y, note, unit=1, font=DRAWING_FONT):
     """SVG elements for a note at SVG coordinates (x, y), with its bounds.
     Line weights are for drawings in model inches; `unit` scales them (for a
     drawing's line weight, or a page in paper inches); arrowheads are sized

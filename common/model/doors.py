@@ -229,7 +229,8 @@ DOOR_IN_HOUSE = Pos(WALL_DEPTH + DOOR_X + FRAME_GAP, PLATFORM_LENGTH - WALL_DEPT
 # (4_Shimming), strike (5_Strike Plate); they're placed from the figure's
 # drawing coordinates.
 
-from .notes import Circle, Icon, Label, Leader, crossed_box, vertical_dimension  # noqa: E402
+from .notes import Circle, Icon, Label, Leader, vertical_dimension  # noqa: E402
+from .notes import legacy_crossed_box as crossed_box  # noqa: E402
 
 
 class View:

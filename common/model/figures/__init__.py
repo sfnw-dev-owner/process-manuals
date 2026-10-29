@@ -119,6 +119,7 @@ class Figure:
     name: str  # see FIGURES
     parts: list = field(default_factory=list)
     notes: list = field(default_factory=list)
+    paper_notes: bool = False  # its notes are in paper inches (model/notes.py); else (not yet converted) drawing inches
     # Only the parts' edges inside this box (x0, y0, x1, y1, in the drawing's
     # frame) are drawn, as if the drawing were cut off there; notes aren't cut.
     clip: tuple = None
@@ -143,15 +144,108 @@ def figure_names(md):
     return FIGURES[manual_of(md)]
 
 
-def manual_figures(manual, only=None):
-    """{name: Figure} for a manual: just those named by `only`, if given
-    (a module whose figures() takes `only` builds only those)."""
+def manual_figures(manual, only=None, scale=1):
+    """{name: Figure} for a manual, printed at `scale` (inches on paper per
+    inch of drawing): just those named by `only`, if given (a module whose
+    figures() takes `only` builds only those)."""
     module = importlib.import_module(f"model.figures.{MODULES[manual]}")
-    if only is not None and "only" in inspect.signature(module.figures).parameters:
-        figures = module.figures(only=set(only))
-    else:
-        figures = module.figures()
+    params = inspect.signature(module.figures).parameters
+    kw = {}
+    if only is not None and "only" in params:
+        kw["only"] = set(only)
+    if "scale" in params:
+        kw["scale"] = scale
+    figures = module.figures(**kw)
+    for f in figures:
+        f.paper_notes = getattr(module, "PAPER_NOTES", False)
     return {f.name: f for f in figures if f.manual == manual and (only is None or f.name in only)}
+
+
+def table(md, rows, tools_style=("outline", "laid")):
+    """A manual's figures from its table: {name: (parts, tools, notes)},
+    where tools are jig tools and the like as (component, Location) in the
+    drawing's frame, drawn outlined and hatched."""
+    out = []
+    for name, (parts, tools, notes) in rows.items():
+        parts = list(parts) + [(loc * tool.shape(), *tools_style) for tool, loc in tools]
+        out.append(Figure(md, name, parts, list(notes)))
+    return out
+
+
+class Extent:
+    """The axis-aligned box of some shapes in the drawing, and points on it."""
+
+    def __init__(self, *shapes):
+        boxes = [s.bounding_box() for s in shapes]
+        self.x0, self.y0 = min(b.min.X for b in boxes), min(b.min.Y for b in boxes)
+        self.x1, self.y1 = max(b.max.X for b in boxes), max(b.max.Y for b in boxes)
+
+    @property
+    def center(self):
+        return (self.x0 + self.x1) / 2, (self.y0 + self.y1) / 2
+
+    @property
+    def width(self):
+        return self.x1 - self.x0
+
+    @property
+    def height(self):
+        return self.y1 - self.y0
+
+    # the middle of each side, and the corners
+    @property
+    def left(self):
+        return self.x0, (self.y0 + self.y1) / 2
+
+    @property
+    def right(self):
+        return self.x1, (self.y0 + self.y1) / 2
+
+    @property
+    def top(self):
+        return (self.x0 + self.x1) / 2, self.y1
+
+    @property
+    def bottom(self):
+        return (self.x0 + self.x1) / 2, self.y0
+
+    @property
+    def top_left(self):
+        return self.x0, self.y1
+
+    @property
+    def top_right(self):
+        return self.x1, self.y1
+
+    @property
+    def bottom_left(self):
+        return self.x0, self.y0
+
+    @property
+    def bottom_right(self):
+        return self.x1, self.y0
+
+    def point(self, fx, fy):
+        """The point fx across and fy up the box (fractions from the lower-left)."""
+        return self.x0 + fx * self.width, self.y0 + fy * self.height
+
+    def meets(self, other):
+        """The box where this and another overlap (a joint between two parts)."""
+        out = Extent.__new__(Extent)
+        out.x0, out.y0 = max(self.x0, other.x0), max(self.y0, other.y0)
+        out.x1, out.y1 = min(self.x1, other.x1), min(self.y1, other.y1)
+        return out
+
+
+def extent(parts):
+    """The Extent of figure parts ((shape, style, ...) entries) or shapes."""
+    return Extent(*[p[0] if isinstance(p, tuple) else p for p in parts])
+
+
+def xy(location):
+    """A Location's (or Vector's) point as (x, y) of the drawing."""
+    p = location.position if hasattr(location, "position") else location
+    return p.X, p.Y
 
 
 def placed(component, name):

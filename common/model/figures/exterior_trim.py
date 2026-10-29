@@ -242,7 +242,7 @@ def corner_detail():
     double rafter, seen from outside, at twice size."""
     from build123d import Box
     from model.exterior_trim import BACK_CORNER, corner_board_1, corner_board_2, corner_frame, rafters_in_house
-    from model.notes import crossed_box
+    from model.notes import legacy_crossed_box as crossed_box
     k = 2
     side_face, _, end_face, _ = corner_frame(BACK_CORNER)
     b1, b2 = corner_board_1(BACK_CORNER).shape(), corner_board_2(BACK_CORNER).shape()

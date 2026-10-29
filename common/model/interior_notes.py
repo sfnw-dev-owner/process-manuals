@@ -9,7 +9,8 @@ in inches), and returns children for that component.
 
 from build123d import Location, Plane, Pos
 
-from .notes import Circle, Icon, Label, Leader, cross, crossed_box
+from .notes import Circle, Icon, Label, Leader, cross
+from .notes import legacy_crossed_box as crossed_box
 
 # A wall seen from inside the house: drawing x = the wall frame's X (left to
 # right as seen from inside), drawing y = Z.

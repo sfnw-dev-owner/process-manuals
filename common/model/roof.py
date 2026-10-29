@@ -143,7 +143,6 @@ def half_roof():
         (fascia, Pos(0, ROOF_Y + HALF_ROOF_LENGTH, 0), [], ''),
         (soffit, Pos(0, PLATFORM_LENGTH + SIDING_FACE, 0), [], ''),
         (soffit, Pos(0, -SIDING_FACE - SOFFIT_WIDTH, 0), [], ''),
-        *half_roof_manual(),
     ]
     return solids, children
 
@@ -163,7 +162,11 @@ def rafter():
                               + Polygon((tip - RAFTER_DEPTH * T, 0), (tip, 0), (tip, RAFTER_DEPTH), align=None)),
                   -RAFTER),
     ]
-    return solids, []
+    anchors = {  # on the top edge's center line
+        "tip": Pos(tip, RAFTER / 2, RAFTER_DEPTH),
+        "tail": Pos(0, RAFTER / 2, RAFTER_DEPTH),
+    }
+    return solids, [], anchors
 
 
 # Lag bolt bores (Half_Roof/half_roof.md Step 7): vertical, a 13/16" spade-bit
@@ -192,7 +195,7 @@ def bored_rafter():
         - top * Cylinder(r, LAG_COUNTERBORE_DEPTH, align=(Align.CENTER, Align.CENTER, Align.MAX))
         - top * Cylinder(LAG_HOLE / 2, 2 * PLUMB_DEPTH, align=(Align.CENTER, Align.CENTER, Align.MAX)),
     ]
-    return solids, []
+    return solids, [], {**rafter.anchors(), "bore": Pos(*LAG_BORE_AT)}
 
 
 # A35 angle plates (Half_Roof/half_roof.md Step 2; placed per half_roof.dxf,
@@ -236,7 +239,9 @@ def eave_board():
 
 @component
 def cross_block():
-    return [TwoByFour(CROSS_BLOCK_LENGTH, along="Y", wide="Z")], []
+    """Between two rafters, along Y; its ends' centers are its anchors."""
+    ends = {"rear": Pos(RAFTER / 2, 0, RAFTER_DEPTH), "front": Pos(RAFTER / 2, CROSS_BLOCK_LENGTH, RAFTER_DEPTH)}
+    return [TwoByFour(CROSS_BLOCK_LENGTH, along="Y", wide="Z")], [], ends
 
 
 @component
@@ -733,223 +738,3 @@ def gable_manual():
         (Circle(5.85), at(-29.23, -8.13), [], views("siding_small")),
         (Leader(((3, -8.51), (5.06, -8.51))), at(-40.15, 0.41), [], views("siding_small")),
     ]
-
-
-# ── Half_Roof/half_roof.md figures ─────────────────────────────────────────
-# Tools and annotations, tagged "manual:half_roof:<step>". Positions are in
-# the drawing's frame: the half-roof in its jig seen from above its top
-# face, x down the slope from the ridge board (the rafters' tips at 4.54),
-# y along the roof.
-
-from .notes import Circle, Icon, Label, Leader, vertical_dimension  # noqa: E402
-
-HALF_ROOF_DRAWING = (Pos(4.54 + TIP_U, ROOF_Y + HALF_ROOF_LENGTH, 0) * Rot(Z=180) * SLOPE.inverse())
-
-
-def half_roof_manual():
-    def at(x, y):
-        return HALF_ROOF_DRAWING.inverse() * Pos(x, y, 0)
-
-    def steps(*ns):
-        return " ".join(f"manual:half_roof:{n}" for n in ns)
-
-    every = "manual:half_roof"
-    out = [
-        (Label("TOP", 4, attach=1, rotation=90), at(-8.91, 84.45), [], every),
-        (Label("BOTTOM", 4, attach=1, rotation=90), at(75.55, 80.05), [], every),
-        (Label("Half Roof Assembly", 4, attach=1, rotation=90), at(96, 57), [], every),
-    ]
-    # Step 7: the overhang past the end rafters' bores
-    out += [(n, at(-0.52, 0.09), [], steps(7)) for n in vertical_dimension(6.25, '6.25"')]
-    out += [(n, at(1, 149.75), [], steps(7)) for n in vertical_dimension(6.25, '6.25"')]
-    # Step 01
-    t = steps('1')
-    out += [
-        (Icon('mallet', 7.68, 7.68), at(-0.15, 9.86), [], t),
-        (Icon('mallet', 7.68, 7.68), at(-0.15, 143.86), [], t),
-    ]
-    # Step 02
-    t = steps('2')
-    out += [
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.4, 0.44), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.4, 8.44), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.4, 146.94), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.4, 154.94), [], t),
-        (Label('Note: Rafter bracket at other end\n  is on outside of rafter', 2.5, attach=1, rotation=90), at(82.9, 39.59), [], t),
-        (Label('x2', 3, attach=3), at(-8, 2.5), [], t),
-        (Label('x2', 3, attach=3), at(-8, 10.5), [], t),
-        (Label('x2', 3, attach=3), at(-8, 149), [], t),
-        (Label('x2', 3, attach=3), at(-8, 157), [], t),
-        (Circle(15), at(82.7, 22.04), [], t),
-        (Circle(4.27), at(10.78, 7.46), [], t),
-    ]
-    # Step 03
-    t = steps('3')
-    out += [
-        (Icon('Screw', 4, 9.6, flip=True), at(17.71, 160.61), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(17.8, 141.9), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(17.94, 14.1), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(18.03, -4.61), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(31.17, 160.51), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(31.26, 142), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(31.39, 14), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(31.48, -4.51), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(44.52, 160.57), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(44.61, 141.93), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(44.74, 14.06), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(44.83, -4.58), [], t),
-        (Label('CLAMP', 2.5, attach=3), at(32.32, 133.2), [], t),
-        (Label('CLAMP', 2.5, attach=3), at(33.49, 25.06), [], t),
-        (Label('x2', 3, attach=3), at(15.85, 162.69), [], t),
-        (Label('x2', 3, attach=9), at(15.94, 139.82), [], t),
-        (Label('x2', 3, attach=3), at(16.08, 16.18), [], t),
-        (Label('x2', 3, attach=9), at(16.17, -6.69), [], t),
-        (Label('x2', 3, attach=3), at(29.3, 162.59), [], t),
-        (Label('x2', 3, attach=9), at(29.39, 139.92), [], t),
-        (Label('x2', 3, attach=3), at(29.53, 16.08), [], t),
-        (Label('x2', 3, attach=9), at(29.62, -6.59), [], t),
-        (Label('x2', 3, attach=3), at(42.65, 162.65), [], t),
-        (Label('x2', 3, attach=9), at(42.74, 139.85), [], t),
-        (Label('x2', 3, attach=3), at(42.88, 16.14), [], t),
-        (Label('x2', 3, attach=9), at(42.97, -6.66), [], t),
-        (Leader(((0, 4.5),)), at(36, 156), [], t),
-        (Leader(((0, -14.5), (-3, -14.5))), at(36.02, 146.48), [], t),
-        (Leader(((0, 14.5), (-3, 14.5))), at(37.31, 9.5), [], t),
-        (Leader(((0, -5),)), at(37.35, -0.08), [], t),
-    ]
-    # Step 04
-    t = steps('4')
-    out += [
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 10.21), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 29.96), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 53.96), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 77.96), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 101.96), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 125.96), [], t),
-        (Icon('Screw', 4, 9.6, rotation=90, flip=True), at(-1.18, 145.71), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(9.97, 15.46), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(10, 140.8), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(20.97, 15.46), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(21, 140.8), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(31.97, 15.46), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(32, 140.8), [], t),
-        (Icon('Screw', 4, 9.6, flip=True), at(42.97, 15.46), [], t),
-        (Icon('Screw', 4, 9.6, rotation=180), at(43, 140.8), [], t),
-        (Label('x2', 3, attach=3), at(-8, 11.84), [], t),
-        (Label('x2', 3, attach=3), at(-8, 31.59), [], t),
-        (Label('x2', 3, attach=3), at(-8, 55.59), [], t),
-        (Label('x2', 3, attach=3), at(-8, 79.59), [], t),
-        (Label('x2', 3, attach=3), at(-8, 103.59), [], t),
-        (Label('x2', 3, attach=3), at(-8, 127.59), [], t),
-        (Label('x2', 3, attach=3), at(-8, 147.34), [], t),
-    ]
-    # Step 05
-    t = steps('5')
-    out += [
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 1.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 10.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 30.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 54.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 78.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 102.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.62, 126.04), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.67, 155.08), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(66.72, 147.61), [], t),
-        (Label('Flush\nthis end', 3, attach=1, rotation=90), at(77.25, 140.87), [], t),
-        (Label('Rout off if board\nhangs over rafter', 3, attach=1, rotation=90), at(79.02, 2.25), [], t),
-        (Label('x2', 3, attach=3), at(76.32, 149.5), [], t),
-        (Label('x2', 3, attach=3), at(76.54, 11.93), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.81, 145.75), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.81, 147.23), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.83, 0.71), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.84, 10.33), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.85, 8.66), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.91, 29.93), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.91, 53.93), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.91, 77.93), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.91, 101.93), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.91, 125.93), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(59.95, 155.13), [], t),
-    ]
-    # Step 06
-    t = steps('6')
-    out += [
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 0.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 9.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 29.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 53.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 77.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 101.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.04, 125.83), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.09, 154.87), [], t),
-        (Icon('Screw', 4, 9.6, rotation=-90), at(67.14, 147.4), [], t),
-        (Label('x2', 3, attach=3), at(76.92, 11.76), [], t),
-        (Label('x2', 3, attach=3), at(77.02, 149.34), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.61, 145.84), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.62, 147.31), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.63, 0.79), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.64, 10.42), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.66, 8.75), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.71, 30.02), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.71, 54.02), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.71, 78.02), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.71, 102.02), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.71, 126.02), [], t),
-        (Circle(0.5, fill=(255, 255, 255)), at(54.75, 155.22), [], t),
-    ]
-    # Step 07
-    t = steps('7')
-    out += [
-        (Label('1', 4, attach=1, rotation=90), at(39.86, 14.1), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(44.82, 21.6), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(44.93, 45.45), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(45.02, 69.45), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(45.19, 93.49), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(45.44, 137.41), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(45.48, 117.52), [], t),
-        (Label('1', 4, attach=1, rotation=90), at(64.36, 112.01), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(33.35, 13.84), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(38.43, 21.26), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(38.84, 45.27), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(38.84, 69.27), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(38.84, 93.27), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(38.84, 117.27), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(38.85, 136.83), [], t),
-        (Label('2', 4, attach=1, rotation=90), at(76.98, 111.8), [], t),
-        (Label('3', 4, attach=1, rotation=90), at(-7.11, 21.58), [], t),
-        (Label('3', 4, attach=1, rotation=90), at(-5, 136.48), [], t),
-        (Label('3', 4, attach=1, rotation=90), at(89.35, 112.07), [], t),
-        (Label('Edge of bored hole \nshould be 1/2"\nabove white board', 3, attach=1, rotation=90), at(69.36, 34.71), [], t),
-        (Label('Pencil mark at bottom\nof white board', 3, attach=1, rotation=90), at(89.41, 118.22), [], t),
-        (Label('Spade bit,\nperpendicular to floor', 3, attach=1, rotation=90), at(64.2, 118.13), [], t),
-        (Label('Straight bit,\nperpendicular to floor', 3, attach=1, rotation=90), at(77.4, 118.2), [], t),
-        (Leader(((-3.12, -3.42),)), at(52.88, 27.74), [], t),
-        (Leader(((-3.12, -3.42),)), at(52.88, 51.74), [], t),
-        (Leader(((-3.12, -3.42),)), at(52.88, 75.74), [], t),
-        (Leader(((-3.12, -3.42),)), at(52.88, 99.74), [], t),
-        (Leader(((-3.12, -3.42),)), at(53.01, 123.73), [], t),
-        (Leader(((-3.12, -3.42),)), at(53.12, 143.64), [], t),
-        (Leader(((-4.16, 3.72), (-7.03, 3.51))), at(52, 12), [], t),
-        (Leader(((-6.46, -6.58), (-6.46, -8.58))), at(3.46, 149.58), [], t),
-        (Leader(((-8.75, 7.62), (-8.75, 13.62))), at(3.75, 6.38), [], t),
-        (Circle(3.05), at(-5.06, 23.05), [], t),
-        (Circle(3.05), at(-2.95, 137.95), [], t),
-        (Circle(3.05), at(35.39, 15.31), [], t),
-        (Circle(3.05), at(40.48, 22.73), [], t),
-        (Circle(3.05), at(40.88, 46.74), [], t),
-        (Circle(3.05), at(40.88, 70.74), [], t),
-        (Circle(3.05), at(40.88, 94.74), [], t),
-        (Circle(3.05), at(40.88, 118.74), [], t),
-        (Circle(3.05), at(40.9, 138.31), [], t),
-        (Circle(3.05), at(41.93, 15.28), [], t),
-        (Circle(3.05), at(46.84, 22.64), [], t),
-        (Circle(3.05), at(46.97, 46.63), [], t),
-        (Circle(3.05), at(47.11, 70.62), [], t),
-        (Circle(3.05), at(47.24, 94.61), [], t),
-        (Circle(3.05), at(47.37, 118.59), [], t),
-        (Circle(3.05), at(47.47, 138.5), [], t),
-        (Circle(3.05), at(66.5, 113), [], t),
-        (Circle(3.05), at(79.03, 113), [], t),
-        (Circle(3.05), at(91.41, 113.27), [], t),
-    ]
-    return out

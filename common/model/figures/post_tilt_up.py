@@ -11,7 +11,8 @@ are drawn black, or light gray for the context under a step's new parts.
 from build123d import Location, Vector
 
 from model import post_tilt_up as P
-from model.notes import Icon, Label, Leader, box
+from model.notes import Icon, Label, Leader
+from model.notes import legacy_box as box
 from model.roof import bays
 
 from . import Figure, Viewport

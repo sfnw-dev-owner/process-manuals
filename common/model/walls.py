@@ -414,7 +414,8 @@ def window_unit():
 # layers of Side_Walls/images/side_wall.dxf: 1-5 are shared, 6a/7a are wall
 # #1's panel order and 6b/7b wall #3's.
 
-from .notes import Circle, Icon, Label, Leader, crossed_box, vertical_dimension  # noqa: E402
+from .notes import Circle, Icon, Label, Leader, vertical_dimension  # noqa: E402
+from .notes import legacy_crossed_box as crossed_box  # noqa: E402
 
 
 def side_drawing(x, y):

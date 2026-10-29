@@ -31,9 +31,17 @@ def spaced(first, step, count):
 
 
 def component(fn):
-    """Make fn(), returning (solids, children), into a cached component."""
+    """Make fn(), returning (solids, children) or (solids, children,
+    anchors), into a cached component. Anchors are {name: Location} of the
+    points other things are placed by (a rafter's tip, a stud's top), in the
+    component's frame; figures hang their notes on them."""
     fn = cache(fn)
     shapes = {}
+
+    def anchors():
+        """{name: Location}: the component's named points, in its frame."""
+        out = fn()
+        return dict(out[2]) if len(out) > 2 else {}
 
     @cache
     def tags():
@@ -61,7 +69,7 @@ def component(fn):
                 for mod in mods:
                     s = mirror(s, Plane.YZ) if mod == "mirror" else scale(s, by=mod[1])
             else:
-                solids, children = fn()
+                solids, children = fn()[:2]
                 parts = list(solids)
                 for child, loc, cmods, tag in children:
                     if include(tag, hidden, shown):
@@ -83,6 +91,7 @@ def component(fn):
     fn.shape = shape
     fn.tags = tags
     fn.notes = notes
+    fn.anchors = anchors
     return fn
 
 

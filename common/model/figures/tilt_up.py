@@ -13,7 +13,8 @@ import math
 from build123d import Location, Plane, Pos, Rot
 
 from model.house import house
-from model.notes import Icon, Label, Leader, box, dashed_arc, dashed_line
+from model.notes import Icon, Label, Leader, dashed_arc, dashed_line
+from model.notes import legacy_box as box
 from model.platform import platform
 from model import tilt_up as tu
 

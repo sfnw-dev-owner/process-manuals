@@ -33,7 +33,8 @@ def panel_options_figure(fig_name):
     from build123d import Rot
     from model.common import key
     from model.notes import Label, Leader
-    from model.roof import HALF_ROOF_DRAWING, TAIL_U, TIP_U, half_roof, roof_deck
+    from model.roof import TAIL_U, TIP_U, half_roof, roof_deck
+    from .half_roof import HALF_ROOF_DRAWING
     from . import GRAY
     framing = [loc * c.shape(frozenset(), key(m)) for c, loc, m, _ in half_roof()[1]
                if getattr(c, "__name__", "") in ("rafter", "bored_rafter", "angle_plate", "ridge_board",
@@ -41,7 +42,7 @@ def panel_options_figure(fig_name):
     eave = [loc * c.shape() for c, loc, m, _ in half_roof()[1] if getattr(c, "__name__", "") == "eave_board"]
     parts, notes = [], []
     for option, y0 in ((2, 0), (3, -100)):
-        at = Pos(0, y0 + 4.54 + TIP_U - TAIL_U, 0) * Rot(Z=-90) * HALF_ROOF_DRAWING
+        at = Pos(0, y0 + TIP_U - TAIL_U, 0) * Rot(Z=-90) * HALF_ROOF_DRAWING
         parts += [(at * s, "bare", (242, 242, 242)) for s in eave]
         for comp, loc in roof_deck(option):
             fill = "plywood" if comp.__name__.startswith("deck") else GRAY
