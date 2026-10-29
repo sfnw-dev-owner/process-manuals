@@ -73,6 +73,9 @@ class Icon(Note):
     flip: bool = False  # mirrored left-right
     dx: float = 0
     dy: float = 0
+    # On a page: the icon's size and offset are model inches, scaled with
+    # the view (a cut-out person standing in the scene).
+    model: bool = False
 
 
 @dataclass(frozen=True)
@@ -110,6 +113,18 @@ class Leader(Note):
     absolute: bool = False
     curve: float = 0
     dash: tuple = None
+
+
+@dataclass(frozen=True)
+class Span(Note):
+    """On a page: a line between two points of the model, as a viewport
+    note (p, q, Span), with arrowheads at both ends and its text beside
+    the middle (a dimension across a view)."""
+    text: str = None
+    weight: float = 1
+    color: tuple = (0, 0, 0)
+    height: float = TEXT
+    arrows: bool = True
 
 
 @dataclass(frozen=True)

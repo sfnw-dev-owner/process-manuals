@@ -111,10 +111,40 @@ def view(rect, corner, parts, fit=None, margin=0.05, style="hlr", notes=(), high
                     fit=fit, margin=margin, notes=list(notes), highlights=list(highlights))
 
 
+NEAR = 1  # a perspective view shows only what's this far in front of the eye
+
+
+def in_front(shapes, eye, target):
+    """The parts of shapes in front of a perspective camera's eye."""
+    from build123d import Align, Box, Location, Plane
+    e, t = Vector(*eye), Vector(*target)
+    fwd = (t - e).normalized()
+    keep = []
+    front = None
+    for s in [sol for shape in shapes for sol in (shape.solids() or [shape])]:
+        bb = s.bounding_box()
+        depths = [(Vector(x, y, z) - e).dot(fwd) for x in (bb.min.X, bb.max.X)
+                  for y in (bb.min.Y, bb.max.Y) for z in (bb.min.Z, bb.max.Z)]
+        if min(depths) >= NEAR:
+            keep.append(s)
+        elif max(depths) > NEAR:
+            if front is None:
+                front = Location(Plane(e + fwd * NEAR, z_dir=fwd)) * Box(1e4, 1e4, 1e4, align=(Align.CENTER, Align.CENTER, Align.MIN))
+            part = s & front
+            if part is not None and part.volume > 1e-6:
+                keep.append(part)
+    return keep
+
+
 def perspective(rect, eye, target, parts, fov=35, up=(0, 0, 1), style="hlr", notes=(), highlights=(), offset=(0, 0)):
-    """A perspective view from `eye` toward `target` (fov: degrees, vertical)."""
-    return Viewport(rect, eye=tuple(eye), target=tuple(target), up=tuple(up), fov=fov,
-                    parts=[(s, style) if not isinstance(s, tuple) else s for s in parts], notes=list(notes),
+    """A perspective view from `eye` toward `target` (fov: degrees, vertical),
+    of what's in front of the eye."""
+    styled = {}
+    for p in parts:
+        shape, st = (p[0], p[1]) if isinstance(p, tuple) else (p, style)
+        styled.setdefault(st, []).append(shape)
+    parts = [(s, st) for st, shapes in styled.items() for s in in_front(shapes, eye, target)]
+    return Viewport(rect, eye=tuple(eye), target=tuple(target), up=tuple(up), fov=fov, parts=parts, notes=list(notes),
                     highlights=list(highlights), offset=offset)
 
 
@@ -148,6 +178,18 @@ def move_arrow(a, b, corner, length=1, weight=ARROW, at=1):
 def up_arrow(point, length=1, weight=ARROW):
     """A viewport note: an arrow pointing straight up the page at a point."""
     return (*point, Leader(((0, -length),), weight=weight))
+
+
+def inset_view(rect, viewport):
+    """A close-up drawn in an inset: the viewport (built for the inset's
+    rect) and the frame around it."""
+    return viewport, [frame(rect)]
+
+
+def page_arrow(point, dx, dy, weight=ARROW, color=(0, 0, 0)):
+    """A viewport note: an arrow pointing at a model point from (dx, dy)
+    page inches off it (x right, y up)."""
+    return (*point, Leader(((dx, dy),), weight=weight, color=color))
 
 
 def center_of(shapes):
