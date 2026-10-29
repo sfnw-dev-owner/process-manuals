@@ -23,9 +23,9 @@ from .walls import (
     rear_wall,
     side_wall,
 )
-from .roof import (
-    roof,
-)
+from .roof import RIDGE_X, half_roof
+from .roofing import cap_shingles, ridge_vent, roofing_a, roofing_b
+from .gables import gable_skin, structural_triangle
 from .interior import (
     interior,
 )
@@ -42,6 +42,28 @@ from .flooring import (
 from .exterior_trim import (
     external_trim,
 )
+
+
+@component
+def roof():
+    """The roof, assembled: both halves, the structural triangles under them,
+    the gables' skin, the ridge vent and the roofing."""
+    solids = []
+    children = [
+        (half_roof, Location(), [], ''),
+        (half_roof, Pos(PLATFORM_WIDTH, 0, 0), ['mirror'], ''),
+        (structural_triangle, Pos(RIDGE_X, 0, 0), [], ''),
+        (structural_triangle, Pos(RIDGE_X, PLATFORM_LENGTH - WALL_DEPTH, 0), [], ''),
+        (gable_skin, Pos(RIDGE_X, 0, 0) * Rot(Z=180), [], ''),
+        (gable_skin, Pos(RIDGE_X, PLATFORM_LENGTH, 0), [], ''),
+        (ridge_vent, Location(), [], ''),
+        # Roofing on each side; the two sides use different start/end shingle sets.
+        (roofing_a, Location(), [], 'Roofing'),
+        (roofing_b, Pos(PLATFORM_WIDTH, 0, 0), ['mirror'], 'Roofing'),
+        (cap_shingles, Location(), [], 'Roofing'),
+    ]
+    return solids, children
+
 
 WALL_TOP = DECK + WALL_HEIGHT
 

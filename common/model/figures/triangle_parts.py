@@ -6,7 +6,7 @@ from build123d import Cylinder, Pos
 
 from model.common import key
 from model.notes import Label, around, callout, line, beside
-from model.roof import TRI_E, TRI_NOTCH_HALF, TRI_PEAK, tri_top, triangle_parts
+from model.gables import TRI_E, TRI_NOTCH_HALF, TRI_PEAK, tri_top, triangle_parts
 
 from . import Extent, camera, enlarged, table
 

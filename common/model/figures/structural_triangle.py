@@ -10,7 +10,8 @@ import math
 from model.common import key
 from model.lumber import thickness
 from model.notes import Label, aimed, callout, next_to, pointer
-from model.roof import T, TRI_BASE, TRI_BASE_END, TRI_D, TRI_E, TRI_NOTCH_HALF, tri_top, triangle_parts
+from model.roof import T
+from model.gables import TRI_BASE, TRI_BASE_END, TRI_D, TRI_E, TRI_NOTCH_HALF, tri_top, triangle_parts
 
 from . import Extent, camera, table
 

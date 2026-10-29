@@ -21,11 +21,11 @@ from .common import CORNER, component, driven, key
 from .house import WALL_TOP
 from .platform_assembly import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from .roof import (
-    PLUMB_DEPTH, RIDGE_BOARD, TRI_HALF, RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, TIP_X, VENT_BLOCK_HEIGHT, VENT_BLOCK_THICKNESS,
-    angle_plate,
-    bird_block, bird_length, bored_rafter, cross_block, eave_board, half_roof, rafter, ridge_board,
-    structural_triangle, underside, vent_block, vent_length, wall_bays,
+    PLUMB_DEPTH, RAFTER_Y, RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, TIP_X, VENT_BLOCK_HEIGHT,
+    VENT_BLOCK_THICKNESS, angle_plate, bird_block, bird_length, bored_rafter, cross_block, eave_board,
+    half_roof, rafter, ridge_board, underside, vent_block, vent_length, wall_bays
 )
+from .gables import TRI_HALF, structural_triangle
 from .walls import WALL_DEPTH, front_wall, rear_wall, side_wall
 
 # Where the SketchUp model had the house: turned end for end (its front wall
@@ -372,8 +372,10 @@ def lag_bolts(side="left", rafters=None, lift=0):
     "Install Magic Stud Lag Bolts"), by index into roof.RAFTER_Y; `lift`
     inches up, before they're driven home."""
     from math import cos, radians
-    from .roof import (EAVE_BOARD, LAG_COUNTERBORE, LAG_COUNTERBORE_DEPTH, RAFTER, RAFTER_DEPTH, ROOF_PITCH, SLOPE,
-                       TAIL_U, UNBORED)
+    from .roof import (
+        EAVE_BOARD, LAG_COUNTERBORE, LAG_COUNTERBORE_DEPTH, RAFTER, RAFTER_DEPTH, ROOF_PITCH, SLOPE, TAIL_U,
+        UNBORED
+    )
     C = cos(radians(ROOF_PITCH))
     x = width(EAVE_BOARD) + 1/2 + LAG_COUNTERBORE / 2 / C  # the bore's center on the rafter's top, from its tail
     out = []
@@ -463,7 +465,7 @@ FOOT_SCREW_IN = 3  # from the side's outer foot
 def triangle_screws(at=None):
     """The 16 screws in the rear triangle's base, in the house's frame (or a
     triangle placed by `at`)."""
-    from .roof import TRI_BASE, TRI_BASE_END, TRI_D, TRI_SIDE_FOOT
+    from .gables import TRI_BASE, TRI_BASE_END, TRI_D, TRI_SIDE_FOOT
     at = at or ROOF * Pos(RIDGE_X, 0, 0)
     stud = thickness("2x4")
     top = TRI_BASE  # the base's top, in the triangle's frame
@@ -527,7 +529,7 @@ def ridge_mark():
     its inner face (the one the other half's 1x6 meets) and across its top
     (frame-completion.md:92): a sliver standing off the board, so it draws as
     a line. Its origin is on that face, at the board's bottom."""
-    from .roof import RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_BOARD
+    from .roof import RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP
     h = RIDGE_TOP - RIDGE_BOARD_BOTTOM
     return [Box(0.02, 0.04, h, align=(Align.MAX, Align.CENTER, Align.MIN)),
             Pos(-0.02, 0, h) * Box(0.02 + thickness(RIDGE_BOARD), 0.04, 0.02, align=(Align.MIN, Align.CENTER, Align.MIN))], []
@@ -633,8 +635,10 @@ def bracket_screws(side="left", end="front"):
     """The three galvanized hex-head screws down through a roof bracket's flat
     leg (its holes) into the structural triangle (roof-blocking.md "Secure
     Brackets")."""
-    from .roof import (ANGLE_PLATE, ANGLE_PLATE_EDGES, ANGLE_PLATE_GAUGE, ANGLE_PLATE_HOLE_OUT, ANGLE_PLATE_HOLES,
-                       RAFTER, SLOPE, TIP_U)
+    from .roof import (
+        ANGLE_PLATE, ANGLE_PLATE_EDGES, ANGLE_PLATE_GAUGE, ANGLE_PLATE_HOLES, ANGLE_PLATE_HOLE_OUT, RAFTER, SLOPE,
+        TIP_U
+    )
     length = ANGLE_PLATE[0]
     if end == "front":
         plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_EDGES[0], RAFTER_Y[-2] + RAFTER, 0)

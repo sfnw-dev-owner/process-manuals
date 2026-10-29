@@ -16,9 +16,9 @@ from model.exterior_trim import (
 from model.notes import CIRCLED, SMALL, TITLE, Circle, Label, arc, at, beside, callout, circled, crossed_box, pointer, title
 from model.platform_assembly import DECK
 from model.roof import (
-    RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_X, ROOF_Y, SLOPE, TAIL_U, TIP_X, gable_siding_large,
-    gable_siding_small, gable_wrap, rafter, ridge_board, structural_triangle, z_flashing,
+    RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_X, ROOF_Y, SLOPE, TAIL_U, TIP_X, rafter, ridge_board
 )
+from model.gables import gable_siding_large, gable_siding_small, gable_wrap, structural_triangle, z_flashing
 from model.walls import WALL_DEPTH, WALL_HEIGHT, front_wall_skin, rear_wall_skin, side_wall_skin, window_unit_at
 
 from . import GRAY, TYVEK, Extent, Figure, camera, extent, table, xy

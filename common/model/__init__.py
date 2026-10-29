@@ -17,7 +17,9 @@ Modules:
   notes          annotations for the manuals' figures
   platform_assembly  the platform (floor framing, subfloor, foam insulation)
   walls          the four walls
-  roof           roof framing, sheathing and roofing
+  roof           roof framing, deck, fascia and soffits, bird and vent blocks
+  roofing        tar paper, shingles, ridge vent, cap shingles
+  gables         structural triangles and gable siding
   interior*      interior panels, trim, insulation and ceiling
   doors          the door
   flooring       the floor

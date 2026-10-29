@@ -22,10 +22,10 @@ from .dimensions import (
 )
 from .common import CORNER, component
 from .roof import (
-    C, S, T, RAFTER, RAFTER_DEPTH, RAFTER_Y, middle_bay, RIDGE_BOARD_BOTTOM, RIDGE_X, SEAT_X, SLOPE, TIP_X,
-    TRI_BASE, TRI_D, TRI_E, TRI_HALF, TRI_SIDE_FOOT, VENT_BLOCK_THICKNESS,
-    tri_inner, underside, wall_bays,
+    C, RAFTER, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD_BOTTOM, RIDGE_X, S, SEAT_X, SLOPE, T, TIP_X,
+    VENT_BLOCK_THICKNESS, middle_bay, underside, wall_bays
 )
+from .gables import TRI_BASE, TRI_D, TRI_E, TRI_HALF, TRI_SIDE_FOOT, tri_inner
 from .interior import END_PANEL_TOP, PANEL
 from .walls import WALL_DEPTH, WALL_HEIGHT
 TRIM = "1/2x2"

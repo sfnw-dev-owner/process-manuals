@@ -6,7 +6,8 @@ from build123d import Box, Pos, Rot
 from model.common import CORNER, key
 from model.dimensions import SHINGLE_WIDTH, START_END_PAIR
 from model.notes import Label, beside, callout, title
-from model.roof import SHINGLE, TAIL_U, TIP_U, half_roof, roof_deck, start_shingles
+from model.roof import TAIL_U, TIP_U, half_roof, roof_deck
+from model.roofing import SHINGLE, start_shingles
 
 from . import GRAY, Extent, extent, table
 from .half_roof import HALF_ROOF_DRAWING

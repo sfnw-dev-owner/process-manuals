@@ -55,7 +55,13 @@
 
 - post-tilt-up/frame-completion.md "triangle_screws": the two screws at each
   of the structural triangle's narrowest sections are too close together;
-  space them farther apart.
+  space them farther apart (`post_tilt_up.OUTER_APART`).
+- `post_tilt_up.py` RAISING, LADDERS, FUNKY_BOARDS, LAG_CLAMP, VENT_GUIDE,
+  VENT_GUIDE_CLAMPS, VENT_CLAMP and `iron_carts.py` ROOT/BOUNDS are still the
+  SketchUp model's coordinates (staging for the 3D pages: where a ladder
+  stood, how far a half-roof had been raised). Everything built into the
+  house, and every fastener, is derived from the geometry; derive these too
+  if a page's staging ever needs changing.
 - tilt-up/tilt-up.md "front_to_platform" (and the pages after it): the wall
   brace (the 2x4 from the platform's end up to the first wall) is no longer
   used; drop it from the model and the figures.

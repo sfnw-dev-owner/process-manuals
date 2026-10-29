@@ -14,9 +14,9 @@ from model.notes import (
     title,
 )
 from model.roof import (
-    EAVE_BOARD, LAG_COUNTERBORE, LAG_HOLE, RAFTER, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD_BOTTOM,
-    ANGLE_PLATE_EDGES, ROOF_Y, SLOPE, TAIL_U, TIP_U, TIP_X, UNBORED, angle_plate, bored_rafter, cross_block,
-    eave_board, rafter, ridge_board,
+    ANGLE_PLATE_EDGES, EAVE_BOARD, LAG_COUNTERBORE, LAG_HOLE, RAFTER, RAFTER_DEPTH, RAFTER_Y,
+    RIDGE_BOARD_BOTTOM, ROOF_Y, SLOPE, TAIL_U, TIP_U, TIP_X, UNBORED, angle_plate, bored_rafter, cross_block,
+    eave_board, rafter, ridge_board
 )
 
 from . import Extent, Figure, break_box, camera, enlarged, extent, table, xy
