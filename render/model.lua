@@ -1,12 +1,13 @@
 -- Figures drawn from the model: a manual embeds one as
--- ![](model:<manual>/<figure>) or, in raw typst, as "model:<manual>/<figure>"
--- where an image path goes, e.g. `#fullpage("model:platform/step_03")`{=typst}.
+-- ![](model:<manual>/<figure>@1:<N>) or, in raw typst, as "model:<manual>/<figure>@1:<N>"
+-- where an image path goes, e.g. `#fullpage("model:platform/step_03@1:20")`{=typst}
+-- (a drawing is printed at 1:N; a page of 3D views has its own size and takes no scale).
 -- render/model2svg.py renders each to SVG (cached in .rendered-figures/) and
 -- this filter points the manual at it.
 
 local dependencyMode = os.getenv("FIGURE_DEPS") ~= nil -- Set in ./go.
 
-local PATTERN = "model:[%w_%-]+/[%w_%-%.]+"
+local PATTERN = "model:[%w_%-]+/[%w_%-%.]+[@%d:%.]*"
 
 -- The figures an element refers to.
 local function refs(el)

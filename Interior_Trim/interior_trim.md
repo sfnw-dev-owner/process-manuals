@@ -51,7 +51,7 @@ These spacers are squares of thin flooring marked with an **O**, and can be foun
 - Repeat on the other side wall.
 - Measure between the side baseboards at the rear wall. Measure long (about 1/16") so it will fit snugly. Cut a length of baseboard and nail.  Save the cut-off piece for the front wall.
 
-`#fullpage("model:interior_trim/baseboards")`{=typst}
+`#fullpage("model:interior_trim/baseboards@1:40")`{=typst}
 
 ## Rear Window Shelf
 
@@ -75,7 +75,7 @@ Check that MEDUSA (foam backer rod) is installed around the window unit.
 3. Pre-drill and insert a **LONG** screw next to the wall down through the shelf and into the 2x4 on each side of the window, about 2" in
 from each edge of the shelf (#3).
 
-`#fullpage("model:interior_trim/rear_shelf")`{=typst}
+`#fullpage("model:interior_trim/rear_shelf@1:30")`{=typst}
 
 ## Rear Window Trim
 
@@ -89,7 +89,7 @@ from each edge of the shelf (#3).
 4. Measure above the window from the outer edges of the vertical trim
     and add one inch. Cut 2" trim and nail above the window with 1/2" overhang on each side, keeping the trim flush with the top window lining.
 
-`#fullpage("model:interior_trim/rear_window_trim")`{=typst}
+`#fullpage("model:interior_trim/rear_window_trim@1:30")`{=typst}
 
 ## Top trim (2" trim boards)
 
@@ -106,7 +106,7 @@ from each edge of the shelf (#3).
     - Cut long (about 1/16" over) so that the trim fits snugly 
     - Nail trim into place
 
-`#fullpage("model:interior_trim/top_trim")`{=typst}
+`#fullpage("model:interior_trim/top_trim@1:40")`{=typst}
 
 # Vertical Trim (2" trim boards)
 
@@ -118,7 +118,7 @@ from each edge of the shelf (#3).
 3. On the **back wall** - Measure from the top of the baseboards to the bottom of upper trim in the corner.
 Cut and nail a piece of trim in each corner.  Push this trim against the sidewall trim as you are nailing, to insure a tight seam.
 
-`#fullpage("model:interior_trim/vertical_trim")`{=typst}
+`#fullpage("model:interior_trim/vertical_trim@1:40")`{=typst}
 
 # Horizontal Trim
 
@@ -142,7 +142,7 @@ Cut and nail a piece of trim in each corner.  Push this trim against the sidewal
 Do NOT install mid-level horizontal trim between vertical trim
 and front wall. This will be done after Front Wall trim.
 
-`#fullpage("model:interior_trim/horizontal_trim")`{=typst}
+`#fullpage("model:interior_trim/horizontal_trim@1:40")`{=typst}
 
 # Triangle trim
 
@@ -154,7 +154,7 @@ and front wall. This will be done after Front Wall trim.
 - Install a 12" piece of 2" trim vertically to cover the seam between the triangles (#5)
 - Save remaining trim pieces for the front wall triangle
 
-`#fullpage("model:interior_trim/triangle_trim")`{=typst}
+`#fullpage("model:interior_trim/triangle_trim@1:40")`{=typst}
 
 # Front Wall 
 
@@ -194,7 +194,7 @@ and front wall. This will be done after Front Wall trim.
     - Place the precut piece of window liner tight against the shelf, leaving any gap at the top
 6.  Measure (very close to window) between the sides for the top of the window piece. Cut one piece of window liner that length and nail in place
 
-`#imgCtr("model:interior_trim/front_window")`{=typst}
+`#imgCtr("model:interior_trim/front_window@1:40")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -213,7 +213,7 @@ and front wall. This will be done after Front Wall trim.
      - Cut this piece to length, and nail in place, halfway across the door jamb
 1.  Measure from the baseboard to the upper trim on the sidewall in the corner behind the door. Cut a length of 2" trim and nail. This should cover any gap at the corner.
 
-`#fullpage("model:interior_trim/front_trim_a")`{=typst}
+`#fullpage("model:interior_trim/front_trim_a@1:40")`{=typst}
 
 # Front Wall Trim -- Part II
 
@@ -229,7 +229,7 @@ and front wall. This will be done after Front Wall trim.
      - Nail a straight piece (42") on the ceiling tight against each angled piece just installed.
      - Position a 12" piece of 2" trim vertically over the center seam in the front triangle and nail.
  
-`#fullpage("model:interior_trim/front_trim_b")`{=typst}
+`#fullpage("model:interior_trim/front_trim_b@1:40")`{=typst}
 
 # Final Trim
 
@@ -243,4 +243,4 @@ and front wall. This will be done after Front Wall trim.
 1.  Nail the remaining two pieces of 2" straight trim (42") over the ceiling seams, tight against the top trim strips on each side wall,
 and extending up near the roof vent.
 
-`#fullpage("model:interior_trim/final_trim")`{=typst}
+`#fullpage("model:interior_trim/final_trim@1:40")`{=typst}

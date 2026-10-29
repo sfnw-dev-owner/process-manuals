@@ -6,12 +6,7 @@ equipment, where the scenes had them).
 Each row of SCENES:
   name         the figure's name
   skp_scene    the SketchUp scene the row came from (informational)
-  eye, target, up, fov   camera (inches; fov in degrees, across the export)
-  zoom, shift  the view zoomed in by this factor and its center moved this
-               far (page inches, y down): what lines the figure up with the
-               export it replaces (whose camera this transcription doesn't
-               quite reproduce); to drop once the figures are blessed, see
-               ../TODO.md
+  eye, target, up, fov   camera (inches; fov in degrees, across the figure)
   hidden_tags  tags hidden in this scene
   show, hide   top-level instance names (iron_carts.ROOT keys) forced on/off
   numbers      {arrow instance: n}: a circled n behind the arrow's tail, or
@@ -46,25 +41,8 @@ FAR = 4
 ARROW_TAIL = (0, 0, 6)  # arrow_1_2's tail, in its own frame
 NUMBER_BACK = 16  # the circled number, this far behind the tail
 
-# Each figure is drawn in a window the size of the SketchUp export it
-# replaces (Extract_Iron_Carts/images/*.pdf, in git history), in inches, with
-# the camera's fov across its width as SketchUp had it, so the manual's pages
-# don't move. (To revisit once the figures are blessed: see ../TODO.md.)
-WINDOWS = {
-    '01_prepare': (6.042, 3.847),
-    '02_rear_raised': (6.389, 5.069),
-    '03_rear_dropped_onto_posts': (5.972, 4.444),
-    '04_front_raised': (6.25, 5.278),
-    '05_carts_removed': (6.097, 4.611),
-    '07_lowered_onto_front_triple_blocks': (6.236, 5.069),
-    '08_rear_remove_posts': (6.069, 4.819),
-    '09_rear_lowered_onto_triple_blocks': (6.375, 4.375),
-    '10_remove_front_triple_blocks': (6.306, 5.347),
-    '11_front_dollies_in_place': (5.597, 5.722),
-    '12_remove_rear_triple_blocks': (5.958, 4.958),
-    '13_home_in_final_position': (6.028, 4.931),
-}
-NOTE_SCALE = 6.1 / 150  # page inches per unit of the numbers' sizes below (drawn for a 6.1" wide figure)
+WINDOW = (6, 4.8)  # each figure's size, inches, with the camera's fov across its width (as SketchUp's is)
+NOTE_SCALE = WINDOW[0] / 150  # page inches per unit of the numbers' sizes below
 
 
 def _sub(a, b):
@@ -150,11 +128,11 @@ def figures(only=None):
         notes = [x for arrow, n in row.get("numbers", {}).items() for x in number(arrow, n)]
         page_notes = [x for x in notes if len(x) == 3]  # on the page
         notes = [x for x in notes if len(x) == 4]  # at points of the model
-        w, h = WINDOWS[row["name"]]
+        w, h = WINDOW
         # SketchUp's fov spans the window's width; a Viewport's its height.
-        fov = math.degrees(2 * math.atan(math.tan(math.radians(row["fov"]) / 2) * h / w / row.get("zoom", 1)))
+        fov = math.degrees(2 * math.atan(math.tan(math.radians(row["fov"]) / 2) * h / w))
         view = Viewport((0, 0, w, h), row["eye"], row["target"], row["up"], [(s, "hlr") for s in shapes.values()],
-                        fov=fov, notes=notes, offset=row.get("shift", (0, 0)))
+                        fov=fov, notes=notes)
         out.append(Figure(MD, row["name"], page=(w, h), viewports=[view], notes=page_notes))
     return out
 
@@ -176,7 +154,6 @@ SCENES = [
      'target': (24.8433, 46.939, 33.1946),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 1.02, 'shift': (0.131, -0.252),
      'hidden_tags': ['Tools',
                      'Home - Level',
                      'Wall Framing',
@@ -191,7 +168,6 @@ SCENES = [
      'target': (-1047.3412, 624.748, 18.8172),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 0.97, 'shift': (0.404, -0.376),
      'hidden_tags': ['Tools',
                      'Home - Level',
                      'Jack Rear - Down',
@@ -207,7 +183,6 @@ SCENES = [
      'target': (-1937.8712, 1465.9622, 82.3282),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 1.03, 'shift': (-0.03, -0.393),
      'hidden_tags': ['Tools',
                      'Home - Level',
                      'Home - Level Raised',
@@ -226,7 +201,6 @@ SCENES = [
      'target': (-1992.8556, 1105.9145, 54.5589),
      'up': (-0.0446, 0.1235, 0.9913),
      'fov': 35.0,
-     'zoom': 0.9, 'shift': (0.138, -0.444),
      'hidden_tags': ['Tools',
                      'Home - Back Raised',
                      'Home - Level',
@@ -245,7 +219,6 @@ SCENES = [
      'target': (-3099.6851, 1769.6209, 55.0523),
      'up': (-0.0446, 0.1235, 0.9913),
      'fov': 35.0,
-     'zoom': 1.03, 'shift': (0.112, -0.381),
      'hidden_tags': ['Tools',
                      'Home - Level',
                      'Home - Front lowered onto Triple Block',
@@ -324,7 +297,6 @@ SCENES = [
      'target': (-3126.5279, 1825.8335, 38.9187),
      'up': (-0.0446, 0.1235, 0.9913),
      'fov': 35.0,
-     'zoom': 0.91, 'shift': (-0.001, -0.568),
      'hidden_tags': ['Tools',
                      'Home - Back Raised',
                      'Home - Level',
@@ -364,7 +336,6 @@ SCENES = [
      'target': (-3280.5932, 1678.9957, -13.5663),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 1.03, 'shift': (0.551, -0.578),
      'hidden_tags': ['Tools',
                      'Home - Level',
                      'Home - Level Raised',
@@ -402,7 +373,6 @@ SCENES = [
      'target': (-3280.5932, 1678.9957, -13.5663),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 0.98, 'shift': (0.396, -0.464),
      'hidden_tags': ['Tools',
                      'Home - Back Raised',
                      'Home - Level',
@@ -444,7 +414,6 @@ SCENES = [
      'target': (-3126.5279, 1825.8335, 38.9187),
      'up': (-0.0446, 0.1235, 0.9913),
      'fov': 35.0,
-     'zoom': 0.9, 'shift': (0.004, -0.398),
      'hidden_tags': ['Tools',
                      'Home - Back Raised',
                      'Home - Level',
@@ -485,7 +454,6 @@ SCENES = [
      'target': (-3126.5279, 1825.8335, 38.9187),
      'up': (-0.0446, 0.1235, 0.9913),
      'fov': 35.0,
-     'zoom': 1.15, 'shift': (-0.72, -0.66),
      'hidden_tags': ['Tools',
                      'Home - Back Raised',
                      'Home - Level',
@@ -529,7 +497,6 @@ SCENES = [
      'target': (-3280.5932, 1678.9957, -13.5663),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 1.08, 'shift': (0.088, -0.552),
      'hidden_tags': ['Tools',
                      'Iron Carts',
                      'Home - Back Raised',
@@ -572,7 +539,6 @@ SCENES = [
      'target': (-3280.5932, 1678.9957, -13.5663),
      'up': (-0.0948, -0.1769, 0.9797),
      'fov': 35.0,
-     'zoom': 1.11, 'shift': (0.042, -0.728),
      'hidden_tags': ['Tools',
                      'Iron Carts',
                      'Home - Back Raised',

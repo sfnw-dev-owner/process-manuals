@@ -56,7 +56,7 @@ When the scrap width is less than 3" discard it, and begin again, trimming 3" of
 wrap this bundle, and mark it with "1-8" using yellow crayon.
  - Repeat for the remaining two stacks. This creates a start/end bundle for each side of the roof.
 
-`#align(center)[#rect(stroke: none)[#image("model:roof_manual/start_end_shingles", width:70%)]];`{=typst}
+`#align(center)[#rect(stroke: none)[#image("model:roof_manual/start_end_shingles@1:12", width:70%)]];`{=typst}
 `#pagebreak()`{=typst}
 
 ### Row 9
@@ -135,7 +135,7 @@ for the next vent.
  - Use framing nails to nail the plywood to the rafters every 8", at these marks.
  - Repeat on the other side of the home.
 
-`#align(center)[#rect(stroke: none)[#image("model:roof_manual/panel_options", width:70%)]];`{=typst}
+`#align(center)[#rect(stroke: none)[#image("model:roof_manual/panel_options@1:25", width:70%)]];`{=typst}
 
 `#pagebreak()`{=typst}
 

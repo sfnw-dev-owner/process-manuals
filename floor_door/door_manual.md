@@ -54,7 +54,7 @@ are the steps:
     clear the bottom edge of the door-stop, and remove the router.
     Repeat on the other side
 
-`#fullpage("model:door_manual/door")`{=typst}
+`#fullpage("model:door_manual/door@1:16")`{=typst}
 
 11. Remove the routing guides, and place a tarp under the door frame
     legs. Using the rattle-can of Kilz primer, spray the cut surfaces.
@@ -117,7 +117,7 @@ are the steps:
 - Slit the corners of the flexible flashing, and fold the outer half of the flashing down and to the sides of the opening.
 Press the flashing into the corners of the doorway.
 
-`#imgCtr("model:door_manual/threshold")`{=typst}
+`#imgCtr("model:door_manual/threshold@1:16")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -131,7 +131,7 @@ Press the flashing into the corners of the doorway.
 - Helpers hold door frame tight against siding.  Use a clamp if necessary.
 - Mark the screw locations with a pencil.
 
-`#imgCtr("model:door_manual/screw_locations")`{=typst}
+`#imgCtr("model:door_manual/screw_locations@1:16")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -140,7 +140,7 @@ Press the flashing into the corners of the doorway.
     - doorknob side, place two shims, one high and one low, centered vertically where screw holes have been drilled
     - Adjust side shims so the gap at the top is the same across door width
 
-`#imgCtr("model:door_manual/shimming")`{=typst}
+`#imgCtr("model:door_manual/shimming@1:16")`{=typst}
 `#pagebreak()`{=typst}
 
 ##  2. Adjust and secure door frame
@@ -166,7 +166,7 @@ Press the flashing into the corners of the doorway.
 - Angle drill towards outside of the home, to assure that screws will go into the framing
 - Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are sunk below the surface of the door frame.
 
-`#imgCtr("model:door_manual/strike_plate")`{=typst}
+`#imgCtr("model:door_manual/strike_plate@1:16")`{=typst}
 
 `#pagebreak()`{=typst}
 

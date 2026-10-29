@@ -49,8 +49,12 @@ def snapshot(out):
     out.mkdir(parents=True, exist_ok=True)
     subprocess.run([sys.executable, str(HERE / "model2svg.py"), "--all"], check=True)
     figures = model2svg.manuals_figures()
+    seen = set()
     for fig, (svg, _) in sorted(model2svg.plan(figures).items()):
-        name = fig.replace("/", "-")
+        name = fig.split("@")[0].replace("/", "-")  # (a figure embedded at two scales: its first)
+        if name in seen:
+            continue
+        seen.add(name)
         (out / f"{name}.svg").write_bytes(svg.read_bytes())
         rasterize(svg, out / f"{name}.png")
         print(f"figdiff: {name}", file=sys.stderr)

@@ -45,7 +45,7 @@ the starting wall and the front wall.  Place the last plank against the front wa
 the previous plank in that row.
 - Cut the plank at the mark, and then install it normally.  The wide gray tab that was against the front wall now slides under the previous plank, so that when you tap it into place, there will be ¼" of space between the finished floor and the front wall.
 
-`#horizontal-center("model:floor_install/tiles")`{=typst}
+`#horizontal-center("model:floor_install/tiles@1:20")`{=typst}
 
 `#pagebreak()`{=typst}
 

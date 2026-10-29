@@ -1,8 +1,11 @@
 """The manuals' figures, drawn from the model.
 
-A manual embeds a figure as `model:<manual>/<figure>`, e.g.
-`#fullpage("model:platform/step_03")`{=typst}; render/model2svg.py renders
-it to SVG (and caches it). <manual> is the manual's file name, lowercased.
+A manual embeds a figure as `model:<manual>/<figure>@1:<N>`, e.g.
+`#fullpage("model:platform/step_03@1:20")`{=typst}, for the drawing printed
+at 1:N (so the manual chooses each figure's scale: an overview at 1:20, a
+detail at 1:10); a page of 3D views (Figure.page) has its own size and takes
+no scale. render/model2svg.py renders it to SVG (and caches it). <manual> is
+the manual's file name, lowercased.
 
 MODULES says which module here describes each manual's figures; its
 figures() returns them, in the manual's order, named by FIGURES. A figure has:
@@ -29,8 +32,8 @@ figures() returns them, in the manual's order, named by FIGURES. A figure has:
           y0, x1, y1) in the drawing, as Figure.clip does for every part
   notes   annotations (model/notes.py) as (x, y, note) in the drawing's frame
 
-MODULES, FIGURES, SIZES and FRAMES are plain literals: render/model2svg.py
-reads them without importing anything.
+MODULES and FIGURES are plain literals: render/model2svg.py reads them
+without importing anything.
 """
 
 import importlib
@@ -87,129 +90,6 @@ FIGURES = {
     'triangle': ['step_1', 'step_2', 'step_3', 'step_4', 'step_5'],
 }
 
-# manual -> its figures' printed size: inches on paper per inch of drawing,
-# or {figure: that} (the scale QCAD printed the drawings they replaced at,
-# measured from those PDFs, so the manuals' layouts stay put)
-SIZES = {
-    'platform': 0.054,
-    'sidewall_1': 0.045,
-    'sidewall_3': 0.045,
-    'front_wall_ada': 0.0491,
-    'rear_wall': 0.06,
-    'half_roof': 0.05,
-    'exterior_trim': {'corners_1': 0.02, 'corners_2': 0.02, 'rear_window': 0.1, 'front_window': 0.1,
-                      'triangles_1_2': 0.05, 'triangles_3_4': 0.05},
-    'roof_manual': {'start_end_shingles': 0.0785, 'panel_options': 0.04},
-    'structural_triangle_parts': 0.07,
-    'interior_panels': {'ceiling_panels': 0.0255, 'side_panels': 0.0329, 'rear_panels': 0.0329,
-                        'front_panels': 0.0329, 'triangle_panels': 0.0329},
-    'interior_trim': {'baseboards': 0.023, 'rear_shelf': 0.032, 'rear_window_trim': 0.032, 'top_trim': 0.023,
-                      'vertical_trim': 0.023, 'horizontal_trim': 0.023, 'triangle_trim': 0.023,
-                      'front_window': 0.023, 'front_trim_a': 0.023, 'front_trim_b': 0.023, 'final_trim': 0.023},
-    'vent_cap_install': 0.0406,
-    'door_manual': 0.06,
-    'floor_install': 0.0459,
-    'triangle': 0.07,
-}
-
-# figure -> white around its drawing (left, top, right, bottom), in inches of
-# drawing, as QCAD's print-to-PDF left it around the drawing the figure replaced
-# (measured from those PDFs), so each manual's pages don't move. Where a figure
-# isn't listed, render/model2svg.py's MARGIN applies all around. These are to
-# be dropped once the new figures are blessed: see ../TODO.md.
-FRAMES = {
-    'structural_triangle_parts/parts': (2.9, 1.6, 1.6, 3.2),
-    'exterior_trim/corners_1': (4.0, 0.0, 0.4, 4.9),
-    'exterior_trim/corners_2': (3.5, 0.0, 0.7, 4.6),
-    'exterior_trim/rear_window': (2.5, 2.1, 2.2, 2.4),
-    'exterior_trim/front_window': (2.5, 2.3, 2.3, 2.4),
-    'exterior_trim/triangles_1_2': (3.0, 1.4, 1.4, 3.5),
-    'exterior_trim/triangles_3_4': (3.0, 1.4, 1.4, 3.5),
-    'front_wall_ada/step_01': (3.1, 1.0, 1.4, 3.3),
-    'front_wall_ada/step_02': (3.1, 0.8, 1.4, 3.3),
-    'front_wall_ada/step_03': (3.1, 0.8, 1.4, 3.3),
-    'front_wall_ada/step_04': (3.1, 1.4, 1.1, 3.2),
-    'front_wall_ada/step_05': (3.1, 0.8, 1.2, 2.5),
-    'front_wall_ada/step_06': (3.1, 0.8, 2.6, 2.5),
-    'front_wall_ada/step_07': (3.1, 0.8, 1.0, 2.5),
-    'front_wall_ada/step_08': (3.3, 0.8, 1.3, 3.3),
-    'front_wall_ada/step_09': (3.1, 0.8, 1.7, 3.3),
-    'front_wall_ada/step_10': (3.1, 0.8, 1.1, 3.3),
-    'front_wall_ada/step_11': (3.1, 0.8, 1.3, 3.3),
-    'half_roof/step_01': (3.0, 1.0, 1.1, 3.4),
-    'half_roof/step_02': (3.0, 0.8, 1.4, 3.7),
-    'half_roof/step_03': (3.0, 1.6, 1.1, 4.0),
-    'half_roof/step_04': (3.0, 1.0, 1.4, 3.4),
-    'half_roof/step_05': (3.0, 1.4, 1.1, 3.7),
-    'half_roof/step_06': (3.0, 1.6, 1.1, 3.7),
-    'half_roof/step_07': (3.0, 1.0, 1.1, 3.4),
-    'interior_panels/ceiling_panels': (2.7, 1.2, 1.9, 2.6),
-    'interior_panels/side_panels': (3.0, 1.2, 2.0, 2.3),
-    'interior_panels/rear_panels': (2.7, 2.7, 1.9, 2.2),
-    'interior_panels/front_panels': (2.4, 2.7, 1.9, 2.2),
-    'interior_panels/triangle_panels': (2.4, 1.8, 1.7, 2.3),
-    'interior_trim/baseboards': (2.2, 0.9, 1.4, 2.3),
-    'interior_trim/rear_shelf': (2.2, 1.9, 2.0, 2.2),
-    'interior_trim/rear_window_trim': (2.2, 1.9, 1.7, 2.2),
-    'interior_trim/top_trim': (2.2, 0.9, 1.1, 2.3),
-    'interior_trim/vertical_trim': (2.2, 0.9, 2.0, 2.1),
-    'interior_trim/horizontal_trim': (2.2, 0.9, 2.0, 2.2),
-    'interior_trim/triangle_trim': (2.2, 1.7, 1.7, 2.1),
-    'interior_trim/front_window': (2.2, 0.9, 0.7, 2.1),
-    'interior_trim/front_trim_a': (2.6, 1.7, 0.9, 2.4),
-    'interior_trim/front_trim_b': (2.2, 2.2, 1.8, 2.2),
-    'interior_trim/final_trim': (2.2, 1.3, 1.9, 2.2),
-    'vent_cap_install/vent_cap': (3.2, 0.7, 1.5, 3.7),
-    'platform/step_01': (2.4, 2.8, 2.3, 2.5),
-    'platform/step_02': (2.4, 2.6, 2.3, 2.5),
-    'platform/step_03': (2.4, 2.6, 2.3, 2.4),
-    'platform/step_04': (2.4, 2.2, 2.0, 2.4),
-    'platform/step_05': (2.4, 2.2, 2.0, 2.4),
-    'platform/step_06': (3.9, 2.63, 3.5, 3.07),  # rebalanced: the ink sat 1.3 right and 0.9 high of the drawing's
-    'platform/step_07': (2.4, 2.2, 2.0, 2.4),
-    'platform/step_08': (2.4, 2.0, 1.8, 2.4),
-    'platform/step_09': (2.4, 2.0, 2.0, 2.4),
-    'platform/step_10': (2.4, 2.0, 2.0, 2.4),
-    'platform/step_11': (2.4, 2.2, 2.0, 2.4),
-    'platform/step_12': (2.4, 2.0, 2.5, 2.4),
-    'rear_wall/step_01': (2.5, 2.3, 2.2, 2.3),
-    'rear_wall/step_02': (2.3, 2.3, 2.2, 2.5),
-    'rear_wall/step_03': (2.3, 2.3, 2.2, 2.4),
-    'rear_wall/step_04': (2.3, 2.5, 2.2, 2.4),
-    'rear_wall/step_04b': (2.3, 2.0, 2.2, 2.4),
-    'rear_wall/step_05': (2.3, 2.2, 1.8, 2.4),
-    'rear_wall/step_06': (2.5, 2.2, 2.4, 2.4),
-    'rear_wall/step_07': (2.3, 2.2, 2.5, 2.3),
-    'rear_wall/step_08': (2.3, 2.3, 1.8, 2.4),
-    'roof_manual/start_end_shingles': (2.3, 2.2, 2.1, 2.4),
-    'roof_manual/panel_options': (2.2, 2.0, 2.2, 2.4),
-    'sidewall_1/step_01': (3.1, 2.0, 1.3, 3.4),
-    'sidewall_1/step_02': (3.3, 0.7, 1.6, 3.4),
-    'sidewall_1/step_03': (3.1, 1.1, 0.9, 3.5),
-    'sidewall_1/step_04': (3.1, 1.1, 2.0, 3.5),
-    'sidewall_1/step_05': (3.1, 1.1, 1.1, 3.5),
-    'sidewall_1/step_06': (3.1, 0.7, 1.4, 3.5),
-    'sidewall_1/step_07': (3.1, 0.9, 1.7, 3.6),
-    'sidewall_3/step_01': (3.1, 2.0, 1.3, 3.4),
-    'sidewall_3/step_02': (3.3, 0.7, 1.6, 3.4),
-    'sidewall_3/step_03': (3.1, 1.1, 0.9, 3.5),
-    'sidewall_3/step_04': (3.1, 1.1, 2.0, 3.5),
-    'sidewall_3/step_05': (3.1, 1.1, 1.1, 3.5),
-    'sidewall_3/step_06': (3.1, 0.7, 1.6, 3.5),
-    'sidewall_3/step_07': (3.1, 0.9, 1.7, 3.6),
-    'triangle/step_1': (2.9, 1.1, 2.0, 3.2),
-    'triangle/step_2': (2.9, 1.3, 2.0, 3.3),
-    'triangle/step_3': (2.9, 1.1, 2.0, 3.2),
-    'triangle/step_4': (2.9, 1.6, 2.0, 3.2),
-    'triangle/step_5': (2.9, 1.7, 2.0, 3.3),
-    'door_manual/door': (2.5, 1.8, 2.1, 2.5),
-    'door_manual/threshold': (2.5, 2.3, 1.9, 2.5),
-    'door_manual/screw_locations': (2.3, 2.2, 2.3, 2.4),
-    'door_manual/shimming': (2.5, 2.0, 2.0, 2.4),
-    'door_manual/strike_plate': (2.5, 2.2, 2.0, 2.4),
-    'floor_install/tiles': (2.4, 1.7, 2.1, 13.9),
-}
-
 BLACK, DARK, EDGE, GRAY, LIGHT = (0, 0, 0), (96, 96, 96), (140, 140, 140), (160, 160, 160), (170, 170, 170)
 TYVEK = (192, 192, 192)
 
@@ -247,10 +127,6 @@ class Figure:
     # corner, y down.
     page: tuple = None
     viewports: list = field(default_factory=list)
-    size: object = None  # printed size, from SIZES
-    frame: tuple = None  # white around the drawing (left, top, right, bottom), from FRAMES
-    border: float = None  # a page's hairline border, inches (as LayOut's exports had)
-    light: str = None  # a page's "hlr_light" gray (CSS color), if not render/model2svg.py's default
 
     @property
     def manual(self):
@@ -275,12 +151,7 @@ def manual_figures(manual, only=None):
         figures = module.figures(only=set(only))
     else:
         figures = module.figures()
-    out = {f.name: f for f in figures if f.manual == manual and (only is None or f.name in only)}
-    size = SIZES.get(manual)
-    for name, f in out.items():
-        f.size = size.get(name) if isinstance(size, dict) and "width" not in size else size
-        f.frame = FRAMES.get(f"{manual}/{name}")
-    return out
+    return {f.name: f for f in figures if f.manual == manual and (only is None or f.name in only)}
 
 
 def placed(component, name):

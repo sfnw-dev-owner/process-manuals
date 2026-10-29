@@ -8,12 +8,12 @@ no-title-page: true
 <!-- markup). Its figures are drawn from the model; triangle.dxf is the QCAD -->
 <!-- drawing they replaced. -->
 
-![](model:triangle/step_1)
+![](model:triangle/step_1@1:15)
 
-![](model:triangle/step_2)
+![](model:triangle/step_2@1:15)
 
-![](model:triangle/step_3)
+![](model:triangle/step_3@1:15)
 
-![](model:triangle/step_4)
+![](model:triangle/step_4@1:15)
 
-![](model:triangle/step_5)
+![](model:triangle/step_5@1:15)

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Render the manuals' figures from the model (common/model) to SVG.
 
-A manual embeds a figure as `model:<manual>/<figure>` (see
-common/model/figures/__init__.py); render/model.lua asks this script for each
-one's SVG. Runs inside the renderer container (render/Dockerfile), from any
-directory:
+A manual embeds a figure as `model:<manual>/<figure>@1:<N>` (see
+common/model/figures/__init__.py; a drawing is printed at 1:N, e.g. @1:20 for
+a wall; a page of 3D views has its own size and takes no scale); render/model.lua
+asks this script for each one's SVG. Runs inside the renderer container
+(render/Dockerfile), from any directory:
 
   model2svg.py FIGURE ...         JSON {figure: {"svg": path, "deps": [paths]}},
                                   rendering any that aren't cached yet
@@ -17,8 +18,8 @@ directory:
 
 Paths are relative to the repo root, with a leading "/" (typst's --root).
 
-Cache: .rendered-figures/<manual>-<figure>-<hash>.svg, where the hash covers
-the figure's name and everything it's drawn from: the source files its
+Cache: .rendered-figures/<manual>-<figure>[@1:N]-<hash>.svg, where the hash
+covers the figure's name, its scale and everything it's drawn from: the source files its
 module imports from common/model (followed statically, so checking the
 cache doesn't need build123d), this file, render/requirements.txt, and the
 clipart. So a manual whose text changes, but not its figures' model code,
@@ -43,22 +44,32 @@ REPO = pathlib.Path(__file__).resolve().parents[1]
 MODEL = REPO / "common" / "model"
 CLIPART = REPO / "common" / "clipart"
 CACHE = REPO / ".rendered-figures"
-REF = re.compile(r"model:([a-z0-9_-]+)/([a-z0-9_.-]+)")
+REF = re.compile(r"model:([a-z0-9_-]+)/([a-z0-9_.-]+)(@1:[0-9.]+)?")
 
 
 # ── the cache (standard library only) ──────────────────────────────────────
 
 @functools.cache
 def registry():
-    """(MODULES, FIGURES, SIZES) from model/figures/__init__.py, read
-    without importing it."""
+    """(MODULES, FIGURES) from model/figures/__init__.py, read without
+    importing it."""
     tree = ast.parse((MODEL / "figures" / "__init__.py").read_text())
     found = {}
     for node in tree.body:
         if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name):
-            if node.targets[0].id in ("MODULES", "FIGURES", "SIZES"):
+            if node.targets[0].id in ("MODULES", "FIGURES"):
                 found[node.targets[0].id] = ast.literal_eval(node.value)
-    return found["MODULES"], found["FIGURES"], found["SIZES"]
+    return found["MODULES"], found["FIGURES"]
+
+
+def split(fig):
+    """A figure reference "manual/name@1:N" as (manual, name, scale): the
+    scale as inches on paper per inch of drawing (1 if none is given)."""
+    m = REF.fullmatch("model:" + fig)
+    if not m:
+        sys.exit(f"model2svg: malformed figure reference {fig!r}")
+    manual, name, scale = m.groups()
+    return manual, name, 1 / float(scale[3:]) if scale else 1
 
 
 def _module_file(name):
@@ -123,11 +134,11 @@ def rel(f):
 
 
 def plan(figures):
-    """{figure: (svg path, [input files])} for "manual/name" figures."""
-    modules, names, _ = registry()
+    """{figure: (svg path, [input files])} for "manual/name@1:N" figures."""
+    modules, names = registry()
     out, digests = {}, {}
     for fig in figures:
-        manual, name = fig.split("/")
+        manual, name, _ = split(fig)
         if manual not in modules or name not in names[manual]:
             sys.exit(f"model2svg: unknown figure {fig!r} (see common/model/figures/__init__.py)")
         module = f"model.figures.{modules[manual]}"
@@ -140,7 +151,7 @@ def plan(figures):
         h, files = digests[module]
         h = h.copy()
         h.update(fig.encode())
-        out[fig] = (CACHE / f"{manual}-{name}-{h.hexdigest()[:20]}.svg", files)
+        out[fig] = (CACHE / f"{fig.replace('/', '-')}-{h.hexdigest()[:20]}.svg", files)
     return out
 
 
@@ -151,7 +162,7 @@ def manuals_figures():
         if ".git" in md.parts or "archived" in md.parts:
             continue
         for m in REF.finditer(md.read_text(errors="replace")):
-            found.append(f"{m.group(1)}/{m.group(2)}")
+            found.append(m.group(0)[len("model:"):])
     return list(dict.fromkeys(found))
 
 
@@ -185,10 +196,7 @@ LINE = 0.12  # inches of drawing: the notes' line weights are defined relative t
 # (as LayOut's) in Carlito.
 DRAWING_FONT = ("DejaVu Sans", REPO / "render" / "DejaVu" / "DejaVuSans.ttf", REPO / "render" / "DejaVu" / "DejaVuSans-Bold.ttf")
 PAGE_FONT = ("Carlito", REPO / "render" / "Carlito" / "Carlito-Regular.ttf", REPO / "render" / "Carlito" / "Carlito-Bold.ttf")
-# White around a drawing, in inches of drawing: QCAD's "print to PDF" cropped
-# the manuals' drawings to their contents plus this much (render/dxf-export.js
-# in git history, cropToContents: a 5-unit margin split between the sides).
-MARGIN = 2.5
+MARGIN = 2.5  # white around a drawing, in inches of drawing
 SVGNS = "{http://www.w3.org/2000/svg}"
 
 
@@ -196,7 +204,7 @@ JOB = 4  # figures per job: a job builds its manual's figures (just its own, whe
 
 
 def render(figures, paths):
-    """Render figures ("manual/name") to their cache paths, in jobs of a
+    """Render figures ("manual/name@1:N") to their cache paths, in jobs of a
     few figures of one manual each, run in parallel processes (forked after
     the one import of build123d, which costs more than a small manual's
     figures do; one job runs in this process)."""
@@ -204,13 +212,12 @@ def render(figures, paths):
     CACHE.mkdir(exist_ok=True)
     by_manual = {}
     for fig in figures:
-        manual, name = fig.split("/")
-        by_manual.setdefault(manual, []).append(name)
-    sizes = registry()[2]
-    jobs = [(manual, names[i:i + JOB], {n: paths[f"{manual}/{n}"] for n in names[i:i + JOB]})
-            # pages (3D views, which have no printed size) first, they take longest; then the big manuals
-            for manual, names in sorted(by_manual.items(), key=lambda kv: (kv[0] in sizes, -len(kv[1])))
-            for i in range(0, len(names), JOB)]
+        manual, name, scale = split(fig)
+        by_manual.setdefault(manual, []).append((name, scale, paths[fig]))
+    jobs = [(manual, wanted[i:i + JOB])
+            # the big manuals first (the pages of 3D views take longest)
+            for manual, wanted in sorted(by_manual.items(), key=lambda kv: -len(kv[1]))
+            for i in range(0, len(wanted), JOB)]
     if len(jobs) == 1:
         _render_job(jobs[0])
         return
@@ -231,16 +238,16 @@ def _import_build123d():
 
 
 def _render_job(job):
-    manual, names, paths = job
+    manual, wanted = job
     _import_build123d()
     from model.figures import manual_figures
-    built = manual_figures(manual, names)
-    for name in names:
+    built = manual_figures(manual, {name for name, _, _ in wanted})
+    for name, scale, path in wanted:
         fd, tmp = tempfile.mkstemp(dir=CACHE, suffix=".svg.tmp")
         os.close(fd)
-        write_svg(built[name], pathlib.Path(tmp))
-        os.replace(tmp, paths[name])  # atomically: render/all runs manuals in parallel
-        print(f"model2svg: rendered {manual}/{name}", file=sys.stderr)
+        write_svg(built[name], pathlib.Path(tmp), scale)
+        os.replace(tmp, path)  # atomically: render/all runs manuals in parallel
+        print(f"model2svg: rendered {path.name}", file=sys.stderr)
 
 
 def styles(line=LINE, heavy=4 * LINE):
@@ -419,13 +426,16 @@ def top_faces(shape):
     return out
 
 
-def write_svg(fig, path):
+def write_svg(fig, path, scale=1):
     """The figure as SVG: geometry by build123d's ExportSVG (fills, then
-    lines), then the annotations. Returns the drawing's edges, for comparing."""
+    lines), then the annotations, printed at `scale` inches on paper per
+    inch of drawing (a page of views has its own size). Returns the
+    drawing's edges, for comparing."""
     from build123d import ExportSVG
     if fig.page:
+        if scale != 1:
+            sys.exit(f"model2svg: {fig.manual}/{fig.name} is a page of views, which has its own size: give it no scale")
         return write_page_svg(fig, path)
-    scale = fig.size or 1  # inches on paper per inch of drawing
     line = PAPER_LINE / scale
     STYLES = styles(line, PAPER_HEAVY / scale)
     svg = ExportSVG(margin=0)  # _add_notes adds MARGIN around everything
@@ -469,12 +479,12 @@ def write_svg(fig, path):
             edges += [(e, style) for e in es]
     path.parent.mkdir(parents=True, exist_ok=True)
     svg.write(path)
-    _add_notes(path, fig.notes, fig.size, margin=fig.frame or MARGIN, unit=line / LINE)
+    _add_notes(path, fig.notes, scale, unit=line / LINE)
     return edges
 
 
 PAGE_LINES = {"hlr_light": 0.012, "hlr": 0.012, "hlr_thin": 0.006}  # a page's stroke widths, inches (as SketchUp drew them)
-PAGE_COLORS = {"hlr_light": "#8a8a8a"}  # (default black): "hlr_light" for background views (LayOut's gray)
+PAGE_COLORS = {"hlr_light": "#8a8a8a"}  # (default black): "hlr_light" for a page's background view
 PAGE_UNIT = 0.06  # notes' line weights on a page, relative to a drawing's
 
 
@@ -504,7 +514,7 @@ def write_page_svg(fig, path):
         occluders = [p[0] for other in fig.viewports if other is not vp and _same_camera(other, vp) for p in other.parts]
         for style, visible in _page_edges(vp, project, occluders).items():
             edges += [(e, style) for e in visible]
-            color = fig.light if style == "hlr_light" and fig.light else PAGE_COLORS.get(style, "black")
+            color = PAGE_COLORS.get(style, "black")
             layer = ET.SubElement(inner, f"{SVGNS}g", {"stroke-width": f"{PAGE_LINES[style] / scale:.5f}",
                                                        "stroke": color})
             layer.extend(_edge_elements(visible))
@@ -527,11 +537,6 @@ def write_page_svg(fig, path):
     for x, y, note in fig.notes:
         for el, _ in _note_svg(x, y, note, PAGE_UNIT, PAGE_FONT):
             root.append(el)
-    if fig.border:  # a hairline just inside the page's edge
-        b = fig.border
-        ET.SubElement(root, f"{SVGNS}rect", {"x": f"{b / 2:.4f}", "y": f"{b / 2:.4f}", "width": f"{w - b:.4f}",
-                                             "height": f"{h - b:.4f}", "fill": "none", "stroke": "black",
-                                             "stroke-width": f"{b:.4f}"})
     path.parent.mkdir(parents=True, exist_ok=True)
     ET.register_namespace("", "http://www.w3.org/2000/svg")
     ET.ElementTree(root).write(path, xml_declaration=True, encoding="utf-8")
@@ -820,10 +825,10 @@ def _hex(rgb):
     return "#%02x%02x%02x" % rgb
 
 
-def _add_notes(path, notes, size=None, margin=MARGIN, unit=1):
+def _add_notes(path, notes, scale=1, margin=MARGIN, unit=1):
     """Add the notes and the pattern fills, fit the view box (the drawing's
-    geometry and notes plus `margin`, in drawing units, all around or (left,
-    top, right, bottom)), and set the printed size."""
+    geometry and notes plus `margin`, in drawing units, all around), and set
+    the printed size."""
     ET.register_namespace("", "http://www.w3.org/2000/svg")
     tree = ET.parse(path)
     root = tree.getroot()
@@ -839,16 +844,10 @@ def _add_notes(path, notes, size=None, margin=MARGIN, unit=1):
         for el, bb in _note_svg(x, -y, note, unit):
             group.append(el)
             box = [min(box[0], bb[0]), min(box[1], bb[1]), max(box[2], bb[2]), max(box[3], bb[3])]
-    ml, mt, mr, mb = margin if isinstance(margin, tuple) else (margin,) * 4
-    vx, vy, vw, vh = box[0] - ml, box[1] - mt, box[2] - box[0] + ml + mr, box[3] - box[1] + mt + mb
+    vx, vy, vw, vh = box[0] - margin, box[1] - margin, box[2] - box[0] + 2 * margin, box[3] - box[1] + 2 * margin
     root.set("viewBox", f"{vx:.3f} {vy:.3f} {vw:.3f} {vh:.3f}")
-    if isinstance(size, dict):  # {"width": inches}
-        w = size["width"]
-        h = w * vh / vw
-    else:  # inches on paper per inch of drawing (default: full size)
-        w, h = vw * (size or 1), vh * (size or 1)
-    root.set("width", f"{w:.3f}in")
-    root.set("height", f"{h:.3f}in")
+    root.set("width", f"{vw * scale:.3f}in")
+    root.set("height", f"{vh * scale:.3f}in")
     tree.write(path, xml_declaration=True, encoding="utf-8")
 
 

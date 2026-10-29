@@ -89,14 +89,17 @@ This applies with the current Letter page size with 0.5" margins.
 The manuals' drawings are drawn from a build123d model of the house, its jigs and its tools, in
 [common/model](common/model/__init__.py) (the source of truth for dimensions; where it and a manual disagree,
 one of them needs fixing). Each figure is described in [common/model/figures](common/model/figures/__init__.py)
-(which parts, from which view, filled how, plus labels, arrows and tool icons), and a manual embeds it by name:
+(which parts, from which view, filled how, plus labels, arrows and tool icons), and a manual embeds it by name,
+with the scale to print it at:
 
 ```
-`#fullpage("model:platform/step_03")`{=typst}
+`#fullpage("model:platform/step_03@1:20")`{=typst}
 ```
 
-or, in plain markdown, `![](model:platform/step_03)`. The name is the manual's file name (lowercased) and the
-figure's name, listed in `FIGURES` in [common/model/figures/__init__.py](common/model/figures/__init__.py).
+or, in plain markdown, `![](model:platform/step_03@1:20)`. The name is the manual's file name (lowercased) and the
+figure's name, listed in `FIGURES` in [common/model/figures/__init__.py](common/model/figures/__init__.py); `@1:20`
+prints the drawing at 1:20 (so one manual can show a whole wall at 1:20 and a corner of it at 1:10). The pages of
+3D views (tilt-up, post-tilt-up, iron carts) have a page size of their own and take no scale.
 
 `render/go` renders the figures with [render/model2svg.py](render/model2svg.py), inside the renderer container, and
 caches them in `.rendered-figures/`: a figure is only drawn again when something it's drawn from changes (the model
@@ -104,6 +107,8 @@ code it uses, the renderer, or the clipart), so editing a manual's text typesets
 figure first, in parallel, before rendering the manuals.
 
 To add or change a figure, edit the model and the figure's description, then render the manual.
+[render/figdiff.py](render/figdiff.py) shows what a change did to every figure: take a snapshot before and after,
+and compare them.
 
 ## Rendering a Manual
 

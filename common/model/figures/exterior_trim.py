@@ -126,16 +126,16 @@ def window_figure(fig_name, view, extra=(), clip=None):
     return Figure(MD, fig_name, parts, notes, clip=clip)
 
 
-# The front window's drawing shows only the corner of the door's casing
-# beside it: its lines stop this far below the window's opening and this far
-# right of it (where the drawing it replaces had them end).
-DOOR_SHOWN = (-1e3, -18, 44.5, 1e3)
+DOOR_SHOWN = 12  # the front window's figure shows the door's casing this far beyond the window trim
 
 
 def window_figures():
+    from model.exterior_trim import RO_H, RO_W, TRIM_W, WINDOW_UNIT_INSET
     figs = figure_names(MD)
+    # (in the drawing's frame: the window unit's lower-left corner at the origin)
+    around = (-TRIM_W - DOOR_SHOWN, -TRIM_W - DOOR_SHOWN, RO_W + TRIM_W + DOOR_SHOWN, RO_H + TRIM_W + DOOR_SHOWN)
     return [window_figure(figs[2], "rear_window"),
-            window_figure(figs[3], "front_window", front_door(), clip=DOOR_SHOWN)]
+            window_figure(figs[3], "front_window", front_door(), clip=around)]
 
 
 def figures():

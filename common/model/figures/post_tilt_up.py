@@ -18,12 +18,7 @@ from . import Figure, Viewport
 
 FRAME_MD = "post-tilt-up/frame-completion.md"
 BLOCKING_MD = "post-tilt-up/roof-blocking.md"
-PAGE = (8.203125, 5.796875)  # LayOut's page, inches
-BORDER = 1 / 300  # the exported PNGs' one-pixel border (to drop once the figures are blessed: see ../TODO.md)
-# The gray LayOut's exports drew each page's background view in, where it
-# wasn't the default (see render/model2svg.py PAGE_COLORS).
-LIGHT_GRAY = {"triangles": "#c4c4c4", "triangle_centered": "#c4c4c4", "triangle_clamped": "#c4c4c4",
-              "insert_bird_block": "#bfbfbf", "vent_guide_board": "#bfbfbf", "align_vent_block": "#bfbfbf"}
+PAGE = (8.203125, 5.796875)  # inches (LayOut's A5 landscape)
 
 TO_HOUSE = P.SKETCHUP_HOUSE.inverse()
 
@@ -107,9 +102,7 @@ def figures(only=None):
             continue
         page = PAGES[n]
         views, notes = build(page["views"])
-        fig = Figure(md, name, notes=list(page["notes"]) + list(notes), page=PAGE, viewports=views,
-                     border=BORDER, light=LIGHT_GRAY.get(name))
-        out.append(fig)
+        out.append(Figure(md, name, notes=list(page["notes"]) + list(notes), page=PAGE, viewports=views))
     return out
 
 

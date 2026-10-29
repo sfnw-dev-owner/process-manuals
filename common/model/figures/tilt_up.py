@@ -20,8 +20,7 @@ from model import tilt_up as tu
 from . import Figure, Viewport, vertical_fov
 
 MD = "tilt-up/tilt-up.md"
-PAGE = (8.203125, 5.796875)  # inches
-BORDER = 1 / 300  # the exported PNGs' one-pixel border (to drop once the figures are blessed: see ../TODO.md)
+PAGE = (8.203125, 5.796875)  # inches (LayOut's A5 landscape)
 SKP_HOUSE = (103.73, 164.15, 2.63)  # where the house's origin was in SketchUp (turned 180°)
 
 
@@ -150,7 +149,7 @@ def figures(only=None):
             vps.append(Viewport(v["rect"], v["eye"], v["target"], v["up"], parts(scene, v),
                                 height=v["height"], fov=v["fov"],
                                 notes=MODEL_NOTES.get(name, []) if v is views[0] else []))
-        out.append(Figure(MD, name, page=PAGE, viewports=vps, notes=notes, border=BORDER))
+        out.append(Figure(MD, name, page=PAGE, viewports=vps, notes=notes))
     return out
 
 
