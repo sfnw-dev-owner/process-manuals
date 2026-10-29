@@ -86,29 +86,10 @@ As above, we use a **78%** scale to get more than one image on a single page, wh
 This applies with the current Letter page size with 0.5" margins. 
 
 ## Figures drawn from the model
-The manuals' drawings are drawn from a build123d model of the house, its jigs and its tools, in
-[common/model](common/model/__init__.py) (the source of truth for dimensions; where it and a manual disagree,
-one of them needs fixing). Each figure is described in [common/model/figures](common/model/figures/__init__.py)
-(which parts, from which view, filled how, plus labels, arrows and tool icons), and a manual embeds it by name,
-with the scale to print it at:
-
-```
-`#fullpage("model:platform/step_03@1:20")`{=typst}
-```
-
-or, in plain markdown, `![](model:platform/step_03@1:20)`. The name is the manual's file name (lowercased) and the
-figure's name, listed in `FIGURES` in [common/model/figures/__init__.py](common/model/figures/__init__.py); `@1:20`
-prints the drawing at 1:20 (so one manual can show a whole wall at 1:20 and a corner of it at 1:10). The pages of
-3D views (tilt-up, post-tilt-up, iron carts) have a page size of their own and take no scale.
-
-`render/go` renders the figures with [render/model2svg.py](render/model2svg.py), inside the renderer container, and
-caches them in `.rendered-figures/`: a figure is only drawn again when something it's drawn from changes (the model
-code it uses, the renderer, or the clipart), so editing a manual's text typesets quickly. `render/all` draws every
-figure first, in parallel, before rendering the manuals.
-
-To add or change a figure, edit the model and the figure's description, then render the manual.
-[render/figdiff.py](render/figdiff.py) shows what a change did to every figure: take a snapshot before and after,
-and compare them.
+The manuals' drawings and 3D views are drawn, when a manual is rendered, from a build123d model of the house, its
+jigs and its tools, in [common/model](common/model/__init__.py). A manual embeds a figure by name, with the scale
+to print it at: `![](model:platform/step_03@1:20)`. [render/README.md](render/README.md) explains the references,
+how the model and its figures are organized, and how to see what a change to the model did to every figure.
 
 ## Rendering a Manual
 
@@ -135,11 +116,8 @@ A github **workflow** will kick off an **action** which will generate a GitHub R
 If you create a brand-new .md file, it is good practice to add the corresponding .pdf filename to .gitignore. This will reduce the chance that
 you inadvertently add a PDF to a *git commit*, polluting the source tree with a derived file.
 
-## Editing 3D model and images used in Tilt Up & Post Tilt Up 
-All of the 3D images and diagrams in the manuals are created using LayOut, based on this [Tiny Home Model](https://web.connect.trimble.com/projects/H3xXgzdyUMc/viewer/3d/?modelId=GoTtRh_ju8U&=&origin=app.connect.trimble.com&stoken=GOGUIZCqsLxEMBMi8d1WT_BkEB3nBpZNHqCMOSf_CtXKWa8dqnla6RG2KN0q6lWB) built in SketchUp. 
-
-You will need:
-
- * [SketchUp](https://www.sketchup.com) to edit the model. There are [free web-based editions of SketchUp](https://www.sketchup.com/en/plans-and-pricing/sketchup-free), although the model was built on a desktop using SketchUp Pro.
- * [LayOut](https://www.sketchup.com/en/products/layout), part of the SketchUp Pro package, for taking scenes built in the model and laying them out on to pages with various insets and annotations.
- * Permissions to edit the model. At the moment, only a limited number of people have access. 
+## The SketchUp model
+The figures were originally drawn in LayOut from a [Tiny Home Model](https://web.connect.trimble.com/projects/H3xXgzdyUMc/viewer/3d/?modelId=GoTtRh_ju8U&=&origin=app.connect.trimble.com&stoken=GOGUIZCqsLxEMBMi8d1WT_BkEB3nBpZNHqCMOSf_CtXKWa8dqnla6RG2KN0q6lWB)
+built in SketchUp, and the 2D drawings in QCAD. The build123d model in [common/model](common/model/__init__.py)
+was bootstrapped from them and has replaced them: edit it (see [render/README.md](render/README.md)), not the
+SketchUp model, to change a figure.
