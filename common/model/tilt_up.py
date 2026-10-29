@@ -14,9 +14,9 @@ import math
 
 from .common import *
 from .house import house
-from .platform import PLATFORM_LENGTH, PLATFORM_WIDTH
+from .platform import DECK, FRAME_BOTTOM, PLATFORM_LENGTH, PLATFORM_WIDTH
 from .roof import SIDING_FACE
-from .walls import DOOR_X, STUD, WALL_DEPTH, front_wall, rear_wall, side_wall
+from .walls import DOOR_X, STUD, WALL_DEPTH, WALL_HEIGHT, front_wall, rear_wall, side_wall
 
 GROUND = -13.3  # where the jigs and the crew stand (the platform is up on stands)
 
@@ -107,7 +107,7 @@ def jig_at(wall):
 BRACE = 50.5  # a 2x4, square-cut
 BRACE_ANGLE = 70.8  # from level
 BRACE_FOOT = (18.3, 0.58)  # the middle of its foot, in its frame (X, Z)
-BRACE_AT = Pos(-0.62, 144.07, 7.72)  # just off the platform's front end, by the rhs wall
+BRACE_AT = Pos(-5/8, PLATFORM_LENGTH, FRAME_BOTTOM + 2 + 1/4)  # against the platform's front end, just outside the rhs wall
 
 
 @component
@@ -153,10 +153,10 @@ NAIL = 4.5
 
 @component
 def nail():
-    """A framing nail, its head at the origin, pointing along +Z (as
-    SketchUp's stood, preset where it's to be driven)."""
-    return [Cylinder(0.08, NAIL, align=(Align.CENTER, Align.CENTER, Align.MIN)),
-            Cylinder(0.25, 0.06, align=(Align.CENTER, Align.CENTER, Align.MIN))], []
+    """A framing nail, preset where it's to be driven: its head's top at the
+    origin, pointing down -Z (like post_tilt_up's fasteners)."""
+    return [Cylinder(0.08, NAIL, align=(Align.CENTER, Align.CENTER, Align.MAX)),
+            Cylinder(0.25, 0.06, align=(Align.CENTER, Align.CENTER, Align.MAX))], []
 
 
 def frame(origin, x_dir, z_dir):
@@ -190,30 +190,60 @@ def door_clamp_at(z):
     return (door_clamp, _clamp_frame(jamb, PLATFORM_LENGTH - WALL_DEPTH / 2, z, -1, -1, -1))
 
 
-# The clamps and nails at each corner: (component, placement); the clamps
-# at the heights the SketchUp model had them
+# Each corner is nailed (and later screwed, post_tilt_up.CORNER_SCREWS)
+# through the end wall's end stud into the side wall's flat stud: the
+# fasteners start on the end wall's inside face, CORNER_NAIL_IN along it from
+# the side wall, and go in at CORNER_NAIL_ANGLE from the face; five of them,
+# evenly up the corner from CORNER_NAIL_ENDS above the deck to that far below
+# the top. At the door corner they go between the door's spacer blocks.
+CORNER_NAILS = 5
+CORNER_NAIL_ENDS = 6 + 1/2
+CORNER_NAIL_IN = 5 + 1/2
+CORNER_NAIL_ANGLE = 25  # degrees from the end wall's face
+DOOR_CORNER_IN, DOOR_CORNER_BACK, DOOR_CORNER_ANGLE = 6 + 1/4, 2 + 3/4, 17  # along, inside the wall's face, degrees
+DOOR_CORNER_Z = (5 + 1/2, 24 + 1/2, 44 + 1/2, 63 + 1/2, 81 + 1/2)  # above the deck, between the spacer blocks
+# The corner clamps, above the deck (two per corner); the door corner's
+# clamp stands in the doorway.
+CORNER_CLAMP_Z = (26, 81)
+DOOR_CLAMP_Z = (6 + 1/2, 73)
+
+
+def corner_nailing(corner):
+    """[(head, direction)] of a corner's five fasteners, in the house's frame."""
+    side_x = 0 if "rhs" in corner else PLATFORM_WIDTH
+    out = 1 if side_x == 0 else -1  # +X into the house from the side wall
+    end_y = WALL_DEPTH if corner.startswith("back") else PLATFORM_LENGTH - WALL_DEPTH  # the end wall's inside face
+    into = 1 if corner.startswith("back") else -1  # -Y into the end wall from its inside face... (+1: toward -Y)
+    if corner == "front_rhs":
+        in_, back, angle, zs = DOOR_CORNER_IN, DOOR_CORNER_BACK, DOOR_CORNER_ANGLE, DOOR_CORNER_Z
+    else:
+        step = (WALL_HEIGHT - 2 * CORNER_NAIL_ENDS) / (CORNER_NAILS - 1)
+        in_, back, angle, zs = CORNER_NAIL_IN, 0, CORNER_NAIL_ANGLE, [CORNER_NAIL_ENDS + k * step for k in range(CORNER_NAILS)]
+    a = math.radians(angle)
+    head_x, head_y = side_x + out * (WALL_DEPTH + in_), end_y + into * back
+    direction = (-out * math.cos(a), -into * math.sin(a), 0)  # back toward the side wall, into the end wall
+    return [((head_x, head_y, DECK + z), direction) for z in zs]
+
+
+def corner_nails(corner):
+    return [(nail, driven(head, direction)) for head, direction in corner_nailing(corner)]
+
+
+# The clamps and nails at each corner: (component, placement)
 CORNERS = {
-    "back_rhs": [
-        *[corner_clamp(0, 0, z, 1) for z in (92.78, 37.91)],
-        *[(nail, frame((9.1, 3.2, z), (0.42, -0.91, 0), (-0.91, -0.42, 0))) for z in (94.94, 75.94, 56.33, 39.39, 19.02)],
-    ],
-    "back_lhs": [
-        *[corner_clamp(PLATFORM_WIDTH, 0, z, 1) for z in (92.44, 38.19)],
-        *[(nail, frame((86.9, 4.5, z), (-0.42, -0.91, 0), (0.91, -0.42, 0))) for z in (94.62, 75.62, 57.13, 40.2, 20.52)],
-    ],
-    "front_lhs": [
-        *[corner_clamp(PLATFORM_WIDTH, PLATFORM_LENGTH, z, -1) for z in (89.8, 38.24)],
-        *[(nail, frame((87.2, 139.5, z), (-0.42, 0.91, 0), (0.91, 0.42, 0))) for z in (94.94, 75.94, 57.89, 39.7, 18.27)],
-    ],
-    "front_rhs": [
-        *[door_clamp_at(z) for z in (84.7, 18.39)],
-        *[(nail, frame((9.8, 137.7, z), (0.29, 0.96, 0), (-0.96, 0.29, 0))) for z in (94.05, 70.24, 54.06, 34.56, 18.71)],
-    ],
+    "back_rhs": [corner_clamp(0, 0, DECK + z, 1) for z in CORNER_CLAMP_Z] + corner_nails("back_rhs"),
+    "back_lhs": [corner_clamp(PLATFORM_WIDTH, 0, DECK + z, 1) for z in CORNER_CLAMP_Z] + corner_nails("back_lhs"),
+    "front_lhs": [corner_clamp(PLATFORM_WIDTH, PLATFORM_LENGTH, DECK + z, -1) for z in CORNER_CLAMP_Z] + corner_nails("front_lhs"),
+    "front_rhs": [door_clamp_at(DECK + z) for z in DOOR_CLAMP_Z] + corner_nails("front_rhs"),
 }
 
 
-BRACE_NAILS = [(nail, frame(p, (1, 0, 0), (0, -1, 0))) for p in ((1.73, 151.06, 53.21), (16.81, 151.06, 9.82))]
-IMPACT_DRIVER_AT = (0.21, 161.48, 45.69)
+# The brace is nailed from outside the platform's front end: into the rim
+# joist low down, and up where the brace meets the wall's end stud. The
+# nails are drawn poised, their tips an inch short of the brace.
+NAIL_POISED = NAIL + 1
+BRACE_NAILS = [(nail, driven((x, PLATFORM_LENGTH + thickness("2x4") + NAIL_POISED, z), (0, -1, 0)))
+               for x, z in ((16 + 3/4, FRAME_BOTTOM + 4 + 1/4), (1 + 3/4, DECK + 41 + 1/2))]
 
 
 @component

@@ -10,6 +10,8 @@ converted to the house's frame: SKETCHUP_HOUSE is where that model had the
 house.
 """
 
+import math
+
 from .common import *
 from .house import WALL_TOP
 from .platform import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
@@ -333,28 +335,17 @@ def screw_like(length, shank, head, head_height, hex=False):
     return parts
 
 
-# SketchUp's fasteners stand on their local Z, heads up, the head's top at
-# this height (and centered on this X, Y).
-SKP_SCREW_HEAD = (0.1475, 0.1475, 2.608)
-SKP_NAIL_HEAD = (0.34, 0.355, 4.505)
-SKP_HEX_HEAD = (0.195, 0.195, 1.16)
-
+# Each fastener stands with its head's top at the origin, pointing down -Z;
+# common.driven() places one by its head and the direction it's driven.
 
 @component
 def screw_long():
-    return [Pos(*SKP_SCREW_HEAD) * s for s in screw_like(*SCREW_LONG, 0.12)], []
+    return screw_like(*SCREW_LONG, 0.12), []
 
 
 @component
 def screw_short():
-    return [Pos(*SKP_SCREW_HEAD) * s for s in screw_like(*SCREW_SHORT, 0.1)], []
-
-
-@component
-def corner_screw():
-    """#10 x 3" through a wall's end stud into the next wall (in SketchUp's
-    nail's frame)."""
-    return [Pos(*SKP_NAIL_HEAD) * s for s in screw_like(*SCREW_LONG, 0.12)], []
+    return screw_like(*SCREW_SHORT, 0.1), []
 
 
 HEX_HEAD_HEIGHT = 0.2
@@ -362,7 +353,7 @@ HEX_HEAD_HEIGHT = 0.2
 
 @component
 def hex_screw():
-    return [Pos(*SKP_HEX_HEAD) * s for s in screw_like(*HEX_SCREW, HEX_HEAD_HEIGHT, hex=True)], []
+    return screw_like(*HEX_SCREW, HEX_HEAD_HEIGHT, hex=True), []
 
 
 @component
@@ -451,28 +442,55 @@ def triangle_clamp(x):
 
 TRIANGLE_CLAMPS = [triangle_clamp(x) for x in (RIDGE_X - TRI_HALF + 6, RIDGE_X + TRI_HALF - 6)]  # "about 6" from each end"
 
-TRIANGLE_SCREWS = [  # preset in the rear triangle's base
-    (screw_long, Location(p, r), ["mirror"] if m else []) for p, r, m in (
-        ((45.582, 2.283, 100.352), (0, -32.9, 0), True), ((45.582, 0.533, 100.352), (0, -32.9, 0), True),
-        ((50.533, 0.533, 100.352), (0, 32.9, 0), False), ((50.533, 2.283, 100.352), (0, 32.9, 0), False),
-        ((26.192, 1.552, 100.469), (47.9, 0, 90), True), ((28.817, 1.552, 100.469), (47.9, 0, 90), True),
-        ((34.033, 0.533, 100.352), (0, 32.9, 0), False), ((34.033, 2.283, 100.352), (0, 32.9, 0), False),
-        ((62.207, 0.533, 100.352), (0, -32.9, 0), True), ((62.207, 2.283, 100.352), (0, -32.9, 0), True),
-        ((69.629, 1.552, 100.469), (47.9, 0, 90), True), ((67.004, 1.552, 100.469), (47.9, 0, 90), True),
-        ((11.15, 2.452, 100.839), (0, 0, -180), False), ((11.15, 1.014, 100.839), (0, 0, -180), False),
-        ((85.145, 2.452, 100.839), (0, 0, -180), False), ((85.145, 1.014, 100.839), (0, 0, -180), False),
-    )
-]
+# The screws preset in a structural triangle's base (frame-completion.md
+# "Structural Triangles"), on the base's top, in two rows TRIANGLE_ROWS in
+# from its faces: toe screws TOE_IN from each face of the center stud and of
+# each D stud's inner face, tilted TOE_ANGLE toward the stud; in each outer
+# bay two screws, OUTER_IN beyond the D stud and OUTER_APART apart, tilted
+# OUTER_ANGLE in from the inside row; and two straight down through each
+# side's foot.
+TRIANGLE_ROWS = (3/4, WALL_DEPTH - 3/4)
+TOE_IN, TOE_ANGLE = 1 + 3/4, 33  # inches from the stud's face; degrees from plumb
+OUTER_IN, OUTER_APART, OUTER_ANGLE = 1 + 1/4, 2 + 5/8, 48
+FOOT_SCREW_IN = 3  # from the side's outer foot
 
-CORNER_SCREWS = [  # 5 in each wall corner, up the end studs
-    (corner_screw, Location((x, y, z), r), ["mirror"] if m else []) for (x, y, r, m), zs in (
-        ((9.068, 3.133, (90, -65.3, -180), True), (94.946, 75.946, 56.331, 39.393, 19.025)),
-        ((86.932, 4.386, (90, 65.3, 180), False), (94.63, 75.63, 57.14, 40.202, 20.521)),
-        ((87.298, 139.433, (-90, 65.3, 0), True), (94.946, 75.946, 57.893, 39.706, 18.275)),
-        # (the door side: between the door's spacer blocks, centered in the gaps)
-        ((9.702, 137.664, (-90, -73.101, 0), False), (93.25, 75.25, 56.25, 36.25, 17.25)),
-    ) for z in zs
-]
+
+def triangle_screws(at=None):
+    """The 16 screws in the rear triangle's base, in the house's frame (or a
+    triangle placed by `at`)."""
+    from .roof import TRI_BASE, TRI_BASE_END, TRI_D, TRI_SIDE_FOOT
+    at = at or ROOF * Pos(RIDGE_X, 0, 0)
+    stud = thickness("2x4")
+    top = TRI_BASE  # the base's top, in the triangle's frame
+    toe = (math.sin(math.radians(TOE_ANGLE)), math.cos(math.radians(TOE_ANGLE)))
+    out = []
+    for sign in (-1, 1):  # each half, by the distance from the center
+        for x in (stud / 2 + TOE_IN, TRI_D - TOE_IN):  # beside the center stud, inside the D stud
+            tilt = -sign if x < TRI_D / 2 else sign  # toward the stud: in toward the center stud, out toward D
+            for y in TRIANGLE_ROWS:
+                out.append(((sign * x, y, top), (tilt * toe[0], 0, -toe[1])))
+        for x in (TRI_D + stud + OUTER_IN, TRI_D + stud + OUTER_IN + OUTER_APART):  # the outer bay
+            a = math.radians(OUTER_ANGLE)
+            out.append(((sign * x, TRIANGLE_ROWS[1], top), (0, -math.sin(a), -math.cos(a))))
+        for y in TRIANGLE_ROWS:  # the side's foot
+            out.append(((sign * (TRI_BASE_END - TRI_SIDE_FOOT + FOOT_SCREW_IN), y, top), (0, 0, -1)))
+    def in_house(head, d):  # the head and direction, taken into the house's frame
+        return tuple((at * Pos(*head)).position), tuple((at * Location(Plane((0, 0, 0), z_dir=d))).z_axis.direction)
+    return [(screw_long, driven(*in_house(head, d)), []) for head, d in out]
+
+
+TRIANGLE_SCREWS = triangle_screws()
+
+
+def corner_screws():
+    """5 #10 x 3" screws in each wall corner, where the tilt-up's nails went
+    (frame-completion.md "Secure Walls")."""
+    from .tilt_up import corner_nailing
+    return [(screw_long, driven(head, d), []) for corner in ("back_rhs", "back_lhs", "front_lhs", "front_rhs")
+            for head, d in corner_nailing(corner)]
+
+
+CORNER_SCREWS = corner_screws()
 
 
 UPRIGHT_CLAMP_X = 62.326  # the upright ridge clamp's jaw tips' X + CLAMP_JAW_TOP (where the LayOut page had it)
@@ -529,24 +547,36 @@ def ridge_screws(bay, flip=False):
     from .roof import RIDGE_BOARD, RIDGE_TOP, bays
     a, b = bays()[bay]
     inset = min(RIDGE_SCREWS_IN, (b - a) / 4)  # (a narrow end bay: its columns a quarter in)
-    rot = (0, 90, 0) if flip else (0, -90, 0)
-    x = 47.896 if flip else 48.136
-    # SketchUp's screw stands off its origin by SKP_SCREW_HEAD in X and Y; turned
-    # on its side, that's Z (down the page for the unflipped one) and Y
-    dz, dy0 = (-SKP_SCREW_HEAD[0] if flip else SKP_SCREW_HEAD[0]), -SKP_SCREW_HEAD[1]
+    # the heads on the near board's face, driven across the ridge
+    side = 1 if flip else -1
+    x, direction = RIDGE_X + side * thickness(RIDGE_BOARD), (-side, 0, 0)
     top = WALL_TOP + RIDGE_TOP
     out = []
     for y in (a + inset, b - inset):
         for quarter, stagger in ((1, RIDGE_SCREWS_STAGGER), (3, -RIDGE_SCREWS_STAGGER)):
             z = top - quarter * width(RIDGE_BOARD) / 4
-            out.append((screw_short, Location((x, y + stagger + dy0, z + dz), rot), [] if flip else ["mirror"]))
+            out.append((screw_short, driven((x, y + stagger, z), direction), []))
     return out
 
 
 LAG_CLAMP = (bar_clamp, Location((16.233, 101.264, 91.312), (0, -90, -132.701)), ["mirror"])
 
-BIRD_BLOCK_SCREWS = [(screw_long, Location((2.203, 133.748, 97.257), (180, 0, -180)), []),
-                     (screw_long, Location((2.141, 124.771, 97.25), (-180, 0, 180)), [])]
+BIRD_BLOCK_SCREWS_IN = 3  # from the block's ends
+
+
+def bird_block_screws(side="left", bay=5):
+    """Two #10 x 3" screws up through the side wall's top plate into a bird
+    block (roof-blocking.md "Install Bird Blocks"), their heads under the
+    plate, BIRD_BLOCK_SCREWS_IN from the block's ends."""
+    (comp, loc, mods), = bird_blocks(side, [bay])
+    bb = (loc * comp.shape(frozenset(), key(mods))).bounding_box()
+    under = WALL_TOP - thickness("2x4")  # the top plate's underside
+    x = (bb.min.X + bb.max.X) / 2
+    return [(screw_long, driven((x, y, under), (0, 0, 1)), [])
+            for y in (bb.min.Y + BIRD_BLOCK_SCREWS_IN, bb.max.Y - BIRD_BLOCK_SCREWS_IN)]
+
+
+BIRD_BLOCK_SCREWS = bird_block_screws()
 
 VENT_GUIDE = (vent_guide_board, Location((57.661, 149.969, 114.269), (0, 0, -180)), [])
 VENT_GUIDE_CLAMPS = [
@@ -555,8 +585,23 @@ VENT_GUIDE_CLAMPS = [
     (bar_clamp, Location((59.335, 88.335, 111.623), (71.784, -41.891, -116.236)), ["mirror"]),
 ]
 VENT_CLAMP = (bar_clamp, Location((48.419, 24.743, 98.71), (0, 0, -180)), ["mirror"])
-VENT_SCREWS = [(screw_short, Location((49.186, y, 114.372), (90, 90, -180)), []) for y in (6.339, 13.214, 22.026)]
-VENT_SCREWS_TO_ALIGN = [(screw_short, Location((56.67, y, 105.097), (90, 90, -180)), []) for y in (6.566, 13.441, 22.253)]
+VENT_SCREWS_AT = (1, 1/2, 5/6)  # along the block: an inch from the rear end, the middle, five sixths along
+
+
+def vent_block_screws(side="right", bay=0, offset=(0, 0)):
+    """The three screws preset in a vent block (roof-blocking.md "Install
+    Ridge Vent Blocks"), on its outer face at mid-height, driven into the
+    ridge board; `offset` as vent_blocks()'s, for a block not yet pushed up."""
+    (comp, loc, mods), = vent_blocks(side, [bay], offset=offset)
+    bb = (loc * comp.shape(frozenset(), key(mods))).bounding_box()
+    outer, direction = (bb.max.X, (-1, 0, 0)) if side == "right" else (bb.min.X, (1, 0, 0))
+    z = (bb.min.Z + bb.max.Z) / 2
+    ys = (bb.min.Y + VENT_SCREWS_AT[0], (bb.min.Y + bb.max.Y) / 2, bb.min.Y + (bb.max.Y - bb.min.Y) * VENT_SCREWS_AT[2])
+    return [(screw_short, driven((outer, y, z), direction), []) for y in ys]
+
+
+VENT_SCREWS = vent_block_screws()
+VENT_SCREWS_TO_ALIGN = vent_block_screws(offset=VENT_BLOCK_START)
 
 # The crews, where SketchUp's 2D silhouettes stood (their feet), and
 # whether mirrored: raising the right half, and the left.
@@ -590,18 +635,14 @@ def bracket_screws(side="left", end="front"):
         plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[0], RAFTER_Y[-2] + RAFTER, 0)
     else:
         plate = SLOPE * Pos(TIP_U - ANGLE_PLATE_FROM_TIP[1], RAFTER_Y[1], 0) * Rot(Z=180)
-    mods = HALF_ROOFS[side][1]
-    head_under = SKP_HEX_HEAD[2] - HEX_HEAD_HEIGHT - FLANGE  # the head's flange, up from SketchUp's screw's origin
     out = []
     for hx in ANGLE_PLATE_HOLES:
-        # SketchUp's hex screw stands on its tip, its axis SKP_HEX_HEAD off its
-        # origin; its head sits on the plate (in the left half's frame)
-        screw = HALF_ROOFS["left"][0] * plate * Pos(-length + hx - SKP_HEX_HEAD[0], ANGLE_PLATE_HOLE_OUT - SKP_HEX_HEAD[1],
-                                                     ANGLE_PLATE_GAUGE - head_under)
-        if mods:  # the right half: the left's, mirrored across the ridge
-            p, d = screw.position, screw.z_axis.direction
-            screw = Location(Plane((2 * RIDGE_X - p.X, p.Y, p.Z), z_dir=(-d.X, d.Y, d.Z)))
-        out.append((hex_screw, screw, mods))
+        # the head on the plate's flat leg over its hole, driven down through it (in the left half's frame)
+        at = HALF_ROOFS["left"][0] * plate * Pos(-length + hx, ANGLE_PLATE_HOLE_OUT, ANGLE_PLATE_GAUGE)
+        head, d = at.position, -at.z_axis.direction
+        if HALF_ROOFS[side][1]:  # the right half: the left's, mirrored across the ridge
+            head, d = Vector(2 * RIDGE_X - head.X, head.Y, head.Z), Vector(-d.X, d.Y, d.Z)
+        out.append((hex_screw, driven(tuple(head), tuple(d)), []))
     return out
 
 

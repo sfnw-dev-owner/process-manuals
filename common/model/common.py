@@ -12,6 +12,13 @@ from .dimensions import *
 # Boxes and rectangles are placed by their minimum corner.
 CORNER = Align.MIN
 
+def driven(head, direction):
+    """Where a fastener (modeled with its head's top at the origin, pointing
+    down -Z) goes: its head's top at `head`, driven along `direction`."""
+    d = Vector(*direction).normalized()
+    return Location(Plane(head, z_dir=-d))
+
+
 def spaced(first, step, count):
     """count positions, the first at `first` and each `step` further on."""
     return [first + i * step for i in range(count)]
