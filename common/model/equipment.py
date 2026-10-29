@@ -8,9 +8,12 @@ from build123d import (
 from .hardware import cart_caster, dolly_caster
 from .lumber import FourByFour, Sheet, TwoByEight, TwoByFour
 from .common import CORNER, component, spaced
-from .parts import (
-    cross_bar,
-)
+
+
+@component
+def cross_bar():
+    """A 24" 2x4 across a cart or stand (SketchUp: 'Cross Bar')."""
+    return [TwoByFour(24, along="X", wide="Y")], []
 
 
 @component

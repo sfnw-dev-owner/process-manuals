@@ -15,7 +15,6 @@ Modules:
   hardware       hardware stand-ins
   common         helpers shared by every module
   notes          annotations for the manuals' figures
-  parts          components shared by more than one assembly
   platform       the platform (floor framing, subfloor, floor insulation)
   walls          the four walls
   roof           roof framing, sheathing and roofing

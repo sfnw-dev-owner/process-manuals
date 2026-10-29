@@ -2,12 +2,7 @@
 
 from functools import cache
 
-from build123d import *
-
-from .hardware import *  # hand-modeled stand-ins for imported hardware meshes
-from .lumber import *  # standard lumber sizes and sheet goods
-
-from .dimensions import *
+from build123d import Align, Compound, Location, Plane, Vector, mirror, scale
 
 # Boxes and rectangles are placed by their minimum corner.
 CORNER = Align.MIN
