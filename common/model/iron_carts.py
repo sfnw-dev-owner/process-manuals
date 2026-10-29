@@ -8,7 +8,9 @@ bounding box; model() places them.
 """
 
 
-from .common import *
+from build123d import Pos, Rot
+
+from .common import key
 from .equipment import (
     _2x8_block,
     arrow_1_2,

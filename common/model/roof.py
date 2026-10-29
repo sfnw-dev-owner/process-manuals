@@ -16,7 +16,19 @@ half's 1x6 ridge board. The two ridge boards meet on the center line.
 from functools import cache
 from math import ceil, cos, radians, sin, tan
 
-from .common import *
+from build123d import Align, Box, Cylinder, Location, Plane, Polygon, Pos, Rectangle, Rot, extrude
+
+from .lumber import OneByEight, OneBySix, Sheet, TwoByFour, thickness, width
+from .dimensions import (
+    ANGLE_PLATE_FROM_TIP, BIRD_BLOCK_END_LENGTH, BIRD_BLOCK_LENGTH, CAP_SHINGLE, CROSS_BLOCKS_FROM_TIP,
+    CROSS_BLOCK_LENGTH, DOUBLED_RAFTER_FROM_FRONT, DOUBLED_RAFTER_FROM_REAR, END_BAY, END_WALL_PLATE_LENGTH,
+    FIRST_INNER_RAFTER, FRONT_ROOF_OVERHANG, HALF_ROOF_LENGTH, INNER_RAFTERS, PLATFORM_LENGTH, PLATFORM_WIDTH,
+    RAFTER_LENGTH, RAFTER_SPACING, RAKE_STARTER_OVERLAP, RIDGE_VENT_OVERHANG, ROOF_DECK_SHEET, ROOF_PITCH,
+    ROW_9_TRIM, SHINGLE_EXPOSURE, SHINGLE_FIRST_TRIM, SHINGLE_LENGTH, SHINGLE_OVERHANG, SHINGLE_WIDTH,
+    START_END_PAIR, TAR_PAPER_LENGTH, TAR_PAPER_WIDTH, VENT_BLOCK_END_LENGTH, VENT_BLOCK_HEIGHT,
+    VENT_BLOCK_LENGTH, VENT_SPACER_LENGTH
+)
+from .common import CORNER, component, spaced
 from .walls import SIDING, WALL_DEPTH, WRAP
 
 T, C, S = tan(radians(ROOF_PITCH)), cos(radians(ROOF_PITCH)), sin(radians(ROOF_PITCH))

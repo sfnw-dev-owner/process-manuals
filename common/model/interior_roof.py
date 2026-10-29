@@ -11,7 +11,16 @@ Interior_Trim/interior_trim.md and Interior_Trim/vent_cap_install.md
 Frame: the roof's (roof.py): the house's X and Y, Z = 0 at the top of the walls.
 """
 
-from .common import *
+from functools import cache
+from build123d import Align, Box, Cylinder, Location, Plane, Polygon, Pos, Rot, extrude
+
+from .lumber import Sheet, TwoByFour, board, thickness, width
+from .dimensions import (
+    CEILING_R1, CEILING_R2, CEILING_TRIM_LENGTH, END_WALL_PLATE_LENGTH, PLATFORM_LENGTH, PLATFORM_WIDTH,
+    ROOF_BATT_END_WIDTH, ROOF_BATT_LENGTH, ROOF_BATT_WIDTH, TRIANGLE_CENTER_TRIM_LENGTH, TRIANGLE_TRIM_LENGTH,
+    VENT_BLOCK_HEIGHT, VENT_CAP_BLOCK_LENGTH, VENT_CAP_LENGTH, VENT_CAP_WIDTH
+)
+from .common import CORNER, component
 from .roof import (
     C, S, T, RAFTER, RAFTER_DEPTH, RAFTER_Y, middle_bay, RIDGE_BOARD_BOTTOM, RIDGE_X, SEAT_X, SLOPE, TIP_X,
     TRI_BASE, TRI_D, TRI_E, TRI_HALF, TRI_SIDE_FOOT, VENT_BLOCK_THICKNESS,

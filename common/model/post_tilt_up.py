@@ -12,7 +12,12 @@ house.
 
 import math
 
-from .common import *
+from build123d import (
+    Align, Axis, Box, Cone, Cylinder, Location, Plane, Polygon, Pos, RegularPolygon, Rot, Vector, extrude
+)
+
+from .lumber import TwoByFour, thickness, width
+from .common import CORNER, component, driven, key
 from .house import WALL_TOP
 from .platform import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from .roof import (

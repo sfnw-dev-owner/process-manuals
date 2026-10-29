@@ -12,7 +12,10 @@ the crew stand, is GROUND below the bottom of the skids.
 
 import math
 
-from .common import *
+from build123d import Align, Box, Cylinder, Location, Plane, Polygon, Pos, Rot, extrude
+
+from .lumber import TwoByFour, thickness, width
+from .common import CORNER, component, driven
 from .house import house
 from .platform import DECK, FRAME_BOTTOM, PLATFORM_LENGTH, PLATFORM_WIDTH
 from .roof import SIDING_FACE

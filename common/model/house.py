@@ -8,7 +8,10 @@ Everything is stacked on what it rests on: the walls stand on the deck, the
 roof sits on the walls, so changing a dimension below moves everything above.
 """
 
-from .common import *
+from build123d import Location, Pos, Rot
+
+from .dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH
+from .common import component
 from .platform import (
     DECK,
     platform,

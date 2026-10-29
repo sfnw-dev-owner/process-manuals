@@ -6,7 +6,11 @@ Per Exterior_Trim/exterior_trim.md. Frame: Z = 0 at the top of the walls.
 from functools import cache
 from math import radians, tan
 
-from .common import *
+from build123d import Box, Location, Plane, Polygon, Pos, Rot, extrude
+
+from .lumber import board, thickness, width
+from .dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH, SIDING_HEIGHT
+from .common import CORNER, component
 from .dimensions import WINDOW_OPENING
 from .platform import DECK
 from .walls import SIDING, SIDING_Y, WALL_DEPTH, WALL_HEIGHT, WINDOW_X, WINDOW_Z, WRAP

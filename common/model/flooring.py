@@ -9,7 +9,11 @@ Y = 0, the front wall with the doorway at the far end).
 
 import math
 
-from .common import *
+from functools import cache
+from build123d import Box, Pos
+
+from .dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH
+from .common import CORNER, component
 from .walls import DOOR_OPENING, DOOR_X, SIDING, WALL_DEPTH, WRAP
 
 FLOORING = 3/8  # plank thickness (not given in the manuals)

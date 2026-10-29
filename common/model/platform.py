@@ -8,7 +8,14 @@ the skids. X runs across the platform (0 to PLATFORM_WIDTH), Y along it
 (0 to PLATFORM_LENGTH), Z up.
 """
 
-from .common import *
+from build123d import Plane, Polygon, Pos, extrude
+
+from .lumber import FourBySix, Sheet, TwoByFour, TwoBySix, thickness, width
+from .dimensions import (
+    FOAM_END_WIDTH, FOAM_LENGTH, FOAM_WIDTH, JOIST_LENGTH, JOIST_SPACING, PLATFORM_LENGTH, PLATFORM_WIDTH,
+    SKID, SKID_INSET, SUBFLOOR
+)
+from .common import component, spaced
 
 RIM = thickness("2x6")  # the long sides and joists are 2x6s on edge
 FRAME_DEPTH = width("2x6")

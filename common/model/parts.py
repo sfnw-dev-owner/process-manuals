@@ -1,6 +1,7 @@
 """Components shared by more than one assembly."""
 
-from .common import *
+from .lumber import TwoByFour
+from .common import component
 
 
 @component

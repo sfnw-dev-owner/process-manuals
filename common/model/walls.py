@@ -10,7 +10,15 @@ increasing outward); Z up from the bottom of the bottom plate. The house places
 each wall on the deck.
 """
 
-from .common import *
+from functools import cache
+from build123d import Box, Location, Plane, Pos, Rectangle, Rot, extrude
+
+from .lumber import Sheet, TwoByFour, thickness, width
+from .dimensions import (
+    AC_OPENING, DOOR_OPENING, END_WALL_PLATE_LENGTH, SIDE_WALL_PLATE_LENGTH, SIDING_HEIGHT,
+    SIDING_PANEL_WIDTH, STUD_LENGTH, STUD_SPACING, WINDOW_OPENING
+)
+from .common import CORNER, component, spaced
 
 STUD = thickness("2x4")  # 1 1/2
 WALL_DEPTH = width("2x4")  # 3 1/2

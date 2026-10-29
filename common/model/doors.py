@@ -9,7 +9,10 @@ through the wall, from the inside edge of the jambs outward (their outside
 edge is flush with the siding); Z up from the bottom of the jamb legs.
 """
 
-from .common import *
+from build123d import Align, Box, Cylinder, Location, Pos, Rectangle, Rot, SlotCenterToCenter, Sphere, extrude
+
+from .dimensions import PLATFORM_LENGTH
+from .common import CORNER, component
 from .flooring import FLOORING, INTERIOR_PLYWOOD
 from .walls import DOOR_HEADER_Z, DOOR_OPENING, DOOR_X, SIDING, WALL_DEPTH, WRAP
 
