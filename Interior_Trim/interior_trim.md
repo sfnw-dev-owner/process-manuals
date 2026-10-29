@@ -154,7 +154,7 @@ and front wall. This will be done after Front Wall trim.
 - Install a 12" piece of 2" trim vertically to cover the seam between the triangles (#5)
 - Save remaining trim pieces for the front wall triangle
 
-`#fullpage("model:interior_trim/triangle_trim@1:40")`{=typst}
+`#fullpage("model:interior_trim/triangle_trim@1:30")`{=typst}
 
 # Front Wall 
 
@@ -213,7 +213,7 @@ and front wall. This will be done after Front Wall trim.
      - Cut this piece to length, and nail in place, halfway across the door jamb
 1.  Measure from the baseboard to the upper trim on the sidewall in the corner behind the door. Cut a length of 2" trim and nail. This should cover any gap at the corner.
 
-`#fullpage("model:interior_trim/front_trim_a@1:40")`{=typst}
+`#fullpage("model:interior_trim/front_trim_a@1:30")`{=typst}
 
 # Front Wall Trim -- Part II
 
@@ -229,7 +229,7 @@ and front wall. This will be done after Front Wall trim.
      - Nail a straight piece (42") on the ceiling tight against each angled piece just installed.
      - Position a 12" piece of 2" trim vertically over the center seam in the front triangle and nail.
  
-`#fullpage("model:interior_trim/front_trim_b@1:40")`{=typst}
+`#fullpage("model:interior_trim/front_trim_b@1:30")`{=typst}
 
 # Final Trim
 

@@ -319,6 +319,28 @@ def circled(point, text, radius=CIRCLED, height=TEXT):
     return [(point[0], point[1], Circle(radius)), (point[0], point[1], Label(text, height))]
 
 
+def numbered(point, text, side="above right", lead=LEAD, radius=CIRCLED, height=TEXT):
+    """A circled number `lead` from `point` on `side`, with a leader from the
+    circle's edge to the point."""
+    x, y = point
+    ux, uy = _direction(side)
+    return [(x, y, Circle(radius, dx=ux * lead, dy=uy * lead)), (x, y, Label(text, height, dx=ux * lead, dy=uy * lead)),
+            (x, y, Leader(((ux * (lead - radius), uy * (lead - radius)),)))]
+
+
+def numbered_row(point, numbers, note, height=TEXT, radius=CIRCLED):
+    """Circled numbers (one, or several in a row) and a note after them,
+    from `point` (the first circle's left edge) rightward: "(2) Repeat for
+    the other side", say."""
+    x, y = point
+    out = []
+    circle = None
+    for n in [numbers] if isinstance(numbers, str) else numbers:
+        circle = (x, y, Circle(radius, dx=radius)) if circle is None else next_to(circle, "right", Circle(radius), gap=GAP * 2)
+        out += [circle, (x, y, Label(n, height, dx=circle[2].dx, dy=circle[2].dy))]
+    return out + [next_to(circle, "right", Label(note, height), gap=GAP * 2)]
+
+
 def title(point, text, side="below", height=TITLE, gap=3/16, rotation=0, **kw):
     """A caption `gap` off a point (a drawing's extent's bottom center, say)."""
     return beside(point, side, Label(text, height, rotation=rotation, **kw), gap)

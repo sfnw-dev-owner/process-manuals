@@ -183,6 +183,12 @@ class Extent:
         self.x0, self.y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
         self.x1, self.y1 = max(b[2] for b in boxes), max(b[3] for b in boxes)
 
+    @classmethod
+    def box(cls, x0, y0, x1, y1):
+        e = cls.__new__(cls)
+        e.x0, e.y0, e.x1, e.y1 = x0, y0, x1, y1
+        return e
+
     @property
     def center(self):
         return (self.x0 + self.x1) / 2, (self.y0 + self.y1) / 2

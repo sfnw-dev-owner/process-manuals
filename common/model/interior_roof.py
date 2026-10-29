@@ -18,9 +18,6 @@ from .roof import (
     tri_inner, underside, wall_bays,
 )
 from .interior import END_PANEL_TOP, PANEL
-from .interior_notes import (
-    FLAT_VIEW, TRIANGLE_PANELS_VIEW, ceiling_panels_notes, triangle_panels_notes, vent_cap_notes, view_at,
-)
 from .walls import WALL_DEPTH, WALL_HEIGHT
 TRIM = "1/2x2"
 INSIDE_REAR = WALL_DEPTH  # the end walls' framing, inside faces
@@ -30,8 +27,10 @@ INSIDE_FRONT = PLATFORM_LENGTH - WALL_DEPTH
 # which stop a little short of the wall top.
 WALL_PANEL_TOP = END_PANEL_TOP - WALL_HEIGHT
 
-# Ceiling panels butt against the vent blocks at the top.
+# Ceiling panels butt against the vent blocks at the top (u: up the slope,
+# from the rafters' seat).
 CEILING_TOP_U = (TIP_X - VENT_BLOCK_THICKNESS - SEAT_X) / C
+CEILING_BOTTOM_U = CEILING_TOP_U - CEILING_R1[0]
 
 
 def ceiling(x):
@@ -59,8 +58,7 @@ def ceiling_half():
     """One side's ceiling: panels R1 (from the rear) and R2 under the rafters,
     batts above them in each bay, and trim over the seam between the panels."""
     r1 = CEILING_R1[1]
-    width_ = CEILING_R1[0]  # up the slope
-    bottom_u = CEILING_TOP_U - width_
+    bottom_u = CEILING_BOTTOM_U
     children = [
         (ceiling_panel_r1, SLOPE * Pos(bottom_u, INSIDE_REAR, -PANEL), [], 'panels'),
         (ceiling_panel_r2, SLOPE * Pos(bottom_u, INSIDE_REAR + r1, -PANEL), [], 'ceiling_r2'),
@@ -69,30 +67,22 @@ def ceiling_half():
          [], 'ceiling_trim'),
         *[(batt(b - a), SLOPE * Pos(CEILING_TOP_U - ROOF_BATT_LENGTH, (a + b) / 2 - batt_width(b - a) / 2, 0), [], '')
           for a, b in wall_bays()],
-        *ceiling_panels_notes(view_at(CEILING_VIEW), ceiling_rafter_screws()),
     ]
     return [], children
 
 
-# Interior_Panels/interior_panels.md's ceiling figure: the left half's panels
-# seen from below, flattened out of the slope, the rear to the left; the
-# figure's last view (with the rafter screws) has R1's rear bottom corner at
-# CEILING_VIEW_ORIGIN.
-CEILING_VIEW_ORIGIN = (26.5 + INSIDE_REAR, -254)
-CEILING_VIEW = (Pos(CEILING_VIEW_ORIGIN[0] - INSIDE_REAR, CEILING_VIEW_ORIGIN[1] - (CEILING_TOP_U - CEILING_R1[0]), 0)
-                * FLAT_VIEW * SLOPE.inverse())
 CEILING_SCREWS_UP = (1, 13, 25, 37, 42 + 7/8)  # up the slope from the panels' bottom edge (screw pattern board)
 
 
 def ceiling_rafter_screws():
     """Screws through the panels into each rafter they cover, except at the
-    panels' edges (preset): as (x, y) in the ceiling figure."""
+    panels' edges (preset): as (along the house, u up the slope) in the
+    unsloped ceiling half's frame (the panels' plane)."""
     seam = INSIDE_REAR + CEILING_R1[1]
     ends = (INSIDE_REAR, INSIDE_REAR + CEILING_R1[1] + CEILING_R2[1])
     centers = [y + RAFTER / 2 for y in RAFTER_Y]
     inner = [c for c in centers if ends[0] + 2 < c < ends[1] - 2 and abs(c - seam) > 2]
-    x0, y0 = CEILING_VIEW_ORIGIN
-    return [(x0 + c - INSIDE_REAR, y0 + u) for c in inner for u in CEILING_SCREWS_UP]
+    return [(c, CEILING_BOTTOM_U + u) for c in inner for u in CEILING_SCREWS_UP]
 
 
 @component
@@ -202,7 +192,6 @@ def end_wall_interior():
         (half_triangle_left, Pos(0, 0, WALL_PANEL_TOP), [], 'half_triangles'),
         (half_triangle_right, Pos(0, 0, WALL_PANEL_TOP), [], 'half_triangles'),
         (_part(angled(1), angled(-1), center, on_ceiling(1), on_ceiling(-1)), Location(), [], 'triangle_trim'),
-        *triangle_panels_notes(view_at(TRIANGLE_PANELS_VIEW * END_INTERIOR_AT)),
     ]
 
 
@@ -266,7 +255,6 @@ def vent_cap():
         (vent_cap_long, Pos(x, VENT_CAP_REAR, cap_z - VENT_CAP_THICKNESS), [], ''),
         (vent_cap_short, Pos(x, VENT_CAP_SEAM, cap_z - VENT_CAP_THICKNESS), [], ''),
         *[(vent_cap_block, Pos(RIDGE_X - b / 2, y, cap_z), [], '') for y in blocks],
-        *vent_cap_notes(view_at(VENT_CAP_VIEW), VENT_CAP_SHORT),
     ]
 
 
@@ -313,8 +301,3 @@ def vent_cap_block():
     screws preset through its middle."""
     return [TwoByFour(VENT_CAP_BLOCK_LENGTH, along="X", wide="Y")], []
 
-
-# Interior_Trim/vent_cap_install.md's figure: the vent cap's pieces seen from
-# below, laid out with the rear to the left: the long piece's rear-left
-# corner at (42, 100).
-VENT_CAP_VIEW = Pos(42 - VENT_CAP_REAR, 100 - (RIDGE_X - VENT_CAP_WIDTH / 2), 0) * FLAT_VIEW

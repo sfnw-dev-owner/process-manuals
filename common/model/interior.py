@@ -23,10 +23,6 @@ from .interior_sketchup import (  # noqa: F401 (the iron-cart scenes use these)
     interior_trim_painted,
     interior_trim_raw,
 )
-from .interior_notes import (
-    FRONT_PANELS_VIEW, REAR_PANELS_VIEW, SIDE_PANELS_VIEW, front_panels_notes, front_trim_notes, rear_panels_notes,
-    rear_trim_notes, side_panels_notes, view_at,
-)
 from .platform import DECK
 from .walls import (
     AC_HEADER_Z, AC_OPENING, AC_SILL_Z, AC_X, DOOR_HEADER_Z, DOOR_OPENING, DOOR_X, STUD, WALL_DEPTH,
@@ -310,8 +306,7 @@ def side_wall_interior(rear_at_left):
 @component
 def side_wall_interior_door_side():
     """The side wall on the door's side (its frame starts at the rear)."""
-    solids, children = side_wall_interior(True)
-    return solids, children + side_panels_notes(view_at(SIDE_PANELS_VIEW), (PANEL_A, PANEL_B, PANEL_C))
+    return side_wall_interior(True)
 
 
 @component
@@ -353,8 +348,6 @@ def rear_wall_interior():
                  trim(CORNER_TRIM[1] - W, CORNER_TRIM[1], BASEBOARD_TOP, TOP_TRIM_Z)), Location(), [], 'vertical_trim'),
         (_solids(trim(CORNER_TRIM[0] + W, CORNER_TRIM[1] - W, HORIZONTAL_TRIM_Z, HORIZONTAL_TRIM_Z + W)),
          Location(), [], 'horizontal_trim'),
-        *rear_panels_notes(view_at(REAR_PANELS_VIEW), (PANEL_G, PANEL_H)),
-        *rear_trim_notes(),
     ]
     return [], children
 
@@ -417,8 +410,6 @@ def front_wall_interior():
         (_solids(trim(WIDE_BOARD[1], CORNER_TRIM[1] - W, HORIZONTAL_TRIM_Z, HORIZONTAL_TRIM_Z + W),
                  trim(*NARROW_BOARD, HORIZONTAL_TRIM_Z, HORIZONTAL_TRIM_Z + W, back=PANEL + T)),
          Location(), [], 'final_trim'),
-        *front_panels_notes(view_at(FRONT_PANELS_VIEW), (PANEL_D, PANEL_E)),
-        *front_trim_notes(),
     ]
     return [], children
 
