@@ -1,59 +1,85 @@
 """Structural_Triangle/triangle.md: building the structural triangle from
 its cut parts (model/roof.py triangle_parts), seen face on, step by step:
-B and the A sides, then C and the E studs, nailing them, then the D studs."""
+B and the A sides, then C and the E studs, nailing them, then the D studs.
+
+A table of its figures: the parts, and the notes hung on the parts'
+extents in the drawing (X from the triangle's center, Y up from the base)."""
+
+import math
 
 from model.common import key
-from model.notes import Icon, Label, Leader
-from model.roof import triangle_parts
+from model.lumber import thickness
+from model.notes import Label, aimed, callout, next_to, pointer
+from model.roof import T, TRI_BASE, TRI_BASE_END, TRI_D, TRI_E, TRI_NOTCH_HALF, tri_top, triangle_parts
 
-from . import Figure, camera, figure_names
+from . import Extent, camera, table
 
 MD = "Structural_Triangle/triangle.md"
+PAPER_NOTES = True
 VIEW = camera((0, -1, 0))  # face on: X to the right, Z up
+SMALL_GUN = 0.6  # the nail gun icon, scaled down
+SCREWS_IN = 4  # the sides' screws into the base, this far in from the base's ends
+CLAMP_IN = 2  # the clamps, this far in
 
 # step -> (the parts it adds, the parts it's still working on); earlier
 # parts are drawn gray
 STEPS = {1: ("BA", ""), 2: ("CE", ""), 3: ("", "CE"), 4: ("", "CE"), 5: ("D", "")}
 
-# The notes, in the drawing (inches, X from the triangle's center, Y up from
-# the bottom of B)
-NOTES = {
-    1: [(-33.6, 6.09, Icon("Screw", 2.4, 5.76, rotation=-30, flip=True)),
-        (34.52, 5.89, Icon("Screw", 2.4, 5.76, rotation=30)),
-        (-36, -6, Label("CLAMP", 3, attach=1)), (21.16, -5.44, Label("CLAMP", 3, attach=1)),
-        (-31, 10, Label("x3", 2, attach=1)), (29, 10, Label("x3", 2, attach=1)),
-        (-39.52, 1.87, Leader(((0, 6.22),))), (-39.5, 0, Leader(((0, -7.5), (2.5, -7.5)))),
-        (38.98, 1.87, Leader(((0, 6.22),))), (39, 0, Leader(((0, -7.5), (-2.5, -7.5))))],
-    2: [(-3.89, -3.5, Icon("NailGun", 7.25, 7, rotation=180, flip=True)),
-        (3.71, -3.52, Icon("NailGun", 7.25, 7, rotation=180)),
-        (-6.72, -6.42, Label("x2", 2, attach=1)), (3.82, -6.42, Label("x2", 2, attach=1))],
-    3: [(-5.92, 2.4, Icon("NailGun", 7.25, 7, rotation=90)),
-        (-5.92, 10.58, Icon("NailGun", 7.25, 7, rotation=90, flip=True)),
-        (5.92, 2.4, Icon("NailGun", 7.25, 7, rotation=-90, flip=True)),
-        (5.92, 10.58, Icon("NailGun", 7.25, 7, rotation=-90))],
-    4: [(-3.89, 18.08, Icon("NailGun", 7.25, 7)),
-        (-2.07, -3.81, Icon("NailGun", 7.25, 7, rotation=180, flip=True)),
-        (3.71, 18.1, Icon("NailGun", 7.25, 7, flip=True)),
-        (-11, 21, Label("x2", 2, attach=1)), (-4.59, -7.01, Label("x2", 2, attach=1)),
-        (8, 21, Label("x2", 2, attach=1))],
-    5: [(-19.46, 13, Icon("NailGun", 7.25, 7)),
-        (-19.31, -3.61, Icon("NailGun", 7.25, 7, rotation=180, flip=True)),
-        (19.14, 13.1, Icon("NailGun", 7.25, 7, flip=True)),
-        (19.3, -3.54, Icon("NailGun", 7.25, 7, rotation=180)),
-        (-22.01, 15.82, Label("x2", 2, attach=7)), (-21.84, -6.44, Label("x2", 2, attach=1)),
-        (19.24, 16, Label("x2", 2, attach=7)), (19.4, -6.44, Label("x2", 2, attach=1))],
-}
-
 
 def figures():
+    stud = thickness("2x4")
+    pitch = math.degrees(math.atan(T))
     shapes = {letter: [VIEW * loc * comp.shape(frozenset(), key(mods)) for comp, loc, mods in instances]
               for letter, instances in triangle_parts().items()}
     everything = [s for ss in shapes.values() for s in ss]
-    out, done = [], ""
-    for (step, (adds, working)), name in zip(STEPS.items(), figure_names(MD)):
+    e_studs = sorted((Extent(s) for s in shapes["E"]), key=lambda e: e.x0)
+
+    def on_side(x):
+        """A point on a side's top edge, and the direction (degrees) from a
+        tool outside the slope in toward it."""
+        return (x, tri_top(x)), (pitch - 90 if x < 0 else 270 - pitch)
+
+    def side_screw(x):
+        p, toward = on_side(x)
+        screw = aimed(p, "Screw", toward)
+        return [screw, next_to(screw, "above right" if x < 0 else "above left", Label("x3"))]
+
+    def clamp(x):
+        p, _ = on_side(x)
+        return [pointer(p, 0, 3/8)] + callout((x, 0), "CLAMP", "below", lead=1/2)
+
+    def gun(point, toward, count=None, size=SMALL_GUN, flip=None):
+        g = aimed(point, "NailGun", toward, size, flip=flip)
+        return [g] if count is None else [g, next_to(g, toward if isinstance(toward, str) else "below", Label(count))]
+
+    # (the guns' bodies point away from the center, so a pair doesn't collide)
+    def through_side(x, count="x2"):
+        """A gun on the side above a stud, nailing down into it."""
+        return gun(on_side(x)[0], "above", count, flip=x < 0)
+
+    def through_base(x, count="x2"):
+        """A gun under the base, nailing up into a stud."""
+        return gun((x, 0), "below", count, flip=x > 0)
+
+    notes = {
+        1: (side_screw(-(TRI_BASE_END - SCREWS_IN)) + side_screw(TRI_BASE_END - SCREWS_IN)
+            + clamp(-(TRI_BASE_END - CLAMP_IN)) + clamp(TRI_BASE_END - CLAMP_IN)),
+        # C to the base from below, a gun at each side of it
+        2: through_base(-stud / 3) + through_base(stud / 3),
+        # E's outer faces into C, two nails each
+        3: [g for e, side in zip(e_studs, ("left", "right"))
+            for g in gun((e.x0 if side == "left" else e.x1, e.y0 + e.height / 4), side) + gun((e.x0 if side == "left" else e.x1, e.y0 + 3 * e.height / 4), side)],
+        # the E studs' tops through the sides, and C through the base
+        4: through_side(-(TRI_E + stud / 2)) + through_side(TRI_E + stud / 2) + through_base(-stud / 3),
+        # the D studs: through the sides and the base
+        5: (through_side(-(TRI_D + stud / 2)) + through_side(TRI_D + stud / 2)
+            + through_base(-(TRI_D + stud / 2)) + through_base(TRI_D + stud / 2)),
+    }
+    rows, done = {}, ""
+    for step, (adds, working) in STEPS.items():
         parts = [(s, "jig") for s in everything]
         parts += [(s, "context") for letter in done if letter not in working for s in shapes[letter]]
         parts += [(s, "new") for letter in adds + working for s in shapes[letter]]
-        out.append(Figure(MD, name, parts, NOTES[step]))
+        rows[f"step_{step}"] = (parts, [], notes[step])
         done += adds
-    return out
+    return table(MD, rows)

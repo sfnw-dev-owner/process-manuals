@@ -557,11 +557,6 @@ TRI_FOOT = TRI_BASE_END - TRI_SIDE_FOOT  # the sides' inner foot on the base
 TRI_PEAK = RIDGE_BOARD_BOTTOM  # the studs stop under the ridge beam
 
 
-def triangle_part_label(letter):
-    from .notes import Label
-    return (Label(letter, 2), None, [], "manual:structural_triangle_parts")
-
-
 def _flat(face):
     return extrude(Plane.XZ * face, -WALL_DEPTH)
 
@@ -570,8 +565,7 @@ def _flat(face):
 def triangle_base():
     """B: 89" at the bottom."""
     face = Polygon((-TRI_HALF, 0), (TRI_HALF, 0), (TRI_BASE_END, TRI_BASE), (-TRI_BASE_END, TRI_BASE), align=None)
-    label = triangle_part_label("B")
-    return [_flat(face)], [(label[0], Pos(-6.6, WALL_DEPTH, -1.7), [], label[3])]
+    return [_flat(face)], []
 
 
 @component
@@ -579,20 +573,17 @@ def triangle_side():
     """A: the left side, from its foot on the base up to the ridge notch."""
     n = TRI_NOTCH_HALF
     face = Polygon((-TRI_BASE_END, TRI_BASE), (-TRI_FOOT, TRI_BASE), (-n, tri_inner(n)), (-n, tri_top(n)), align=None)
-    label = triangle_part_label("A")
-    return [_flat(face)], [(label[0], Pos(-10.8, WALL_DEPTH, 13.3), [], label[3])]
+    return [_flat(face)], []
 
 
 @component
 def triangle_center_stud():
     """C: square cut, up to the ridge beam."""
     stud = thickness("2x4")
-    label = triangle_part_label("C")
-    return ([_flat(Pos(-stud / 2, TRI_BASE) * Rectangle(stud, TRI_PEAK - TRI_BASE, align=CORNER))],
-            [(label[0], Pos(-0.2, WALL_DEPTH, TRI_PEAK + 3.1), [], label[3])])
+    return [_flat(Pos(-stud / 2, TRI_BASE) * Rectangle(stud, TRI_PEAK - TRI_BASE, align=CORNER))], []
 
 
-def triangle_stud(x0, letter, label_dx):
+def triangle_stud(x0):
     """A stud from x0 (its inner edge) outward, its top cut at the pitch to
     follow the sides' underside (the first cut), then flat where that would
     reach above the ridge beam (the second cut)."""
@@ -602,20 +593,19 @@ def triangle_stud(x0, letter, label_dx):
     if top1 < TRI_PEAK < top0:  # the pitch cut crosses the ridge beam's underside within the stud
         top.insert(1, (x0 + (top0 - TRI_PEAK) / T, TRI_PEAK))
     face = Polygon((x0, TRI_BASE), (x1, TRI_BASE), *top, align=None)
-    label = triangle_part_label(letter)
-    return [_flat(face)], [(label[0], Pos(x0 + label_dx, WALL_DEPTH, TRI_BASE + 3.5), [], label[3])]
+    return [_flat(face)], []
 
 
 @component
 def triangle_stud_e():
     """E: beside C."""
-    return triangle_stud(TRI_E, "E", 2.85)
+    return triangle_stud(TRI_E)
 
 
 @component
 def triangle_stud_d():
     """D: further out."""
-    return triangle_stud(TRI_D, "D", -1.9)
+    return triangle_stud(TRI_D)
 
 
 def triangle_parts():
