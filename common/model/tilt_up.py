@@ -16,6 +16,7 @@ from build123d import Align, Box, Cylinder, Location, Plane, Polygon, Pos, Rot, 
 
 from .lumber import TwoByFour, thickness, width
 from .common import CORNER, component, driven
+from .dimensions import Count
 from .house import house
 from .platform_assembly import DECK, FRAME_BOTTOM, PLATFORM_LENGTH, PLATFORM_WIDTH
 from .roof import SIDING_FACE
@@ -199,7 +200,7 @@ def door_clamp_at(z):
 # the side wall, and go in at CORNER_NAIL_ANGLE from the face; five of them,
 # evenly up the corner from CORNER_NAIL_ENDS above the deck to that far below
 # the top. At the door corner they go between the door's spacer blocks.
-CORNER_NAILS = 5
+CORNER_NAILS = Count(5)
 CORNER_NAIL_ENDS = 6 + 1/2
 CORNER_NAIL_IN = 5 + 1/2
 CORNER_NAIL_ANGLE = 25  # degrees from the end wall's face

@@ -12,7 +12,7 @@
 # Create Ridge Beam
 
 * In each bay (between the rafters), clamp the two white boards together, first vertically and then horizontally, to align them and make a tight joint.
-* insert four #8 x 1½" (yellow) screws, two above and two below the centerline, and about {{post_tilt_up.RIDGE_SCREWS_IN}}” from the rafters.  Alternate directions of the screws
+* insert four #8 x 1½" (yellow) screws, two above and two below the centerline, and about {{post_tilt_up.RIDGE_SCREWS_IN}} from the rafters.  Alternate directions of the screws
   from one bay to the next.
 
 ![](model:roof-blocking/ridge_beam_bay)

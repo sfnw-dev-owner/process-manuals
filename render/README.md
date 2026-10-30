@@ -36,16 +36,17 @@ A dimension a manual states is written as the name of the value in
 `common/model/dimensions.py`, in double braces:
 
 ```
-Place {{STUD_LENGTH}}" 2x4s (studs) in the designated spots
+Place {{STUD_LENGTH}} 2x4s (studs) in the designated spots
 ```
 
-prints `Place 84" 2x4s (studs)...`, and a change to `STUD_LENGTH` changes
-the manual. `render/go` fills them in before pandoc sees the text, with
-`render/values.py`, which writes a number as the shop does: whole inches and
-a fraction (`93½`, `77¾`, `¹⁵⁄₃₂`), or a decimal when it isn't a
-sixty-fourth. The unit stays in the manual's text, as `{{STUD_LENGTH}}"`,
-`{{STUD_LENGTH}} in` or `{{ROOF_PITCH}}°`; `{{TAR_PAPER_LENGTH:ft}}` prints
-feet and inches (`13'4"`). A value from another model module is
+prints `Place 84” 2x4s (studs)...`, and a change to `STUD_LENGTH` changes
+the manual. `render/model.lua` fills them in, from `render/values.py`, which
+writes a number as the shop does: whole inches and a fraction (`93½”`,
+`77¾”`, `¹⁵⁄₃₂”`), or a decimal when it isn't a sixty-fourth. The unit
+comes from the model: a number is a length in inches, as the model is
+built; an angle is marked there as `Degrees(18.5)` and prints `18½°`, and a
+count of things as `Count(5)` prints `5`. `{{TAR_PAPER_LENGTH:ft}}` prints
+a length in feet and inches (`13’4”`). A value from another model module is
 `{{walls.AC_SIDE_BLOCK}}`, an element of a pair `{{WINDOW_OPENING[0]}}`, and
 a small expression is allowed (`{{RIDGE_VENT_OVERHANG-SHINGLE_OVERHANG}}`).
 A name the model doesn't have fails the render. A value's module counts as

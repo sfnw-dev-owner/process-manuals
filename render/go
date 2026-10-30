@@ -53,18 +53,15 @@ RELATIVE_RENDER_PATH="$(realpath --relative-to="$INPUT_DIR" "$PWD/render")"
 
 declare -a common_flags
 common_flags=(pandoc -f markdown -d "${RELATIVE_RENDER_PATH}/pandoc-defaults.yaml" --template "${RELATIVE_RENDER_PATH}/typst-header.typ")
-common_flags+=("--lua-filter=/s/render/model.lua")
-
-# The manual's text, with the {{values}} it takes from the model filled in (render/values.py).
-EXPANDED="<(python3 /s/render/values.py \$VALUE_DEPS '$INPUT_FILE')"
+common_flags+=("--lua-filter=/s/render/model.lua") # figures and {{values}} from the model
 
 # Extract from $INPUT any images it embeds, to account for in the last-revision timestamp.
 # Needs to be a dockerRun separate from the typst invocation because the container doesn't have git.
 export TEMPTYP=".TEMP.$$.typ"
 extract_out="$(dockerRun "trap 'rm -f ${TEMPTYP}' EXIT; \
-                         export FIGURE_DEPS=true VALUE_DEPS=--deps; \
+                         export MODEL_DEPS=true; \
                          ${common_flags[*]} \
-                  --to typst $EXPANDED -o ${TEMPTYP} \
+                  --to typst '$INPUT_FILE' -o ${TEMPTYP} \
         && typst compile --root /s -f pdf --deps /dev/stdout ${TEMPTYP} /dev/null | \
         `# Poor-man's jq to parse out deps' paths from typst json output.` \
         sed -e 's/^{\"inputs\":\[//' -e 's/]}$//' -e 's/^\"//' -e s'/\"$//' -e 's/\",\"/\n/g' | \
@@ -87,7 +84,7 @@ export FOOTER="Revised $REVISION_DATE"
 declare -a flags
 flags=("${common_flags[@]}")
 flags+=("--pdf-engine-opt=--root=/s")
-flags+=("$EXPANDED" -o "'$OUTPUT_FILE'")
+flags+=("'$INPUT_FILE'" -o "'$OUTPUT_FILE'")
 flags+=(-H '<(echo "#set page(footer: context { if counter(page).get().first() > 0 [$FOOTER #h(1fr) [#counter(page).display() / #counter(page).final().first()]] })")')
 if ! grep -qF '#title-page[' "$INPUT"; then
     # No custom title-page, create a default one.

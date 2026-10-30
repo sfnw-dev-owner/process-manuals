@@ -9,7 +9,7 @@ from math import radians, tan
 from build123d import Box, Location, Plane, Polygon, Pos, Rot, extrude
 
 from .lumber import board, thickness, width
-from .dimensions import PLATFORM_LENGTH, PLATFORM_WIDTH, SIDING_HEIGHT
+from .dimensions import Degrees, PLATFORM_LENGTH, PLATFORM_WIDTH, SIDING_HEIGHT
 from .common import CORNER, component
 from .dimensions import WINDOW_OPENING
 from .platform_assembly import DECK
@@ -181,7 +181,7 @@ WINDOW_UNIT_INSET = 1/2  # the window unit's frame, inside the rough opening (as
 WINDOW_SIDE_TRIM = 39 + 1/2  # precut
 WINDOW_TOP_TRIM = 31  # precut
 WINDOW_TOP_OVERHANG = 1/2  # past the left side trim
-WINDOW_TOP_BEVEL = 30  # degrees
+WINDOW_TOP_BEVEL = Degrees(30)
 TRIM_NAIL_INSET = 1 + 1/2  # nails from each end
 TRIM_NAIL_SPACING = 8  # "1 nail in the middle of the board every 8\""
 

@@ -1,13 +1,25 @@
 """The house's dimensions, as the construction manuals state them.
 
-A manual prints a value from here rather than repeating it ({{STUD_LENGTH}}"
-in its text; see render/README.md), so a dimension is changed in this file.
+A manual prints a value from here rather than repeating it ({{STUD_LENGTH}}
+in its text prints 84”; see render/README.md), so a dimension is changed in
+this file. A number is a length in inches, as the model is built; an angle
+is marked Degrees and a count of things Count, so a manual prints their
+units right too.
 A citation says where a value is used (the manual's line, when it was
 named) or where it came from: the SketchUp model and the QCAD drawings
 (*.dxf) this package was bootstrapped from, not to be trusted where the
 manuals differed. Those files were removed in commit 1492ff3; a citation of
 one is read with `git show 1492ff3^:<path>`.
 """
+
+
+class Degrees(float):
+    """An angle (a bare number is a length in inches)."""
+
+
+class Count(int):
+    """How many of something, not a length."""
+
 
 # Platform: Platform/platform.md and Platform/images/platform.dxf.
 PLATFORM_LENGTH = 144  # 2x6 long sides; Cut_Lists/Back_Saw_Cut_List.md:12
@@ -35,13 +47,13 @@ AC_OPENING = 20 + 1/2  # between the A/C blocks; Rear_Wall/rear_wall.md:77
 
 # Roof: Half_Roof/half_roof.md + images/half_roof.dxf, Structural_Triangle/triangle.dxf,
 # post-tilt-up/*.md, Roof/roof_manual.md.
-ROOF_PITCH = 18.5  # degrees; Cut_Lists/Back_Saw_Cut_List.md:34, Roof/roof_manual.md:113
+ROOF_PITCH = Degrees(18.5)  # Cut_Lists/Back_Saw_Cut_List.md:34, Roof/roof_manual.md:113
 RAFTER_LENGTH = 56 + 3/4  # 2x4, along its top edge; Back_Saw_Cut_List.md:34
 HALF_ROOF_LENGTH = 156  # Half_Roof/images/half_roof.dxf
 FRONT_ROOF_OVERHANG = 6 + 1/4  # past the front triangle; post-tilt-up/frame-completion.md:92
 CROSS_BLOCK_LENGTH = 6 + 1/2  # 2x4; Half_Roof/half_roof.md:50
 RAFTER_SPACING = 24  # inner rafter centers; Half_Roof/images/half_roof.dxf
-INNER_RAFTERS = 5  # on those centers, between the doubled rafters; half_roof.dxf
+INNER_RAFTERS = Count(5)  # on those centers, between the doubled rafters; half_roof.dxf
 FIRST_INNER_RAFTER = 30  # its center, from the half-roof's rear end; half_roof.dxf
 DOUBLED_RAFTER_FROM_REAR = 8  # the doubled rafters' slots ("one slot in from each end", half_roof.md:28), from the ends; half_roof.dxf
 DOUBLED_RAFTER_FROM_FRONT = 11

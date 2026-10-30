@@ -3,10 +3,12 @@
 -- where an image path goes, e.g. `#fullpage("model:platform/step_03@1:20")`{=typst}
 -- (a drawing is printed at 1:N; a page of 3D views has its own size and takes no scale).
 -- render/model2svg.py renders each to SVG (cached in .rendered-figures/) and
--- this filter points the manual at it. (The {{values}} a manual takes from
--- the model are filled in before pandoc runs, by render/values.py.)
+-- this filter points the manual at it.
+-- Values from the model: a manual writes {{STUD_LENGTH}} where it states a
+-- dimension, and this filter replaces it with the value's text from
+-- render/values.py (84”: the unit comes from the model).
 
-local dependencyMode = os.getenv("FIGURE_DEPS") ~= nil -- Set in ./go.
+local dependencyMode = os.getenv("MODEL_DEPS") ~= nil -- Set in ./go.
 
 local PATTERN = "model:[%w_%-]+/[%w_%-%.]+[@%d:%.]*"
 
@@ -68,11 +70,45 @@ local function dependencies(figures, found)
    return table.concat(reads, "\n") .. "\n"
 end
 
+-- Ask values.py (once per document) for the text of the {{values}} the
+-- document's Str elements hold: {values = {expr = text}, deps = {...}}
+local VALUE = "{{([^{}]+)}}"
+local function values(doc)
+   local wanted, seen = {}, {}
+   doc:walk({ Str = function(el)
+      for expr in el.text:gmatch(VALUE) do
+         if not seen[expr] then
+            seen[expr] = true
+            table.insert(wanted, expr)
+         end
+      end
+   end })
+   if #wanted == 0 then
+      return { values = {}, deps = {} }
+   end
+   local args = { "/s/render/values.py" }
+   if dependencyMode then
+      table.insert(args, "--deps")
+   end
+   for _, expr in ipairs(wanted) do
+      table.insert(args, expr)
+   end
+   return pandoc.json.decode(pandoc.pipe("python3", args, ""), false)
+end
+
 function Pandoc(doc)
    if FORMAT ~= "typst" then
       return nil
    end
    local figures = resolve(doc)
+   local vals = values(doc)
+
+   local function str(el)
+      if not el.text:find("{{", 1, true) then
+         return nil
+      end
+      return pandoc.Str((el.text:gsub(VALUE, function(expr) return vals.values[expr] end)))
+   end
 
    local function image(el)
       local found = refs(el)
@@ -102,5 +138,14 @@ function Pandoc(doc)
       return el
    end
 
-   return doc:walk({ Image = image, RawInline = raw, RawBlock = raw })
+   doc = doc:walk({ Str = str, Image = image, RawInline = raw, RawBlock = raw })
+   if dependencyMode and #vals.deps > 0 then
+      -- The values' modules are dependencies too (see dependencies() above).
+      local reads = {}
+      for _, dep in ipairs(vals.deps) do
+         table.insert(reads, string.format("#let _ = read(%q, encoding: none)", dep))
+      end
+      doc.blocks:insert(pandoc.RawBlock("typst", table.concat(reads, "\n")))
+   end
+   return doc
 end

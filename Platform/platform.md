@@ -17,7 +17,7 @@
 - Chalk line
 - Mallet
 - Great Stuff cans
-- {{platform_assembly.SAVE_BLOCK}}" spacer blocks marked "SAVE"
+- {{platform_assembly.SAVE_BLOCK}} spacer blocks marked "SAVE"
 - Jenga blocks
 
 `#pagebreak()`{=typst}
@@ -96,8 +96,8 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 
 - Put rigid insulation foam pieces into each bay
     - Cut the foam if not pre-cut. Use templates
-    - 2 at {{FOAM_END_WIDTH}} inches wide by {{FOAM_LENGTH}} long
-    - 7 at {{FOAM_WIDTH}} inches wide by {{FOAM_LENGTH}} long
+    - 2 at {{FOAM_END_WIDTH}} wide by {{FOAM_LENGTH}} long
+    - 7 at {{FOAM_WIDTH}} wide by {{FOAM_LENGTH}} long
     - use an Exacto knife with blade all the way out
     - Cut the ends to fit the length, and install with silver side UP.
 - Using GREAT STUFF spray cans
@@ -110,7 +110,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 # Step 9
 - Under the 1^st^ plywood panel ONLY
     - put Liquid Nails construction adhesive on each of the joists and along the side rails, only along the first 3 bays. 
-- Place the 1^st^ plywood panel ({{SUBFLOOR}}" CDX plywood)
+- Place the 1^st^ plywood panel ({{SUBFLOOR}} CDX plywood)
     - use panels from pile labeled PLATFORM
     - line it up to be flush with the outer edges and the middle of the inner joist.
 - Put a nail in that inner joist corner. Use that as the pivot point to line up the panel

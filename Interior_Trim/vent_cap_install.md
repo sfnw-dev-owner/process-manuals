@@ -4,7 +4,7 @@ no-title-page: true
 
 # VENT CAP INSTALLATION
 
-1.  Cut two 13" 2x4 blocks (jenga blocks) in half to yield the {{VENT_CAP_BLOCK_LENGTH}}"
+1.  Cut two 13" 2x4 blocks (jenga blocks) in half to yield the {{VENT_CAP_BLOCK_LENGTH}}
     support blocks.
 
 2.  Preset 2 brown screws in the center of each block, as shown opposite.
@@ -25,7 +25,7 @@ no-title-page: true
 
 6.  Similarly, install the other three support blocks.
 
-7.  Position the long drill pattern against one side of the {{VENT_CAP_LENGTH}}" plywood
+7.  Position the long drill pattern against one side of the {{VENT_CAP_LENGTH}} plywood
     piece, matching the end of the pattern with the end of the
     plywood. Mark the locations for 6 holes, as shown in the diagram
     opposite. Drill, countersink, and preset 3" brown screws in these 6
