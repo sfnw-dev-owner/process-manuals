@@ -146,12 +146,12 @@ and front wall. This will be done after Front Wall trim.
 
 # Triangle trim
 
-- Collect precut pieces of 2" X 42" trim from the rack: 2 left, 2 right, 6 straight.  These will be used for rear and front triangle trim.  Cut (from scraps) 2 strips 12" long.
+- Collect precut pieces of 2" X {{TRIANGLE_TRIM_LENGTH}}" trim from the rack: 2 left, 2 right, 6 straight.  These will be used for rear and front triangle trim.  Cut (from scraps) 2 strips {{TRIANGLE_CENTER_TRIM_LENGTH}}" long.
 - Position two angled pieces on the back wall and nail in place. (#4)
     - A helper can push the trim up so that it is tight against the ceiling.
-- Position a straight piece (42") on the ceiling and tight against each of the angled piece just installed. Nail it in place.
+- Position a straight piece ({{CEILING_TRIM_LENGTH}}") on the ceiling and tight against each of the angled piece just installed. Nail it in place.
     - A helper can push the trim tight against the piece just installed, so that the trim is tight all along the joint
-- Install a 12" piece of 2" trim vertically to cover the seam between the triangles (#5)
+- Install a {{TRIANGLE_CENTER_TRIM_LENGTH}}" piece of 2" trim vertically to cover the seam between the triangles (#5)
 - Save remaining trim pieces for the front wall triangle
 
 `#fullpage("model:interior_trim/triangle_trim@1:30")`{=typst}
@@ -226,8 +226,8 @@ and front wall. This will be done after Front Wall trim.
 5. Triangle trim
      - Use remaining trim pieces saved after rear wall triangle trim.
      - Position the angled pieces and nail to the front wall.
-     - Nail a straight piece (42") on the ceiling tight against each angled piece just installed.
-     - Position a 12" piece of 2" trim vertically over the center seam in the front triangle and nail.
+     - Nail a straight piece ({{CEILING_TRIM_LENGTH}}") on the ceiling tight against each angled piece just installed.
+     - Position a {{TRIANGLE_CENTER_TRIM_LENGTH}}" piece of 2" trim vertically over the center seam in the front triangle and nail.
  
 `#fullpage("model:interior_trim/front_trim_b@1:30")`{=typst}
 
@@ -240,7 +240,7 @@ and front wall. This will be done after Front Wall trim.
     - Measure up from the top of the baseboard the same distance that was used for the side wall trim, and mark near the corner and near the door.
     - Align the bottom of the trim with the marks at waist level. Nail in place.
 1.  DON'T FORGET - Measure, cut, and nail in place a small piece of trim on the front wall behind the door, to match the middle trim on the side wall.
-1.  Nail the remaining two pieces of 2" straight trim (42") over the ceiling seams, tight against the top trim strips on each side wall,
+1.  Nail the remaining two pieces of 2" straight trim ({{CEILING_TRIM_LENGTH}}") over the ceiling seams, tight against the top trim strips on each side wall,
 and extending up near the roof vent.
 
 `#fullpage("model:interior_trim/final_trim@1:40")`{=typst}

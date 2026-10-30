@@ -43,12 +43,12 @@
 
 # Roof Panels
 
-1. The material for the exterior is ¾" CDX plywood. Neither side is
+1. The material for the exterior is {{roof.DECK}}" CDX plywood. Neither side is
    very pretty, but one is usually worse. That side should face you
    when sawing roof panels.
 
 1. You will only need to make vertical cuts for this process. Set a
-   block to act as a saw stop for 77 ¾"
+   block to act as a saw stop for {{ROOF_DECK_SHEET[1]}}"
 
 1. Cut 4 panels for each home, placing them on an orange panel
    cart. Generally, put a maximum of 8 panels on a cart.
@@ -66,7 +66,7 @@
 1. You will cut two homes' worth of panels at once, and should place
    two orange panel carts by the panel saw.
 
-1. Cut all panels from 96" to 93½" using the jig labeled "T1-11
+1. Cut all panels from 96" to {{SIDING_HEIGHT}}" using the jig labeled "T1-11
    Exterior Panel 93½".  The jig has feet labeled 1 and 5, to be
    placed in the saw carriage's slots 1 (unlabled) and 5. Ensure blue
    tape marks line up.
@@ -118,7 +118,7 @@
 
 # Interior Panels
 
-- The material for the interior is 15/32" plywood. The good side goes
+- The material for the interior is {{interior.PANEL}}" plywood. The good side goes
   against the carriage when sawing.
 
 - You will need one orange panel cart for each home's panels, and one

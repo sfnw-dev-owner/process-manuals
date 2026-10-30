@@ -124,8 +124,8 @@ the brown screw into the vent block.
 1.  Rout out the door (first), the windows, and the A/C cutout
     - Using a spade bit, drill from outside through the paneling, near the bottom left corner of each window
     - After the back window is routed out, use the A/C cutout jig to locate the drill spot, and drill a starter hole
-1. Find and install a 4" piece of ½" plywood that goes below the remaining edge of the D panel on the narrow side next to the doorway.
-    - This piece is 38¼" long and 4" wide, and may be found in a square barrel where the trim pieces are kept.  It may alternatively labeled **E2**.
+1. Find and install a {{interior.PANEL_E2[0]}}" piece of ½" plywood that goes below the remaining edge of the D panel on the narrow side next to the doorway.
+    - This piece is {{interior.PANEL_E2[1]}}" long and {{interior.PANEL_E2[0]}}" wide, and may be found in a square barrel where the trim pieces are kept.  It may alternatively labeled **E2**.
       - Pre-drill along the long edges about 8" apart.
       - Install, making sure that the edge next to the doorway aligns with the routed doorway above it.
 

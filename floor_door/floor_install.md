@@ -15,7 +15,7 @@
   - Flooring cutter, jig saw, mallet, tapping blocks, small pry bars, tapping bar
   - Spacer strips of flooring
   - Blue masking tape
-- Verify that there is a limit line in the doorway, to show how far the flooring should extend.  This line should be ¾" from the inside of the wall framing to the line.  If it is not there, draw one.
+- Verify that there is a limit line in the doorway, to show how far the flooring should extend.  This line should be {{flooring.INTO_DOORWAY}}" from the inside of the wall framing to the line.  If it is not there, draw one.
 - Tape spacer strips to the the starting side wall and the back wall, using blue tape.  These spacer strips should rest on the sub-floor, and are used to ensure space between the flooring and the walls.
 
 `#pagebreak()`{=typst}
@@ -30,31 +30,31 @@
     - Cut last length to this dimension.
     - Mark the last length of flooring where it must be cut out, and use a speed square and black marker to draw lines for the cutout.
     - Use a jigsaw to cut out the corner behind the door, as shown in the diagram.
-- Use spacers against the walls to insure ¼” gap
+- Use spacers against the walls to insure {{flooring.WALL_GAP}}” gap
 
 ## Intermediate Rows
 - For even numbered rows, start with 2’ length; add 2 full lengths, and then use remainder of cutoff at the door end.  For odd numbered rows, start with a full length.
-- For odd numbered rowsm, trim off the gray tongue from the short edge of the first piece where it faces the wall.  Use a spacer to insure ¼” gap from the back wall
+- For odd numbered rowsm, trim off the gray tongue from the short edge of the first piece where it faces the wall.  Use a spacer to insure {{flooring.WALL_GAP}}” gap from the back wall
 - Tilt each plank up about 30°, and engage the short edge with the flooring already placed, leaving just enough gap along the
 long edge for the thin gray tab. Then tilt the previous plank and the new one up just enough to tap the new plank in to engage the previous row. 
   Tap the joint with a tapping block and mallet to seat the plank.  When correctly engaged, the new plank will lie flat on the floor,
 without any springiness.
-- Trim last length to match limit line in doorway (¾” towards outside from inside of wall framing) One of these finishing lengths will need a corner cut out where it meets the doorway.
+- Trim last length to match limit line in doorway ({{flooring.INTO_DOORWAY}}” towards outside from inside of wall framing) One of these finishing lengths will need a corner cut out where it meets the doorway.
 - For rows that meet the front wall instead of the doorway, reverse the last plank (or partial plank) so that its wide locking tabs face
 the starting wall and the front wall.  Place the last plank against the front wall, and mark where it overlaps the brown surface of
 the previous plank in that row.
-- Cut the plank at the mark, and then install it normally.  The wide gray tab that was against the front wall now slides under the previous plank, so that when you tap it into place, there will be ¼" of space between the finished floor and the front wall.
+- Cut the plank at the mark, and then install it normally.  The wide gray tab that was against the front wall now slides under the previous plank, so that when you tap it into place, there will be {{flooring.WALL_GAP}}" of space between the finished floor and the front wall.
 
 `#horizontal-center("model:floor_install/tiles@1:20")`{=typst}
 
 `#pagebreak()`{=typst}
 
 ## Last Row
-- Measure distance from brown edge of last intermediate row to side-wall in several places.  If the measurement varies more than ¼”, cut each piece so that there will be ¼” gap between the floor and the wall.  Otherwise, use the minimum width for all three pieces.
+- Measure distance from brown edge of last intermediate row to side-wall in several places.  If the measurement varies more than ¼”, cut each piece so that there will be {{flooring.WALL_GAP}}” gap between the floor and the wall.  Otherwise, use the minimum width for all three pieces.
 - Using the table saw set up for this, rip pieces to the required width above.  Save the remaining partial pieces for the next floor, if they are wider than 3"; otherwise, discard them.
 - To complete assembly, use the small pry bars as hooks to engage the last row with the rest of the floor, and then either tap the planks together using the tapping bar, or else use the small pry bars to apply force.  The flooring should lie flat when the joint is seated correctly.
 - If the last row pieces were all the same width, and you have 3 left-over full-length cutoffs, wrap them with blue tape, and save these as a starter row for the next home.
 
 ## Doorway
-- Place a 3” strip of flooring across the doorway, flush with the outside of the building.  Nail it in place with 3 or 4 finish nails.
-his will be secured with flexible flashing when the door is installed.  The strip can either be a single 36” piece, or be made up from scraps interlocked together (e.g. 4 x 9” = 36”). 
+- Place a {{flooring.DOORWAY_STRIP[1]}}” strip of flooring across the doorway, flush with the outside of the building.  Nail it in place with 3 or 4 finish nails.
+his will be secured with flexible flashing when the door is installed.  The strip can either be a single {{flooring.DOORWAY_STRIP[0]}}” piece, or be made up from scraps interlocked together (e.g. 4 x 9” = 36”). 

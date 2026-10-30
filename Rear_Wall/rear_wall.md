@@ -29,9 +29,9 @@
 
 # Step 1
 
-- Place 89" 2x4s on the jig for the top and bottom of the wall.
-- Select the straightest 84" 2x4 board (stud), and reserve it for Step 4.
-- Place 84" 2x4 studs on the jig for each side of the wall.
+- Place {{END_WALL_PLATE_LENGTH}}" 2x4s on the jig for the top and bottom of the wall.
+- Select the straightest {{STUD_LENGTH}}" 2x4 board (stud), and reserve it for Step 4.
+- Place {{STUD_LENGTH}}" 2x4 studs on the jig for each side of the wall.
 - Line up the corners to be flush on top and sides
     - one person holds and the other nails.
 - Put 1 FRAMING nail (the longer ones) at each corner through the top and bottom 2x4s to connect the corners, about 1/3 of the way down
@@ -42,7 +42,7 @@
 
 # Step 2
 
-- Place 2 studs (84") into the jig, one on either side of the window opening. If studs are bowed, place so that bow is to the inside of the window area.
+- Place 2 studs ({{STUD_LENGTH}}") into the jig, one on either side of the window opening. If studs are bowed, place so that bow is to the inside of the window area.
 - Team leader
     - When studs are in place, draw a straight vertical line at the middle of each stud to indicate where to put the nails.
 - Place
@@ -74,11 +74,11 @@
 
 - Place the straight stud selected in Step 1 between the double stud
     and the wall edge, as shown in the diagram.
-- Place a 20-1/2" block horizontally against the top plate, as shown
+- Place a {{AC_OPENING}}" block horizontally against the top plate, as shown
     in the diagram. Clamp it in place, and nail it to the top plate (2 nails).
-- Place a 13-3/4" block vertically against the double stud and up against the block above.
+- Place a {{walls.AC_SIDE_BLOCK}}" block vertically against the double stud and up against the block above.
 Clamp it to the double studs and nail it to these studs (2 nails).
-- Place a second 20-1/2" block horizontally below the vertical block as shown, and nail it to this block (2 nails), and then through the newly
+- Place a second {{AC_OPENING}}" block horizontally below the vertical block as shown, and nail it to this block (2 nails), and then through the newly
   installed stud (2 nails), as shown in the diagram.  Make certain that the block is flush with the surface of the stud.
 - Finally, put two nails through the top plate and two nails through bottom plate into the new stud.
 
@@ -86,8 +86,8 @@ Clamp it to the double studs and nail it to these studs (2 nails).
 
 # Step 4b
 - There should be a crate of blocks under the jig.  If not, cut blocks from under the front chop saw in half for this step.
-- Position a 6½" block on each side below the air conditioner opening as shown in the diagram, and nail each block to the adjacent stud with 2 nails.
-- Position a third 6½" block next to the one on the window side, and nail this block
+- Position a {{walls.AC_UNDER_BLOCK}}" block on each side below the air conditioner opening as shown in the diagram, and nail each block to the adjacent stud with 2 nails.
+- Position a third {{walls.AC_UNDER_BLOCK}}" block next to the one on the window side, and nail this block
  to its neighbor, again with two nails
 
 `#fullpage("model:rear_wall/step_04b@1:16")`{=typst}

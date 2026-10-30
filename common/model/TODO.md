@@ -62,6 +62,12 @@
   stood, how far a half-roof had been raised). Everything built into the
   house, and every fastener, is derived from the geometry; derive these too
   if a page's staging ever needs changing.
+- Cut_Lists/Front_Saw_Cut_List.md cuts the window top trim at 31½";
+  `exterior_trim.WINDOW_TOP_TRIM` (and the figures) have it 31". Measure a
+  precut piece and fix whichever is wrong.
+- tilt-up/tilt-up.md "Attach Corners" (front wall): the manual says 4 nails
+  at the corner next to the window; `tilt_up.CORNER_NAILS` is 5 at every
+  corner but the door's. Which is right?
 - tilt-up/tilt-up.md "front_to_platform" (and the pages after it): the wall
   brace (the 2x4 from the platform's end up to the first wall) is no longer
   used; drop it from the model and the figures.

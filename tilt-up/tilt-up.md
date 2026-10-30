@@ -198,7 +198,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 
 ### Attach Corner
 * Verify that the top of the two walls are tightly clamped together, and are at the same height.
-* Have the nailer shoot 5 nails into the corner, about 2 feet apart, centered on the rear wall side stud, and angled outward, so that the nail 
+* Have the nailer shoot {{tilt_up.CORNER_NAILS}} nails into the corner, about 2 feet apart, centered on the rear wall side stud, and angled outward, so that the nail 
   is driven into the side stud of the side wall, rather than going into the crack between the two pieces of wood that form the corner on the side wall.
 * Remove the clamps
 
@@ -263,7 +263,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 `#pagebreak()`{=typst}
 
 ### Attach Corner
-* Verify that the tops of the two walls are tightly clamped together, and have the nailer shoot 5 nails into the corner, about 2 feet apart,
+* Verify that the tops of the two walls are tightly clamped together, and have the nailer shoot {{tilt_up.CORNER_NAILS}} nails into the corner, about 2 feet apart,
   centered on the rear wall side stud, and angled outward, so that the nail ends up driven into the side stud of the side wall, rather than
   going into the crack between the two pieces of wood that form the corner on the side wall. 
 * Remove the clamps

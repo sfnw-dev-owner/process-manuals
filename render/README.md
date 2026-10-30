@@ -30,6 +30,28 @@ extraction) have a page size of their own and take no scale.
 `render/model.lua` is the pandoc filter that swaps these references for the
 rendered SVGs, and `render/example-model.md` shows the forms.
 
+## Values from the model
+
+A dimension a manual states is written as the name of the value in
+`common/model/dimensions.py`, in double braces:
+
+```
+Place {{STUD_LENGTH}}" 2x4s (studs) in the designated spots
+```
+
+prints `Place 84" 2x4s (studs)...`, and a change to `STUD_LENGTH` changes
+the manual. `render/go` fills them in before pandoc sees the text, with
+`render/values.py`, which writes a number as the shop does: whole inches and
+a fraction (`93½`, `77¾`, `¹⁵⁄₃₂`), or a decimal when it isn't a
+sixty-fourth. The unit stays in the manual's text, as `{{STUD_LENGTH}}"`,
+`{{STUD_LENGTH}} in` or `{{ROOF_PITCH}}°`; `{{TAR_PAPER_LENGTH:ft}}` prints
+feet and inches (`13'4"`). A value from another model module is
+`{{walls.AC_SIDE_BLOCK}}`, an element of a pair `{{WINDOW_OPENING[0]}}`, and
+a small expression is allowed (`{{RIDGE_VENT_OVERHANG-SHINGLE_OVERHANG}}`).
+A name the model doesn't have fails the render. A value's module counts as
+a dependency of the manual for the revision date in its footer, like a
+figure's sources.
+
 The SVGs are cached in `.rendered-figures/`, keyed by everything a figure is
 drawn from (its name and scale, the model modules its figure module imports,
 `model2svg.py`, `requirements.txt` and the clipart), so editing a manual's
@@ -40,9 +62,9 @@ parallel, and prunes cached figures no manual uses any more.
 ### Where things live
 
 - `common/model/dimensions.py`: every dimension the manuals state, named,
-  with a citation (`NAME = value  # note; manual.md:line`). The manuals are
-  the ground truth; where the model and a manual disagree, one of them is
-  wrong and needs fixing.
+  with a note of where it's used (`NAME = value  # note; manual.md:line`).
+  The manuals print these values (`{{NAME}}`, above) rather than repeating
+  them, so this file is where a dimension is changed.
 - `common/model/<assembly>.py` (`platform_assembly`, `walls`, `roof`, `roofing`,
   `gables`, `interior`, `interior_roof`, `doors`, `flooring`, `exterior_trim`,
   `house`): the parts,

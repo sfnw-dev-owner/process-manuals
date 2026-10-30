@@ -88,7 +88,9 @@ This applies with the current Letter page size with 0.5" margins.
 ## Figures drawn from the model
 The manuals' drawings and 3D views are drawn, when a manual is rendered, from a build123d model of the house, its
 jigs and its tools, in [common/model](common/model/__init__.py). A manual embeds a figure by name, with the scale
-to print it at: `![](model:platform/step_03@1:20)`. [render/README.md](render/README.md) explains the references,
+to print it at: `![](model:platform/step_03@1:20)`. The dimensions a manual states come from the model too:
+`{{STUD_LENGTH}}"` prints the value of `STUD_LENGTH` in [common/model/dimensions.py](common/model/dimensions.py),
+so a number lives in one place. [render/README.md](render/README.md) explains both references,
 how the model and its figures are organized, and how to see what a change to the model did to every figure.
 
 ## Rendering a Manual

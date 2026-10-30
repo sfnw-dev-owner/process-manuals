@@ -19,8 +19,8 @@ Check to be sure that the paneling has been routed (on the right edge as you fac
 the front or back of the home), so that it does not extend beyond the
 sidewall paneling.
 
-All exterior trim boards are together on a rack at the West end of the factory.  Corner boards are precut to 93½ˮ.  Window trim pieces for tops and sides
-are also precut; the top trim has a 30° bevel on one long edge.
+All exterior trim boards are together on a rack at the West end of the factory.  Corner boards are precut to {{SIDING_HEIGHT}}ˮ.  Window trim pieces for tops and sides
+are also precut; the top trim has a {{exterior_trim.WINDOW_TOP_BEVEL}}° bevel on one long edge.
 
 Trim boards have an outer and an inner side.  The outer side has vertical grooves in the surface.  The inner side is not as attractive, and caulk should always be applied to that inner side.
 
@@ -64,23 +64,23 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 * Using precut side pieces, put EXTERIOR caulk as shown.
 * Place side piece snug up against the window. Use a block to align the top of each piece with the top of the window.
 * Nail (PANEL NAILS)
-    - 2 nails 1-½" below top
-    - 1 nail in the middle of the board every 8"
-    - 2 nails 1-½" above the bottom.
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" below top
+    - 1 nail in the middle of the board every {{exterior_trim.TRIM_NAIL_SPACING}}"
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" above the bottom.
 
 ## Step 3 -- Top Piece
 
 * Using precut beveled top piece, apply EXTERIOR caulk behind the beveled edge and at both ends, as shown.
 * Position with right edge flush with side trim.  **Do not** allow this top trim to extend past the right-hand side trim.  It will interfere with the trim around an air conditioner, when that is installed.
 * Nail (PANEL NAILS)
-    - 2 nails 1-½" in from each end
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" in from each end
     - 2 nails in the middle of the board.
 
 ## Step 4 -- Bottom Piece
 
 * Measure between the 2 side pieces under the window, and cut a piece of 1x4 that length.
 * DO NOT caulk this piece.  Nail (PANEL NAILS) it in place
-    - 2 nails 1-½" in from each end
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" in from each end
     - 2 nails in the middle of the board.
 
 `#fullpage("model:exterior_trim/rear_window@1:10")`{=typst}
@@ -94,16 +94,16 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 * Using precut beveled top piece, apply EXTERIOR caulk behind the beveled edge and at both ends, as shown.
 
 * Nail (PANEL NAILS)\
-    - 2 nails 1-½" in from each end\
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" in from each end\
     - 2 nails in the middle of the board.
 
 ## Step 2 \-- Side trim away from door
 
 - Using a pre-cut side trim piece for side of window away from door
 - Apply EXTERIOR caulk as shown for Rear Window
-- 2 nails 1-½" below top
-    - 1 nail in the middle of the board every 8"
-    - 2 nails 1-½" above the bottom.
+- 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" below top
+    - 1 nail in the middle of the board every {{exterior_trim.TRIM_NAIL_SPACING}}"
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" above the bottom.
 
 ## Step 3 \-- Side trim between window and door
 
@@ -114,7 +114,7 @@ Trim boards have an outer and an inner side.  The outer side has vertical groove
 
 * Measure between the two side pieces under the window, and cut a piece of 1x4 that length
 * DO NOT CAULK this piece. Nail it in place (PANEL NAILS)
-    - 2 nails 1-½" in from each end
+    - 2 nails {{exterior_trim.TRIM_NAIL_INSET}}" in from each end
     - 2 nails in the middle of the board
     
 `#fullpage("model:exterior_trim/front_window@1:10")`{=typst}

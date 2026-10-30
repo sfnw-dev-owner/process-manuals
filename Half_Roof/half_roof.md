@@ -47,7 +47,7 @@
 
 # Step 3
 - Place three small blocks between the two end rafters. Start at the top, and for each block
-  - Place a small 6½ inch 2x4 block between the rafters, in the space between a pair of angle irons.
+  - Place a small {{CROSS_BLOCK_LENGTH}} inch 2x4 block between the rafters, in the space between a pair of angle irons.
   - Adjust the position of the block so that it is flush with the rafters at each end. Clamp the rafters below the block
   - Drive 2 brown (\#10) screws through the rafters into each end of the block
   - position screws so that they go into the block near its vertical centerline
@@ -111,7 +111,7 @@ if it hangs over the rafter end
 
 - Pre-drill holes for lag bolts on each of the inner rafters
   - See diagram
-  - Use 13/16" spade bit
+  - Use {{roof.LAG_COUNTERBORE}}" spade bit
   - Bottom edge of hole 1/2" above the 1x8 white board
   - drill perpendicular to the floor, not the white board
   - drill bits in plastic container at station 5
@@ -120,7 +120,7 @@ if it hangs over the rafter end
   - bit in the plastic container
   - drill perpendicular to the floor
 
-- Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) 6¼ inches in from each end. This will help to align the half roof
+- Make a mark on the bottom inside of the 1x6 white board (at the top of the jig) {{FRONT_ROOF_OVERHANG}} inches in from each end. This will help to align the half roof
 when it is installed on the home. There is a pattern block that will make this easy; that block fits over the end of the 1x6 white board.
 
 `#fullpage("model:half_roof/step_07@1:20")`{=typst}

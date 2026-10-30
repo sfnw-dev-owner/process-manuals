@@ -1,9 +1,12 @@
-"""Dimensions from the construction manuals.
+"""The house's dimensions, as the construction manuals state them.
 
-The manuals are the ground truth; the SketchUp model and the QCAD drawings
-(*.dxf) this package was bootstrapped from are not to be trusted where they
-differ. Those files were removed in commit 1492ff3; a citation of one here
-is read with `git show 1492ff3^:<path>`.
+A manual prints a value from here rather than repeating it ({{STUD_LENGTH}}"
+in its text; see render/README.md), so a dimension is changed in this file.
+A citation says where a value is used (the manual's line, when it was
+named) or where it came from: the SketchUp model and the QCAD drawings
+(*.dxf) this package was bootstrapped from, not to be trusted where the
+manuals differed. Those files were removed in commit 1492ff3; a citation of
+one is read with `git show 1492ff3^:<path>`.
 """
 
 # Platform: Platform/platform.md and Platform/images/platform.dxf.

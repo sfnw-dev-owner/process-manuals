@@ -3,7 +3,8 @@
 -- where an image path goes, e.g. `#fullpage("model:platform/step_03@1:20")`{=typst}
 -- (a drawing is printed at 1:N; a page of 3D views has its own size and takes no scale).
 -- render/model2svg.py renders each to SVG (cached in .rendered-figures/) and
--- this filter points the manual at it.
+-- this filter points the manual at it. (The {{values}} a manual takes from
+-- the model are filled in before pandoc runs, by render/values.py.)
 
 local dependencyMode = os.getenv("FIGURE_DEPS") ~= nil -- Set in ./go.
 

@@ -53,7 +53,7 @@
 * Position two 12-foot ladders, one at each end of the building.
 * Preset brown #10x3” screws in each of two structural triangles, as shown in the diagram a couple of pages on from here.  In the two center bays,
   there are four screws, angled enough that you could drive them in with an impact driver.  In the two outer bays, there are two screws angled
-  in from one side of the triangle, starting about ¾” in from the edge of the bottom plate.  Then there are two screws driven in vertically
+  in from one side of the triangle, starting about {{post_tilt_up.TRIANGLE_ROWS[0]}}” in from the edge of the bottom plate.  Then there are two screws driven in vertically
   about 1” toward the center from the seam between the bottom plate and the angled side of the triangle.
 
 ![](model:frame-completion/triangles)
@@ -89,7 +89,7 @@
 While these tasks are being completed, have two crew members position a half-roof assembly against each of the side walls, with the 1x8
 white board at the bottom and facing away from the wall.
 
-Check that there is a pencil line drawn at 6¼” from the front of the 1x6 board (the top of the half roof) all the way down and across
+Check that there is a pencil line drawn at {{FRONT_ROOF_OVERHANG}}” from the front of the 1x6 board (the top of the half roof) all the way down and across
 what will be the bottom of the half roof when it is installed.
 
 Inspect the screws that hold the 1x6 board to the rafters, to make sure that the screw heads do not protrude from the surface of the board.
