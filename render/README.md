@@ -62,10 +62,11 @@ parallel, and prunes cached figures no manual uses any more.
 
 ### Where things live
 
-- `common/model/dimensions.py`: every dimension the manuals state, named,
-  with a note of where it's used (`NAME = value  # note; manual.md:line`).
+- `common/model/dimensions.py`: every dimension the manuals state, named.
   The manuals print these values (`{{NAME}}`, above) rather than repeating
-  them, so this file is where a dimension is changed.
+  them, so this file is where a dimension is changed; `render/all` fails if
+  a name there is used by no manual and no model module
+  (`render/values.py --unused`).
 - `common/model/<assembly>.py` (`platform_assembly`, `walls`, `roof`, `roofing`,
   `gables`, `interior`, `interior_roof`, `doors`, `flooring`, `exterior_trim`,
   `house`): the parts,

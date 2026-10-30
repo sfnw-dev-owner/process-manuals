@@ -1,8 +1,8 @@
 """The gable ends: the structural triangles under the rafters at the end
 walls, and the siding and Z-flashing that skin them.
 
-Per Structural_Triangle/triangle.dxf (triangle.md, Cut_Lists/
-Structural_Triangle_Parts.md) and Exterior_Trim/exterior_trim.md (triangles).
+Per Structural_Triangle/triangle.md, Cut_Lists/Structural_Triangle_Parts.md
+and Exterior_Trim/exterior_trim.md (triangles).
 
 Frame: the roof's (roof.py), the triangle's own X from the wall's center.
 """
@@ -18,14 +18,14 @@ from .roof import RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP, T
 
 # ── structural triangles and gables ────────────────────────────────────────
 
-# Structural_Triangle/triangle.dxf. Frame: X along the end wall from its
+# Structural triangle. Frame: X along the end wall from its
 # center, Y through it (3 1/2", flush with the wall framing), Z up from the top
 # of the wall. Its sloped top edges carry the rafters' underside.
 TRI_HALF = END_WALL_PLATE_LENGTH / 2
 TRI_BASE = thickness("2x4")  # the base 2x4 lies flat on the wall's top plate
-TRI_SIDE_FOOT = 5  # the sides' feet on the base (triangle.dxf)
+TRI_SIDE_FOOT = 5  # the sides' feet on the base
 TRI_NOTCH_HALF = 1 + 1/8  # the notch at the peak for the ridge beam
-# Studs, by the distance of their inner edge from the center (triangle.dxf):
+# Studs, by the distance of their inner edge from the center:
 # the center stud C is centered; E studs beside it; D studs further out.
 TRI_E = thickness("2x4") / 2
 TRI_D = 16 + 1/2
@@ -122,7 +122,7 @@ def structural_triangle():
 # The gable skin (Exterior_Trim/exterior_trim.md, "Exterior Triangles"):
 # pre-cut Tyvek stapled to the structural triangle, Z-flashing over the top
 # of the wall's siding, then T1-11 in two pieces: a large triangle and a small
-# one at the left corner (as seen from outside; images/triangles.dxf).
+# one at the left corner (as seen from outside).
 # Frame: X along the wall from its center, Y outward from the framing, Z up
 # from the wall top. Seen from outside, the left is +X.
 GABLE_NOTCH = thickness(RIDGE_BOARD)  # half-width of the notch around the ridge boards
@@ -130,7 +130,7 @@ Z_FLASHING = 1/32  # sheet metal
 Z_FLASHING_SHORT_LEG = 1/2  # down over the wall's siding
 Z_FLASHING_LONG_LEG = 2  # up behind the gable siding
 GABLE_SIDING_LIFT = 1/2  # "a pencil-width above the Z-flashing fold"
-GABLE_SMALL_PIECE = 8 + 1/2  # the small triangle's length at the bottom (triangles.dxf)
+GABLE_SMALL_PIECE = 8 + 1/2  # the small triangle's length at the bottom
 
 
 def gable_outline(bottom=0):

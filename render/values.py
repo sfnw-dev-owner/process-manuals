@@ -4,6 +4,7 @@ render/model.lua replaces it with the value of NAME in
 common/model/dimensions.py, so a number lives in one place.
 
   values.py [--deps] EXPR...   prints JSON: {"values": {EXPR: text}, "deps": [path]}
+  values.py --unused           lists the names in dimensions.py nothing uses (exit 1 if any)
 
 An expression is a name from dimensions.py (SIDING_HEIGHT), a name from
 another model module (walls.AC_SIDE_BLOCK), an element of a tuple
@@ -14,10 +15,13 @@ number is a length in inches, printed as the shop writes it (93½”, 77¾”,
 prints with ° and dimensions.Count prints bare. The suffix :ft prints a
 length in feet and inches ({{TAR_PAPER_LENGTH:ft}} → 13’4”). "deps" lists
 the modules the values came from, for the manual's last-revision date.
+--unused (run by render/all) fails when a name in dimensions.py is neither
+printed by a manual nor used by a model module.
 """
 
 import json
 import pathlib
+import re
 import sys
 from fractions import Fraction
 
@@ -102,7 +106,24 @@ def evaluate(exprs):
     return values, namespace.modules
 
 
+def unused():
+    """The names in dimensions.py no manual prints and no model module uses."""
+    manuals = [p for p in REPO.rglob("*.md")
+               if p.name not in ("README.md", "TODO.md") and "archived" not in p.parts and ".git" not in p.parts]
+    printed = "\n".join(m.group(1) for p in manuals for m in re.finditer(r"\{\{([^{}]+)\}\}", p.read_text()))
+    modules = [p for p in list((REPO / "common" / "model").rglob("*.py")) + list((REPO / "render").glob("*.py"))
+               if p.name != "dimensions.py"]
+    code = "\n".join(p.read_text() for p in modules)
+    names = [k for k, v in vars(dimensions).items() if not k.startswith("_") and not isinstance(v, type)]
+    return [n for n in names if not re.search(rf"\b{n}\b", printed) and not re.search(rf"\b{n}\b", code)]
+
+
 if __name__ == "__main__":
+    if sys.argv[1:] == ["--unused"]:
+        names = unused()
+        for n in names:
+            print(f"values.py: dimensions.{n} is used by no manual and no model module")
+        sys.exit(1 if names else 0)
     exprs = [a for a in sys.argv[1:] if a != "--deps"]
     values, modules = evaluate(exprs)
     deps = sorted("/" + str(pathlib.Path(m.__file__).resolve().relative_to(REPO)) for m in modules) if "--deps" in sys.argv else []

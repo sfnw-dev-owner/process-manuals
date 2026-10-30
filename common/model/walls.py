@@ -1,8 +1,8 @@
 """The four walls: 2x4 framing, house wrap and T1-11 siding.
 
-Per Side_Walls/sidewall_1.md, Front_Wall/front_wall_ada.md, Rear_Wall/rear_wall.md
-and the framing drawings in their images/*.dxf (drawn from the other face, so
-mirrored left-to-right relative to the walls here).
+Per Side_Walls/sidewall_1.md, Front_Wall/front_wall_ada.md and Rear_Wall/rear_wall.md
+(whose framing figures are drawn from the other face, so mirrored
+left-to-right relative to the walls here).
 
 Every wall is built in its own frame: X along the wall, left to right as seen
 from inside the house; Y through it (0 at the inside face of the framing,
@@ -91,7 +91,7 @@ def side_wall_steps():
 
 @component
 def side_wall_framing():
-    """Side_Walls/images/side_wall.dxf: plates, studs, and flat end studs."""
+    """The side wall's framing: plates, studs, and flat end studs."""
     return [], [m for members in side_wall_steps().values() for m in members]
 
 
@@ -141,30 +141,30 @@ def siding_panel_plain():
 END_SIDING_X = -WALL_DEPTH  # siding starts at the outside of the side wall framing
 END_SIDING_WIDTH = 2 * SIDING_PANEL_WIDTH
 
-# Window (both end walls): Front_Wall/images/front_wall_ada.dxf, Rear_Wall/images/rear_wall.dxf.
+# Window (both end walls).
 WINDOW_WIDTH, WINDOW_HEIGHT = WINDOW_OPENING
 WINDOW_X = 46 + 3/4  # rough opening, from the start of the wall
 SILL_Z = 43 + 1/2  # bottom of the flat 2x4 sill
 WINDOW_Z = SILL_Z + STUD  # rough opening bottom
 HEADER_Z = WINDOW_Z + WINDOW_HEIGHT  # three flat 2x4s above the window, up to the top plate
 
-# Front door (front wall): front_wall_ada.dxf.
+# Front door (front wall).
 DOOR_X = 4 + 1/4  # rough opening, from the start of the wall
 DOOR_HEADER_Z = [81 + 3/4, 84]  # two flat 2x4 headers; the lower one tops the opening
-DOOR_HEADER_SPACER = 3/4  # plywood between the headers (front_wall_ada.dxf step 4)
+DOOR_HEADER_SPACER = 3/4  # plywood between the headers
 # Spacer blocks between the end stud and the door's king stud, leaving 8"
 # clear above the bottom plate and below the top plate (front_wall_ada.md
-# step 5; positions from front_wall_ada.dxf layer step_05).
+# step 5).
 DOOR_SPACER_BLOCK = (1 + 1/4, 10)  # width along the wall, length
 DOOR_SPACER_BLOCK_Z = [9 + 1/2, 29 + 1/2, 49 + 1/2, 67 + 1/2]
 
-# A/C opening (rear wall): rear_wall.dxf, Rear_Wall/rear_wall.md:77-81.
+# A/C opening (rear wall): Rear_Wall/rear_wall.md step 4.
 AC_X = 23 + 1/4
 AC_SILL_Z = 68 + 3/4  # the lower 20 1/2" block
 AC_HEADER_Z = WALL_HEIGHT - 2 * STUD  # the upper block, under the top plate
 AC_SIDE_BLOCK = 13 + 3/4  # vertical block beside the opening, between the two
 # 6 1/2" blocks under the A/C sill: one against the left stud, two side by
-# side against the right studs (rear_wall.md step 4b; rear_wall.dxf layer step_04b).
+# side against the right studs (rear_wall.md step 4b).
 AC_UNDER_BLOCK = 6 + 1/2
 
 
@@ -236,7 +236,7 @@ def front_wall_framing_in_jig():
 @component
 def front_wall_framing():
     """The front wall's framing in the house: after tilt-up the bottom plate
-    is cut out across the doorway (post-tilt-up/frame-completion.md:39)."""
+    is cut out across the doorway (post-tilt-up/frame-completion.md)."""
     members = [m for members in front_wall_steps().values() for m in members]
     members = [m for m in members if m[0] is not end_wall_plate or m[1] != Location()]
     members += [
@@ -288,7 +288,7 @@ def rear_wall_steps():
 
 @component
 def rear_wall_framing():
-    """Rear_Wall/images/rear_wall.dxf."""
+    """The rear wall's framing."""
     return [], [m for members in rear_wall_steps().values() for m in members]
 
 

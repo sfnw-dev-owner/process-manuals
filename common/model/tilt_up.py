@@ -5,8 +5,7 @@ clamped and nailed to its neighbors; and the crew doing it.
 Everything here is in the house's frame (see house.py). Each wall's stages
 are motions of the wall from its place in the house (a slide, or a turn about
 one axis and a slide), as the SketchUp model the manual's pictures were drawn
-from (SketchUp/Tiny_Home_Model_-_with_interiors.skp, "Tilt Up" group) had
-them. The platform stands on its stands there: the ground, where the jigs and
+from (its "Tilt Up" group) had them. The platform stands on its stands there: the ground, where the jigs and
 the crew stand, is GROUND below the bottom of the skids.
 """
 

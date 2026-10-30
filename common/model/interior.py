@@ -1,9 +1,8 @@
 """The inside of the walls: plywood wall panels, trim, window shelves and
 liners.
 
-Per Interior_Panels/interior_panels.md (+ images/wall_panels.dxf),
-Cut_Lists/Interior_Panels_Cut_List.md (panel sizes), Interior_Trim/interior_trim.md
-(+ Images/combo_trim.dxf, rear_window.dxf, front_window.dxf) and
+Per Interior_Panels/interior_panels.md, Cut_Lists/Interior_Panels_Cut_List.md
+(panel sizes), Interior_Trim/interior_trim.md and
 Cut_Lists/Interior_Trim_Items.md (trim stock). The ceiling, the half-triangle
 panels, their trim and the vent cap are in interior_roof.py.
 
@@ -28,7 +27,7 @@ from .walls import (
 
 # ── panels ─────────────────────────────────────────────────────────────────
 
-PANEL = 15/32  # interior plywood; Panel_Cutting/Panel_Saw_Operation.md:121
+PANEL = 15/32  # interior plywood
 
 # Panel sizes (along the wall, up it); Cut_Lists/Interior_Panels_Cut_List.md.
 PANEL_A = (92, 48)  # side walls, upper, at the rear
@@ -40,7 +39,7 @@ PANEL_E2 = (4, 38 + 1/4)  # front wall, the strip on the other side of the door
 PANEL_G = (88, 48)  # rear wall, upper
 PANEL_H = (88, 38 + 1/4)  # rear wall, lower
 
-# The panels stand 1/2" up (on the finished floor's level; wall_panels.dxf).
+# The panels stand 1/2" up (on the finished floor's level).
 # The end walls' panels stop 1/2" short of each side wall's framing, where
 # the side walls' panels are; the side walls' panels start 1/2" from the end
 # walls' framing, clear of the end walls' panels.

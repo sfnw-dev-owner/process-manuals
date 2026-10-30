@@ -2,11 +2,9 @@
 half-triangle panels on the end walls, the triangle and ceiling trim, and the
 vent cap along the ridge.
 
-Per Interior_Panels/interior_panels.md (+ images/ceiling_panels.dxf,
-images/wall_panels.dxf), Cut_Lists/Interior_Panels_Cut_List.md,
+Per Interior_Panels/interior_panels.md, Cut_Lists/Interior_Panels_Cut_List.md,
 Cut_Lists/Insulation.md, Cut_Lists/Interior_Trim_Items.md,
-Interior_Trim/interior_trim.md and Interior_Trim/vent_cap_install.md
-(+ Images/vent_cap.dxf).
+Interior_Trim/interior_trim.md and Interior_Trim/vent_cap_install.md.
 
 Frame: the roof's (roof.py): the house's X and Y, Z = 0 at the top of the walls.
 """
@@ -154,8 +152,7 @@ def triangle_insulation():
 
 # ── end walls: half-triangle panels and trim ───────────────────────────────
 
-# Half-triangle panel (Interior_Panels/images/wall_panels.dxf, layer
-# 04_Triangle_Panels): 44 1/2" along the bottom, a 1" x 2" notch at the peak.
+# Half-triangle panel: 44 1/2" along the bottom, a 1" x 2" notch at the peak.
 HALF_TRIANGLE_BASE = END_WALL_PLATE_LENGTH / 2
 HALF_TRIANGLE_NOTCH = (1, 2)
 TRIANGLE_TRIM_GAP = 1/2  # between an angled piece's end and the center piece
@@ -210,7 +207,7 @@ END_INTERIOR_AT = Pos(END_WALL_PLATE_LENGTH / 2, 0, WALL_HEIGHT) * Rot(Z=180)
 
 
 def half_triangle(sign):
-    """A half-triangle panel (wall_panels.dxf, layer 04_Triangle_Panels), its
+    """A half-triangle panel, its
     short edge at the center (x = 0), a 1" x 2" notch at the peak; sign -1
     for the left one as seen from inside, +1 for the right."""
     b = HALF_TRIANGLE_BASE
@@ -272,7 +269,7 @@ VENT_CAP_FRONT = INSIDE_FRONT - PANEL - thickness(TRIM)
 VENT_CAP_SEAM = VENT_CAP_REAR + VENT_CAP_LENGTH
 VENT_CAP_SHORT = VENT_CAP_FRONT - VENT_CAP_SEAM  # cut to fit
 
-# Screw holes (Images/vent_cap.dxf): drilled and countersunk in pairs, 3 1/2"
+# Screw holes: drilled and countersunk in pairs, 3 1/2"
 # in from each long edge, over the blocks' centers: 1 3/4" from the ends at
 # the walls, 3/4" from the seam (the blocks there are shared), and at the
 # middle block.

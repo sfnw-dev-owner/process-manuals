@@ -2,7 +2,7 @@
 and a 3/4" plywood subfloor. (Named platform_assembly so it doesn't shadow
 the standard library's platform module.)
 
-Per Platform/platform.md and Platform/images/platform.dxf.
+Per Platform/platform.md.
 
 Frame: origin at the outside corner of the 2x6 frame, level with the bottom of
 the skids. X runs across the platform (0 to PLATFORM_WIDTH), Y along it
@@ -126,7 +126,7 @@ def platform_plywood():
 
 
 # The skid ends are cut at an angle, "longer part of the angled edges up"
-# (platform.md:55): each bottom corner loses a 4" x 3 1/2" triangle.
+# (platform.md): each bottom corner loses a 4" x 3 1/2" triangle.
 SKID_END_CUT = (4, 3 + 1/2)  # as modeled in SketchUp
 
 

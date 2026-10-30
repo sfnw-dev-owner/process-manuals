@@ -5,7 +5,7 @@ that push a half-roof up, bar clamps, screws and lag bolts.
 
 Frame: the house's (house.py). The loose things' places at each stage (the
 half-roofs going up, ladders, funky boards, people, clamps) are where
-SketchUp/Tiny_Home_Model_-_with_interiors.skp's tilt-up scenes had them,
+the SketchUp model's tilt-up scenes had them,
 converted to the house's frame: SKETCHUP_HOUSE is where that model had the
 house.
 """
@@ -527,7 +527,7 @@ def ridge_clamps(bay_y, side_y=None, side_z=100.208):
 def ridge_mark():
     """The pencil line on a half-roof's 1x6, 6 1/4" from its front end, down
     its inner face (the one the other half's 1x6 meets) and across its top
-    (frame-completion.md:92): a sliver standing off the board, so it draws as
+    (frame-completion.md): a sliver standing off the board, so it draws as
     a line. Its origin is on that face, at the board's bottom."""
     from .roof import RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP
     h = RIDGE_TOP - RIDGE_BOARD_BOTTOM

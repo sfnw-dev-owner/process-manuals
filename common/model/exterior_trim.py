@@ -22,7 +22,7 @@ FRONT_WALL_IN_HOUSE = Pos(WALL_DEPTH, PLATFORM_LENGTH - WALL_DEPTH, DECK)
 REAR_WALL_IN_HOUSE = Pos(PLATFORM_WIDTH - WALL_DEPTH, WALL_DEPTH, DECK) * Rot(Z=180)
 
 # ── corner boards ──────────────────────────────────────────────────────────
-# Exterior_Trim/exterior_trim.md (Corner Trim) and images/back_corner.dxf.
+# Exterior_Trim/exterior_trim.md (Corner Trim).
 # At each corner two 1x4s, flush with the T1-11 siding top and bottom: Board
 # #1 on the side wall, its corner edge flush with the end wall's siding, its
 # top notched around the rafter that crosses it; Board #2 on the end wall,
@@ -163,8 +163,8 @@ def external_trim():
 
 
 # ── window trim ────────────────────────────────────────────────────────────
-# Exterior_Trim/exterior_trim.md (Rear/Front Window Trim) and
-# images/{rear,front}_window.dxf. Precut 1x4s around the window's rough
+# Exterior_Trim/exterior_trim.md (Rear/Front Window Trim). Precut 1x4s
+# around the window's rough
 # opening, overlapping it by TRIM_REVEAL on the window's flange: two sides,
 # a top with a 30° bevel on its upper edge (overhanging the left side 1/2",
 # flush with the right one: an A/C unit goes to the right of the rear

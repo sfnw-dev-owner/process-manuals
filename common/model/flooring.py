@@ -1,7 +1,7 @@
 """The floating floor: laminate planks over the subfloor, and the flooring
 strip across the doorway.
 
-Per floor_door/floor_install.md and images/flooring.dxf. Frame: the house's
+Per floor_door/floor_install.md. Frame: the house's
 (see house.py), with Z = 0 at the top of the subfloor (the deck): X across
 the house (the door-side side wall at X = 0), Y along it (the rear wall at
 Y = 0, the front wall with the doorway at the far end).
@@ -17,10 +17,10 @@ from .common import CORNER, component
 from .walls import DOOR_OPENING, DOOR_X, SIDING, WALL_DEPTH, WRAP
 
 FLOORING = 3/8  # plank thickness (not given in the manuals)
-PLANK_WIDTH = 9 + 1/2  # face width, flooring.dxf
-PLANK_LENGTH = 48  # a full length, flooring.dxf
+PLANK_WIDTH = 9 + 1/2  # face width
+PLANK_LENGTH = 48  # a full length
 HALF_PLANK = PLANK_LENGTH / 2  # "start with 2' length" on even rows
-INTERIOR_PLYWOOD = 1/2  # the wall panels the floor stops short of (flooring.dxf, door_preparation.dxf)
+INTERIOR_PLYWOOD = 1/2  # the wall panels the floor stops short of
 WALL_GAP = 1/4  # "1/4" space from walls", kept with spacer strips
 INTO_DOORWAY = 3/4  # the limit line: the floor extends 3/4" past the inside of the framing
 DOORWAY_STRIP = (36, 3)  # "3" strip of flooring across the doorway" (floor_install.md, door_manual.md), length and width;

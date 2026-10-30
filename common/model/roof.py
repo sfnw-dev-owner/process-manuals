@@ -4,8 +4,8 @@ plywood deck, and the bird blocks and vent blocks between the rafters. The roofi
 roofing.py, the gable ends (structural triangles and gable siding) in
 gables.py, and the assembled roof in house.py.
 
-Per Half_Roof/half_roof.md and images/half_roof.dxf; post-tilt-up/frame-completion.md
-and roof-blocking.md; Roof/roof_manual.md.
+Per Half_Roof/half_roof.md; post-tilt-up/frame-completion.md and
+roof-blocking.md; Roof/roof_manual.md.
 
 Frame: the house's X (across) and Y (along); Z = 0 at the top of the walls.
 
@@ -67,7 +67,7 @@ DECK_TOP_U = TAIL_U + width(EAVE_BOARD) + ROOF_DECK_SHEET[0]  # top edge of the 
 BIRDSMOUTH_SEAT = SEAT_X + SIDING_FACE
 
 # Along the house: the half-roofs overhang the front wall's framing by
-# FRONT_ROOF_OVERHANG (frame-completion.md:92), and run HALF_ROOF_LENGTH.
+# FRONT_ROOF_OVERHANG (frame-completion.md), and run HALF_ROOF_LENGTH.
 ROOF_Y = PLATFORM_LENGTH + FRONT_ROOF_OVERHANG - HALF_ROOF_LENGTH
 
 # Rafters along the half-roof: at both ends, doubled one slot in from each
@@ -164,7 +164,7 @@ def rafter():
 
 # Lag bolt bores (Half_Roof/half_roof.md Step 7): vertical, a 13/16" spade-bit
 # counterbore whose lower edge is 1/2" above the 1x8 eave board, then a
-# straight bit down through the rafter. (half_roof.dxf draws the bores
+# straight bit down through the rafter. (The old drawing had the bores
 # ~4" further up the rafter, where they would miss the wall's top plate; the
 # text wins.) The rafters at the ends and those carrying angle plates aren't bored.
 UNBORED = {0, 1, len(RAFTER_Y) - 2, len(RAFTER_Y) - 1}
@@ -197,7 +197,7 @@ def bored_rafter():
 ANGLE_PLATE = (3 + 1/2, 1 + 3/4, 1 + 1/2)  # length along the rafter, out, up the rafter's face
 ANGLE_PLATE_GAUGE = 0.05  # 18 ga
 ANGLE_PLATE_EDGES = (ANGLE_PLATE_FROM_TIP, ANGLE_PLATE_FROM_TIP + ANGLE_PLATE[0])  # (near, far) edges, from the tip
-ANGLE_PLATE_HOLE = 0.39  # diameter (half_roof.dxf)
+ANGLE_PLATE_HOLE = 0.39  # diameter
 ANGLE_PLATE_HOLES = (1/2, 1 + 3/4, 3)  # along the flat leg, from its near end
 ANGLE_PLATE_HOLE_OUT = 1.4  # out from the rafter's face
 
@@ -210,7 +210,7 @@ def angle_plate():
     length, out, up = ANGLE_PLATE
     g = ANGLE_PLATE_GAUGE
     flat = Pos(-length, 0, 0) * Box(length, out, g, align=CORNER)
-    for x in ANGLE_PLATE_HOLES:  # the flat leg's screw holes (as half_roof.dxf drew them)
+    for x in ANGLE_PLATE_HOLES:  # the flat leg's screw holes
         flat -= Pos(-length + x, ANGLE_PLATE_HOLE_OUT, -1) * Cylinder(ANGLE_PLATE_HOLE / 2, 3, align=(Align.CENTER, Align.CENTER, Align.MIN))
     vertical = Pos(-length, 0, 0) * Box(length, g, up, align=CORNER)
     for x in ANGLE_PLATE_HOLES:  # and the leg on the rafter's face
@@ -243,11 +243,11 @@ def deck_sheet():
     return [Sheet(DECK, width_, length_, facing="Z")], []
 
 
-# The deck's two options (Roof/roof_manual.md "Plywood Deck"; images/
-# panel_options.dxf): two equal sheets (Panel_Saw_Operation.md), or three
+# The deck's two options (Roof/roof_manual.md "Plywood Deck"): two equal
+# sheets (Panel_Saw_Operation.md), or three
 # unequal pieces whose seams miss the rafters, joined by three hurricane
 # (H-) clips on each seam, evenly spaced up the slope.
-ROOF_DECK_PIECES = (18 + 1/2, 96, 41)  # the 3-piece option, from the front (panel_options.dxf)
+ROOF_DECK_PIECES = (18 + 1/2, 96, 41)  # the 3-piece option, from the front
 H_CLIPS_PER_SEAM = 3
 H_CLIP = (1 + 1/2, 1, 1/16)  # along the seam, across it, thick
 
@@ -297,7 +297,7 @@ def bird_block(bay):
 def _bird_block(length):
     """A 2x4 on edge on the wall's top plate between two rafters, its outer
     face flush with the siding, its top ripped at ROOF_PITCH to meet the roof
-    deck on the rafters (Back_Saw_Cut_List.md:23: "band saw for 18.5 deg angle
+    deck on the rafters (Back_Saw_Cut_List.md: "band saw for 18.5 deg angle
     cut"). X in from the siding, Y along the wall, Z up from the plate."""
     @component
     def bird_block_():

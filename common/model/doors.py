@@ -1,7 +1,7 @@
 """The front door: a prehung steel door converted to an ADA threshold, and
 what goes into the doorway with it.
 
-Per floor_door/door_manual.md and images/door_preparation.dxf.
+Per floor_door/door_manual.md.
 
 The door swings in. The door assembly's frame: X across the doorway, from
 the outside face of the hinge-side jamb (on the left, seen from inside); Y
@@ -16,7 +16,7 @@ from .common import CORNER, component
 from .flooring import FLOORING, INTERIOR_PLYWOOD
 from .walls import DOOR_HEADER_Z, DOOR_OPENING, DOOR_X, SIDING, WALL_DEPTH, WRAP
 
-# Frame (door_preparation.dxf, 2_Door and 5_Strike Plate).
+# Frame.
 JAMB = 3/4  # thickness
 JAMB_DEPTH = 4 + 1/2  # across the wall: from the siding's face to 1/8" past the wall panels
 STOP = (1 + 1/2, 1/2)  # the door-stop: width, and how far it stands off the jamb
@@ -27,7 +27,7 @@ FRAME_CUT = 80 + 3/4  # the legs cut this far down from the outside top of the f
 BRICKMOLD = (1, 1)  # width (as drawn), thickness
 JAMB_HEIGHT = FRAME_CUT - BRICKMOLD[0]  # the brickmold stands 1" above the head jamb
 
-# Door (door_preparation.dxf 2_Door).
+# Door.
 SLAB = (36, 1 + 3/4, 78 + 1/2)
 SLAB_GAP = 1/8  # between the door and the jambs, "about 1/8" after shimming"
 HINGE = (1/2, 1/2, 4)  # a 4" hinge's knuckle, as seen from inside
@@ -39,7 +39,7 @@ KNOB_ROSE = 2  # radius
 # ADA threshold: "pre-trimmed ... exactly 36" long", "1/4" thick".
 THRESHOLD = (36, 3 + 1/2, 1/4)  # length, depth (not given in the manuals), thickness
 
-# Strike plate, on the latch jamb (door_preparation.dxf 5_Strike Plate).
+# Strike plate, on the latch jamb.
 STRIKE_PLATE = (1 + 5/16, 1 + 1/4)  # across the jamb (from its inside edge), tall
 LATCH_HOLE = (3/4, 1)  # wide, tall
 LATCH_HOLE_FROM_INSIDE = 25/32  # center
