@@ -247,7 +247,7 @@ def deck_sheet():
 # sheets (Panel_Saw_Operation.md), or three
 # unequal pieces whose seams miss the rafters, joined by three hurricane
 # (H-) clips on each seam, evenly spaced up the slope.
-ROOF_DECK_PIECES = (18 + 1/2, 96, 41)  # the 3-piece option, from the front
+ROOF_DECK_PIECES = (18 + 1/4, 96, 41 + 1/4)  # the 3-piece option, from the front
 H_CLIPS_PER_SEAM = 3
 H_CLIP = (1 + 1/2, 1, 1/16)  # along the seam, across it, thick
 

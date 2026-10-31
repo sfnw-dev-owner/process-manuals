@@ -126,8 +126,7 @@ for the next vent.
 `#pagebreak()`{=typst}
  
 ## Plywood Deck
- - There are two options for each half of the deck, as noted in the Material Preparation section: either 2 equal-width sheets, or 3 unequal pieces.
- <!-- TODO: The Material Preparation section doesn't give the 3-piece sizes; the model takes 18½", 96" and 41" (from the front) from panel_options.dxf, and spaces the three H-clips per seam evenly. -->
+ - There are two options for each half of the deck: either 2 equal-width sheets ({{ROOF_DECK_SHEET[1]}} long), or 3 unequal pieces ({{roof.ROOF_DECK_PIECES[0]}}, {{roof.ROOF_DECK_PIECES[1]}} and {{roof.ROOF_DECK_PIECES[2]}} long, from the front).
  - In the first option, the sheets line up with the center rafter; in the second, the seams do not.
  - In the second option, use three hurricane clips on each seam, evenly spaced, to insure that the roof deck is a single plane.  If the plywood pieces cannot be made to line up because of bowing, ask for help from the factory manager.
  - Position the plywood tight against the 1x8 white board at the bottom of the half roof.  Line up the ends of the roof with the end rafters.  The plywood may not extend all the way to the outer edge of the rafters; a difference of ½" is acceptable.

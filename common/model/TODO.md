@@ -17,8 +17,3 @@
   (`glass()`), as the drawings did.
 - `figures/exterior_trim.py` cuts the siding's bottom edge off in the
   triangles figure (`"wall"` parts' clip), as the drawing ran off the page.
-
-## Open items from the rewrite
-
-- See the `<!-- TODO: ... -->` comments in `Roof/roof_manual.md` and
-  `Interior_Trim/interior_trim.md`.
