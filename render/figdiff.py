@@ -420,9 +420,10 @@ class _Raster:
         if bw < 1 or bh < 1:
             return
         icon = icon.resize((bw, bh))
-        if ax * by - ay * bx < 0:  # mirrored
-            icon = icon.transpose(Image.FLIP_LEFT_RIGHT)
         angle = -math.degrees(math.atan2(ay, ax))
+        if ax * by - ay * bx < 0:  # mirrored: flip it, and the x axis points the other way
+            icon = icon.transpose(Image.FLIP_LEFT_RIGHT)
+            angle += 180
         if abs(angle) > 0.1:
             icon = icon.rotate(angle, expand=True)
         xs, ys = [p[0] for p in pts], [p[1] for p in pts]
