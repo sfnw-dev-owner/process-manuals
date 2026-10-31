@@ -161,7 +161,7 @@ def raising(side, step, crew=None, ladders=False, installed=()):
     def build():
         parts = house() + roof(installed) + shapes([P.half_roof_at(side, step)] + P.funky_boards(side, step))
         if ladders:
-            parts += shapes(P.LADDERS[side])
+            parts += shapes(P.ladders(side))
         return [view(main_rect(), "front lhs", parts, margin=0.1, notes=people(crew) if crew else ())], []
     return build
 

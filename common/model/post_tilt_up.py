@@ -21,9 +21,9 @@ from .common import CORNER, component, driven, key
 from .house import WALL_TOP
 from .platform_assembly import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from .roof import (
-    PLUMB_DEPTH, RAFTER_Y, RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, TIP_X, VENT_BLOCK_HEIGHT,
-    VENT_BLOCK_THICKNESS, angle_plate, bird_block, bird_length, bored_rafter, cross_block, eave_board,
-    half_roof, rafter, ridge_board, underside, vent_block, vent_length, wall_bays
+    PLUMB_DEPTH, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, ROOF_PITCH, SIDING_FACE,
+    SLOPE, TAIL_U, TIP_X, VENT_BLOCK_HEIGHT, VENT_BLOCK_THICKNESS, angle_plate, bird_block, bird_length, bored_rafter,
+    cross_block, eave_board, half_roof, rafter, ridge_board, underside, vent_block, vent_length, wall_bays
 )
 from .gables import TRI_HALF, structural_triangle
 from .walls import WALL_DEPTH, front_wall, rear_wall, side_wall
@@ -73,18 +73,35 @@ HALF_ROOFS = {
     "right": (ROOF * Pos(PLATFORM_WIDTH, 0, 0), ["mirror"]),
 }
 
-# The half-roofs on the way up (frame-completion.md "Raise Half-Roofs"), as
-# moves of the installed half: lying against the side wall's foot (step 1),
-# leaning on its bottom (2), pushed up on the funky boards (3). The right
-# half goes up first ("LHS" in the SketchUp model and the LayOut pages).
-RAISING = {
-    ("right", 1): Location((-18.495, -1.606, 29.313), (0, 56, 0)),
-    ("right", 2): Location((-18.763, -1.606, 66.688), (0, 56, 0)),
-    ("right", 3): Location((-24.701, -1.606, 93.0), (0, 56, 0)),
-    ("left", 1): Location((55.961, -1.606, -50.275), (0, -56, 0)),
-    ("left", 2): Location((55.961, -1.606, -12.9), (0, -56, 0)),
-    ("left", 3): Location((55.961, -1.606, 13.413), (0, -56, 0)),
-}
+# The half-roofs on the way up (frame-completion.md "Raise Half-Roofs"): a
+# half is raised leaning against the side wall it goes on, eave board down,
+# RAISE_LEAN from level: set on the floor against the wall (stage 1), lifted
+# by the crew (2), pushed up on the funky boards (3). A stage is where its
+# bottom edge (the rafter tails' outer corner, under the eave board) is, out
+# from the siding and up from the ground; the stage's funky boards are under
+# that edge (see funky_boards; stage 4: still under the installed half).
+RAISE_LEAN = 75  # degrees from level
+RAISE_STAGES = {1: (30, 0), 2: (30, 48), 3: (24, 76)}  # stage -> (out, up): "about 4 feet off the floor", then up the wall
+TAIL_EDGE = (SLOPE * Pos(TAIL_U, 0, 0)).position  # the rafter tails' bottom outer edge, in the roof's frame (left half)
+
+
+def _mirrored_x(x):
+    """x mirrored across the ridge, for the right half."""
+    return 2 * RIDGE_X - x
+
+
+def raised(side, stage):
+    """The move, in the house's frame, taking a half-roof from its installed
+    place to a raising stage."""
+    from .tilt_up import GROUND  # (tilt_up imports this module's clamp)
+    out, up = RAISE_STAGES[stage]
+    lean = RAISE_LEAN - ROOF_PITCH  # past its installed slope
+    edge = ROOF * Pos(*TAIL_EDGE)  # the half's bottom edge, installed
+    if side == "left":
+        at, pivot, turn = (-(SIDING_FACE + out), 0, GROUND + up), edge.position, -lean
+    else:
+        at, pivot, turn = (PLATFORM_WIDTH + SIDING_FACE + out, 0, GROUND + up), Vector(_mirrored_x(edge.position.X), 0, edge.position.Z), lean
+    return Pos(*at) * Rot(Y=turn) * Pos(-pivot.X, -pivot.Y, -pivot.Z)
 
 
 def on_half(side, x, y, z):
@@ -94,11 +111,11 @@ def on_half(side, x, y, z):
     return loc * Pos(-x if mods else x, y, z), mods
 
 
-def half_roof_at(side, step=None):
-    """(component, placement, mods) for a half-roof, installed or raising."""
+def half_roof_at(side, stage=None):
+    """(component, placement, mods) for a half-roof, installed or at a raising stage."""
     loc, mods = HALF_ROOFS[side]
-    if step is not None:
-        loc = RAISING[(side, step)] * loc
+    if stage is not None:
+        loc = raised(side, stage) * loc
     return (half_roof_frame, loc, mods)
 
 
@@ -405,33 +422,70 @@ def vent_guide_board():
     return [Rot(Y=-ROOF_PITCH) * Box(wide, length, thick, align=CORNER)], []
 
 
-# ── where SketchUp had things (house frame) ────────────────────────────────
+# ── the ladders and the funky boards, where the crew has them ──────────────
 
-LADDERS = {  # "12' ladder at each end" and a step stool inside, per half
-    "right": [(step_ladder, Location((71.661, -40.758, -9.875), (0, 0, 0)), ["mirror"]),
-              (step_ladder, Location((71.661, 186.881, -9.875), (0, 0, -180)), []),
-              (step_stool, Location((52.705, 79.058, 3.875), (0, 0, -90)), [])],
-    "left": [(step_ladder, Location((76.69, -12.181, -9.875), (0, 0, -180)), []),
-             (step_ladder, Location((76.69, 186.881, -9.875), (0, 0, -180)), []),
-             (step_stool, Location((29.646, 79.058, 3.875), (0, 0, 90)), ["mirror"])],
-}
-
-FUNKY_BOARDS = {  # (side, raising step) -> the two funky boards under the half-roof
-    ("right", 1): [Location((180.321, -7.358, 6.823), (0, 0.061, 0)), Location((178.946, 125.204, 6.823), (0, 0.061, 0))],
-    ("right", 2): [Location((176.31, 2.252, -14.997), (0, -63.1, 0)), Location((177.987, 135.101, -11.691), (0, -63.1, 0))],
-    ("right", 3): [Location((153.89, 135.385, -0.993), (0, -45, 0)), Location((153.89, 0.447, -0.993), (0, -45, 0))],
-    ("right", 4): [Location((156.192, 134.719, 40.033), (0, -19.8, 0)), Location((156.237, 4.969, 40.049), (0, -19.8, 0))],
-    ("left", 1): [Location((-95.268, -5.352, 6.823), (0, -0.061, 0)), Location((-95.859, 123.892, 6.823), (0, -0.061, 0))],
-    ("left", 2): [Location((-84.356, 1.326, -14.723), (0, 60, 0)), Location((-84.356, 135.264, -14.723), (0, 60, 0))],
-    ("left", 3): [Location((-68.947, 135.135, -0.993), (0, 45, 0)), Location((-68.947, -1.553, -0.993), (0, 45, 0))],
-    ("left", 4): [Location((-22.171, 134.719, 26.863), (0, 14.939, 0)), Location((-22.553, 4.969, 26.965), (0, 14.939, 0))],
-}
-FUNKY_BOARD_MIRRORED = {("right", 4), ("left", 1), ("left", 2), ("left", 3), ("left", 4)}
+LADDER_OUT = 12  # a 12' ladder's near feet from the end wall's siding
+STOOL_FROM_WALL = 12  # the step stool's near feet from the side wall's framing, inside
+STOOL_Y = 60  # the stool's middle along the house: in a stud bay, not under a stud ("not aligned with a stud")
 
 
-def funky_boards(side, step):
-    mods = ["mirror"] if (side, step) in FUNKY_BOARD_MIRRORED else []
-    return [(funky_board, loc, mods) for loc in FUNKY_BOARDS[(side, step)]]
+def ladders(side):
+    """"12' ladder at each end" of the house, spread along the end wall and
+    centered on it, its steps on the far side from the half-roof being raised
+    (so the climber faces it), feet on the ground; and the "3-step ladder
+    inside the home", the stool, on the deck STOOL_FROM_WALL in from that
+    side's wall at STOOL_Y, climbing toward the wall."""
+    from .platform_assembly import DECK
+    from .tilt_up import GROUND
+    center = PLATFORM_WIDTH / 2 - LADDER_SPREAD / 2  # the ladder's rear leg, centered on the house
+    turned = Rot(Z=180) if side == "right" else Rot()  # steps toward -X for the right half, +X for the left
+    shift = Pos(LADDER_SPREAD, LADDER_WIDTH[0], 0) if side == "right" else Pos()  # (turned about its rear-leg corner)
+    out = []
+    for y in (-(SIDING_FACE + LADDER_OUT + LADDER_WIDTH[0]), PLATFORM_LENGTH + SIDING_FACE + LADDER_OUT):
+        out.append((step_ladder, Pos(center, y, GROUND) * shift * turned, []))
+    wide, deep, _ = STOOL
+    if side == "right":  # its stepped leg (frame Y = 0) toward the house's middle, rising toward the wall
+        stool = Pos(PLATFORM_WIDTH - WALL_DEPTH - STOOL_FROM_WALL - deep, STOOL_Y + wide / 2, DECK) * Rot(Z=-90)
+    else:
+        stool = Pos(WALL_DEPTH + STOOL_FROM_WALL + deep, STOOL_Y - wide / 2, DECK) * Rot(Z=90)
+    out.append((step_stool, stool, []))
+    return out
+
+
+FUNKY_LEAN = {3: 45, 4: 15}  # degrees from plumb where the pole can't reach the ground ("push up at a 45° angle")
+FUNKY_STANDING_OUT = 108  # at stage 1 they stand upright on the ground, this far out from the siding
+FUNKY_BOARD_Y = (2, 134)  # along the house: one near the rear end of the eave board, one 15" from its front end
+
+
+def funky_lean(stage):
+    """A funky board's lean from plumb at a raising stage: its foot on the
+    ground and its head under the half-roof's bottom edge where the pole
+    reaches, else held up by its wielder at FUNKY_LEAN."""
+    from .tilt_up import GROUND
+    high, _ = FUNKY_BOARD
+    up = RAISE_STAGES[stage][1] if stage in RAISE_STAGES else WALL_TOP + TAIL_EDGE.Z - GROUND
+    return math.degrees(math.acos(up / high)) if up <= high else FUNKY_LEAN[stage]
+
+
+def funky_boards(side, stage):
+    """The two funky boards at a raising stage: (component, placement, mods).
+    At stage 1 standing on the ground beside the half-roof; after that their
+    heads under its bottom edge, leaning funky_lean() from plumb, feet
+    toward the crew."""
+    from .tilt_up import GROUND
+    high, head = FUNKY_BOARD
+    top = Pos(-head / 2, -thickness("2x4") / 2, -high)  # the board's frame, from its head's top center
+    sign = -1 if side == "left" else 1  # outward from the house
+    out = []
+    for y in FUNKY_BOARD_Y:
+        if stage == 1:
+            x = -(SIDING_FACE + FUNKY_STANDING_OUT) if side == "left" else PLATFORM_WIDTH + SIDING_FACE + FUNKY_STANDING_OUT
+            out.append((funky_board, Pos(x, y, GROUND + high) * top, []))
+        else:
+            comp, loc, mods = half_roof_at(side, None if stage == 4 else stage)
+            edge = loc * Pos(-TAIL_EDGE.X if mods else TAIL_EDGE.X, y, TAIL_EDGE.Z)  # (the right half is mirrored in its own frame)
+            out.append((funky_board, Pos(*edge.position) * Rot(Y=-sign * funky_lean(stage)) * top, []))
+    return out
 
 
 # Clamps and fasteners at each step, (component, placement, mods).
