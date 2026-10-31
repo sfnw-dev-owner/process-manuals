@@ -451,8 +451,9 @@ TRIANGLE_CLAMPS = [triangle_clamp(x) for x in (RIDGE_X - TRI_HALF + 6, RIDGE_X +
 
 # The screws preset in a structural triangle's base (frame-completion.md
 # "Structural Triangles"), on the base's top, in two rows TRIANGLE_ROWS in
-# from its faces: toe screws TOE_IN from each face of the center stud and of
-# each D stud's inner face, tilted TOE_ANGLE toward the stud; in each outer
+# from its faces: in each center bay (between an E stud and a D stud) two
+# toe screws, TOE_IN from the E stud's outer face and TOE_IN from the D
+# stud's inner face, each tilted TOE_ANGLE toward its stud; in each outer
 # bay two screws, OUTER_IN beyond the D stud and OUTER_APART apart, tilted
 # OUTER_ANGLE in from the inside row; and two straight down through each
 # side's foot.
@@ -465,15 +466,15 @@ FOOT_SCREW_IN = 3  # from the side's outer foot
 def triangle_screws(at=None):
     """The 16 screws in the rear triangle's base, in the house's frame (or a
     triangle placed by `at`)."""
-    from .gables import TRI_BASE, TRI_BASE_END, TRI_D, TRI_SIDE_FOOT
+    from .gables import TRI_BASE, TRI_BASE_END, TRI_D, TRI_E, TRI_SIDE_FOOT
     at = at or ROOF * Pos(RIDGE_X, 0, 0)
     stud = thickness("2x4")
     top = TRI_BASE  # the base's top, in the triangle's frame
     toe = (math.sin(math.radians(TOE_ANGLE)), math.cos(math.radians(TOE_ANGLE)))
     out = []
     for sign in (-1, 1):  # each half, by the distance from the center
-        for x in (stud / 2 + TOE_IN, TRI_D - TOE_IN):  # beside the center stud, inside the D stud
-            tilt = -sign if x < TRI_D / 2 else sign  # toward the stud: in toward the center stud, out toward D
+        for x in (TRI_E + stud + TOE_IN, TRI_D - TOE_IN):  # outside the E stud, inside the D stud
+            tilt = -sign if x < TRI_D / 2 else sign  # toward the stud: in toward E, out toward D
             for y in TRIANGLE_ROWS:
                 out.append(((sign * x, y, top), (tilt * toe[0], 0, -toe[1])))
         for x in (TRI_D + stud + OUTER_IN, TRI_D + stud + OUTER_IN + OUTER_APART):  # the outer bay
