@@ -169,13 +169,13 @@ def spacers(x0, x1, tag):
 # from the room, left to right; depths from the panel's face.
 SHELF_TAB_WIDTH = WINDOW_WIDTH - 1/4
 REAR_SHELF = 39 + 3/4
-REAR_SHELF_LEFT = 7 + 3/4  # past the tab's left side (8-1/4" past its right)
-REAR_SHELF_TAB = 3 + 1/8  # into the opening
-REAR_SHELF_DEPTH = 6 + 1/4  # into the room (TODO.md: re-measure)
-REAR_SHELF_CHAMFERS = (2, 2)
+REAR_SHELF_TAB = 2 + 3/4  # into the opening
+REAR_SHELF_DEPTH = 6 + 3/4  # into the room (the board is 9-1/2" wide)
+REAR_SHELF_LEFT = (REAR_SHELF - SHELF_TAB_WIDTH) / 2  # past the tab's left side: the shelf is symmetric about its tab
+REAR_SHELF_CHAMFERS = (2 + 1/2, 2 + 1/2)  # leaving the ends' straight part 4-1/4" (the template's)
 FRONT_SHELF = 39 + 1/4  # the tab flush with its window end
-FRONT_SHELF_TAB = 3 + 1/4
-FRONT_SHELF_DEPTH = 5 + 7/8
+FRONT_SHELF_TAB = 3 + 1/8
+FRONT_SHELF_DEPTH = 5 + 7/8  # (the board is 9" wide)
 FRONT_SHELF_CHAMFERS = (3 + 7/8, 0)  # the window end only
 FRONT_SHELF_OVERHANG = 1/2  # past its support block, at the side wall end
 SHELF_Z = WINDOW_Z  # on the sill

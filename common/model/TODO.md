@@ -25,13 +25,6 @@
 
 ## To resolve
 
-- `interior.py` `REAR_SHELF_DEPTH`: the rear shelf's template reads 6-1/4"
-  into the room (pencil, over a scaled ~6"), which with its 3-1/8" tab makes
-  it 9-3/8" wide; but the shelves are ripped from a roof panel's 18-1/4"
-  offcut, about 9-1/8" each. Re-measure the real shelf: if it's 6", set the
-  depth to 6 and its chamfers to 1-3/4" (the template's straight ends are
-  4-1/4").
-
 - Cut_Lists/Front_Saw_Cut_List.md cuts the window top trim at 31½";
   `exterior_trim.WINDOW_TOP_TRIM` (and the figures) have it 31". Measure a
   precut piece and fix whichever is wrong.
