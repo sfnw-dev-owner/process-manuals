@@ -18,27 +18,6 @@
 - `figures/exterior_trim.py` cuts the siding's bottom edge off in the
   triangles figure (`"wall"` parts' clip), as the drawing ran off the page.
 
-## Known differences from the old figures (the model is right, or the old
-## drawing was a sketch)
-
-- Half_Roof: the step 7 lag bolt bores are at the model's position (the
-  manual's text), not 4" up the rafter where the DXF put them. (The ridge
-  board is drawn as its top edge's footprint: the view is square to the
-  rafters, as the DXF's true rafter lengths are, in which a plumb board
-  would also show its face.)
-
-- The window unit is drawn from its SketchUp geometry (sash and sill), where
-  the DXFs sketched a two-pane window; the door is SketchUp's flat slab with a
-  knob, where the DXFs sketched a six-panel door.
-- Interior views show the A/C opening in the rear wall's panel; the old
-  drawings predate it.
-- The front wall's door jamb shows its hinge and strike mortises.
-- `roof-blocking/align_vent_block`: from that page's camera the model's vent
-  block sits behind the members it should be in front of, so their lines
-  cross it; LayOut's export had the block in front.
-- The roof's start/end shingle sets and the door strike-plate detail follow
-  the model's dimensions, not the DXFs' sketches.
-
 ## Open items from the rewrite
 
 - See the `<!-- TODO: ... -->` comments in `Roof/roof_manual.md` and
@@ -53,9 +32,9 @@
   depth to 6 and its chamfers to 1-3/4" (the template's straight ends are
   4-1/4").
 
-- post-tilt-up/frame-completion.md "triangle_screws": the two screws at each
-  of the structural triangle's narrowest sections are too close together;
-  space them farther apart (`post_tilt_up.OUTER_APART`).
+- post-tilt-up/frame-completion.md "triangle_screws": the screws preset in
+  the structural triangle's base (`post_tilt_up.triangle_screws`) are not
+  where the shop puts them; correct their positions.
 - `post_tilt_up.py` RAISING, LADDERS, FUNKY_BOARDS, LAG_CLAMP, VENT_GUIDE,
   VENT_GUIDE_CLAMPS, VENT_CLAMP and `iron_carts.py` ROOT/BOUNDS are still the
   SketchUp model's coordinates (staging for the 3D pages: where a ladder
@@ -65,12 +44,3 @@
 - Cut_Lists/Front_Saw_Cut_List.md cuts the window top trim at 31½";
   `exterior_trim.WINDOW_TOP_TRIM` (and the figures) have it 31". Measure a
   precut piece and fix whichever is wrong.
-- tilt-up/tilt-up.md "Attach Corners" (front wall): the manual says 4 nails
-  at the corner next to the window; `tilt_up.CORNER_NAILS` is 5 at every
-  corner but the door's. Which is right?
-- tilt-up/tilt-up.md "front_to_platform" (and the pages after it): the wall
-  brace (the 2x4 from the platform's end up to the first wall) is no longer
-  used; drop it from the model and the figures.
-- tilt-up/tilt-up.md "lhs_jig": note in the manual that the first wall's
-  brace comes off before this step, or the LHS wall runs into it before it
-  can be tilted up.

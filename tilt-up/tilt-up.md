@@ -337,7 +337,7 @@ Emphasize that when a leader taps someone on the shoulder and asks them to move 
 `#pagebreak()`{=typst}
 
 ### Attach Corners
-* Verify that the tops of the two walls are tightly clamped together, and have the nailer shoot 4 nails into the corner next to the window,
+* Verify that the tops of the two walls are tightly clamped together, and have the nailer shoot {{tilt_up.CORNER_NAILS}} nails into the corner next to the window,
   about 2 feet apart, about centered on the front wall side stud, and angled outward, so that the nail is driven into the side stud of the side wall,
   rather than going into the crack between the two pieces of wood that form the corner on the side wall.
 * Similarly, check the corner next to the door for tightness, and have the nailer shoot a nail into each gap between the spacer blocks, angled outward.
