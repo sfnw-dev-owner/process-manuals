@@ -509,10 +509,11 @@ TRIANGLE_CLAMPS = [triangle_clamp(x) for x in (RIDGE_X - TRI_HALF + 6, RIDGE_X +
 # from its faces: in each center bay (between an E stud and a D stud) two
 # toe screws, TOE_IN from the E stud's outer face and TOE_IN from the D
 # stud's inner face, each tilted TOE_ANGLE toward its stud; in each outer
-# bay two screws, OUTER_IN beyond the D stud and OUTER_APART apart, tilted
-# OUTER_ANGLE in from the inside row; and two straight down through each
-# side's foot.
-TRIANGLE_ROWS = (3/4, WALL_DEPTH - 3/4)
+# bay two screws in the outside row (the base's "OUT" face: the house's
+# outside once the triangle is on the wall), OUTER_IN beyond the D stud and
+# OUTER_APART apart, tilted OUTER_ANGLE in toward the inside face; and two
+# straight down through each side's foot.
+TRIANGLE_ROWS = (3/4, WALL_DEPTH - 3/4)  # the outside row (y = 0 is the base's "OUT" face) and the inside row
 TOE_IN, TOE_ANGLE = 1 + 3/4, 33  # inches from the stud's face; degrees from plumb
 OUTER_IN, OUTER_APART, OUTER_ANGLE = 1 + 1/4, 2 + 5/8, 48
 FOOT_SCREW_IN = 3  # from the side's outer foot
@@ -534,7 +535,7 @@ def triangle_screws(at=None):
                 out.append(((sign * x, y, top), (tilt * toe[0], 0, -toe[1])))
         for x in (TRI_D + stud + OUTER_IN, TRI_D + stud + OUTER_IN + OUTER_APART):  # the outer bay
             a = math.radians(OUTER_ANGLE)
-            out.append(((sign * x, TRIANGLE_ROWS[1], top), (0, -math.sin(a), -math.cos(a))))
+            out.append(((sign * x, TRIANGLE_ROWS[0], top), (0, math.sin(a), -math.cos(a))))
         for y in TRIANGLE_ROWS:  # the side's foot
             out.append(((sign * (TRI_BASE_END - TRI_SIDE_FOOT + FOOT_SCREW_IN), y, top), (0, 0, -1)))
     def in_house(head, d):  # the head and direction, taken into the house's frame
