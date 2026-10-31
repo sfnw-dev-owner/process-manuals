@@ -35,7 +35,7 @@ CIRCLED = 1/8  # radius of a circled number
 # (degrees counterclockwise from +X), as drawn
 ICONS = {
     "Screw": ((0.2, 0.48), (0, -0.5), 270),
-    "NailGun": ((0.58, 0.56), (-0.4, -0.47), 270),
+    "NailGun": ((0.58, 0.56), (0.28, -0.46), 270),
     "Pencil": ((0.36, 0.36), (-0.45, -0.45), 225),
     "mallet": ((0.38, 0.38), (0.3, 0.35), 45),
     "Router": ((0.48, 0.48), (0, -0.5), 270),
