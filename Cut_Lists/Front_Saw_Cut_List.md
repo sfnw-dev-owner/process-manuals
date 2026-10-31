@@ -24,5 +24,5 @@ From 12' material, cut parts in this order:
 | --- | --- | --- |
 | 94¼" | Corner Board | Save cutoff pieces, in 4 equal stacks |
 | {{exterior_trim.WINDOW_SIDE_TRIM}} | Window Side | Use 2 stacks of cutoffs |
-| 31½" | Window Top | Use 1 stack of cutoffs; bevel top at {{exterior_trim.WINDOW_TOP_BEVEL}} |
+| {{exterior_trim.WINDOW_TOP_TRIM}} | Window Top | Use 1 stack of cutoffs; bevel top at {{exterior_trim.WINDOW_TOP_BEVEL}} |
 | | Window Bottom | Leave 4th stack uncut |

@@ -22,9 +22,3 @@
 
 - See the `<!-- TODO: ... -->` comments in `Roof/roof_manual.md` and
   `Interior_Trim/interior_trim.md`.
-
-## To resolve
-
-- Cut_Lists/Front_Saw_Cut_List.md cuts the window top trim at 31½";
-  `exterior_trim.WINDOW_TOP_TRIM` (and the figures) have it 31". Measure a
-  precut piece and fix whichever is wrong.
