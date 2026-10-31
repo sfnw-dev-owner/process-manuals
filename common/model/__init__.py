@@ -30,6 +30,6 @@ Modules:
   exterior_trim  exterior trim
   equipment      iron carts, jacks, triple blocks, 4x4 stands, dollies and arrows
   house          the assembled house
-  iron_carts     the iron-cart removal scenes' instances
+  iron_carts     the iron-cart removal: the house's heights and the equipment at each step
   figures/       the manuals' figures
 """

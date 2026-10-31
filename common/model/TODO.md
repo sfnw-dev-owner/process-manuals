@@ -32,15 +32,6 @@
   depth to 6 and its chamfers to 1-3/4" (the template's straight ends are
   4-1/4").
 
-- post-tilt-up/frame-completion.md "triangle_screws": the screws preset in
-  the structural triangle's base (`post_tilt_up.triangle_screws`) are not
-  where the shop puts them; correct their positions.
-- `post_tilt_up.py` RAISING, LADDERS, FUNKY_BOARDS, LAG_CLAMP, VENT_GUIDE,
-  VENT_GUIDE_CLAMPS, VENT_CLAMP and `iron_carts.py` ROOT/BOUNDS are still the
-  SketchUp model's coordinates (staging for the 3D pages: where a ladder
-  stood, how far a half-roof had been raised). Everything built into the
-  house, and every fastener, is derived from the geometry; derive these too
-  if a page's staging ever needs changing.
 - Cut_Lists/Front_Saw_Cut_List.md cuts the window top trim at 31½";
   `exterior_trim.WINDOW_TOP_TRIM` (and the figures) have it 31". Measure a
   precut piece and fix whichever is wrong.
