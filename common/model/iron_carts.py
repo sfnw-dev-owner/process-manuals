@@ -135,7 +135,7 @@ def dollies(end, under):
 # ── the manual's diagram arrows (equipment.arrow_1_2: a flat arrow in its
 # YZ plane, pointing +Y, ARROW wide across Z, 1/2" thick) ──────────────────
 ARROW = (39.7148, 12)  # tail to tip, wide
-ARROW_UP_TIP = FLOOR - 6  # an arrow pointing up stands below the floor, its tip this far under
+ARROW_UP_TIP = FLOOR - 20  # an arrow pointing up stands below the floor, its tip this far under (the jack's step number sits between)
 ARROW_DOWN_TAIL = FLOOR - 12  # one pointing down hangs from this far under
 ARROW_BEYOND_END = 16  # a jack's arrow, beyond the platform's end
 POST_ARROW_IN = (22, 40)  # the arrows for the stands going in: tails this far outside and behind the rear corners, pointing in at 45°

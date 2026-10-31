@@ -10,7 +10,8 @@ Each row of SCENES:
              (component, placement, mods)
   numbers    [(part, n, at, offset)]: a circled n on a part being moved,
              at a point of its bounding box (fractions across X, Y and Z)
-             plus an offset (inches): above it, by default
+             plus an offset (inches): under its middle, by default, so the
+             numbers of a step line up along the floor
 """
 
 import math
@@ -26,8 +27,7 @@ MD = "Extract_Iron_Carts/Extract_instructions.md"
 WINDOW = (6, 4.8)  # each figure's size, inches, with the camera's fov across its width (as SketchUp's is)
 FOV = 35  # degrees, across the figure's width
 NUMBER = (0.15, 0.14)  # a circled number: its circle's radius and its digit's height, page inches
-NUMBER_ABOVE = 10  # a circled number over the middle of what it's on, this far up
-NUMBER_OFF = 8  # or beside it, this far out
+NUMBER_BELOW = 12  # a circled number under the middle of what it's on, this far below its bottom
 
 # The views, in the house's frame: from high over a rear corner (rear) or a
 # front corner (front) of the house, as the manual's pictures were taken.
@@ -43,9 +43,12 @@ CAMERAS = {
 }
 
 
-def numbered(parts, n, at=(0.5, 0.5, 1), offset=(0, 0, NUMBER_ABOVE)):
+def numbered(parts, n, at=(0.5, 0.5, 0), offset=(0, 0, -NUMBER_BELOW)):
     """[(part entry, n, at, offset)] for the parts, numbered n."""
     return [(part, n, at, offset) for part in parts]
+
+
+NUMBER_IN = 6  # a staged dolly's number, this far in from its end nearest the house (the dollies wait at the figures' edges)
 
 
 def paired(parts, n, at, offset):
@@ -55,10 +58,8 @@ def paired(parts, n, at, offset):
     return numbered([left], n, at, offset) + numbered([right], n, (1 - at[0], *at[1:]), (-offset[0], *offset[1:]))
 
 
-TOWARD_REAR = ((0.5, 0, 0.4), (0, -NUMBER_OFF, 0))  # a number on the rear end of a part, toward the rear camera
-TOWARD_FRONT = ((0.5, 1, 0.4), (0, NUMBER_OFF, 0))  # on the front end, toward the front camera
-JACK = ((0, 0.5, 0.3), (-1.5 * NUMBER_OFF, 0, 0))  # beside a jack, on its left (the cameras' side), low (its arrow is beyond its handle)
-TOWARD_HOUSE = ((1, 0.5, 1), (NUMBER_OFF / 2, 0, NUMBER_ABOVE))  # over a staged part's end nearest the house (the left one's; paired)
+FRONT_END = ((0.5, 1, 0), (0, 0, -NUMBER_BELOW))  # under a part's front end (the carts', sticking out of the house)
+NEAR_END = ((1, 0.5, 0), (-NUMBER_IN, 0, -NUMBER_BELOW))  # under a staged part's end nearest the house (the left one's; paired)
 
 
 def scene(name, camera, rear, front, parts, numbers=()):
@@ -73,7 +74,7 @@ SCENES = [
           IC.carts() + [IC.jack("rear", raised=True), IC.jack("front", out=IC.JACK_STAGED)] + IC.posts("staged")
           + IC.blocks("rear", False) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", False)
           + [IC.jack_arrow("rear", up=True)] + IC.post_arrows(going_in=True),
-          numbered([IC.jack("rear", raised=True)], 1, *JACK) + numbered(IC.posts("staged"), 2)),
+          numbered([IC.jack("rear", raised=True)], 1, ) + numbered(IC.posts("staged"), 2)),
     scene("03_rear_dropped_onto_posts", "rear_posts", IC.ON_POSTS, IC.ON_CARTS,
           IC.carts() + [IC.jack("rear"), IC.jack("front", out=IC.JACK_STAGED)] + IC.posts("under")
           + IC.blocks("rear", False) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", False)
@@ -82,7 +83,7 @@ SCENES = [
           IC.carts() + [IC.jack("rear"), IC.jack("front", raised=True)] + IC.posts("under")
           + IC.blocks("rear", False) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", False)
           + [IC.jack_arrow("front", up=True)] + IC.cart_arrows(),
-          numbered([IC.jack("front", raised=True)], 1, *JACK) + numbered(IC.carts(), 2, *TOWARD_FRONT)),
+          numbered([IC.jack("front", raised=True)], 1, ) + numbered(IC.carts(), 2, *FRONT_END)),
     scene("05_carts_removed", "front_wide", IC.ON_POSTS, IC.ON_JACK,
           [IC.jack("rear"), IC.jack("front", raised=True)] + IC.posts("under")
           + IC.blocks("rear", False) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", False)
@@ -96,8 +97,8 @@ SCENES = [
           [IC.jack("rear", raised=True), IC.jack("front")] + IC.posts("under")
           + IC.blocks("rear", False) + IC.blocks("front", True) + IC.dollies("rear", False) + IC.dollies("front", False)
           + [IC.jack_arrow("rear", up=True)] + IC.block_arrows("rear", going_in=True) + IC.post_arrows(going_in=False),
-          numbered([IC.jack("rear", raised=True)], 1, *JACK) + numbered(IC.blocks("rear", False), 2)
-          + numbered(IC.posts("under"), 3, *TOWARD_REAR)),
+          numbered([IC.jack("rear", raised=True)], 1) + numbered(IC.blocks("rear", False), 2)
+          + numbered(IC.posts("under"), 3)),
     scene("09_rear_lowered_onto_triple_blocks", "rear_low", IC.ON_BLOCKS, IC.ON_BLOCKS,
           [IC.jack("rear"), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", True) + IC.dollies("rear", False) + IC.dollies("front", False)
@@ -106,8 +107,8 @@ SCENES = [
           [IC.jack("rear"), IC.jack("front", raised=True)] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", True) + IC.dollies("rear", False) + IC.dollies("front", False)
           + [IC.jack_arrow("front", up=True)] + IC.block_arrows("front", going_in=False) + IC.dolly_arrows("front"),
-          numbered([IC.jack("front", raised=True)], 1, *JACK) + numbered(IC.blocks("front", True), 2, *TOWARD_FRONT)
-          + paired(IC.dollies("front", False), 3, *TOWARD_HOUSE)),
+          numbered([IC.jack("front", raised=True)], 1) + numbered(IC.blocks("front", True), 2)
+          + paired(IC.dollies("front", False), 3, *NEAR_END)),
     scene("11_front_dollies_in_place", "front_blocks", IC.ON_BLOCKS, IC.ON_DOLLIES,
           [IC.jack("rear"), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", True)
@@ -116,8 +117,8 @@ SCENES = [
           [IC.jack("rear", raised=True), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", True)
           + [IC.jack_arrow("rear", up=True)] + IC.block_arrows("rear", going_in=False) + IC.dolly_arrows("rear"),
-          numbered([IC.jack("rear", raised=True)], 1, *JACK) + numbered(IC.blocks("rear", True), 2, *TOWARD_REAR)
-          + paired(IC.dollies("rear", False), 3, *TOWARD_HOUSE)),
+          numbered([IC.jack("rear", raised=True)], 1) + numbered(IC.blocks("rear", True), 2)
+          + paired(IC.dollies("rear", False), 3, *NEAR_END)),
     scene("13_home_in_final_position", "rear_low", IC.ON_DOLLIES, IC.ON_DOLLIES,
           [IC.jack("rear"), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", False) + IC.blocks("front", False) + IC.dollies("rear", True) + IC.dollies("front", True)
