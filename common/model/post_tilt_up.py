@@ -686,7 +686,13 @@ def bird_block_screws(side="left", bay=5):
 BIRD_BLOCK_SCREWS = bird_block_screws()
 
 VENT_GUIDE_DOWN = 2  # the jig's upper edge down the slope from the ridge board's face
-VENT_GUIDE_CLAMPED = ((0, "rear"), (5, "rear"), (-1, "front"))  # the rafters it's clamped to, and the side of each its clamp hangs on
+# The rafters the jig is clamped to, and where each clamp hangs: beside an
+# end rafter, outside the roof ("rear", "front"), or down the slope from the
+# jig's lower edge, beside the rafter ("below": the jig runs over the other
+# rafters, so a clamp can't hang beside them).
+VENT_GUIDE_CLAMPED = ((0, "rear"), (5, "below"), (-1, "front"))
+VENT_GUIDE_PAD_IN = 1 + 1/2  # a "below" clamp's pads, in from the jig's lower edge
+VENT_GUIDE_BELOW_ANGLE = 45  # its jaws' reach, between up the slope and along the house (its bar clears the jig's edge and the rafter)
 
 
 def vent_guide(side="right"):
@@ -705,15 +711,22 @@ def guide_clamp():
 
 def vent_guide_clamps(side="right"):
     """The clamps holding the vent jig to the rafters (VENT_GUIDE_CLAMPED):
-    each square to the slope at the jig's middle, its fixed jaw on the jig's
-    face and its head under the rafter, hanging beside the rafter."""
+    each square to the slope, its fixed jaw on the jig's face and its head
+    under the rafter. An end rafter's clamp grips the jig's middle, its bar
+    hanging beside the rafter outside the roof; the middle one grips the
+    jig's lower edge, its bar hanging down the slope beside the rafter."""
     _, wide, thick = VENT_GUIDE_BOARD
     opening = thick + RAFTER_DEPTH
+    lower = TIP_U - VENT_GUIDE_DOWN - wide  # the jig's lower edge, up the slope
     out = []
     for i, hang in VENT_GUIDE_CLAMPED:
-        toward = 1 if hang == "rear" else -1  # the jaws point along the house, from the bar's side
-        pads = (TIP_U - VENT_GUIDE_DOWN - wide / 2, RAFTER_Y[i] + RAFTER / 2, RAFTER_DEPTH + thick - opening / 2)
-        out.append((guide_clamp, *on_slope(side, clamp_at(pads, (0, 0, 1), (0, toward, 0), opening))))
+        if hang == "below":
+            a = math.radians(VENT_GUIDE_BELOW_ANGLE)
+            up, jaws = lower + VENT_GUIDE_PAD_IN, (math.cos(a), math.sin(a), 0)  # the jaws reach up the slope and forward, from the bar behind
+        else:
+            up, jaws = lower + wide / 2, (0, 1 if hang == "rear" else -1, 0)  # the jaws point along the house, from the bar's side
+        pads = (up, RAFTER_Y[i] + RAFTER / 2, RAFTER_DEPTH + thick - opening / 2)
+        out.append((guide_clamp, *on_slope(side, clamp_at(pads, (0, 0, 1), jaws, opening))))
     return out
 
 
@@ -726,15 +739,16 @@ def vent_clamp():
 def vent_block_clamp(side="right", bay=0):
     """The clamp holding a bay's vent block to the ridge boards
     (roof-blocking.md "Align and Clamp Ridge Vent"): across the ridge at the
-    block's middle, its fixed jaw on the ridge boards' far face, its head on
-    the block's outer face, its jaws up and its bar out past the block."""
+    block's middle, its fixed jaw on the block's outer face, its head on the
+    ridge boards' far face, its jaws up and its bar's tail out beyond the
+    ridge, away from whoever is screwing the block on."""
     (comp, loc, mods), = vent_blocks(side, [bay])
     bb = (loc * comp.shape(frozenset(), key(mods))).bounding_box()
     opening = 2 * thickness(RIDGE_BOARD) + VENT_BLOCK_THICKNESS
-    inward = -1 if side == "right" else 1  # across the ridge, from the block
+    outward = 1 if side == "right" else -1  # across the ridge, toward the block
     outer = bb.max.X if side == "right" else bb.min.X  # the block's outer face
-    pads = (outer + inward * opening / 2, (bb.min.Y + bb.max.Y) / 2, (bb.min.Z + bb.max.Z) / 2)
-    return (vent_clamp, clamp_at(pads, (inward, 0, 0), (0, 0, 1), opening), [])
+    pads = (outer - outward * opening / 2, (bb.min.Y + bb.max.Y) / 2, (bb.min.Z + bb.max.Z) / 2)
+    return (vent_clamp, clamp_at(pads, (outward, 0, 0), (0, 0, 1), opening), [])
 VENT_SCREWS_AT = (1, 1/2, 5/6)  # along the block: an inch from the rear end, the middle, five sixths along
 
 
