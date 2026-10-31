@@ -4,7 +4,7 @@ their way up, and the tools and props for it: step ladders, the funky boards
 that push a half-roof up, bar clamps, screws and lag bolts.
 
 Frame: the house's (house.py). The loose things' places at each stage (the
-half-roofs going up, ladders, funky boards, people, clamps) are where
+half-roofs going up, ladders, funky boards, the crew, clamps) are where
 the SketchUp model's tilt-up scenes had them,
 converted to the house's frame: SKETCHUP_HOUSE is where that model had the
 house.
@@ -767,19 +767,48 @@ def vent_block_screws(side="right", bay=0, offset=(0, 0)):
 VENT_SCREWS = vent_block_screws()
 VENT_SCREWS_TO_ALIGN = vent_block_screws(offset=VENT_BLOCK_START)
 
-# The crews, where SketchUp's 2D silhouettes stood (their feet), and
-# whether mirrored: raising the right half, and the left.
-PEOPLE = {
-    "right": [((23.781, 173.567, 64.731), True), ((22.781, -25.495, 65.731), True), ((68.394, 73.759, 42.75), True),
-                      ((132.052, 71.987, -2.002), False), ((132.052, 108.362, -2.002), False),
-                      ((132.052, 34.216, -2.002), False), ((115.698, -15.957, -2.002), False),
-                      ((110.753, 163.57, -2.002), True), ((197.526, 142.06, -2.002), False),
-                      ((197.472, 8.607, -1.989), False)],
-    "left": [((-42.89, 34.216, -2.002), False), ((-42.89, 71.987, -2.002), False), ((-42.89, 108.362, -2.002), False),
-             ((60.526, 173.567, 64.731), False), ((61.526, -25.495, 65.731), False), ((15.914, 73.759, 42.75), False),
-             ((-108.311, 142.06, -2.002), False), ((-26.453, 156.471, -2.002), False),
-             ((-31.39, -15.957, -2.002), False), ((-108.365, 8.607, -1.989), False)],
-}
+# ── the crew raising a half-roof (frame-completion.md "Raise Half-Roofs"),
+# drawn as flat silhouettes standing at their feet: three at the half's
+# bottom edge, one up each ladder, one on the stool, one at each funky
+# board and one beyond each end of the half ─────────────────────────────────
+CREW_EDGE_OUT = 10  # the three at the edge: this far beyond it, at CREW_EDGE_ALONG of the platform's length
+CREW_EDGE_ALONG = (1/4, 1/2, 3/4)
+CREW_LADDER_STEP = 6  # the climbers stand on this step of the 12' ladders (counting up)
+CREW_STOOL_STEP = 3  # and on this step of the stool
+CREW_FUNKY_ALONG = 8  # at a funky board: this far along the house from it, toward the middle
+CREW_CORNER = (26, 26)  # beyond the half's ends: out from the side wall's siding, and from the end wall's
+
+
+def crew(side):
+    """The crew raising the given half, [((x, y, z), flipped)]: each one's
+    feet, in the house's frame, and whether the silhouette is flipped. The
+    clipart faces the page's left, which is +X in the figures (drawn from
+    over the front lhs corner); flipped, it faces -X. Everyone faces the
+    wall the half leans on from outside; the climbers face the half's ends
+    and the one on the stool faces the wall from inside."""
+    from .platform_assembly import DECK
+    from .tilt_up import GROUND
+    out = 1 if side == "right" else -1  # outward from the house, across it
+    toward = -out  # facing the house
+    x_out = lambda beyond: PLATFORM_WIDTH + SIDING_FACE + beyond if side == "right" else -(SIDING_FACE + beyond)
+    people = []
+    for along in CREW_EDGE_ALONG:
+        people.append(((x_out(RAISE_STAGES[1][0] + CREW_EDGE_OUT), PLATFORM_LENGTH * along, GROUND), toward))
+    rear, front, stool = ladders(side)
+    h = LADDER_HEIGHT - LADDER_TOP[1]  # (step_ladder: the steps' heights and places up the front leg)
+    z = h * CREW_LADDER_STEP / LADDER_STEPS
+    x = LADDER_SPREAD + (LADDER_SPREAD / 2 + LADDER_TOP[0] / 2 - 1 - LADDER_SPREAD) * z / h
+    for _, loc, _ in (rear, front):
+        people.append((tuple((loc * Pos(x, LADDER_WIDTH[0] / 2, z)).position), out))
+    wide, _, high = STOOL  # (step_stool: its steps' heights and places up the front leg)
+    z = (high - 1) * CREW_STOOL_STEP / 4
+    people.append((tuple((stool[1] * Pos(wide / 2, 1 + 19 * z / (high - 1), z)).position), out))  # facing the wall
+    for y in FUNKY_BOARD_Y:
+        people.append(((x_out(FUNKY_STANDING_OUT), y + (CREW_FUNKY_ALONG if y < PLATFORM_LENGTH / 2 else -CREW_FUNKY_ALONG), GROUND), toward))
+    beside, beyond = CREW_CORNER
+    for y in (-(SIDING_FACE + beyond), PLATFORM_LENGTH + SIDING_FACE + beyond):
+        people.append(((x_out(beside), y, GROUND), toward))
+    return [(feet, facing < 0) for feet, facing in people]
 
 
 def placed(entries):

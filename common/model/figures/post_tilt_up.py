@@ -76,11 +76,11 @@ def shapes(entries):
     return P.placed(entries)
 
 
-def people(group):
-    """Viewport notes: the crew's silhouettes (facing the camera), standing
-    at their places, sized with the view."""
+def people(side):
+    """Viewport notes: the crew raising a half-roof, as silhouettes standing
+    at their feet, sized with the view."""
     out = []
-    for (x, y, z), mirrored in P.PEOPLE[group]:
+    for (x, y, z), mirrored in P.crew(side):
         w, h = PERSON
         dx = (0.5 - PERSON_FEET) * w * (-1 if mirrored else 1)
         out.append((x, y, z, Icon("ptu_person", w, h, flip=mirrored, dx=dx, dy=h / 2, model=True)))
@@ -157,12 +157,12 @@ def triangle_screws():
     return [main], inset("ptu_long_screw", "top left", count="x16")
 
 
-def raising(side, step, crew=None, ladders=False, installed=()):
+def raising(side, step, crew=False, ladders=False, installed=()):
     def build():
         parts = house() + roof(installed) + shapes([P.half_roof_at(side, step)] + P.funky_boards(side, step))
         if ladders:
             parts += shapes(P.ladders(side))
-        return [view(main_rect(), "front lhs", parts, margin=0.1, notes=people(crew) if crew else ())], []
+        return [view(main_rect(), "front lhs", parts, margin=0.1, notes=people(side) if crew else ())], []
     return build
 
 
@@ -353,11 +353,11 @@ STEPS = {  # figure name -> (manual, builder), in the manuals' order
     "triangle_centered": (FRAME_MD, triangle_centered),
     "triangle_clamped": (FRAME_MD, triangle_clamped),
     "triangle_screws": (FRAME_MD, triangle_screws),
-    "half_roof_setup": (FRAME_MD, raising("right", 1, crew="right", ladders=True)),
+    "half_roof_setup": (FRAME_MD, raising("right", 1, crew=True, ladders=True)),
     "raise_half_roof": (FRAME_MD, raising("right", 2)),
     "raise_half_roof_up": (FRAME_MD, raising("right", 3)),
     "align_half_roof": (FRAME_MD, align_half_roof),
-    "second_half_roof_setup": (FRAME_MD, raising("left", 1, crew="left", ladders=True, installed=("right",))),
+    "second_half_roof_setup": (FRAME_MD, raising("left", 1, crew=True, ladders=True, installed=("right",))),
     "raise_second_half_roof": (FRAME_MD, raising("left", 3, installed=("right",))),
     "second_half_roof_on": (FRAME_MD, installed("left", 4)),
     "join_half_roofs": (FRAME_MD, join_half_roofs),
