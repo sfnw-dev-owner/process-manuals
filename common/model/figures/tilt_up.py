@@ -43,7 +43,8 @@ RHS = ("wall", "rhs", "upright")
 BACK = ("wall", "back", "upright")
 LHS = ("wall", "lhs", "upright")
 BASE = ["platform", RHS, "brace"]  # after the first wall is up and braced
-FRONT_BASE = ["platform", RHS, BACK, LHS]  # the brace is off once three walls stand
+LHS_BASE = ["platform", RHS, BACK]  # the brace comes off before the second side wall goes up
+FRONT_BASE = ["platform", RHS, BACK, LHS]
 
 SCENES = {
     "rhs_jig": ["platform", ("jig", "rhs"), ("wall", "rhs", "on_jig"), ("crew", "rhs_jig"), ("crew", "rhs_platform")],
@@ -61,13 +62,13 @@ SCENES = {
     "back_clamp": BASE + [BACK, ("corner", "back_rhs")],
     "back_mississippis": BASE + [BACK, ("corner", "back_rhs")],
     "back_nail": BASE + [BACK, ("corner", "back_rhs"), ("nails", "back_rhs")],
-    "lhs_jig": BASE + [BACK, ("jig", "lhs"), ("wall", "lhs", "on_jig"), ("crew", "lhs_jig"), ("crew", "lhs_platform")],
-    "lhs_tilted": BASE + [BACK, ("wall", "lhs", "tilted")],
-    "lhs_clear_hands": BASE + [BACK, ("wall", "lhs", "gap")],
-    "lhs_slide": BASE + [BACK, LHS],
-    "lhs_clamp": BASE + [BACK, LHS, ("corner", "back_lhs")],
-    "lhs_mississippis": BASE + [BACK, LHS, ("corner", "back_lhs")],
-    "lhs_side_nails": BASE + [BACK, LHS, ("corner", "back_lhs"), ("nails", "back_lhs")],
+    "lhs_jig": LHS_BASE + [("jig", "lhs"), ("wall", "lhs", "on_jig"), ("crew", "lhs_jig"), ("crew", "lhs_platform")],
+    "lhs_tilted": LHS_BASE + [("wall", "lhs", "tilted")],
+    "lhs_clear_hands": LHS_BASE + [("wall", "lhs", "gap")],
+    "lhs_slide": LHS_BASE + [LHS],
+    "lhs_clamp": LHS_BASE + [LHS, ("corner", "back_lhs")],
+    "lhs_mississippis": LHS_BASE + [LHS, ("corner", "back_lhs")],
+    "lhs_side_nails": LHS_BASE + [LHS, ("corner", "back_lhs"), ("nails", "back_lhs")],
     "front_jig": FRONT_BASE + [("crew", "front_platform"), ("jig", "front"), ("wall", "front", "on_jig"),
                                ("crew", "front_jig")],
     "front_off_jig": FRONT_BASE + [("crew", "front_platform"), ("jig", "front"), ("wall", "front", "carried"),
