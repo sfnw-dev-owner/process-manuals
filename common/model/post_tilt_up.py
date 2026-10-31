@@ -21,9 +21,10 @@ from .common import CORNER, component, driven, key
 from .house import WALL_TOP
 from .platform_assembly import PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from .roof import (
-    PLUMB_DEPTH, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, ROOF_PITCH, SIDING_FACE,
-    SLOPE, TAIL_U, TIP_X, VENT_BLOCK_HEIGHT, VENT_BLOCK_THICKNESS, angle_plate, bird_block, bird_length, bored_rafter,
-    cross_block, eave_board, half_roof, rafter, ridge_board, underside, vent_block, vent_length, wall_bays
+    HALF_ROOF_LENGTH, PLUMB_DEPTH, RAFTER, RAFTER_DEPTH, RAFTER_Y, RIDGE_BOARD, RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X,
+    ROOF_PITCH, ROOF_Y, SIDING_FACE, SLOPE, TAIL_U, TIP_U, TIP_X, VENT_BLOCK_HEIGHT, VENT_BLOCK_THICKNESS, angle_plate,
+    bird_block, bird_length, bored_rafter, cross_block, eave_board, half_roof, rafter, ridge_board, underside, vent_block,
+    vent_length, wall_bays
 )
 from .gables import TRI_HALF, structural_triangle
 from .walls import WALL_DEPTH, front_wall, rear_wall, side_wall
@@ -409,17 +410,17 @@ def lag_bolts(side="left", rafters=None, lift=0):
 MAGIC_RAFTERS = [RAFTER_Y.index(y) for y in RAFTER_Y if abs(y + 1.5 / 2 - (PLATFORM_LENGTH - 48)) < 1]
 
 
-VENT_GUIDE_BOARD = (156 + 1/4, width("1x8"), thickness("1x8"))  # the vent jig
+VENT_GUIDE_BOARD = (156 + 1/4, width("1x8"), thickness("1x8"))  # the vent jig: long, wide, thick
 
 
 @component
 def vent_guide_board():
     """The vent jig (roof-blocking.md "Install Ridge Vent Blocks"): a 1x8
     clamped on the rafters, down the slope from the ridge, that the vent
-    blocks are pushed up against. Along Y; X down the slope; Z square to it."""
-    from .roof import ROOF_PITCH
+    blocks are pushed up against. In the slope's frame (roof.SLOPE): X up
+    the slope across its width, Y along the house, Z its thickness."""
     length, wide, thick = VENT_GUIDE_BOARD
-    return [Rot(Y=-ROOF_PITCH) * Box(wide, length, thick, align=CORNER)], []
+    return [Box(wide, length, thick, align=CORNER)], []
 
 
 # ── the ladders and the funky boards, where the crew has them ──────────────
@@ -621,7 +622,50 @@ def ridge_screws(bay, flip=False):
     return out
 
 
-LAG_CLAMP = (bar_clamp, Location((16.233, 101.264, 91.312), (0, -90, -132.701)), ["mirror"])
+CLAMP_FIXED_FACE = CLAMP_BAR[1] - 0.35  # the fixed jaw's pad face, along the bar
+CLAMP_PAD_Z = 14.2  # the pads' middle, up the jaws
+
+
+def clamp_at(pads, x_dir, z_dir, opening=CLAMP_OPENING):
+    """A bar clamp's placement by the point midway between its pads' faces,
+    its clamping axis (toward its fixed jaw) and its jaws' direction (from
+    the bar to the pads), for a clamp opened `opening`."""
+    plane = Plane((0, 0, 0), x_dir=x_dir, z_dir=z_dir)
+    middle = Vector(CLAMP_FIXED_FACE - opening / 2, CLAMP_BAR_Y, CLAMP_PAD_Z)  # in the clamp's frame
+    origin = Vector(pads) - plane.x_dir * middle.X - plane.y_dir * middle.Y - plane.z_dir * middle.Z
+    return Location(Plane(origin, x_dir=x_dir, z_dir=z_dir))
+
+
+def mirrored(loc):
+    """A placement mirrored across the ridge (x = RIDGE_X), for a part on the
+    right half placed like one on the left: with the "mirror" modifier, which
+    mirrors the part in its own frame first."""
+    p, xd, zd = loc.position, loc.x_axis.direction, loc.z_axis.direction
+    return Location(Plane((2 * RIDGE_X - p.X, p.Y, p.Z), x_dir=(xd.X, -xd.Y, -xd.Z), z_dir=(-zd.X, zd.Y, zd.Z)))
+
+
+def on_slope(side, loc):
+    """(placement, mods) in the house's frame for a part placed by `loc` in
+    the left half's slope frame (roof.SLOPE), on the given half."""
+    left = ROOF * SLOPE * loc
+    return (left, []) if side == "left" else (mirrored(left), ["mirror"])
+
+
+ALIGN_CLAMP_TILT = 45  # the aligning clamp's bar, from plumb
+
+
+def align_clamp(side="left", rafter=None):
+    """The clamp that pulls a magic rafter into line with the stud below it
+    (roof-blocking.md "Align Half-Roof with Walls"), as a prop: hung inside
+    the wall at the rafter's rear face, its jaws reaching out over the wall's
+    top plate, its pads astride the plate's underside, its bar hanging down
+    and back ALIGN_CLAMP_TILT from plumb."""
+    y = RAFTER_Y[MAGIC_RAFTERS[0] if rafter is None else rafter]
+    pads = (WALL_DEPTH / 2, y, WALL_TOP - thickness("2x4"))
+    t = math.radians(ALIGN_CLAMP_TILT)
+    loc = clamp_at(pads, (0, math.sin(t), math.cos(t)), (-1, 0, 0))  # its fixed jaw up and forward, the bar's tail down and back
+    return (bar_clamp, loc, []) if side == "left" else (bar_clamp, mirrored(loc), ["mirror"])
+
 
 BIRD_BLOCK_SCREWS_IN = 3  # from the block's ends
 
@@ -640,13 +684,56 @@ def bird_block_screws(side="left", bay=5):
 
 BIRD_BLOCK_SCREWS = bird_block_screws()
 
-VENT_GUIDE = (vent_guide_board, Location((57.661, 149.969, 114.269), (0, 0, -180)), [])
-VENT_GUIDE_CLAMPS = [
-    (bar_clamp, Location((45.4, -18.97, 116.504), (-90, 0, -70.787)), []),
-    (bar_clamp, Location((45.4, 162.702, 116.504), (90, 0, -109.213)), ["mirror"]),
-    (bar_clamp, Location((59.335, 88.335, 111.623), (71.784, -41.891, -116.236)), ["mirror"]),
-]
-VENT_CLAMP = (bar_clamp, Location((48.419, 24.743, 98.71), (0, 0, -180)), ["mirror"])
+VENT_GUIDE_DOWN = 2  # the jig's upper edge down the slope from the ridge board's face
+VENT_GUIDE_CLAMPED = ((0, "rear"), (5, "rear"), (-1, "front"))  # the rafters it's clamped to, and the side of each its clamp hangs on
+
+
+def vent_guide(side="right"):
+    """(component, placement, mods): the vent jig lying on the rafters' tops
+    VENT_GUIDE_DOWN below the ridge board, centered along the half-roof."""
+    length, wide, _ = VENT_GUIDE_BOARD
+    y = ROOF_Y + (HALF_ROOF_LENGTH - length) / 2
+    return (vent_guide_board, *on_slope(side, Pos(TIP_U - VENT_GUIDE_DOWN - wide, y, RAFTER_DEPTH)))
+
+
+@component
+def guide_clamp():
+    """A bar clamp opened to the vent jig on a rafter."""
+    return _bar_clamp(VENT_GUIDE_BOARD[2] + RAFTER_DEPTH)
+
+
+def vent_guide_clamps(side="right"):
+    """The clamps holding the vent jig to the rafters (VENT_GUIDE_CLAMPED):
+    each square to the slope at the jig's middle, its fixed jaw on the jig's
+    face and its head under the rafter, hanging beside the rafter."""
+    _, wide, thick = VENT_GUIDE_BOARD
+    opening = thick + RAFTER_DEPTH
+    out = []
+    for i, hang in VENT_GUIDE_CLAMPED:
+        toward = 1 if hang == "rear" else -1  # the jaws point along the house, from the bar's side
+        pads = (TIP_U - VENT_GUIDE_DOWN - wide / 2, RAFTER_Y[i] + RAFTER / 2, RAFTER_DEPTH + thick - opening / 2)
+        out.append((guide_clamp, *on_slope(side, clamp_at(pads, (0, 0, 1), (0, toward, 0), opening))))
+    return out
+
+
+@component
+def vent_clamp():
+    """A bar clamp opened to a vent block against the ridge boards."""
+    return _bar_clamp(2 * thickness(RIDGE_BOARD) + VENT_BLOCK_THICKNESS)
+
+
+def vent_block_clamp(side="right", bay=0):
+    """The clamp holding a bay's vent block to the ridge boards
+    (roof-blocking.md "Align and Clamp Ridge Vent"): across the ridge at the
+    block's middle, its fixed jaw on the ridge boards' far face, its head on
+    the block's outer face, its jaws up and its bar out past the block."""
+    (comp, loc, mods), = vent_blocks(side, [bay])
+    bb = (loc * comp.shape(frozenset(), key(mods))).bounding_box()
+    opening = 2 * thickness(RIDGE_BOARD) + VENT_BLOCK_THICKNESS
+    inward = -1 if side == "right" else 1  # across the ridge, from the block
+    outer = bb.max.X if side == "right" else bb.min.X  # the block's outer face
+    pads = (outer + inward * opening / 2, (bb.min.Y + bb.max.Y) / 2, (bb.min.Z + bb.max.Z) / 2)
+    return (vent_clamp, clamp_at(pads, (inward, 0, 0), (0, 0, 1), opening), [])
 VENT_SCREWS_AT = (1, 1/2, 5/6)  # along the block: an inch from the rear end, the middle, five sixths along
 
 

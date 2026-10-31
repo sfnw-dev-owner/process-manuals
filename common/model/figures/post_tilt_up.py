@@ -217,7 +217,7 @@ def align_magic_rafters():
     main = camera("overhead", LOWER, gray(house() + roof()), highlights=magic_boxes())
     aligning_rect, clamp_rect = inset_rect("top left"), inset_rect("top left", 1)
     aligning = camera("aligning_roof", aligning_rect, house() + roof())
-    clamp = camera("clamp_roof_to_wall", clamp_rect, house() + roof() + shapes([P.LAG_CLAMP]))
+    clamp = camera("clamp_roof_to_wall", clamp_rect, house() + roof() + shapes([P.align_clamp()]))
     # the center lines on the rafter and the stud, lined up
     x, y, w, h = aligning_rect
     cx = x + 0.53 * w
@@ -316,14 +316,14 @@ def all_bird_blocks():
 
 def vent_guide_board():
     blocks = shapes(P.bird_blocks("left") + P.bird_blocks("right"))
-    main = camera("vent_guide", main_rect(), gray(house() + roof() + blocks) + black(shapes([P.VENT_GUIDE] + P.VENT_GUIDE_CLAMPS)))
+    main = camera("vent_guide", main_rect(), gray(house() + roof() + blocks) + black(shapes([P.vent_guide()] + P.vent_guide_clamps())))
     return [main], []
 
 
 def align_vent_block():
     blocks = shapes(P.bird_blocks("left") + P.bird_blocks("right"))
     block = shapes(P.vent_blocks("right", [0], offset=P.VENT_BLOCK_START))
-    main = camera("vent_align", main_rect(), gray(house() + roof() + blocks + shapes([P.VENT_GUIDE])) + black(block + shapes(P.VENT_SCREWS_TO_ALIGN)))
+    main = camera("vent_align", main_rect(), gray(house() + roof() + blocks + shapes([P.vent_guide()])) + black(block + shapes(P.VENT_SCREWS_TO_ALIGN)))
     bb = block[0].bounding_box()
     main.notes = [page_arrow((bb.center().X, bb.min.Y, bb.max.Z), -0.3, 0.5), page_arrow((bb.center().X, bb.max.Y, bb.max.Z), 0.3, 0.5)]
     return [main], []
@@ -331,7 +331,7 @@ def align_vent_block():
 
 def vent_block_screws():
     blocks = shapes(P.bird_blocks("left") + P.bird_blocks("right"))
-    main = camera("vent_screws", main_rect(), house() + roof() + blocks + shapes(P.vent_blocks("right", [0]) + [P.VENT_CLAMP] + P.VENT_SCREWS))
+    main = camera("vent_screws", main_rect(), house() + roof() + blocks + shapes(P.vent_blocks("right", [0]) + [P.vent_block_clamp()] + P.VENT_SCREWS))
     return [main], []
 
 
