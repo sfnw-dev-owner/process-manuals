@@ -782,8 +782,8 @@ CREW_CORNER = (26, 26)  # beyond the half's ends: out from the side wall's sidin
 def crew(side):
     """The crew raising the given half, [((x, y, z), flipped)]: each one's
     feet, in the house's frame, and whether the silhouette is flipped. The
-    clipart faces the page's left, which is +X in the figures (drawn from
-    over the front lhs corner); flipped, it faces -X. Everyone faces the
+    clipart faces the page's right, which is -X in the figures (drawn from
+    over the front lhs corner); flipped, it faces +X. Everyone faces the
     wall the half leans on from outside; the climbers face the half's ends
     and the one on the stool faces the wall from inside."""
     from .platform_assembly import DECK
@@ -808,7 +808,7 @@ def crew(side):
     beside, beyond = CREW_CORNER
     for y in (-(SIDING_FACE + beyond), PLATFORM_LENGTH + SIDING_FACE + beyond):
         people.append(((x_out(beside), y, GROUND), toward))
-    return [(feet, facing < 0) for feet, facing in people]
+    return [(feet, facing > 0) for feet, facing in people]
 
 
 def placed(entries):
