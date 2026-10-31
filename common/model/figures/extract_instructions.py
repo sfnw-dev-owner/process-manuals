@@ -28,6 +28,8 @@ WINDOW = (6, 4.8)  # each figure's size, inches, with the camera's fov across it
 FOV = 35  # degrees, across the figure's width
 NUMBER = (0.15, 0.14)  # a circled number: its circle's radius and its digit's height, page inches
 NUMBER_BELOW = 12  # a circled number under the middle of what it's on, this far below its bottom
+NUMBER_OVER = 10  # or over it, this far above its top
+NUMBER_BESIDE = 8  # or beside it, this far out
 
 # The views, in the house's frame: from high over a rear corner (rear) or a
 # front corner (front) of the house, as the manual's pictures were taken.
@@ -60,6 +62,10 @@ def paired(parts, n, at, offset):
 
 FRONT_END = ((0.5, 1, 0), (0, 0, -NUMBER_BELOW))  # under a part's front end (the carts', sticking out of the house)
 NEAR_END = ((1, 0.5, 0), (-NUMBER_IN, 0, -NUMBER_BELOW))  # under a staged part's end nearest the house (the left one's; paired)
+# where the jack or an arrow is under a part's middle: over it, under its +X end, or beside its +X face
+OVER = ((0.5, 0.5, 1), (0, 0, NUMBER_OVER))
+UNDER_X_END = ((1, 0.5, 0), (0, 0, -NUMBER_BELOW))
+BESIDE_X = ((1, 0.5, 0.5), (NUMBER_BESIDE, 0, 0))
 
 
 def scene(name, camera, rear, front, parts, numbers=()):
@@ -97,8 +103,8 @@ SCENES = [
           [IC.jack("rear", raised=True), IC.jack("front")] + IC.posts("under")
           + IC.blocks("rear", False) + IC.blocks("front", True) + IC.dollies("rear", False) + IC.dollies("front", False)
           + [IC.jack_arrow("rear", up=True)] + IC.block_arrows("rear", going_in=True) + IC.post_arrows(going_in=False),
-          numbered([IC.jack("rear", raised=True)], 1) + numbered(IC.blocks("rear", False), 2)
-          + numbered(IC.posts("under"), 3)),
+          numbered([IC.jack("rear", raised=True)], 1) + numbered(IC.blocks("rear", False)[:1], 2)
+          + numbered(IC.blocks("rear", False)[1:], 2, *OVER) + numbered(IC.posts("under"), 3)),
     scene("09_rear_lowered_onto_triple_blocks", "rear_low", IC.ON_BLOCKS, IC.ON_BLOCKS,
           [IC.jack("rear"), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", True) + IC.dollies("rear", False) + IC.dollies("front", False)
@@ -107,8 +113,8 @@ SCENES = [
           [IC.jack("rear"), IC.jack("front", raised=True)] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", True) + IC.dollies("rear", False) + IC.dollies("front", False)
           + [IC.jack_arrow("front", up=True)] + IC.block_arrows("front", going_in=False) + IC.dolly_arrows("front"),
-          numbered([IC.jack("front", raised=True)], 1) + numbered(IC.blocks("front", True), 2)
-          + paired(IC.dollies("front", False), 3, *NEAR_END)),
+          numbered([IC.jack("front", raised=True)], 1) + numbered(IC.blocks("front", True)[:1], 2)
+          + numbered(IC.blocks("front", True)[1:], 2, *UNDER_X_END) + paired(IC.dollies("front", False), 3, *NEAR_END)),
     scene("11_front_dollies_in_place", "front_blocks", IC.ON_BLOCKS, IC.ON_DOLLIES,
           [IC.jack("rear"), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", True)
@@ -117,8 +123,8 @@ SCENES = [
           [IC.jack("rear", raised=True), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", True) + IC.blocks("front", False) + IC.dollies("rear", False) + IC.dollies("front", True)
           + [IC.jack_arrow("rear", up=True)] + IC.block_arrows("rear", going_in=False) + IC.dolly_arrows("rear"),
-          numbered([IC.jack("rear", raised=True)], 1) + numbered(IC.blocks("rear", True), 2)
-          + paired(IC.dollies("rear", False), 3, *NEAR_END)),
+          numbered([IC.jack("rear", raised=True)], 1) + numbered(IC.blocks("rear", True)[:1], 2)
+          + numbered(IC.blocks("rear", True)[1:], 2, *BESIDE_X) + paired(IC.dollies("rear", False), 3, *NEAR_END)),
     scene("13_home_in_final_position", "rear_low", IC.ON_DOLLIES, IC.ON_DOLLIES,
           [IC.jack("rear"), IC.jack("front")] + IC.posts("out")
           + IC.blocks("rear", False) + IC.blocks("front", False) + IC.dollies("rear", True) + IC.dollies("front", True)
