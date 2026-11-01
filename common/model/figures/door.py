@@ -147,8 +147,7 @@ def figures(scale=1/16, only=None):
         *callout(flash_ext.point(0.4, 0), "Flexible flashing", "below left", lead=1/2),
         *callout(panel_ext.point(0.5, 0), "Interior Plywood", "below right", lead=1/2),
     ]
-    for stud_ in studs[0].solids():  # the door studs, cut
-        e = Extent(T.drawn([stud_])[0][0])
+    for e in sorted((Extent(T.drawn([s])[0][0]) for s in studs[0].solids()), key=lambda e: (e.x0, e.y0)):  # the door studs, cut
         threshold_notes.append((e.x0, e.y0, crossed_box(e.width * scale, e.height * scale)))
 
     # 3.1_ScrewLocs: the legs from the doorway, and a detail at the top hinge.

@@ -190,7 +190,7 @@ def shelf_plan(component, framing, step):
             parts.append((section, "outline"))
             if is_framing:
                 studs += [Extent(s) for s in section.solids()]
-    return parts, studs
+    return parts, sorted(studs, key=lambda e: (e.x0, e.y0))  # (OpenCASCADE's order of the solids varies from run to run)
 
 
 def studs_behind(framing, x0, x1, margin=5):

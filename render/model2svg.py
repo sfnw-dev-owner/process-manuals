@@ -328,6 +328,16 @@ def _length(e):
     return props.Mass()
 
 
+def _canonical(edges):
+    """Edges in a canonical order (by their ends, rounded), whatever order
+    they came in: see _edge_elements."""
+    def key(e):
+        a, b = e.position_at(0), e.position_at(1)
+        ends = sorted([(round(a.X, 4), round(a.Y, 4), round(a.Z, 4)), (round(b.X, 4), round(b.Y, 4), round(b.Z, 4))])
+        return (*ends[0], *ends[1], e.geom_type.name)
+    return sorted(edges, key=key)
+
+
 def _ordered(edges):
     """Edges in a stable order (OpenCASCADE's projection returns them in an
     order that varies from run to run), so the same figure gives the same
@@ -459,7 +469,7 @@ def write_svg(fig, path, scale=1):
     for shape, style, _, clip in _parts(fig):
         if style == "jig":
             es = clipped(clipped(outline(shape), fig.clip), clip)
-            svg.add_shape(es, layer=style)
+            svg.add_shape(_canonical(es), layer=style)
             edges += [(e, style) for e in es]
     for name, (color, faces) in sorted(fills.items(), key=lambda kv: kv[0] not in FILLS):  # patterns underneath
         if faces:
@@ -472,13 +482,13 @@ def write_svg(fig, path, scale=1):
         if STYLES[style][0] is None or style in HLR or style == "jig":
             continue
         es = clipped(clipped(outline(shape), fig.clip), clip)
-        svg.add_shape(es, layer=style)
+        svg.add_shape(_canonical(es), layer=style)
         edges += [(e, style) for e in es]
     for style in HLR:
         shapes = [shape for shape, s, _, _ in _parts(fig) if s == style]
         if shapes:
             es = clipped(visible_outline(shapes), fig.clip)
-            svg.add_shape(es, layer=style)
+            svg.add_shape(_canonical(es), layer=style)
             edges += [(e, style) for e in es]
     path.parent.mkdir(parents=True, exist_ok=True)
     svg.write(path)
@@ -918,14 +928,17 @@ def _cross(a, b):
 
 
 def _edge_elements(edges):
-    """SVG paths for projected edges (in the view plane's coordinates)."""
+    """SVG paths for projected edges (in the view plane's coordinates), in
+    a canonical order (by their path data), whatever order the edges came
+    in: the order lines are drawn in shifts the anti-aliasing where they
+    cross, and OpenCASCADE's order varies from run to run."""
     out = []
     for e in edges:
         n = 2 if e.geom_type.name == "LINE" else max(4, min(48, int(_length(e) * 4)))
         pts = _positions(e, [i / (n - 1) for i in range(n)])
         d = "M " + " L ".join(f"{x:.3f} {y:.3f}" for x, y, _ in pts)
         out.append(ET.Element(f"{SVGNS}path", {"d": d}))
-    return out
+    return sorted(out, key=lambda el: el.get("d"))
 
 
 def _unit(v):
