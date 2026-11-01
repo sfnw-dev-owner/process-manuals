@@ -115,6 +115,33 @@ To render a single figure while iterating, run `model2svg.py` the same way
 with the figure's name (`python3 render/model2svg.py platform/step_03@1:20`);
 it prints the SVG's path (as JSON). Delete the cached SVG to force a redraw.
 
+### Looking at the model in 3D
+
+`render/view.py` shows a figure's parts, or anything the model makes, in
+the [OCP CAD Viewer](https://github.com/bernhard-42/vscode-ocp-cad-viewer):
+an interactive 3D view in a browser tab (orbit, zoom, clip, explode,
+measure), with the figure's own camera. It needs build123d and the viewer
+on the machine (not in the container; both are plain Python packages, and
+[uv](https://docs.astral.sh/uv/) gets them in a minute):
+
+```
+uv venv .venv && . .venv/bin/activate
+uv pip install -r render/requirements.txt ocp_viewer
+python -m ocp_viewer &                  # then open http://localhost:3939
+render/view.py roof-blocking/vent_guide_board
+render/view.py 'post_tilt_up.ladders("right")'
+render/view.py --watch roof-blocking/vent_guide_board
+```
+
+A figure is named as a manual embeds it; anything else is a Python
+expression with every model module in scope by its file name (a shape, a
+component, or a list of `(component, placement, mods)` entries). `--watch`
+shows again, keeping the camera where you left it, every time a file under
+`common/model` is saved, so a figure's numbers can be tuned with the result
+in view. VS Code users can install its "OCP CAD Viewer" extension instead
+of `ocp_viewer`: the same viewer opens inside the editor. `--dry-run`
+lists the parts and the camera without a viewer.
+
 ## Visual diffs of PDFs
 
 `render/visual-diff/` builds the image the `render-pdfs` workflow uses to
