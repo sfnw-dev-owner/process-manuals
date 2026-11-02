@@ -12,12 +12,13 @@ import math
 from build123d import Plane, Pos, Rot, Vector
 
 from model.house import house
-from model.notes import Icon, Label, Leader, dashed_line
+from model.notes import Icon, Label, Leader
 from model.platform_assembly import DECK, PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from model import tilt_up as tu
 from model.walls import SIDE_STUDS, STUD, WALL_DEPTH, WALL_HEIGHT
 
 from . import Figure
+from . import insets as I
 from .pages import (
     GRAY, PAGE, RED, arrow_to, center_of, frame, inset, inset_edge, inset_rect, iso, main_rect, move_arrow,
     perspective, pointer_to, up_arrow, view,
@@ -160,7 +161,7 @@ def mississippis(corner, wall_point, along, mallet_at, gun_at):
     (corners of the page), arrows from them to the first strike at the
     bottom plate's end, and dashed arcs on to the nailing points along it."""
     mallet, gun = inset_rect(*mallet_at), inset_rect(*gun_at)
-    notes = inset("tu_mallet", *mallet_at, count="x3") + inset("tu_nail_gun", *gun_at, count="x1")
+    notes = inset("mallet", *mallet_at, count="x3") + inset("NailGun", *gun_at, count="x1")
     mallet_side = "right" if "left" in mallet_at[0] else "left"
     gun_side = "right" if "left" in gun_at[0] else "left"
     view_notes = [arrow_to(wall_point, mallet, mallet_side, curve=0.2), arrow_to(wall_point, gun, gun_side, curve=-0.15)]
@@ -178,22 +179,34 @@ def clamp_inset(corner, corner_name, at=("top left", 0)):
                 [tu.wall_at(w, "upright") for w in ("rhs", "back", "lhs")]], fit=[upper], margin=0.15), [frame(rect)]
 
 
-def nail_page(corner, corner_name, icon):
+def nail_inset(corner, corner_name, at=("top left", 0)):
+    """A close-up of a corner's top nail, angled into the corner, in an
+    inset: (viewport, page notes)."""
+    walls = [platform.shape()] + [loc * c.shape() for c, loc in [tu.wall_at(w, "upright") for w in ("rhs", "back", "lhs")]]
+    top = max(nails(corner_name), key=lambda s: s.bounding_box().max.Z)
+    return I.part_inset(walls + nails(corner_name), *at, direction=iso(corner), fit=[top], margin=1.5)
+
+
+def corner_insets():
+    """The blocks-in-line insets at the top right: (viewports, page notes)."""
+    flush, notes = I.part_inset(I.corner(), "top right", 1)
+    proud, proud_notes = I.part_inset(I.corner(offset=1), "top right", 0, struck=True)
+    return [flush, proud], notes + proud_notes
+
+
+def nail_page(corner, corner_name):
     """A corner's nailing page: a close-up on the corner's clamps and nails,
     the angled nail and nail gun insets at the left, the blocks-in-line
     insets at the right, the gun's arrow to the top nail."""
-    angled, gun = inset_rect("top left"), inset_rect("top left", row=1)
-    notes = inset(icon, "top left") + inset("tu_nail_gun", "top left", row=1, count="x5")
-    notes += inset("tu_blocks_in_line", "top right", 1) + inset("tu_blocks_not_in_line", "top right", 0, struck=True)
-    # the toe-nailing angle, drawn on the angled nail's picture: dashed red up along the nail, then the arrow
-    x, y, w, h = angled
-    a, b = (x + 0.22 * w, y + 0.65 * h), (x + 0.97 * w, y + 0.33 * h)
-    notes += [(a[0], a[1], dashed_line(b[0] - a[0], -(b[1] - a[1]), weight=3, color=RED)),
-              (b[0], b[1], Leader(((a[0] - b[0], -(a[1] - b[1])),), weight=2, color=RED))]
+    gun = inset_rect("top left", row=1)
+    nail_view, notes = nail_inset(corner, corner_name)
+    notes += inset("NailGun", "top left", row=1, count="x5")
+    corner_views, corner_notes = corner_insets()
+    notes += corner_notes
     fit = clamps(corner_name) + nails(corner_name)
     scene = parts(SCENES[f"{corner_name.split('_')[0]}_nail" if corner_name == "back_rhs" else "lhs_side_nails"], iso(corner))
     main = view(LOWER, corner, scene, fit=fit, margin=0.1, notes=[arrow_to(tuple(top_nail(corner_name)), gun, "right", curve=-0.2)])
-    return [main], notes
+    return [main, nail_view, *corner_views], notes
 
 
 def figures(only=None):
@@ -237,7 +250,7 @@ def figures(only=None):
     notes, view_notes = mississippis("front lhs", (6, 0, DECK), (1, 0, 0), ("top left", 0), ("bottom left", 0))
     page("back_mississippis", "front lhs", view_notes=view_notes, notes=notes)
     if only is None or "back_nail" in only:
-        pages["back_nail"] = nail_page("front lhs", "back_rhs", "tu_angled_nail_rhs")
+        pages["back_nail"] = nail_page("front lhs", "back_rhs")
 
     # ── the lhs wall ──
     crews = {"A": tu.CREW["lhs_jig"][1], "B": tu.CREW["lhs_jig"][3]}
@@ -252,7 +265,7 @@ def figures(only=None):
     notes, view_notes = mississippis("front rhs", (PLATFORM_WIDTH, 2, DECK), (0, 1, 0), ("middle left", 0), ("bottom right", 0))
     page("lhs_mississippis", "front rhs", view_notes=view_notes, notes=notes)
     if only is None or "lhs_side_nails" in only:
-        pages["lhs_side_nails"] = nail_page("front rhs", "back_lhs", "tu_angled_nail_lhs")
+        pages["lhs_side_nails"] = nail_page("front rhs", "back_lhs")
 
     # ── the front wall ──
     crews = {"A": tu.CREW["front_jig"][1], "B": tu.CREW["front_jig"][4]}
@@ -264,7 +277,8 @@ def figures(only=None):
     carry = inset_rect("bottom left")
     tilted = tu.STAGES["front"]["tilted"] * tu.FUNKY_BOARD_16
     ends = [tuple((tilted * Pos(x, 0, 0)).position) for x in (12, 84)]  # funky board #16's ends, under the tilted wall
-    page("front_tilted", "front rhs", notes=inset("tu_plywood_carry", "bottom left"),
+    carrier, carrier_notes = I.part_inset([tu.panel_carrier.shape()], "bottom left", margin=0.2)
+    page("front_tilted", "front rhs", notes=carrier_notes, views=[carrier],
          view_notes=[arrow_to(p, carry, "right", curve=c) for p, c in zip(ends, (0.2, -0.1))])
     # looking down the house from over its rear: the front corners
     eye, target = OVER_REAR
@@ -282,13 +296,11 @@ def figures(only=None):
     notes, view_notes = mississippis("front rhs", (WALL_DEPTH + 4, PLATFORM_LENGTH - WALL_DEPTH, DECK), (1, 0, 0), ("top left", 0), ("top right", 0))
     front_page("front_mississippis", notes=notes, view_notes=view_notes)
     gun = inset_rect("top left", row=1)
-    notes = inset("tu_angled_nail_lhs", "top left") + inset("tu_nail_gun", "top left", row=1, count="x5")
-    notes += inset("tu_blocks_in_line", "top right", 1) + inset("tu_blocks_not_in_line", "top right", 0, struck=True)
-    x, y, w, h = inset_rect("top left")
-    a, b = (x + 0.22 * w, y + 0.65 * h), (x + 0.97 * w, y + 0.33 * h)
-    notes += [(a[0], a[1], dashed_line(b[0] - a[0], -(b[1] - a[1]), weight=3, color=RED)),
-              (b[0], b[1], Leader(((a[0] - b[0], -(a[1] - b[1])),), weight=2, color=RED))]
-    front_page("front_nail", notes=notes, view_notes=[arrow_to(tuple(top_nail(c)), gun, "right", curve=k)
-                                                      for c, k in (("front_lhs", -0.15), ("front_rhs", 0.15))])
+    nail_view, notes = nail_inset("front rhs", "front_lhs")
+    notes += inset("NailGun", "top left", row=1, count="x5")
+    corner_views, corner_notes = corner_insets()
+    notes += corner_notes
+    front_page("front_nail", notes=notes, views=[nail_view, *corner_views],
+               view_notes=[arrow_to(tuple(top_nail(c)), gun, "right", curve=k) for c, k in (("front_lhs", -0.15), ("front_rhs", 0.15))])
 
     return [Figure(MD, name, page=PAGE, viewports=views, notes=notes) for name, (views, notes) in pages.items()]

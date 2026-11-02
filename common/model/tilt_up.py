@@ -258,6 +258,21 @@ def funky_board_16():
 
 FUNKY_BOARD_16 = Pos(0, 144.38, 22.85)  # with the front wall upright in the house
 
+CARRIER = (6, 8, 1 + 1/2, 3/4)  # a panel carrier: its handle across, the drop from the handle to the foot, the foot's lip, its bar
+
+
+@component
+def panel_carrier():
+    """A plywood carrier (tilt-up.md: carrying the funky board): a handle on
+    two legs down to a foot with a lip the sheet's edge sits on. Standing
+    on its foot at the origin, the handle along X."""
+    across, drop, lip, bar = CARRIER
+    foot = Box(across, 2 * bar + 3/4, bar, align=(Align.CENTER, Align.MIN, Align.MIN))
+    legs = [Pos(x, 0, bar) * Box(bar, bar, drop, align=(Align.CENTER, Align.MIN, Align.MIN)) for x in (-across / 2 + bar / 2, across / 2 - bar / 2)]
+    handle = Pos(0, 0, bar + drop) * Box(across, bar, bar, align=(Align.CENTER, Align.MIN, Align.MIN))
+    lip_ = Pos(0, 2 * bar + 3/4 - bar, bar) * Box(across, bar, lip, align=(Align.CENTER, Align.MIN, Align.MIN))
+    return [foot, *legs, handle, lip_], []
+
 
 # ── the crew ───────────────────────────────────────────────────────────────
 # Cut-out silhouettes, as SketchUp's "face me" people: the figures turn them

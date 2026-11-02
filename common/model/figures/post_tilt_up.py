@@ -8,18 +8,21 @@ light gray for the context under a step's new parts. The notes are the tool
 insets at the page's corners, counts, arrows and boxes hung on points and
 parts of the model."""
 
-from build123d import Align, Box, Location, Pos, Vector
+from build123d import Align, Box, Location, Plane, Pos, Rot, Vector
 
 from model import post_tilt_up as P
-from model.notes import Icon, Label, Leader, Span, Lines
+from model import tilt_up as tu
+from model.notes import Label, Leader, Span, Lines
 from model.platform_assembly import DECK, PLATFORM_LENGTH, PLATFORM_WIDTH, platform
 from model.roof import RIDGE_BOARD_BOTTOM, RIDGE_TOP, RIDGE_X, bays, wall_bays
 from model.house import WALL_TOP
 from model.walls import WALL_DEPTH, WALL_HEIGHT
 
 from . import Figure, Viewport
+from . import insets as I
+from .tilt_up import facing
 from .pages import (
-    PAGE, RED, LOWER_RECT, arrow_between, arrow_to, center_of, frame, inset, inset_edge, inset_rect, inset_view,
+    PAGE, RED, LOWER_RECT, arrow_between, arrow_to, center_of, frame, inset, inset_edge, inset_rect, inset_view, iso,
     main_rect, page_arrow, perspective, view,
 )
 
@@ -27,8 +30,6 @@ FRAME_MD = "post-tilt-up/frame-completion.md"
 BLOCKING_MD = "post-tilt-up/roof-blocking.md"
 LOWER = LOWER_RECT
 HIGHLIGHT = 6  # a red box's line, relative to notes.LINE
-PERSON = (29.7, 57.5)  # the silhouette clipart's size, inches of model
-PERSON_FEET = 0.37  # where the feet are, across its width from the left
 
 # Perspective cameras, (eye, target, up) in the house's frame (fov 35°).
 X, Y = PLATFORM_WIDTH / 2, PLATFORM_LENGTH / 2
@@ -77,13 +78,16 @@ def shapes(entries):
 
 
 def people(side):
-    """Viewport notes: the crew raising a half-roof, as silhouettes standing
-    at their feet, sized with the view."""
+    """The crew raising a half-roof: cut-out silhouettes (tilt_up's) standing
+    at their feet, turned to face the camera, reaching toward their work
+    (the cut-out reaches +X; mirrored, -X)."""
+    turn = facing(iso("front lhs"))
     out = []
-    for (x, y, z), mirrored in P.crew(side):
-        w, h = PERSON
-        dx = (0.5 - PERSON_FEET) * w * (-1 if mirrored else 1)
-        out.append((x, y, z, Icon("ptu_person", w, h, flip=mirrored, dx=dx, dy=h / 2, model=True)))
+    for (x, y, z), toward in P.crew(side):
+        s = tu.person_hands_out.shape()
+        if toward < 0:
+            s = s.mirror(Plane.YZ)
+        out.append(Pos(x, y, z) * Rot(Z=turn) * s)
     return out
 
 
@@ -107,9 +111,10 @@ def secure_walls():
     main = camera("overhead_walls", LOWER, house(), highlights=[([platform.shape()], RED, HIGHLIGHT, -0.1)])
     main.notes.append(arrow_to((X, Y, DECK), inset_rect("top left", 1), "bottom", curve=0.25))
     main.notes.append((X, Y, DECK, Label("x18", 0.12, dx=0.15, attach=4)))
-    notes = inset("ptu_long_screw", "top left", count="x4") + inset("ptu_4x_nails_in_each_stud_bay", "top left", 1)
-    notes.append(arrow_between(inset_edge(inset_rect("top left", 1), "left"), inset_edge(inset_rect("top left"), "right")))
-    return [main], notes
+    screw, notes = I.fastener(P.screw_long, "top left", count="x4")
+    bay, bay_notes = I.part_inset(I.stud_bay_screws(), "top left", 1, margin=0.1)
+    notes += bay_notes + [arrow_between(inset_edge(inset_rect("top left", 1), "left"), inset_edge(inset_rect("top left"), "right"))]
+    return [main, screw, bay], notes
 
 
 def corner_screws(end):
@@ -117,7 +122,8 @@ def corner_screws(end):
     corners = [[corner_box(x, y)] for x in (WALL_DEPTH, PLATFORM_WIDTH - WALL_DEPTH)]
     main = camera("over_rear" if end == "front" else "over_front", LOWER, house() + shapes(P.CORNER_SCREWS),
                   highlights=[(c, RED, HIGHLIGHT, 0.05) for c in corners])
-    return [main], inset("ptu_long_screw", "top left", count="x5") + inset("ptu_impact_driver", "top left", 1)
+    screw, notes = I.fastener(P.screw_long, "top left", count="x5")
+    return [main, screw], notes + inset("drill_icon", "top left", 1)
 
 
 def triangles():
@@ -139,9 +145,10 @@ def triangle_clamped():
     main = camera("rear_triangle", LOWER, gray(house()) + black(rear + shapes(P.TRIANGLE_CLAMPS)),
                   highlights=[(shapes(P.TRIANGLE_CLAMPS[:1]), (0, 0, 0), 4, 0.3)])
     notes = [frame(close_rect)] + inset_alignment_arrows(close_rect)
-    notes += inset("ptu_vertically_aligned_blocks", "top left", 1) + inset("ptu_vertically_misaligned_blocks", "top left", 2, struck=True)
-    notes += inset_alignment_arrows(inset_rect("top left", 1))
-    return [main, close], notes
+    flush, flush_notes = I.part_inset(I.stacked(), "top left", 1)
+    proud, proud_notes = I.part_inset(I.stacked(step=1), "top left", 2, struck=True)
+    notes += flush_notes + proud_notes + inset_alignment_arrows(inset_rect("top left", 1))
+    return [main, close, flush, proud], notes
 
 
 def triangle_centered():
@@ -149,12 +156,15 @@ def triangle_centered():
     main = camera("rear_triangle", LOWER, gray(house()) + black(rear + shapes(P.TRIANGLE_CLAMPS)))
     bb = rear[0].bounding_box()
     main.notes = [page_arrow((x, bb.min.Y, WALL_TOP), 0, -1.1) for x in (bb.min.X + 2, bb.max.X - 2)]  # the ends overhang equally
-    return [main], inset("ptu_centered_blocks", "top left") + inset("ptu_mis_centered_blocks", "top left", 1, struck=True)
+    centered, notes = I.part_inset(I.centered(), "top left")
+    off, off_notes = I.part_inset(I.centered(offset=4), "top left", 1, struck=True)
+    return [main, centered, off], notes + off_notes
 
 
 def triangle_screws():
     main = camera("rear_triangle_close", LOWER, house() + shapes(P.triangles() + P.TRIANGLE_CLAMPS + P.TRIANGLE_SCREWS))
-    return [main], inset("ptu_long_screw", "top left", count="x16")
+    screw, notes = I.fastener(P.screw_long, "top left", count="x16")
+    return [main, screw], notes
 
 
 def raising(side, step, crew=False, ladders=False, installed=()):
@@ -162,7 +172,9 @@ def raising(side, step, crew=False, ladders=False, installed=()):
         parts = house() + roof(installed) + shapes([P.half_roof_at(side, step)] + P.funky_boards(side, step))
         if ladders:
             parts += shapes(P.ladders(side))
-        return [view(main_rect(), "front lhs", parts, margin=0.1, notes=people(side) if crew else ())], []
+        if crew:
+            parts += people(side)
+        return [view(main_rect(), "front lhs", parts, margin=0.1)], []
     return build
 
 
@@ -183,7 +195,9 @@ def join_half_roofs():
     main = view(LOWER, "front rhs", house() + roof(), fit=marks, margin=1.0)
     joint = (RIDGE_X, PLATFORM_LENGTH - WALL_DEPTH, WALL_TOP + RIDGE_BOARD_BOTTOM + 2)
     main.notes = [arrow_to(joint, inset_rect("top left"), "bottom", curve=0.2)]
-    return [main], inset("ptu_horizontally_aligned_blocks", "top left") + inset("ptu_horizontally_misaligned_blocks", "top left", 1, struck=True)
+    flush, notes = I.part_inset(I.end_to_end(), "top left")
+    proud, proud_notes = I.part_inset(I.end_to_end(step=1), "top left", 1, struck=True)
+    return [main, flush, proud], notes + proud_notes
 
 
 def ridge_bay(bay, clamp_y, side_y, dimension=False):
@@ -194,7 +208,9 @@ def ridge_bay(bay, clamp_y, side_y, dimension=False):
         if dimension:  # the two screws of a column, 4" apart
             a, b = (s.bounding_box().center() for s in screws[:2])
             main.notes = [(tuple(a), tuple(b), Span('4"', weight=3, color=RED))]
-        return [main], inset("ptu_short_screw", "top left", count="x4") + inset("ptu_long_screw_2", "top left", 1, struck=True)
+        short, notes = I.fastener(P.screw_short, "top left", count="x4")
+        long, long_notes = I.fastener(P.screw_long, "top left", 1, struck=True)
+        return [main, short, long], notes + long_notes
     return build
 
 
@@ -205,7 +221,9 @@ def ridge_beam():
     # alternate bays, screwed from alternate sides: an arrow at each
     for k, (a, b) in enumerate(bays()):
         main.notes.append(page_arrow((RIDGE_X, (a + b) / 2, WALL_TOP + RIDGE_TOP), 0, 1.0 if k % 2 else -1.0))
-    return [main], inset("ptu_clamp", "top left", count="x2") + inset("ptu_short_screw", "top left", 1, count="x4")
+    clamp, notes = I.part_inset([P.bar_clamp.shape()], "top left", count="x2")
+    screw, screw_notes = I.fastener(P.screw_short, "top left", 1, count="x4")
+    return [main, clamp, screw], notes + screw_notes
 
 
 def magic_boxes():
@@ -251,10 +269,11 @@ def bracket_screws():
     main = camera("overhead", LOWER, gray(house() + roof()), highlights=[(b, (0, 0, 0), 4, 0.12) for b in brackets])
     rect = inset_rect("top left", 1)
     close = camera("bracket", rect, house() + roof() + shapes(P.BRACKET_SCREWS))
-    notes = inset("ptu_hex_bolt", "top left", count="x3") + [frame(rect)]
+    hex_, notes = I.fastener(P.hex_screw, "top left", count="x3")
+    notes.append(frame(rect))
     notes.append((rect[0] + rect[2] + 0.1, rect[1] + rect[3] - 0.1, Label("x4", 0.12, attach=7)))
     notes.append(arrow_between(inset_edge(rect, "left"), inset_edge(inset_rect("top left"), "right")))
-    return [main, close], notes
+    return [main, hex_, close], notes
 
 
 def all_lag_bolts():
@@ -290,14 +309,15 @@ def tap_bird_block():
     at = tuple(block[0].bounding_box().center())
     main.notes = [arrow_to(at, inset_rect("top right"), "bottom", curve=-0.2),
                   arrow_to(at, inset_rect("top left"), "bottom", curve=0.3)]
-    notes = inset("ptu_blocks_without_gap", "top left") + inset("ptu_blocks_with_gap", "top left", 1, struck=True)
-    notes += inset("ptu_mallet", "top right")
-    return [main], notes
+    tight, notes = I.part_inset(I.stacked(), "top left")
+    gapped, gap_notes = I.part_inset(I.stacked(gap=1), "top left", 1, struck=True)
+    return [main, tight, gapped], notes + gap_notes + inset("mallet", "top right")
 
 
 def bird_block_screws():
     main = camera("bird_screws", LOWER, house() + roof() + shapes(bird_block_entries() + P.BIRD_BLOCK_SCREWS))
-    return [main], inset("ptu_long_screw", "top left", count="x2")
+    screw, notes = I.fastener(P.screw_long, "top left", count="x2")
+    return [main, screw], notes
 
 
 def block_arrows(entries, side):

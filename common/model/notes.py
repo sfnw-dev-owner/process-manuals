@@ -62,9 +62,6 @@ class Icon(Note):
     flip: bool = False  # mirrored left-right
     dx: float = 0
     dy: float = 0
-    # On a page: the icon's size and offset are model inches, scaled with
-    # the view (a cut-out person standing in the scene).
-    model: bool = False
 
 
 @dataclass(frozen=True)

@@ -536,9 +536,7 @@ def write_page_svg(fig, path):
             if q is None:
                 return None
             return (cx + (q[0] - tx) * scale, cy - (q[1] - ty) * scale)
-        from dataclasses import replace
-        from model.notes import Icon, Span
-        persons = []
+        from model.notes import Span
         for entry in vp.notes:
             if len(entry) == 3 and isinstance(entry[2], Span):  # between two points of the model
                 a, b = page_point(entry[0]), page_point(entry[1])
@@ -548,15 +546,8 @@ def write_page_svg(fig, path):
             px, py, pz, note = entry
             at = page_point((px, py, pz))
             if at:
-                if isinstance(note, Icon) and note.model:  # sized in model inches
-                    note = replace(note, width=note.width * scale, height=note.height * scale,
-                                   dx=note.dx * scale, dy=note.dy * scale, model=False)
                 for el, _ in _page_note(fig, at[0], at[1], note):
                     root.append(el)
-                if isinstance(note, Icon) and note.name == "ptu_person":
-                    persons.append(((px, py, pz), at, note, el))
-        if persons:
-            _occlude_persons(root, i, vp, persons, page_point)
         for shapes, color, weight, pad in vp.highlights:
             box = _projected_box(shapes, page_point)
             if box:
@@ -644,111 +635,6 @@ def _fitted(vp):
 
 def _page_note(fig, x, y, note):
     return _note_svg(x, y, note, 1, PAGE_FONT)
-
-
-PERSON_CELLS = (24, 48)  # a silhouette's box in cells (across, down): a cell is hidden when a ray through its middle meets a part in front
-PERSON_DEPTH_TOLERANCE = 1  # model inches: what's this close to a silhouette's plane doesn't hide it
-
-
-def _occlude_persons(root, i, vp, persons, page_point):
-    """The crew's silhouettes (icons at points of the model, drawn over the
-    lines) are hidden by the parts in front of them, a cell of the
-    silhouette's box at a time: the silhouette stands upright at its feet,
-    facing the eye, and a cell is hidden when a ray from the eye through its
-    middle meets a solid before reaching the silhouette; the icon is then
-    clipped to the cells that aren't hidden."""
-    import numpy as np
-    from build123d import Vector
-    from OCP.gp import gp_Dir, gp_Lin, gp_Pnt
-    from OCP.IntCurvesFace import IntCurvesFace_ShapeIntersector
-    eye = Vector(*vp.eye)
-    fwd = (Vector(*vp.target) - eye).normalized()
-    far = 1e4
-    nx, ny = PERSON_CELLS
-    for k, (p, (ax, ay), note, icon) in enumerate(persons):
-        p = Vector(*p)
-        x0, x1 = ax + note.dx - note.width / 2, ax + note.dx + note.width / 2
-        y0, y1 = ay - note.dy - note.height / 2, ay - note.dy + note.height / 2
-        # model offsets for page offsets at the silhouette: it stands upright
-        # at its feet, facing the eye (its plane holds Z and the view's
-        # horizontal across), or faces the eye squarely in a view from straight above
-        across = Vector(-fwd.Y, fwd.X, 0)
-        if across.length > 1e-6:
-            axes = [across.normalized(), Vector(0, 0, 1)]
-            J = np.array([[page_point(tuple(p + d))[j] - (ax, ay)[j] for d in axes] for j in (0, 1)])
-            back = np.array(axes).T @ np.linalg.inv(J)  # page (u, v) -> model (x, y, z)
-        else:
-            J = np.array([[page_point((p.X + dx, p.Y + dy, p.Z + dz))[j] - (ax, ay)[j] for dx, dy, dz in ((1, 0, 0), (0, 1, 0), (0, 0, 1))] for j in (0, 1)])
-            back = np.linalg.pinv(J)
-        cw, ch = (x1 - x0) / nx, (y1 - y0) / ny
-        cells = {}  # (column, row) -> the ray through the cell's middle: (origin, direction, how far to the plane)
-        for a in range(nx):
-            for b in range(ny):
-                u, v = x0 + (a + 0.5) * cw, y0 + (b + 0.5) * ch
-                q = p + Vector(*(back @ np.array([u - ax, v - ay])))
-                if vp.fov is None:
-                    cells[a, b] = (q - fwd * far, fwd, far - PERSON_DEPTH_TOLERANCE)
-                else:
-                    d = q - eye
-                    cells[a, b] = (eye, d.normalized(), d.length - PERSON_DEPTH_TOLERANCE)
-        hidden = set()
-        for shape, *_ in vp.parts:
-            for s in shape.solids():
-                bb = s.bounding_box()
-                corners = [page_point((x, y, z)) for x in (bb.min.X, bb.max.X) for y in (bb.min.Y, bb.max.Y) for z in (bb.min.Z, bb.max.Z)]
-                corners = [q for q in corners if q]
-                if len(corners) < 3 or max(q[0] for q in corners) < x0 or min(q[0] for q in corners) > x1 or max(q[1] for q in corners) < y0 or min(q[1] for q in corners) > y1:
-                    continue
-                # just the cells under the solid's projected box
-                a0, a1 = max(0, int((min(q[0] for q in corners) - x0) / cw)), min(nx - 1, int((max(q[0] for q in corners) - x0) / cw))
-                b0, b1 = max(0, int((min(q[1] for q in corners) - y0) / ch)), min(ny - 1, int((max(q[1] for q in corners) - y0) / ch))
-                inter = IntCurvesFace_ShapeIntersector()
-                inter.Load(s.wrapped, 1e-6)
-                for a in range(a0, a1 + 1):
-                    for b in range(b0, b1 + 1):
-                        if (a, b) in hidden:
-                            continue
-                        o, d, limit = cells[a, b]
-                        inter.Perform(gp_Lin(gp_Pnt(o.X, o.Y, o.Z), gp_Dir(d.X, d.Y, d.Z)), 0, limit)
-                        if inter.IsDone() and inter.NbPnt() > 0:
-                            hidden.add((a, b))
-        if not hidden:
-            continue
-        clip = ET.SubElement(root, f"{SVGNS}clipPath", {"id": f"person{i}_{k}_seen"})
-        for b in range(ny):  # the visible cells, a run of them at a time
-            a = 0
-            while a < nx:
-                if (a, b) in hidden:
-                    a += 1
-                    continue
-                run = a
-                while run < nx and (run, b) not in hidden:
-                    run += 1
-                ET.SubElement(clip, f"{SVGNS}rect", {"x": f"{x0 + a * cw:.4f}", "y": f"{y0 + b * ch:.4f}",
-                                                     "width": f"{(run - a) * cw:.4f}", "height": f"{ch:.4f}"})
-                a = run
-        # (clipped by a wrapper: the icon's own transform would move the cells)
-        wrap = ET.Element(f"{SVGNS}g", {"clip-path": f"url(#person{i}_{k}_seen)"})
-        at = list(root).index(icon)
-        root.remove(icon)
-        wrap.append(icon)
-        root.insert(at, wrap)
-
-
-def _hull(pts):
-    """The convex hull of 2D points (monotone chain), counterclockwise."""
-    pts = sorted(set(pts))
-    if len(pts) < 3:
-        return pts
-    def half(seq):
-        out = []
-        for q in seq:
-            while len(out) >= 2 and (out[-1][0] - out[-2][0]) * (q[1] - out[-2][1]) - (out[-1][1] - out[-2][1]) * (q[0] - out[-2][0]) <= 0:
-                out.pop()
-            out.append(q)
-        return out
-    lower, upper = half(pts), half(reversed(pts))
-    return lower[:-1] + upper[:-1]
 
 
 def _same_camera(a, b):
