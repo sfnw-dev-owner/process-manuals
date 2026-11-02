@@ -179,12 +179,32 @@ def clamp_inset(corner, corner_name, at=("top left", 0)):
                 [tu.wall_at(w, "upright") for w in ("rhs", "back", "lhs")]], fit=[upper], margin=0.15), [frame(rect)]
 
 
+NAIL_PLAN = 10  # the corner plan's field around the nail, inches
+NAIL_PLAN_SLICE = 1  # the walls cut from the nail's axis down this far
+
+
 def nail_inset(corner, corner_name, at=("top left", 0)):
-    """A close-up of a corner's top nail, angled into the corner, in an
-    inset: (viewport, page notes)."""
-    walls = [platform.shape()] + [loc * c.shape() for c, loc in [tu.wall_at(w, "upright") for w in ("rhs", "back", "lhs")]]
-    top = max(nails(corner_name), key=lambda s: s.bounding_box().max.Z)
-    return I.part_inset(walls + nails(corner_name), *at, direction=iso(corner), fit=[top], margin=1.5)
+    """The corner in plan, cut through at its top nail's axis: the studs it
+    goes through, in section, and the nail's upper half above the cut, its
+    whole length seen from above: (viewport, page notes). The room is at
+    the bottom of the inset."""
+    from build123d import Align, Box
+    head, direction = max(tu.corner_nailing(corner_name), key=lambda hd: hd[0][2])
+    head, d = Vector(*head), Vector(*direction).normalized()
+    walls = [loc * comp.shape() for comp, loc in [tu.wall_at(w, "upright") for w in ("rhs", "back", "lhs", "front")]]
+    # driven home (the model has it poised, its tip at the first board): its head where its axis meets that board
+    big = Pos(head.X, head.Y, head.Z) * Box(4 * tu.NAIL, 4 * tu.NAIL, NAIL_PLAN_SLICE, align=(Align.CENTER, Align.CENTER, Align.MAX))
+    boards = [sol for w in walls for sol in (w & big).solids()]
+    below = Vector(0, 0, -NAIL_PLAN_SLICE / 2)  # (the axis is on the cut's face: test just under it)
+    t = next(t / 20 for t in range(0, int(2 * tu.NAIL * 20)) if any(b.is_inside(head + d * (t / 20) + below) for b in boards))
+    nail = tu.driven(tuple(head + d * t), direction) * tu.nail.shape()
+    c = nail.bounding_box().center()
+    cut = Pos(c.X, c.Y, head.Z) * Box(NAIL_PLAN, NAIL_PLAN, NAIL_PLAN_SLICE, align=(Align.CENTER, Align.CENTER, Align.MAX))
+    sections = [s for w in walls for s in [w & cut] if s.solids()]
+    inward = (1 if "rhs" in corner_name else -1, 1 if corner_name.startswith("back") else -1)  # from the corner into the room
+    up = (0, -inward[1], 0)  # the end wall at the top, the room below
+    return I.part_inset(sections + [nail], *at, direction=(0, 0, -1), up=up,
+                        fit=[cut], margin=0)
 
 
 def corner_insets():

@@ -17,3 +17,15 @@
   (`glass()`), as the drawings did.
 - `figures/exterior_trim.py` cuts the siding's bottom edge off in the
   triangles figure (`"wall"` parts' clip), as the drawing ran off the page.
+
+## To resolve
+
+- `tilt_up.CORNER_NAIL_IN` and `CORNER_NAIL_ANGLE` (5-1/2" in from the side
+  wall's inside face, 25° from the end wall's face): driven home, a 4-1/2"
+  nail from there enters the end wall's end stud through its bay-side face,
+  crosses the side wall's end stud and ends in the end wall's siding at the
+  outside corner (see the corner plans in the nail insets of
+  `tilt-up/back_nail`, `lhs_side_nails` and `front_nail`). The manual says "centered on the rear wall side stud, and
+  angled outward, so that the nail ends up driven into the side stud of the
+  side wall". Measure where the nailer starts and at what angle, and set the
+  two.
