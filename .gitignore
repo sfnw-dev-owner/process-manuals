@@ -1,5 +1,5 @@
 # Ignore generated PDFs to minimize noise when locally testing.
-.rendered-dxfs/
+.rendered-figures/
 AC_prep/AC_Friedrich_Install.pdf
 Cut_Lists/Back_Saw_Cut_List.pdf
 Cut_Lists/Front_Saw_Cut_List.pdf
@@ -32,6 +32,9 @@ post-tilt-up/roof-blocking.pdf
 post-tilt-up/roof-framing-cklist.pdf
 render/example-custom-title-page.pdf
 render/example-default-title-page.pdf
-render/example-dxf.pdf
+render/example-model.pdf
 render/example-no-title-page.pdf
 tilt-up/tilt-up.pdf
+
+# Python bytecode (render/model2svg.py, common/model).
+__pycache__/

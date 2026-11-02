@@ -17,7 +17,7 @@
 - Chalk line
 - Mallet
 - Great Stuff cans
-- 12" spacer blocks marked "SAVE"
+- {{platform_assembly.SAVE_BLOCK}} spacer blocks marked "SAVE"
 - Jenga blocks
 
 `#pagebreak()`{=typst}
@@ -30,7 +30,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Check the frame for square: measure the diagonals; they should be the same. Adjust as necessary.
 - Put 2 more nails (total of 3) in a vertical line at each of the 4 corners.
 
-`#fullpage("images/platform.dxf", layers:"Jig-Framing,Step_01")`{=typst}
+`#fullpage("model:platform/step_01@1:20")`{=typst}
 
 # Step 2
 - Put a second 2x6 inside the ones on each short end
@@ -39,14 +39,14 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Team leader
     - using the triangle, mark a line on the outside of the long 2x6s at the middle of the ends of each joist to show where the nails go.
 
-`#fullpage("images/platform.dxf", layers:"Jig-Framing,Step_02")`{=typst}
+`#fullpage("model:platform/step_02@1:20")`{=typst}
 
 # Step 3
 - Put in all the inner 2x6 joists
 - Put 3 nails in a vertical line on each end of each joist
     - make sure joists are flush with side rail before nailing
 
-`#fullpage("images/platform.dxf", layers:"Jig-Framing,Step_03")`{=typst}
+`#fullpage("model:platform/step_03@1:20")`{=typst}
 
 # Step 4
 
@@ -64,7 +64,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
 - Measure the diagonals of the frame, and make sure that they are the same, so that the frame is square.
     - After any adjustments, **make sure** the frame is tight against the front jig crossbar.
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_04-overlay")`{=typst}
+`#fullpage("model:platform/step_04@1:20")`{=typst}
 
 # Step 5
 
@@ -74,14 +74,14 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - alternate inside of the skid and outside of the skid all the way to the rear
     - make sure to make a mark on the inside of the double joist at the rear.
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_05")`{=typst}
+`#fullpage("model:platform/step_05@1:20")`{=typst}
 
 # Step 6
 - At each X, screw in a metal bracket
     - use 6 small hexagonal screws for each metal bracket
     - 3 on the bottom 3 on the top, attaching the frame to the skids
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_06")`{=typst}
+`#fullpage("model:platform/step_06@1:20")`{=typst}
 
 # Step 7
 
@@ -90,14 +90,14 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - DO NOT NAIL
     - In the front and back bays, place the "SAVE END" blocks
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_07")`{=typst}
+`#fullpage("model:platform/step_07@1:20")`{=typst}
 
 # Step 8
 
 - Put rigid insulation foam pieces into each bay
     - Cut the foam if not pre-cut. Use templates
-    - 2 at 11^1^/~2~ inches wide by 92^1^/~2~ long
-    - 7 at 14 inches wide by 92^1^/~2~ long
+    - 2 at {{FOAM_END_WIDTH}} wide by {{FOAM_LENGTH}} long
+    - 7 at {{FOAM_WIDTH}} wide by {{FOAM_LENGTH}} long
     - use an Exacto knife with blade all the way out
     - Cut the ends to fit the length, and install with silver side UP.
 - Using GREAT STUFF spray cans
@@ -105,12 +105,12 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - Start with tip of spray can at the middle, and pull towards you.
     - DO NOT SET THE SPRAY CANS ON WORK STATIONS
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_08")`{=typst}
+`#fullpage("model:platform/step_08@1:20")`{=typst}
 
 # Step 9
 - Under the 1^st^ plywood panel ONLY
     - put Liquid Nails construction adhesive on each of the joists and along the side rails, only along the first 3 bays. 
-- Place the 1^st^ plywood panel (3/4" CDX plywood)
+- Place the 1^st^ plywood panel ({{SUBFLOOR}} CDX plywood)
     - use panels from pile labeled PLATFORM
     - line it up to be flush with the outer edges and the middle of the inner joist.
 - Put a nail in that inner joist corner. Use that as the pivot point to line up the panel
@@ -120,7 +120,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - walk backwards while nailing 8 inches apart.
 - Nail along all chalk lines in a pattern going diagonally towards the opposite corner from where you started
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_09")`{=typst}
+`#fullpage("model:platform/step_09@1:20")`{=typst}
 
 # Step 10
 
@@ -131,7 +131,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - along the seam, nail about every 8 inches, slightly angled in towards the junction line
 - Nail along edges and chalk lines
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_10")`{=typst}
+`#fullpage("model:platform/step_10@1:20")`{=typst}
 
 # Step 11
 
@@ -142,7 +142,7 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - along the seam, nail about every 8 inches, slightly angled in towards the junction line
 - Nail along edges and chalk lines
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_11")`{=typst}
+`#fullpage("model:platform/step_11@1:20")`{=typst}
 
 # Step 12
 
@@ -155,4 +155,4 @@ is inward at the center of each board. Put 1 FRAMING nail in each of the corners
     - use the marking jig; it hangs from the back saw table. Using a felt-tip pen, hold it against the inside of the jig,
     and slide the jig along the sides of the platform.
 
-`#fullpage("images/platform.dxf", layers:"Step_04-Framing,Step_12")`{=typst}
+`#fullpage("model:platform/step_12@1:20")`{=typst}

@@ -6,7 +6,7 @@ no-title-page: true
 
 `#align(center)[== CUT FOR 6 HOMES (12 triangles)]`{=typst}
 
-`#align(center)[#rect(stroke: 0.5pt, inset: 4pt)[#image("images/triangle_parts.dxf", layers:"0,Z-Labels")]]`{=typst}
+`#align(center)[#rect(stroke: 0.5pt, inset: 4pt)[#image("model:structural_triangle_parts/parts@1:15")]]`{=typst}
 
 Cut these (rough) lengths of 2x4, and place them on a yellow cart.
 
@@ -15,10 +15,10 @@ Cut these (rough) lengths of 2x4, and place them on a yellow cart.
 | 12 | B | 89 5/8" | Use 8' 2x4 |
 | 12 | A | 96" (no cut needed) | Use 8' 2x4 |
 
-Using the green chop saw and jig (set up for 18.5° angle cuts), trim
+Using the green chop saw and jig (set up for {{ROOF_PITCH}} angle cuts), trim
 both ends of these. The longer one is used below for A pieces
 
-Set the (red) back chop saw to an 18.5° angle, and trim the following,
+Set the (red) back chop saw to an {{ROOF_PITCH}} angle, and trim the following,
 setting each 2x4 on the saw table standing on its shortest edge:
 
 | Quantity | Label | Length | Notes |

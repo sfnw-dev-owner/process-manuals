@@ -28,7 +28,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Have auto dollies nearby.  It is embarrassing if you have to run off to fetch these at the point where you will need them, because the home will be precariously perched on a raised jack without a lot of support.
 - Communication between the front and rear jack managers is essential, so that the home remains stable.  **Never** allow the home to be raised on both jacks at the same time.
 
-`#fullpage("images/01_Prepare.pdf")`{=typst}
+`#fullpage("model:extract_instructions/01_prepare")`{=typst}
 
 ## Raise the rear
 
@@ -36,7 +36,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Make sure that the jack handle is rotated clockwise, to close the hydraulic valve and allow the jack to raise the home.  Repeatedly operate the handle to raise the rear of the home just far enough to make it possible for helpers to slide the 4x4 stands under the home.
 - Position each stand so that the 4x4 post is just inside the siding; this will allow the platform frame to rest on the posts as the jack is lowered.
 
-`#horizontal-center("images/02_Rear_Raised.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/02_rear_raised"); #pagebreak()`{=typst}
 
 ## Lower rear of home onto stands
 
@@ -45,7 +45,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Once the stands are in position, have the helpers move away from the home, and then cautiously rotate the jack handle counterclockwise to lower the home.  This is easier to control if you grip the jack handle where the foam rubber liner covers the handle.
 - When the home is resting solidly on the two posts, call out to the front, saying "Back is on the posts".
 
-`#v(72pt); #horizontal-center("images/03_Rear_Dropped_onto_Posts.pdf"); #pagebreak()`{=typst}
+`#v(72pt); #horizontal-center("model:extract_instructions/03_rear_dropped_onto_posts"); #pagebreak()`{=typst}
 
 ## Raise the front
 
@@ -55,11 +55,11 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Have two helpers hook the ends of the extraction straps to the front of each iron cart, one hook on either side of the skid flanges, and pull the cart straight out from under the home. If the cart path is not straight, the rear flanges will bind up on the skid, and make it very difficult to pull the cart out without pulling the home off the rear stands.
 - The carts can then be taken to the materials area for reloading.
 
-`#horizontal-center("images/04_Front_Raised.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/04_front_raised"); #pagebreak()`{=typst}
 
 - Verify the position of the front triple blocks, making sure that they are centered side-to-side under the skids, and about 18" from the end of each skid.  This will leave room for an auto dolly to be placed between the end of the skid and the triple block in the next step.
 
-`#horizontal-center("images/05_Carts_Removed.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/05_carts_removed"); #pagebreak()`{=typst}
 
 # Drop front onto triple blocks
 
@@ -68,7 +68,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Position the two front auto dollies under the front ends of the skids, about 4" back from the end of the flat bottom of the skids.
 - When the front is resting solidly on the triple blocks, call out to the rear saying "Front is on the blocks.
 
-`#horizontal-center("images/07_Lowered_onto_Front_Triple_Blocks.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/07_lowered_onto_front_triple_blocks"); #pagebreak()`{=typst}
 
 ## Raise rear, remove posts
 
@@ -77,7 +77,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Raise the rear just far enough that helpers can remove the two 4x4 stands from the corners of the home.
 - Verify the position of the rear triple blocks, making sure that they are centered side-to-side under the skids, and about 18" from the end of each skid.  This will leave room for an auto dolly to be placed between the end of the skid and the triple block in the next step.
 
-`#horizontal-center("images/08_Rear_remove_Posts.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/08_rear_remove_posts"); #pagebreak()`{=typst}
 
 - Have helpers move out of the way.
 - Announce loudly "Back Going Down", and get acknowledgment from the front-jack operator.
@@ -85,7 +85,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Position the two rear auto dollies under the rear ends of the skids, about 4" forward from the end of the flat bottom of the skids.
  - When the home is resting solidly on the triple blocks, call out the front saying "Back is down on the blocks.
 
-`#horizontal-center("images/09_Rear_lowered_onto_Triple_Blocks.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/09_rear_lowered_onto_triple_blocks"); #pagebreak()`{=typst}
 
 ## Raise front, remove triple blocks
 
@@ -93,7 +93,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Raise the front of the home just a few inches, so that helpers can pull the front triple blocks out from under the skids.
 - Verify that the auto dollies are positioned about 4" inward from the end of the flat bottom of each skid, and centered side-to-side, so that when the home is lowered, each skid will rest evenly in the center of its auto dolly.
 
-`#horizontal-center("images/10_Remove_Front_Triple_Blocks.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/10_remove_front_triple_blocks"); #pagebreak()`{=typst}
 
 ## Drop front to final position
 
@@ -101,7 +101,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Once the front blocks have been removed and the helpers are clear of the home, lower the front jack all the way, so that the skids are resting on the front auto dollies.
 - Call out to the rear, saying "Front is on the dollies".
 
-`#horizontal-center("images/11_Front_Dollies_in_place.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/11_front_dollies_in_place"); #pagebreak()`{=typst}
 
 ## Raise rear, remove triple blocks
 
@@ -110,7 +110,7 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Verify that the auto dollies are positioned about 4" inward from the end of the flat bottom of each skid, and centered side-to-side,
  so that when the home is lowered, each skid will rest evenly in the center of its auto dolly.
 
-`#horizontal-center("images/12_Remove_Rear_Triple_Blocks.pdf"); #pagebreak()`{=typst}
+`#horizontal-center("model:extract_instructions/12_remove_rear_triple_blocks"); #pagebreak()`{=typst}
 
 ## Drop rear to final position
 
@@ -121,5 +121,5 @@ This is an inherently simple process, but the chances for a mishap are fairly hi
 - Pack up the 4x4 stands, the triple blocks, and the iron cart extraction straps into the storage cart.
 - Return jacks and cart to storage location.
 
-`#horizontal-center("images/13_Home_in_Final_Position.pdf")`{=typst}
+`#horizontal-center("model:extract_instructions/13_home_in_final_position")`{=typst}
 
