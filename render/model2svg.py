@@ -521,10 +521,13 @@ def write_page_svg(fig, path):
         inner = ET.SubElement(g, f"{SVGNS}g", {
             "transform": f"translate({cx:.4f},{cy:.4f}) scale({scale:.6f},{-scale:.6f}) translate({-tx:.4f},{-ty:.4f})",
             "fill": "none", "stroke": "black", "stroke-linecap": "round"})
-        # the parts of the page's other views with this camera hide what's
-        # behind them here too (LayOut stacked such views; the part drawn in
-        # black on top hid the gray view's lines behind it)
-        occluders = [p[0] for other in fig.viewports if other is not vp and _same_camera(other, vp) for p in other.parts]
+        # the parts of the page's other views stacked on this one (the same
+        # camera, in the same rect) hide what's behind them here too (LayOut
+        # stacked such views; the part drawn in black on top hid the gray
+        # view's lines behind it); side-by-side insets that merely share a
+        # camera don't
+        occluders = [p[0] for other in fig.viewports
+                     if other is not vp and other.rect == vp.rect and _same_camera(other, vp) for p in other.parts]
         for style, visible in _page_edges(vp, project, occluders).items():
             edges += [(e, style) for e in visible]
             color = PAGE_COLORS.get(style, "black")
