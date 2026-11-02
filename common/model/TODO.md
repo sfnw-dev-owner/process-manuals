@@ -20,6 +20,12 @@
 
 ## To resolve
 
+- `tilt_up.funky_board_16` (and `FUNKY_BOARD_16`): the 2x4 brace across the
+  front wall's outside, low down, spanning the doorway, is no longer used in
+  the factory. Drop it from the tilt-up scenes (`figures/tilt_up.py`
+  `parts()`), and re-aim `front_tilted`'s two carrier arrows, which point at
+  its ends, at the front wall's bottom plate instead.
+
 - `tilt_up.CORNER_NAIL_IN` and `CORNER_NAIL_ANGLE` (5-1/2" in from the side
   wall's inside face, 25° from the end wall's face): driven home, a 4-1/2"
   nail from there enters the end wall's end stud through its bay-side face,
