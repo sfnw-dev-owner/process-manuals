@@ -68,7 +68,7 @@ VIEWS = {
     # The legs' faces, seen from the doorway (the hinge leg left, the latch leg right, 50" apart); a detail at the top hinge.
     "screws": View((1, 0, 0), UP, 1, (0, 0, 0), (0, 0)),
     "screws_latch": View((-1, 0, 0), UP, 1, (FRAME_WIDTH, 0, 0), (50, 0)),
-    "screws_detail": View((1, 0, 0), UP, DETAIL_SCALE, (0, -1/2, HINGE_Z[2]), (25, 60)),
+    "screws_detail": View((1, 0, 0), UP, DETAIL_SCALE, (0, -1/2, HINGE_MARKS[2][2]), (25, 60)),
     "shims": View(FROM_INSIDE, UP, 1, (0, 0, 0), (0, 0)),
     # 4x: the latch jamb in section at the latch, from above (the outside on
     # the left, the wall running up the page); and its face, from the doorway, under it.
@@ -152,7 +152,7 @@ def figures(scale=1/16, only=None):
 
     # 3.1_ScrewLocs: the legs from the doorway, and a detail at the top hinge.
     S, SL, SD = V["screws"], V["screws_latch"], V["screws_detail"]
-    detail_center = SD.xy((0, -1/2, HINGE_Z[2]))
+    detail_center = SD.xy((0, -1/2, HINGE_MARKS[2][2]))
     detail_r = 5 * DETAIL_SCALE * scale  # paper
     detail_circle = Pos(*detail_center, 0) * Cylinder(detail_r / scale, 2000)
     detail = [s & detail_circle for s, _ in SD.drawn(hinge_leg + hinges[2:])]
@@ -208,7 +208,7 @@ def figures(scale=1/16, only=None):
     jamb_face = St.xy((FRAME_WIDTH, SCREW_FROM_EDGE, LATCH_Z))
     strike_notes = marks(Sf, STRIKE_MARKS, 2 * MARK) + [
         (stud.x0, stud.y0, crossed_box(stud.width * scale, stud.height * scale)),
-        aimed(jamb_face, "Screw", 30 + 180, size=0.8),  # 30° off the jamb's face, toward the outside
+        aimed(jamb_face, "Screw", 30 + 90, size=0.8),  # 30° off the jamb's face, toward the outside
         *callout(jamb_face, 'Drill and countersink\n1/2" from edge,\nat a 30° angle', "below right", lead=3/4),
     ]
 
@@ -220,3 +220,4 @@ def figures(scale=1/16, only=None):
         "strike_plate": (strike_parts, [], strike_notes),
     }
     return table(MD, rows)
+

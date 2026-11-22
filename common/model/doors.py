@@ -51,7 +51,7 @@ LATCH_HOLE_FROM_INSIDE = 25/32  # center
 HINGE_SCREW_ABOVE = 1
 LATCH_SCREWS_Z = [17, JAMB_HEIGHT - 10]
 STRIKE_SCREWS = 1  # above and below the latch hole's center
-SCREW_FROM_EDGE = 1/2
+SCREW_FROM_EDGE = 1/2 + 0.1875 # to correct for screw penetration into door frame
 
 # In the doorway: flexible flashing ("54" strip") across the bottom and
 # about 8" up each side, half of it outside the building; shims; a plywood
