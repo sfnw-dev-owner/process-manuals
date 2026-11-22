@@ -22,7 +22,7 @@ are the steps:
 1. Remove weatherstripping from all three sides of door frame.
 
 1. Measure from the outside top of the door frame down along each side,
-    and mark on the frame at 80-3/4”. Extend these marks onto the inside
+    and mark on the frame at {{doors.FRAME_CUT}}. Extend these marks onto the inside
     surface of the frame.
 
 1. Install a cross brace on the door frame above the bottom hinge,
@@ -54,13 +54,13 @@ are the steps:
     clear the bottom edge of the door-stop, and remove the router.
     Repeat on the other side
 
-`#fullpage("images/door_preparation.dxf", layers:"2_Door")`{=typst}
+`#fullpage("model:door_manual/door@1:16")`{=typst}
 
 11. Remove the routing guides, and place a tarp under the door frame
     legs. Using the rattle-can of Kilz primer, spray the cut surfaces.
     Allow to dry (30-60 min).
 
-1. Using one of the pre-trimmed ADA thresholds (exactly 36” long),
+1. Using one of the pre-trimmed ADA thresholds (exactly {{doors.THRESHOLD[0]}} long),
     drill two clearance holes for \#6 drywall screws, about ¼” in from
     the ends, and 1½” from one side. Remove the burrs from the opposite
     side.
@@ -91,15 +91,15 @@ are the steps:
 - Utility knife
 - Pry bar
 - Yellow clamps (2)
-- Flexible Flashing (54" strip)
-- Precut plywood filler 4½" x 37½".  Stored on shelf near door storage.
+- Flexible Flashing ({{doors.FLASHING[0]}} strip)
+- Precut plywood filler {{doors.FILLER[1]}} x {{doors.FILLER[0]}}.  Stored on shelf near door storage.
 
 ## Pre-checks
-- Verify that the door has been modified with a ¼" thick ADA threshold.
+- Verify that the door has been modified with a {{doors.THRESHOLD[2]}} thick ADA threshold.
 - Verify that weatherstripping has been removed.
-- Verify that the home's flooring extends only ¾" into the door opening
-- Verify that the doorway opening is at least 37¾" wide at its narrowest point.  If not, ask for help.
-- Verify that a separate flooring strip 3½" wide is installed in the doorway, flush with the outside of the siding.
+- Verify that the home's flooring extends only {{flooring.INTO_DOORWAY}} into the door opening
+- Verify that the doorway opening is at least {{doors.FRAME_WIDTH}} wide at its narrowest point.  If not, ask for help.
+- Verify that a separate flooring strip {{flooring.DOORWAY_STRIP[1]}} wide is installed in the doorway, flush with the outside of the siding.
 - Verify that all labeling, bottom plastic protectors and hinge protectors have been removed.
 
 `#pagebreak()`{=typst}
@@ -113,11 +113,11 @@ are the steps:
 
 ## Prepare the opening
 
-- Cut a 54" length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway over the flooring strip, with about 8" running up each side of the opening, and half the width sticking outside the home. Do not cover any of the interior floating floor.
+- Cut a {{doors.FLASHING[0]}} length of flexible flashing (Peel-n-Stick), and install it in the bottom of the doorway over the flooring strip, with about {{doors.FLASHING_UP}} running up each side of the opening, and half the width sticking outside the home. Do not cover any of the interior floating floor.
 - Slit the corners of the flexible flashing, and fold the outer half of the flashing down and to the sides of the opening.
 Press the flashing into the corners of the doorway.
 
-`#imgCtr("images/door_preparation.dxf", layers:"3_Threshold")`{=typst}
+`#imgCtr("model:door_manual/threshold@1:16")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -131,7 +131,7 @@ Press the flashing into the corners of the doorway.
 - Helpers hold door frame tight against siding.  Use a clamp if necessary.
 - Mark the screw locations with a pencil.
 
-`#imgCtr("images/door_preparation.dxf", layers:"3.1_ScrewLocs")`{=typst}
+`#imgCtr("model:door_manual/screw_locations@1:16")`{=typst}
 
 `#pagebreak()`{=typst}
 
@@ -140,11 +140,11 @@ Press the flashing into the corners of the doorway.
     - doorknob side, place two shims, one high and one low, centered vertically where screw holes have been drilled
     - Adjust side shims so the gap at the top is the same across door width
 
-`#imgCtr("images/door_preparation.dxf", layers:"4_Shimming")`{=typst}
+`#imgCtr("model:door_manual/shimming@1:16")`{=typst}
 `#pagebreak()`{=typst}
 
 ##  2. Adjust and secure door frame
-- Open & close door - it should not hit door frame on the side opposite the hinges (\~1/8" gap)
+- Open & close door - it should not hit door frame on the side opposite the hinges (\~{{doors.SLAB_GAP}} gap)
 - Screw door frame to the opening on the hinge side
     - open the door
     - make sure door molding is tight against the siding
@@ -153,7 +153,7 @@ Press the flashing into the corners of the doorway.
     - top 1^st^
     - bottom 2^nd^
     - screws must go through shims, so that the door frame is not distorted
-- If space above the door is narrow, use shims to make it even, if large then use a piece of 3/4" plywood, and then shims
+- If space above the door is narrow, use shims to make it even, if large then use a piece of {{doors.FILLER[2]}} plywood, and then shims
 - Insert shims 8-10" in from each side to fill space between top of door frame and the plywood or doorway framing
 - Install screws as for the sides.
 
@@ -161,12 +161,12 @@ Press the flashing into the corners of the doorway.
 
 ## 3. Strengthen door latch plate
 - insert shims both above and below the latch hole
-- adjust shims above and below latch hole so the gap between door and door jamb is approximately 1/8" 
-- Drill with countersink bit about 1" above and below the latch hole, as shown in the drawing
+- adjust shims above and below latch hole so the gap between door and door jamb is approximately {{doors.SLAB_GAP}} 
+- Drill with countersink bit about {{doors.STRIKE_SCREWS}} above and below the latch hole, as shown in the drawing
 - Angle drill towards outside of the home, to assure that screws will go into the framing
 - Install 3" screws in both drilled holes, and through the shims.  Make sure that the screw heads are sunk below the surface of the door frame.
 
-`#imgCtr("images/door_preparation.dxf", layers:"5_Strike Plate")`{=typst}
+`#imgCtr("model:door_manual/strike_plate@1:16")`{=typst}
 
 `#pagebreak()`{=typst}
 

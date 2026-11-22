@@ -55,7 +55,7 @@ the brown screw into the vent block.
     and with marks on wall top plate.
     - Pre-drill and screw in **LONG** screws at each marked location.
 
-`#fullpage("images/ceiling_panels.dxf", layers:"Panels,Notes")`{=typst}
+`#fullpage("model:interior_panels/ceiling_panels@1:40")`{=typst}
 
 ## SIDE WALL Panels A, B & C
 
@@ -83,7 +83,7 @@ the brown screw into the vent block.
     - There is a separate long (84") Screw Pattern Board for Panel C.
     - Pre-drill and screw in **SHORT** screws.  If these screws cannot be made to sink into the framing behind the panel, you may use a brown 3" screw.
 
-`#fullpage("images/wall_panels.dxf", layers:"01_Side_Panels")`{=typst}
+`#fullpage("model:interior_panels/side_panels@1:30")`{=typst}
 
 ## BACK WALL Panels G & H 
 
@@ -104,7 +104,7 @@ the brown screw into the vent block.
       out to 7 screws on each side of the window framing on panel G.
     - Pre-drill and screw in **SHORT** screws
 
-`#fullpage("images/wall_panels.dxf", layers:"02_Rear_Panels")`{=typst}
+`#fullpage("model:interior_panels/rear_panels@1:30")`{=typst}
 
 ## FRONT WALL Panels D & E
 
@@ -124,12 +124,12 @@ the brown screw into the vent block.
 1.  Rout out the door (first), the windows, and the A/C cutout
     - Using a spade bit, drill from outside through the paneling, near the bottom left corner of each window
     - After the back window is routed out, use the A/C cutout jig to locate the drill spot, and drill a starter hole
-1. Find and install a 4" piece of ½" plywood that goes below the remaining edge of the D panel on the narrow side next to the doorway.
-    - This piece is 38¼" long and 4" wide, and may be found in a square barrel where the trim pieces are kept.  It may alternatively labeled **E2**.
+1. Find and install a {{interior.PANEL_E2[0]}} piece of ½" plywood that goes below the remaining edge of the D panel on the narrow side next to the doorway.
+    - This piece is {{interior.PANEL_E2[1]}} long and {{interior.PANEL_E2[0]}} wide, and may be found in a square barrel where the trim pieces are kept.  It may alternatively labeled **E2**.
       - Pre-drill along the long edges about 8" apart.
       - Install, making sure that the edge next to the doorway aligns with the routed doorway above it.
 
-`#fullpage("images/wall_panels.dxf", layers:"03_Front_Panels")`{=typst}
+`#fullpage("model:interior_panels/front_panels@1:30")`{=typst}
 
 ## Triangle Panels
 
@@ -147,4 +147,4 @@ the brown screw into the vent block.
 
 `#pagebreak()`{=typst}
 
-`#fullpage("images/wall_panels.dxf", layers:"04_Triangle_Panels")`{=typst}
+`#fullpage("model:interior_panels/triangle_panels@1:30")`{=typst}
