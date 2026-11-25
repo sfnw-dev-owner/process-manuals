@@ -35,10 +35,10 @@
 
 // Display image as a separate page
 // See ../Front_Wall/front_wall_ada.md for example usage.
-#let fullpage(path, layers: none) = {
+#let fullpage(path, iwidth:auto, layers: none) = {
   pagebreak(weak: true)
   block(height: 100%, width: 100%)[
-    #align(center + horizon)[#image(path)]
+    #align(center + horizon)[#image(path,width:iwidth)]
   ]
 }
 

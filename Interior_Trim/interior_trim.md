@@ -5,7 +5,7 @@
   #text(24pt)[Instructions]
 ]
 
-#let imgCtr(path) = {align(center + horizon)[#image(path)]}
+#let imgCtr(path, iwidth:auto) = {align(center + horizon)[#image(path,width:iwidth)]}
 ```
 
 # Setup and Inspection
@@ -32,6 +32,8 @@
     - Vent Cap Drill pattern
     - \#10 x 3" Screws (brown)
 
+`#pagebreak()`{=typst}
+
 ## Preparation
 
 - Install foam backer rod in the spaces between the front and back windows and the window framing.
@@ -44,6 +46,8 @@ Use a piece of flooring or a putty knife to make insertion easier.
 - Note that '2" trim' is not actually 2" wide, but is a little narrower.  Where two pieces butt up to each other, make sure that the widths match.
 
 - **Install trim in the following order**
+
+`#pagebreak()`{=typst}
 
 # Baseboards
 
@@ -161,9 +165,8 @@ the top of the baseboard to the bottom of the pointed end of the triangle trim.
 Do NOT install chair-rail horizontal trim between vertical trim
 and front wall. This will be done after Front Wall trim.
 
-`#pagebreak()`{=typst}
-`#imgCtr("Images/rear_wall.dxf", layers:"1_Paneling,8_chair_rail")`{=typst}
-`#imgCtr("Images/sidewall_trim.dxf", layers:"0_Panels,4_chair_rail")`{=typst}
+`#imgCtr("Images/rear_wall.dxf", iwidth:30%, layers:"1_Paneling,8_chair_rail")`{=typst}
+`#imgCtr("Images/sidewall_trim.dxf", iwidth:45%, layers:"0_Panels,4_chair_rail")`{=typst}
 `#pagebreak()`{=typst}
 
 # Front Wall 
@@ -182,8 +185,7 @@ and front wall. This will be done after Front Wall trim.
     - Position a spacer on the floor in this corner
     - Cut a piece of baseboard (nearly square), position it so that it overlaps half of the door jamb, and nail it in place 
 
-`#imgCtr("Images/front_wall.dxf", layers:"1_Paneling,2_Baseboards")`{=typst}
-`#pagebreak()`{=typst}
+`#fullpage("Images/front_wall.dxf", iwidth: 70%, layers:"1_Paneling,2_Baseboards")`{=typst}
 
 # Shelf and Window
 1. Install Shelf
@@ -209,7 +211,7 @@ and front wall. This will be done after Front Wall trim.
     - Place the precut piece of window liner tight against the shelf, leaving any gap at the top
 6.  Measure (very close to window) between the sides for the top of the window piece. Cut one piece of window liner that length and nail in place
 
-`#fullpage("Images/front_wall.dxf", layers:"1_Paneling,3_Shelf,4_window_liner")`{=typst}
+`#fullpage("Images/front_wall.dxf", iwidth: 75%, layers:"1_Paneling,3_Shelf,4_window_liner")`{=typst}
 
 # Front Wall Trim
 
@@ -217,25 +219,26 @@ and front wall. This will be done after Front Wall trim.
    - Rip a 9½" x 96" trim board to this width on the table saw; save the wider piece (\~5½ inches) for step 5
 1. Measure the height on the side wall behind the door from the baseboard to the top of the wall
    - Cut a piece of 2" trim this length, and install it on the side wall.
-   - Repeat on the window-side side wall.
-   - Check that the narrow board from step 1 will span from the center of the door jamb to within ¼" of the side wall trim.
+   - Check that the narrow piece from the ripped board will span from the center of the door jamb to within ¼" of the side wall trim.
   If it is too narrow, stop and ask for help from the leadership.
 2. Use pieces of triangle trim (with the sharp point on one end) as a gauge.  Behind the door, have one person hold it in place, and measure from
 the top of the baseboard to the bottom of the pointed end of the triangle trim.
    - Cut the narrow piece from step 1 to length, and nail in place, halfway across the door jamb
 3. Similarly, on the window-side corner, measure from the baseboard to the bottom of the pointed end of the triangle trim
-   - Cut a piece of 2" trim this length, and install on the front wall, pressing it against the side-wall trim
-4. Measure between these two corner boards on the front wall near the horizontal seam between the wall panel and the triangles
+   - Cut a piece of 2" trim this length, and install on the front wall, pressing it into the corner
+4. On the side wall, measure from the baseboard to the top of the wall.  Cut and install a piece of 2" trim,
+   pressing it tight against the front-wall corner trim. 
+5. Measure between these two corner boards on the front wall near the horizontal seam between the wall panel and the triangles
    - Add 1/16", and cut a piece of 2" trim to this length
    - Install this trim between the corner boards, lined up with the tops of these corner boards
-5. Install triangle trim on both sides of the front wall, pressing it up against the ceiling panels
+6. Install triangle trim on both sides of the front wall, pressing it up against the ceiling panels
    - Install a pre-cut 42" length of 2" trim on each ceiling panel, pressing it up against the front-wall triangle trim to insure a tight fit
    - Position a 12" piece of 2" trim vertically over the center seam in the front triangle and nail.
-6. Measure from the top horizontal trim on the front wall to the baseboard and cut the wide trim from step 1 to this length
+7. Measure from the top horizontal trim on the front wall to the baseboard and cut the wide trim from step 1 to this length
    - Mark where a cutout must be made on this wide trim for the front shelf and support block
    - Cut out a notch for the shelf using a jigsaw. Nail in place, being sure that the edge next to the window is flush with the window liner.
 
-`#fullpage("Images/front_wall.dxf", layers:"1_Paneling,5_trim")`{=typst}
+`#fullpage("Images/front_wall.dxf", iwidth: 75%, layers:"1_Paneling,5_trim")`{=typst}
 
 # Final Trim
 
