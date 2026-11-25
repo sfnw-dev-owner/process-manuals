@@ -107,12 +107,12 @@ Use precut pieces (3-1/8" x 35") to line the sides of the window opening
 the top of the baseboard to the bottom of the pointed end of the triangle trim.
    - Cut and nail a piece of trim into each corner of the rear wall.
 
-`#imgCtr("Images/rear_wall.dxf", layers:"1_Paneling,6_Wall_trim")`{=typst}
-`#pagebreak()`{=typst}
-
 2. Side Wall Rear Corner
    - measure from the top of the baseboards to the top of the side wall at the back corner
    - Cut and nail. Push this trim against the rear wall trim as you are nailing, to insure a tight seam. Repeat on the other side wall.
+
+`#imgCtr("Images/rear_wall.dxf", layers:"1_Paneling,6_Wall_trim")`{=typst}
+`#pagebreak()`{=typst}
 
 3. Sidewall Seams
    - Measure at the vertical seam between the side panels from top of baseboard to the top of the wall.
@@ -141,9 +141,9 @@ the top of the baseboard to the bottom of the pointed end of the triangle trim.
 `#pagebreak()`{=typst}
 
 5. Measure between the side wall vertical trim boards near the top of the wall.  Add 1/16", and cut a piece of 2" trim this length.
-6. Install this top trim between the vertical trim boards, aligning the top with the tops of the vertical trim at each end.
+   - Install this top trim between the vertical trim boards, aligning the top with the tops of the vertical trim at each end.
    - Repeat on the other side wall
-7. Measure between the two pieces of ceiling trim near one side wall.  Add 1/16" and cut a piece of 2" trim this length
+6. Measure between the two pieces of ceiling trim near one side wall.  Add 1/16" and cut a piece of 2" trim this length
    - Install this trim between the two ceiling trim pieces, pressing it down against the top sidewall trim to insure a tight joint.
    - Repeat on the other side wall
 
@@ -211,7 +211,7 @@ and front wall. This will be done after Front Wall trim.
     - Place the precut piece of window liner tight against the shelf, leaving any gap at the top
 6.  Measure (very close to window) between the sides for the top of the window piece. Cut one piece of window liner that length and nail in place
 
-`#fullpage("Images/front_wall.dxf", iwidth: 75%, layers:"1_Paneling,3_Shelf,4_window_liner")`{=typst}
+`#fullpage("Images/front_wall.dxf", iwidth: 65%, layers:"1_Paneling,3_Shelf,4_window_liner")`{=typst}
 
 # Front Wall Trim
 
